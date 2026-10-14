@@ -11,7 +11,8 @@ W=/workspace; GE=${GE_DIR:-$W/repo/pipeline}; TOKEN=${OUT_TOKEN:-run}; OUT=$W/ou
 mkdir -p "$OUT" "$MODELS"
 log()   { echo "[$(date -u +%H:%M:%S)] $*" | tee -a "$OUT/status.log"; }
 stage() { echo "$1" > "$OUT/STAGE"; log "== $1"; }
-fail()  { stage "FAILED: $1"; self_destruct_later; exit 1; }
+# on failure keep serving the log instead of exiting: an exited container gets restarted and would loop
+fail()  { stage "FAILED: $1"; self_destruct_later; wait; exit 1; }
 self_destruct_later() {
   # RunPod pods carry RUNPOD_POD_ID + a pod-scoped key for runpodctl; Vast injects CONTAINER_ID/CONTAINER_API_KEY.
   ( sleep $(( ${KEEP_MIN:-40} * 60 ))

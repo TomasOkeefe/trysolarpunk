@@ -29,6 +29,8 @@ def shot_args(i, shot):
 def python_api():
     from ltx_pipelines import distilled as D
 
+    # LTX picks its model-version defaults by pre-parsing sys.argv, so give it the real flags
+    sys.argv = [sys.argv[0], *base, *shot_args(0, plan["shots"][0])]
     params = D.resolve_cli_params(distilled=True)
     parser = D.add_chunk_layout_args(D.add_keyframe_decode_arg(D.add_generated_keyframes_arg(
         D.default_2_stage_distilled_arg_parser(params=params, supports_auto_duration=True))))
