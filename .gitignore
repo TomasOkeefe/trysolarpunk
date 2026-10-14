@@ -1,0 +1,6 @@
+# keep the printable product files private (the repo is public so the GPU box can clone it)
+products/stl/
+products/cad.py
+__pycache__/
+pipeline/out/
+.DS_Store

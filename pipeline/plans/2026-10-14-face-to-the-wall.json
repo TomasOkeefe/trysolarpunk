@@ -1,0 +1,61 @@
+{
+  "slug": "face-to-the-wall",
+  "date": "2026-10-14",
+  "product": "hibernator",
+  "hook_text": "POV: your phone is in timeout",
+  "song": {
+    "title": "Face to the Wall",
+    "style": "English, sunny indie folk-pop, warm male and female group vocals, handclaps, acoustic guitar strums, bouncy bass, light whistling hook, upbeat and joyful, 112 BPM",
+    "lyrics": "[Verse]\nPut my phone in timeout, face against the wall\nNinety notifications, I don't need them all\nSunlight on the sidewalk, someone's playing chess\nTurns out real life loads faster, who'd have guessed\n\n[Chorus]\nCome and try solarpunk, we're out here touching ground\nNo feed, no scroll, just a neighborhood sound\nTrade the infinite scroll for an infinite stroll\nLog off, look up, let the real world roll"
+  },
+  "shots": [
+    {
+      "product_image": true,
+      "prompt": "A hand slides a black smartphone face-first into a small rounded moss-green brick stuck to a white fridge door, the phone settling upright with a soft click. The brick has a round pale yellow disc on its front. Warm morning kitchen light drifts across the fridge, a few colourful magnets and a handwritten note nearby. The camera holds steady in a close-up, then eases back slightly as the hand pulls away."
+    },
+    {
+      "product_image": false,
+      "prompt": "A young woman with curly hair pushes open a wooden apartment door and steps into bright morning sun, stretching both arms overhead with a big smile. Behind her, balconies overflow with tomato plants and climbing vines. The camera tracks backward in front of her at chest height. Golden light, soft lens flare, warm greens and cream tones."
+    },
+    {
+      "product_image": false,
+      "prompt": "Three friends ride bicycles side by side down a leafy city street lined with flower boxes and solar panels on the rooftops, laughing and ringing their bells. The camera tracks alongside them at handlebar height, trees passing overhead. Late morning sun, saturated greens, light dappling across their faces."
+    },
+    {
+      "product_image": false,
+      "prompt": "Two elderly men play chess at a stone table in a sunny park while a young girl leans in to watch, chin on her hands. One man moves a knight with a flourish and they all burst out laughing. The camera slowly pushes in from a low angle. Dappled light through plane trees, warm afternoon colours."
+    },
+    {
+      "product_image": false,
+      "prompt": "Bare feet step slowly onto thick, dewy green grass, toes sinking in, blades bending and springing back. Extreme close-up at ground level in slow motion, shallow depth of field, morning sunlight glowing through the grass blades in bright yellow-green."
+    },
+    {
+      "product_image": false,
+      "prompt": "In a busy community garden, neighbours pass ripe red tomatoes hand to hand down a line, smiling and chatting, baskets filling up. Raised wooden beds, sunflowers and bean poles surround them. The camera glides sideways along the line of hands. Bright midday sun, rich reds and greens."
+    },
+    {
+      "product_image": false,
+      "prompt": "A long rooftop picnic table at golden hour, friends of all ages sharing bread and fruit, someone raising a glass in a toast. String lights hang above, and the skyline behind is full of green rooftops and small wind turbines. The camera dollies slowly down the length of the table. Warm orange light, soft bokeh."
+    },
+    {
+      "product_image": false,
+      "prompt": "A scruffy golden dog sprints joyfully across a wildflower meadow straight toward the camera, ears flopping, tongue out. The camera is low to the ground and slightly slow motion. Blue sky with puffy clouds, yellow and purple flowers, crisp afternoon light."
+    },
+    {
+      "product_image": false,
+      "prompt": "Wide shot of people sitting together on a grassy hill at sunset, looking out over a calm city of green rooftops, gardens and slowly turning wind turbines. Nobody is holding a phone. The camera slowly pulls back and rises, revealing more of the glowing sky. Peach and gold light, soft haze, a deep calm."
+    }
+  ],
+  "endcard": {
+    "line1": "Put your phone in timeout.",
+    "line2": "link in bio"
+  },
+  "caption": "Day 1 of putting my phone in timeout. The Hibernator lives on the fridge, my phone lives face to the wall.",
+  "hashtags": [
+    "#touchgrass",
+    "#digitalminimalism",
+    "#solarpunk",
+    "#screentime",
+    "#logoff"
+  ]
+}

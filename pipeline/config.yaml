@@ -1,0 +1,53 @@
+# Try Solarpunk content pipeline config
+
+brand:
+  name: Try Solarpunk
+  handle: "@trysolarpunk"
+  tagline: Gear for recovering scrollers
+  voice: >
+    Warm, a little unhinged, never preachy. Deeply online people who want out, laughing at
+    ourselves on the way. Solarpunk hope, not doom. The joke is always on the feed, never on the
+    person. Never shame viewers for using their phones. Never use real people, real brands, or
+    real politicians.
+  palette: [moss "#2F5D3A", sprout "#9BC53D", sun "#F2C14E", cream "#F6F1E4", clay "#D9764A"]
+
+# What the videos sell. The concept step rotates through these.
+products:
+  - id: hibernator
+    name: Hibernator
+    pitch: A brick that sticks to your fridge. Your phone goes in face to the wall. Tap the eye and it switches on your Focus mode.
+    visual: a small rounded moss-green 3D-printed brick on a white fridge door holding a phone upright, a pale yellow round disc on its front
+    image: assets/hib_fridge.jpg     # used as the first frame of the product shot
+  - id: eyelid
+    name: Eyelid
+    pitch: A sleeve that fully covers your screen, so notifications can't pull you in.
+    visual: a slim terracotta-orange 3D-printed sleeve with a closed-eye emblem, a phone sliding into it
+    image: assets/eyelid_studio.jpg
+  - id: merch
+    name: Infinite Stroll tee
+    pitch: No feed. No ads. No end.
+    visual: a cream t-shirt with a hills-and-infinity-path illustration and the words Infinite Stroll
+
+video:
+  width: 1080
+  height: 1920
+  fps: 24
+  target_seconds: 45        # TikTok sweet spot; the song is written short to match
+  shots: 9                  # clips per video
+  gen_width: 768            # LTX output size (stage 1 renders at half), 9:16-ish, divisible by 64
+  gen_height: 1344
+  clip_frames: 121          # 8k+1 frames -> ~5 s at 24 fps
+  ai_label: "AI-generated"  # burned into every video, and the TikTok AIGC flag is set on upload
+
+gpu:
+  provider: runpod          # runpod (default) or vast
+  cloud: COMMUNITY          # RunPod community cloud is the cheap tier
+  min_vram_gb: 46           # L40S / A6000 / RTX 6000 Ada class
+  max_dollars_per_hour: 1.20
+  min_reliability: 0.97
+  disk_gb: 160
+  image: runpod/pytorch:1.4.0-cu1281-torch280-ubuntu2404
+  max_runtime_minutes: 120  # hard kill so a stuck box can't burn money
+
+tiktok:
+  mode: draft               # "draft" (inbox upload, no audit needed) or "direct" (needs TikTok audit)
