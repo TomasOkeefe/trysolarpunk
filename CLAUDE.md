@@ -26,6 +26,9 @@ To make videos, use the `make-videos` skill. In short: Claude writes plans in
   30 min to `pipeline/availability.jsonl`; `python3 -m ge.availability --summary` shows the best hours.
   Modal is the planned next provider once the RunPod credit is used (account exists, not set up).
 - The pod clones github.com/TomasOkeefe/trysolarpunk, so push pipeline code before rendering.
+- Moss, the recurring character: `{moss}` in a prompt expands to his description plus the trigger
+  `m0ss`, and the batch loads his LoRA (`config.yaml` loras, weights on the `moss-lora` GitHub release).
+  Retrain with `train_lora.py` (dataset in `videos/lora/moss-data`, ~$1.30 on a community PRO 6000).
 - `worker/gen_clips.py` relies on private hooks of LTX-2 commit `be6d6d0` (pinned in `job.sh`).
 - TikTok posting is manual for now (owner posts from the phone app; Jomo blocks TikTok in Chrome).
   Automatic drafts via the Content Posting API are a later step.
