@@ -13,6 +13,8 @@ cfg = {
         "model_path": f"{L}/diffusion_models/ltx-2.5-22b-distilled-transformer-bf16.safetensors",
         "text_encoder_path": f"{L}/text_encoders/gemma4-12b-with-proj-ltx-2.5-bf16.safetensors",
         "video_vae_path": f"{L}/vae/ltx-2.5-video-vae-conv-bf16.safetensors",
+        # the trainer's validation runner loads the audio decoder even with validation off
+        "audio_vae_path": f"{L}/vae/ltx-2.5-audio-vae-bf16.safetensors",
         "training_mode": "lora", "load_checkpoint": None,
     },
     "lora": {"rank": 32, "alpha": 32, "dropout": 0.0,
@@ -24,7 +26,8 @@ cfg = {
     "acceleration": {"mixed_precision_mode": "bf16", "quantization": "int8-quanto" if small else None,
                      "load_text_encoder_in_8bit": False, "offload_optimizer_during_validation": False},
     "data": {"preprocessed_data_root": f"{T}/.precomputed", "num_dataloader_workers": 2},
-    "validation": {"prompts": [], "interval": None, "skip_initial_validation": True},
+    "validation": {"prompts": [], "interval": None, "skip_initial_validation": True,
+                   "generate_video": False, "generate_audio": False},  # we judge the LoRA with real renders
     "checkpoints": {"interval": 250, "keep_last_n": -1, "precision": "bfloat16"},
     "flow_matching": {"timestep_sampling_mode": "shifted_logit_normal", "timestep_sampling_params": {}},
     "hub": {"push_to_hub": False, "hub_model_id": None},
