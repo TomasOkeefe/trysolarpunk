@@ -24,9 +24,9 @@ REPO = "TomasOkeefe/trysolarpunk"
 TIERS = [  # cheapest first; Blackwell PRO 6000s (96 GB) are also faster than A100s
     ("SECURE", ["NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"]),          # $0.50/h
     ("COMMUNITY", ["NVIDIA A100 80GB PCIe", "NVIDIA A100-SXM4-80GB"]),               # $1.19-1.39
-    ("COMMUNITY", ["NVIDIA RTX PRO 6000 Blackwell Workstation Edition"]),             # $1.69
+    ("COMMUNITY", ["NVIDIA H100 80GB HBM3", "NVIDIA H100 PCIe"]),                     # $2.69, ~2.5x faster: cheapest total
+    ("COMMUNITY", ["NVIDIA RTX PRO 6000 Blackwell Workstation Edition"]),             # $1.69, 1.5 s/step (measured)
     ("SECURE", ["NVIDIA A100 80GB PCIe", "NVIDIA A100-SXM4-80GB"]),
-    ("COMMUNITY", ["NVIDIA H100 PCIe", "NVIDIA H100 80GB HBM3"]),
     ("COMMUNITY", ["NVIDIA RTX A6000", "NVIDIA A40"]),
     ("SECURE", ["NVIDIA RTX A6000", "NVIDIA A40"]),
 ]
