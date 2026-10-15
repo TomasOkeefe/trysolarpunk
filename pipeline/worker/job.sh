@@ -12,6 +12,8 @@
 #                    (no songs, no edit) and writes timings to $OUT/probe.txt (see probe.py)
 #       CLIPS_ONLY   1 = render the shots and ship them as $OUT/<slug>/raw.tar, no songs or edit (see shoot.py)
 #       GEN_FRAMES   override the frames per clip (config.yaml clip_frames), e.g. 49 for ~2 s
+#       TRAIN_DATA_URL  train a video LoRA instead of rendering (see train_lora.py): a tar with dataset.json
+#                    + clips; TRAIN_TRIGGER, TRAIN_STEPS, TRAIN_BUCKETS; checkpoints land in $OUT/lora/
 set -uo pipefail
 W=/workspace; GE=${GE_DIR:-$W/repo/pipeline}; TOKEN=${OUT_TOKEN:-run}; OUT=$W/out/$TOKEN; MODELS=$W/models
 B=$W/batch
@@ -98,7 +100,7 @@ await() {  # await PID NAME: wait for a background prep job, fail with its reaso
 }
 
 # 3. songs (YuE2, ~7 GB of weights, not gated)
-[ -n "${PROBE_MODES:-}${CLIPS_ONLY:-}" ] || {
+[ -n "${PROBE_MODES:-}${CLIPS_ONLY:-}${TRAIN_DATA_URL:-}" ] || {
 stage "songs"
 [ -d $W/yue ] || git clone --depth 1 https://github.com/multimodal-art-projection/YuE.git $W/yue
 uv venv -q -p 3.12 $W/yue/.venv && VIRTUAL_ENV=$W/yue/.venv uv pip install -q "$W/yue" || fail "yue install"
@@ -109,6 +111,32 @@ log "songs ready: $(ls $B/*/song.flac 2>/dev/null | wc -l)"
 # 4. clips
 stage "clips: waiting for ltx download"
 await $LTX_PID ltx
+
+VRAM_MIB=$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits | head -1)
+if [ -n "${TRAIN_DATA_URL:-}" ]; then  # LoRA training instead of a batch
+  T=$W/train; mkdir -p $T "$OUT/lora"
+  stage "train: install"
+  ( cd $W/ltx && uv sync -q --no-dev --extra natten --all-packages ) || fail "trainer install"
+  curl -sfL "$TRAIN_DATA_URL" | tar -x -C $T || fail "train data download"
+  log "dataset: $(python3 -c "import json;print(len(json.load(open('$T/dataset.json'))))" ) clips"
+  stage "train: preprocess"
+  ( cd $W/ltx/packages/ltx-trainer && uv run --no-sync python scripts/process_dataset.py $T/dataset.json \
+      --resolution-buckets "${TRAIN_BUCKETS:-512x896x49}" --skip-audio --lora-trigger "${TRAIN_TRIGGER:-}" \
+      --model-path "$L/diffusion_models/ltx-2.5-22b-distilled-transformer-bf16.safetensors" \
+      --text-encoder-path "$L/text_encoders/gemma4-12b-with-proj-ltx-2.5-bf16.safetensors" \
+      --video-vae-path "$L/vae/ltx-2.5-video-vae-conv-bf16.safetensors" \
+      --output-dir $T/.precomputed ) > "$OUT/train.log" 2>&1 || fail "preprocess: $(tail -3 $OUT/train.log | tr '\n' ' ')"
+  python3 "$GE/worker/lora_config.py" "$L" $T "$OUT/lora" "${TRAIN_STEPS:-1500}" "$VRAM_MIB" > $T/config.yaml || fail "train config"
+  stage "train: steps"
+  # the watchdog needs a changing STAGE: mirror the trainer's latest step line every minute
+  ( while sleep 60; do l=$(grep -a -o -E "[Ss]tep[ :]+[0-9]+[^,]{0,20}" "$OUT/train.log" | tail -1); [ -n "$l" ] && echo "train: $l" > "$OUT/STAGE"; done ) & TICK=$!
+  ( cd $W/ltx/packages/ltx-trainer && uv run --no-sync python scripts/train.py $T/config.yaml --disable-progress-bars ) >> "$OUT/train.log" 2>&1
+  rc=$?; kill $TICK 2>/dev/null
+  find "$OUT/lora" -name "*.safetensors" | sort > "$OUT/lora/files.txt"
+  [ -s "$OUT/lora/files.txt" ] || fail "training (exit $rc): $(tail -5 $OUT/train.log | tr '\n' ' ')"
+  log "lora checkpoints: $(wc -l < $OUT/lora/files.txt)"
+  : > "$OUT/done.txt"; stage "DONE"; self_destruct_later; wait; exit 0
+fi
 GW=$(python3 -c "import yaml,sys;c=yaml.safe_load(open('$GE/config.yaml'));print(c['video']['gen_width'],c['video']['gen_height'],c['video']['clip_frames'])" 2>/dev/null || echo "768 1344 121")
 read -r GWIDTH GHEIGHT GFRAMES <<<"$GW"
 GFRAMES=${GEN_FRAMES:-$GFRAMES}
