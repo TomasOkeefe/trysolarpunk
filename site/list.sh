@@ -27,9 +27,11 @@ if (( csv )); then
   q "SELECT email, product, source, created_at FROM signups ORDER BY created_at" | python3 -c '
 import csv, json, sys
 w = csv.writer(sys.stdout)
+# a leading = + - @ would run as a formula in Sheets/Excel: quote it as text
+safe = lambda v: "\x27" + v if v[:1] in ("=", "+", "-", "@") else v
 w.writerow(["email", "product", "source", "created_at"])
 for r in json.load(sys.stdin)[0]["results"]:
-    w.writerow([r["email"], r["product"], r["source"], r["created_at"]])
+    w.writerow([safe(str(r[k])) for k in ("email", "product", "source", "created_at")])
 '
   exit
 fi
