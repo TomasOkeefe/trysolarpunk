@@ -97,9 +97,17 @@ read -r GWIDTH GHEIGHT GFRAMES <<<"$GW"
     --width "$GWIDTH" --height "$GHEIGHT" --num-frames "$GFRAMES" --frame-rate 24 \
     --quantization fp8-cast ) || fail "ltx render"
 
-# 4. edit each finished video: beat cuts, hook text, AI label, end card, loudness
+# 4. time the lyrics for the captions (whisper alignment on the demucs vocals); a miss only drops captions
+stage "captions"
+uv venv -q -p 3.12 $W/asm && VIRTUAL_ENV=$W/asm uv pip install -q pillow librosa soundfile pyyaml stable-ts demucs || fail "asm install"
+for d in $B/*/; do
+  [ -f "$d/song.flac" ] || continue
+  ( cd "$GE" && $W/asm/bin/python -m ge.lyrics --song "$d/song.flac" --plan "$d/plan.json" --out "$d/words.json" ) \
+    || log "$(basename "$d"): lyric timing FAILED (no captions)"
+done
+
+# 5. edit each finished video: beat cuts, hook text, captions, end card, loudness
 stage "assemble"
-uv venv -q -p 3.12 $W/asm && VIRTUAL_ENV=$W/asm uv pip install -q pillow librosa soundfile pyyaml || fail "asm install"
 : > "$OUT/done.txt"
 for d in $B/*/; do
   s=$(basename "$d"); n=$(python3 -c "import json;print(len(json.load(open('$d/plan.json'))['shots']))")
@@ -107,7 +115,7 @@ for d in $B/*/; do
     log "$s: SKIPPED (missing song or clips)"; continue
   fi
   mkdir -p "$OUT/$s"
-  ( cd "$GE" && $W/asm/bin/python -m ge.assemble --plan "$d/plan.json" --song "$d/song.flac" --clips "$d/clips" --out "$OUT/$s/final.mp4" ) \
+  ( cd "$GE" && $W/asm/bin/python -m ge.assemble --plan "$d/plan.json" --song "$d/song.flac" --clips "$d/clips" --words "$d/words.json" --out "$OUT/$s/final.mp4" ) \
     && cp "$d/plan.json" "$OUT/$s/plan.json" && echo "$s" >> "$OUT/done.txt" && log "$s: done" \
     || log "$s: assemble FAILED"
 done

@@ -27,9 +27,15 @@ ENCODE_BATCH = 4  # Gemma keeps every hidden layer (~385 MB per prompt), so enco
 videos = [(d, json.loads((d / "plan.json").read_text())) for d in sorted(batch.iterdir()) if (d / "plan.json").exists()]
 
 
+def prompt_of(plan, shot):
+    """The plan's style leads every prompt except the product shot, which starts from a real photo."""
+    style = "" if shot.get("product_image") else (plan.get("style") or "").strip()
+    return f"{style} {shot['prompt']}".strip()
+
+
 def shot_args(d, plan, i, shot):
     seed = zlib.crc32(plan["slug"].encode()) % 100000 + i
-    a = ["--prompt", shot["prompt"], "--seed", str(seed), "--output-path", str(d / "clips" / f"shot_{i:02d}.mp4")]
+    a = ["--prompt", prompt_of(plan, shot), "--seed", str(seed), "--output-path", str(d / "clips" / f"shot_{i:02d}.mp4")]
     if shot.get("product_image") and plan.get("image"):  # run.py sets the product's render as first frame
         a += ["--image", str(GE / plan["image"]), "0", "0.85"]
     return a
@@ -61,7 +67,7 @@ def main():
 
     # 1. every prompt through Gemma once; keep the small embeddings on the CPU
     t = time.time()
-    prompts = list(dict.fromkeys(s["prompt"] for _, p in videos for s in p["shots"]))
+    prompts = list(dict.fromkeys(prompt_of(p, s) for _, p in videos for s in p["shots"]))
     enc, cache = pipe.prompt_encoder, {}
     with enc._text_encoder_ctx() as te, gpu_model(enc._build_embeddings_processor()) as ep:
         for k in range(0, len(prompts), ENCODE_BATCH):

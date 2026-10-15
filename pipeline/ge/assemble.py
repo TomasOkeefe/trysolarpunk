@@ -1,7 +1,9 @@
-"""Cut generated clips to the song's beat, add hook text, AI label and end card, mux the song.
+"""Cut generated clips to the song's beat, add hook text, lyric captions and end card, mux the song.
 
-usage: python -m ge.assemble --plan plan.json --song song.flac --clips clips/ --out final.mp4
-Needs ffmpeg on PATH. librosa is optional (falls back to even cuts).
+usage: python -m ge.assemble --plan plan.json --song song.flac --clips clips/ --out final.mp4 [--words words.json]
+Needs ffmpeg on PATH. librosa is optional (falls back to even cuts). words.json comes from ge.lyrics;
+with it the song's instrumental intro is trimmed and the lyrics are burned in TikTok style.
+No AI label is burned in: TikTok adds its own when the AI-generated toggle is on.
 """
 import argparse
 import json
@@ -65,14 +67,71 @@ def hook_png(text, path):
     im.save(path)
 
 
-def label_png(text, path):
+def caption_chunks(lines, body):
+    """Split each sung line into chunks of up to 3 words: [(start, end, words)], words = [(word, start)]."""
+    words = [[w for w in l if w["e"] - w["s"] > 0.02 and w["s"] < body - 0.3] for l in lines]
+    chunks = []
+    for l in words:
+        cur = []
+        for w in l:
+            if cur and (len(cur) == 3 or len(" ".join(x["w"] for x in cur + [w])) > 18):
+                chunks.append(cur)
+                cur = []
+            cur.append(w)
+        if cur:
+            chunks.append(cur)
+    out = []
+    for i, c in enumerate(chunks):
+        nxt = chunks[i + 1][0]["s"] if i + 1 < len(chunks) else body
+        out.append((c[0]["s"], min(nxt, c[-1]["e"] + 0.6, body), [(w["w"], w["s"]) for w in c]))
+    return out
+
+
+def caption_png(words, active, tilt, path):
+    """One caption state: the chunk's words, the sung one in sun yellow and a touch bigger, slightly tilted."""
     im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
-    f = mono(30)
-    tw = d.textlength(text, font=f)
-    d.rounded_rectangle([40, 150, 40 + tw + 36, 150 + 54], 27, fill=(42, 36, 32, 200))
-    d.text((58, 150 + 27), text, font=f, fill=CREAM, anchor="lm")
-    im.save(path)
+    f, fa, max_w, cy, lh = font(100, weight=900), font(114, weight=900), 780, 1120, 132
+    sp = d.textlength(" ", font=f)
+    rows, cur, cur_w = [], [], 0
+    for i, w in enumerate(words):
+        ww = d.textlength(w, font=fa if i == active else f)
+        if cur and cur_w + sp + ww > max_w:
+            rows.append((cur, cur_w))
+            cur, cur_w = [], 0
+        cur_w += (sp if cur else 0) + ww
+        cur.append((i, w, ww))
+    rows.append((cur, cur_w))
+    top = cy - lh * len(rows) / 2
+    for r, (row, rw) in enumerate(rows):
+        x = (W - rw) / 2
+        for i, w, ww in row:
+            d.text((x, top + r * lh + lh / 2), w, font=fa if i == active else f, anchor="lm",
+                   fill=SUN if i == active else CREAM, stroke_width=10, stroke_fill=INK)
+            x += ww + sp
+    im.rotate(tilt, center=(W / 2, cy), resample=Image.BICUBIC).save(path)
+
+
+def caption_track(lines, body, tmp):
+    """Write an ffmpeg concat list of caption states (blank between lines) and return its path."""
+    blank = tmp / "cap_blank.png"
+    Image.new("RGBA", (W, H), (0, 0, 0, 0)).save(blank)
+    entries, t = [], 0.0
+    for k, (start, end, words) in enumerate(caption_chunks(lines, body)):
+        if start > t:
+            entries.append((blank, start - t))
+        starts = [s for _, s in words] + [end]
+        for i in range(len(words)):
+            a, b = max(starts[i], start), min(starts[i + 1], end)
+            if b - a > 0.01:
+                png = tmp / f"cap_{k:03d}_{i}.png"
+                caption_png([w for w, _ in words], i, (-2.5, 2, -1.5, 3)[k % 4], png)
+                entries.append((png, b - a))
+        t = end
+    entries.append((blank, max(0.1, body - t) + 5))
+    lst = tmp / "captions.txt"
+    lst.write_text("".join(f"file '{p}'\nduration {dur:.3f}\n" for p, dur in entries) + f"file '{blank}'\n")
+    return lst
 
 
 def endcard_png(line1, line2, path):
@@ -94,13 +153,13 @@ def endcard_png(line1, line2, path):
 
 
 # ------------------------------------------------------------------ timing
-def cut_points(song, n, total, endcard):
+def cut_points(song, n, total, endcard, offset=0.0):
     """Return n shot durations that sum to (total - endcard), each cut on a beat when possible."""
     body = total - endcard
     even = [body / n] * n
     try:
         import librosa
-        y, sr = librosa.load(song, sr=22050, mono=True, duration=total)
+        y, sr = librosa.load(song, sr=22050, mono=True, offset=offset, duration=total)
         _, beats = librosa.beat.beat_track(y=y, sr=sr)
         bt = librosa.frames_to_time(beats, sr=sr)
     except Exception:
@@ -132,21 +191,26 @@ def probe_duration(path):
 
 
 # ------------------------------------------------------------------ main
-def assemble(plan, song, clips, out, target=45, endcard=3.0, ai_label="AI-generated"):
+def assemble(plan, song, clips, out, target=45, endcard=3.0, words=None, anim_fps=None):
     clips = sorted(pathlib.Path(clips).glob("shot_*.mp4"))
     n = len(clips)
     assert n, "no clips"
-    total = min(probe_duration(song), target + endcard)
-    durs = cut_points(song, n, total, endcard)
+    # start the song just before the first sung word, so the vocals (and the chorus) land in the video
+    lines = [l for l in (words or []) if l]
+    offset = max(0.0, min(w["s"] for l in lines for w in l) - 0.8) if lines else 0.0
+    lines = [[{**w, "s": w["s"] - offset, "e": w["e"] - offset} for w in l] for l in lines]
+    total = min(probe_duration(song) - offset, target + endcard)
+    durs = cut_points(song, n, total, endcard, offset)
     tmp = pathlib.Path(tempfile.mkdtemp())
 
     parts = []
+    step = f"fps={anim_fps}," if anim_fps else ""  # hold frames ("on twos") for a hand-animated feel
     for i, (clip, d) in enumerate(zip(clips, durs)):
         cd = probe_duration(clip)
         speed = max(1.0, d / cd)  # if the beat gap is longer than the clip, slow it a touch
         p = tmp / f"p{i:02d}.mp4"
         vf = (f"setpts={speed:.4f}*PTS,scale={W}:{H}:force_original_aspect_ratio=increase,"
-              f"crop={W}:{H},fps={FPS},format=yuv420p")
+              f"crop={W}:{H},{step}fps={FPS},format=yuv420p")
         run(["ffmpeg", "-y", "-loglevel", "error", "-i", clip, "-t", f"{d:.3f}", "-vf", vf, "-an",
              "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", p])
         parts.append(p)
@@ -164,15 +228,16 @@ def assemble(plan, song, clips, out, target=45, endcard=3.0, ai_label="AI-genera
     run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", body])
 
     hook_png(plan["hook_text"], tmp / "hook.png")
-    label_png(ai_label, tmp / "label.png")
+    caps = caption_track(lines, total - endcard, tmp)
     fade_start = max(0.0, total - 1.5)
-    run(["ffmpeg", "-y", "-loglevel", "error", "-i", body, "-i", tmp / "hook.png", "-i", tmp / "label.png",
-         "-i", song,
+    run(["ffmpeg", "-y", "-loglevel", "error", "-i", body, "-i", tmp / "hook.png",
+         "-f", "concat", "-safe", "0", "-i", caps, "-i", song,
          "-filter_complex",
-         f"[0:v][1:v]overlay=0:0:enable='between(t,0.2,3.2)'[v1];[v1][2:v]overlay=0:0[v];"
-         f"[3:a]atrim=0:{total:.3f},afade=t=in:d=0.05,afade=t=out:st={fade_start:.3f}:d=1.5,"
-         f"loudnorm=I=-14:TP=-1.5:LRA=11[a]",
-         "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-preset", "medium", "-crf", "19",
+         f"[0:v][1:v]overlay=0:0:enable='between(t,0.2,3.2)'[v1];"
+         f"[2:v]fps={FPS},format=rgba[c];[v1][c]overlay=0:0:eof_action=pass[v];"
+         f"[3:a]atrim={offset:.3f}:{offset + total:.3f},asetpts=PTS-STARTPTS,afade=t=in:d=0.05,"
+         f"afade=t=out:st={fade_start:.3f}:d=1.5,loudnorm=I=-14:TP=-1.5:LRA=11[a]",
+         "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-preset", "medium", "-crf", "21",
          "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
          "-movflags", "+faststart", "-t", f"{total:.3f}", out])
     return out
@@ -184,7 +249,13 @@ if __name__ == "__main__":
     ap.add_argument("--song", required=True)
     ap.add_argument("--clips", required=True)
     ap.add_argument("--out", required=True)
+    ap.add_argument("--words", help="lyric timings from ge.lyrics (optional)")
     ap.add_argument("--target", type=float, default=45)
+    ap.add_argument("--anim-fps", type=int, help="hold frames at this rate, e.g. 12")
     a = ap.parse_args()
-    assemble(json.loads(pathlib.Path(a.plan).read_text()), a.song, a.clips, a.out, a.target)
+    words = json.loads(pathlib.Path(a.words).read_text()) if a.words and pathlib.Path(a.words).exists() else None
+    plan = json.loads(pathlib.Path(a.plan).read_text())
+    plan_anim = plan.get("anim_fps")  # stamped from config.yaml by run.py
+    assemble(plan, a.song, a.clips, a.out, a.target,
+             words=words, anim_fps=a.anim_fps or plan_anim)
     print("wrote", a.out)

@@ -37,7 +37,13 @@ video:
   gen_width: 768            # LTX output size (stage 1 renders at half), 9:16-ish, divisible by 64
   gen_height: 1344
   clip_frames: 121          # 8k+1 frames -> ~5 s at 24 fps
-  ai_label: "AI-generated"  # burned into every video, and the TikTok AIGC flag is set on upload
+  # Look of every shot except the product shot (which starts from our real render). A plan can
+  # override it with its own "style" ("" = none). Hand-made styles hide AI glitches.
+  style: >-
+    Claymation stop-motion animation, handmade plasticine characters with visible thumbprints
+    and slightly wonky proportions, miniature handmade set, soft studio light.
+  anim_fps: 12              # frames held "on twos" for a hand-animated feel; null for smooth 24 fps
+  # No AI label is burned in: TikTok shows its own when the AI-generated toggle is on.
 
 gpu:
   cloud: COMMUNITY          # RunPod community cloud is the cheap tier

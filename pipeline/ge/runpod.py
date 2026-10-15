@@ -40,6 +40,15 @@ def _req(method, path, body=None):
         return json.loads(raw) if raw else {}
 
 
+def _gpu_name(pid):
+    """The GPU is only known once the pod is placed, so ask after the fact."""
+    try:
+        p = _req("GET", f"/pods/{pid}")
+    except Exception:  # noqa: BLE001
+        return None
+    return (p.get("machine") or {}).get("gpuDisplayName") or (p.get("gpu") or {}).get("displayName") or p.get("gpuTypeId")
+
+
 def run_job(cfg, plans, repo_url, dest, log=print):
     g = cfg["gpu"]
     token = secrets.token_urlsafe(16)
@@ -72,8 +81,7 @@ def run_job(cfg, plans, repo_url, dest, log=print):
     log(f"pod {pid} ({pod.get('machine', {}).get('gpuDisplayName', 'GPU')}) - status: {base}/status.log")
     try:
         slugs = box.watch(base, time.time() + g["max_runtime_minutes"] * 60, log)
-        return box.fetch(base, slugs, dest, log), {"gpu_name": pod.get("machine", {}).get("gpuDisplayName"),
-                                             "dph_total": pod.get("costPerHr")}
+        return box.fetch(base, slugs, dest, log), {"gpu_name": _gpu_name(pid), "dph_total": pod.get("costPerHr")}
     finally:
         try:
             _req("DELETE", f"/pods/{pid}")

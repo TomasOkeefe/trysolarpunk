@@ -7,7 +7,7 @@ follows are in `.claude/skills/make-videos/SKILL.md`.
 ```
 Claude writes plans ──► one RunPod GPU session ─────────────────────────────► videos/
 (in the chat, free)     songs (YuE2) → all clips (LTX-2.5) → edits             <date>-<slug>.mp4
-                        (hook text, AI label, end card, -14 LUFS, 1080×1920)   + caption .txt
+                        (hook text, lyric captions, end card, -14 LUFS)       + caption .txt
 ```
 
 | Step | Where | What |
@@ -16,8 +16,9 @@ Claude writes plans ──► one RunPod GPU session ─────────
 | Check | `ge/concept.py check` | Validates plans before any GPU money is spent. |
 | Render | `run.py` → `ge/runpod.py` → `worker/job.sh` | Rents a pod, waits, downloads the videos, deletes the pod, prints the cost. |
 | Song | `worker/gen_song.py` | YuE2-3B, ~45 s, verse + chorus; one model load for the batch. Free to monetize per the YuE2 license. |
-| Clips | `worker/gen_clips.py` | LTX-2.5 distilled, 768×1344, 5 s each. Gemma encodes every prompt once and is freed, then the transformer stays on the GPU for all clips. The product shot starts from our render. |
-| Edit | `ge/assemble.py` | Beat cuts (librosa), hook text for 3 s, "AI-generated" label, end card, loudness. |
+| Clips | `worker/gen_clips.py` | LTX-2.5 distilled, 768×1344, 5 s each, in the `style` from `config.yaml` (claymation by default). Gemma encodes every prompt once and is freed, then the transformer stays on the GPU for all clips. The product shot starts from our render. |
+| Captions | `ge/lyrics.py` | Times the lyrics against the demucs-isolated vocals (stable-ts forced alignment). |
+| Edit | `ge/assemble.py` | Trims the song's intro, beat cuts (librosa), frames held on twos, hook text for 3 s, TikTok-style lyric captions, end card, loudness. No burned-in AI label: TikTok adds its own when the AI-generated toggle is on. |
 
 The orchestrator deletes the pod as soon as the videos are downloaded, and the pod deletes itself
 40 minutes after finishing or failing, so a crash can't leave a GPU billing. One broken video

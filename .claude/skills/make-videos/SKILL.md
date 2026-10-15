@@ -41,6 +41,10 @@ Writing rules:
   (not even in the song style).
 - Song: exactly one [Verse] of 4 lines and one [Chorus] of 4 lines (about 45 s). Original lyrics.
   Give every video in a batch its own genre, setting and joke; no two hooks alike.
+- Style: `config.yaml` `video.style` is prepended to every shot except the product shot, so don't
+  describe the art style in prompts; write subjects that suit it (simple shapes, one clear action).
+  Set `"style": "..."` in a plan only to override it.
+- Captions: the lyrics are burned in word by word, so keep lines short and singable, no stage directions.
 - Shots: exactly the count `next` printed. Each prompt starts with the main action, then subject
   details, setting, camera move, light and colour. Solarpunk everyday life: rooftop gardens,
   bikes, shared meals, sunlight, people looking up. No readable text, logos, phone screens

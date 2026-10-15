@@ -16,7 +16,7 @@ Products: the Hibernator (moss green fridge brick for your phone, magnets + NFC)
 ## Pipeline (`pipeline/`)
 To make videos, use the `make-videos` skill. In short: Claude writes plans in
 `pipeline/plans/`, `python3 run.py plans/...` renders a whole batch in one RunPod GPU session
-(YuE2 songs, LTX-2.5 clips, ffmpeg edit with AI label), and videos land in `videos/` (gitignored).
+(YuE2 songs, LTX-2.5 clips, lyric captions, ffmpeg edit; TikTok's own AI label via the upload toggle), and videos land in `videos/` (gitignored).
 
 - GPU: RunPod, community L40S, prepaid credit. Key in `~/.runpod/config.toml` (`flash login`).
   The pod reads the Hugging Face token from the RunPod secret `hf_token`.
