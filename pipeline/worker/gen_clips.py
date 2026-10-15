@@ -39,6 +39,7 @@ def main():
     from ltx_pipelines import distilled as D
     from ltx_pipelines.utils.gpu_model import gpu_model
 
+    assert torch.cuda.is_available(), "no usable GPU (driver too old for this torch?)"
     d0, p0 = videos[0]
     # LTX picks its model-version defaults by pre-parsing sys.argv, so give it the real flags
     sys.argv = [sys.argv[0], *base, *shot_args(d0, p0, 0, p0["shots"][0])]

@@ -71,6 +71,9 @@ if [ ! -d $W/ltx ]; then
 fi
 ( cd $W/ltx && uv sync -q --no-dev --extra natten ) || ( cd $W/ltx && uv sync -q --no-dev ) || fail "ltx install"
 ( cd $W/ltx && uv pip install -q "huggingface_hub[cli,hf_transfer]" ) || true
+# LTX's torch is built for CUDA 13; on an older host driver it silently falls back to the CPU
+( cd $W/ltx && uv run --no-sync python -c "import torch; assert torch.cuda.is_available()" ) \
+  || fail "GPU unusable by LTX's torch (host driver older than CUDA 13: $(nvidia-smi --query-gpu=driver_version --format=csv,noheader))"
 stage "clips: download weights"
 L=$MODELS/ltx-2.5
 FAST=$(cd $W/ltx && uv run --no-sync python -c "import hf_transfer; print(1)" 2>/dev/null || echo 0)

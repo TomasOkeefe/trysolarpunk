@@ -1,0 +1,61 @@
+{
+  "slug": "phone-nap",
+  "date": "2026-10-16",
+  "product": "eyelid",
+  "hook_text": "POV: my phone is napping",
+  "song": {
+    "title": "Phone Nap",
+    "style": "English, dreamy bossa nova pop, soft breathy female lead vocal with gentle harmonies, nylon string guitar, brushed drums, warm upright bass, light flute, relaxed and sunny, 100 BPM",
+    "lyrics": "[Verse]\nTucked my phone in for a nap, an orange blanket on\nNotifications counting sheep until the pings are gone\nNow I hear the kettle and the neighbor's sleepy song\nFunny how the afternoon was out here all along\n\n[Chorus]\nClose its eyes, let it dream\nNothing buzzing, nothing on the screen\nClose its eyes, sleep tight, goodnight\nLet it snooze while I chase the light"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "A young man in a bright yellow raincoat jumps with both feet into a wide puddle on a sunny street after the rain, water splashing high around him in slow motion as he throws his head back laughing. Wet cobblestones shine, trees with fresh green leaves line the street. Low angle, the camera holds steady at puddle level. Bright clean sunlight, glittering droplets, warm yellows and greens."
+    },
+    {
+      "product_image": true,
+      "prompt": "A hand gently slides a black smartphone all the way down into a slim terracotta-orange sleeve standing upright on a soft cream studio backdrop, until the phone disappears inside and only the rounded thumb notch at the top remains. A small closed-eye emblem is pressed into the front of the sleeve. The hand pulls away and the sleeve stands still, casting a soft shadow to the left. Static close-up, the light slowly turns warmer."
+    },
+    {
+      "product_image": false,
+      "prompt": "A woman lies in a woven hammock strung between two posts in a rooftop garden, eyes closed, a slow smile spreading across her face as the hammock sways gently. Tall tomato plants and sunflowers surround her, a city of green rooftops beyond. The camera drifts slowly overhead looking down at her. Soft afternoon sun, dappled light, warm greens and cream tones."
+    },
+    {
+      "product_image": false,
+      "prompt": "In a sunlit kitchen with plants on the windowsill, a man flips a pancake high out of a cast iron pan and catches it perfectly while his friend beside him cheers with both arms raised. Steam rises from the pan. Medium shot, the camera pushes in slowly. Morning light through the window, honey and orange tones."
+    },
+    {
+      "product_image": false,
+      "prompt": "A teenage girl paints a huge yellow sun on a red brick wall with one long sweeping brushstroke from a roller on a pole, paint glistening as she steps back to admire it. The wall faces a quiet street lined with planters. The camera tracks sideways following the stroke. Bright late morning light, saturated yellow against warm brick red."
+    },
+    {
+      "product_image": false,
+      "prompt": "A grandmother and her young grandson kneel together in dark soil, planting a small sapling and patting the earth around it with their hands, then looking up at each other and grinning. A community garden with raised wooden beds stretches behind them. Close-up at ground level, shallow depth of field. Golden afternoon light, rich browns and fresh greens."
+    },
+    {
+      "product_image": false,
+      "prompt": "A cyclist in a linen shirt rides slowly through a long tunnel of arching trees on a quiet bike path, one hand lifted off the handlebar to brush the low leaves. Sunbeams cut through the canopy. The camera follows smoothly from behind at handlebar height. Glowing golden green light, gentle haze."
+    },
+    {
+      "product_image": false,
+      "prompt": "A girl lies on her back in a grassy meadow, tracing the shape of a big fluffy cloud in the air with one finger, her hair spread out on the grass. Overhead view looking straight down, the camera slowly rotates. Clear blue sky reflected in her sunglasses resting on her forehead, crisp afternoon light, vivid greens."
+    },
+    {
+      "product_image": false,
+      "prompt": "An older couple sits side by side on a small balcony full of potted herbs, holding warm mugs of tea and watching the sun set over a calm city of green rooftops and slowly turning wind turbines. She rests her head on his shoulder. The camera slowly pulls back through the balcony doorway. Peach and gold light, soft haze, a deep calm."
+    }
+  ],
+  "endcard": {
+    "line1": "Let your phone sleep.",
+    "line2": "link in bio"
+  },
+  "caption": "My phone is napping in its Eyelid and honestly we are both thriving. Do not disturb, literally.",
+  "hashtags": [
+    "#touchgrass",
+    "#digitalminimalism",
+    "#solarpunk",
+    "#screentime",
+    "#phonefree"
+  ]
+}

@@ -9,6 +9,7 @@ import os
 import pathlib
 import secrets
 import time
+import urllib.error
 import urllib.request
 
 from ge import box
@@ -50,6 +51,7 @@ def run_job(cfg, plans, repo_url, dest, log=print):
         "imageName": g["image"],
         "gpuTypeIds": GPU_PREFERENCE,
         "gpuCount": 1,
+        "allowedCudaVersions": ["13.0"],  # LTX's torch needs a CUDA 13 driver; older hosts fall back to CPU
         "cloudType": g.get("cloud", "COMMUNITY"),
         "containerDiskInGb": 40,
         "volumeInGb": g["disk_gb"],
@@ -60,7 +62,11 @@ def run_job(cfg, plans, repo_url, dest, log=print):
                 "PLANS_B64": box.pack_plans(plans)},
         "dockerStartCmd": ["bash", "-c", start],
     }
-    pod = _req("POST", "/pods", body)
+    try:
+        pod = _req("POST", "/pods", body)
+    except urllib.error.HTTPError as e:  # no community capacity: try the (pricier) secure cloud once
+        log(f"community cloud refused ({e.code}: {e.read()[:200]!r}); trying secure cloud")
+        pod = _req("POST", "/pods", {**body, "cloudType": "SECURE"})
     pid = pod["id"]
     base = f"https://{pid}-8080.proxy.runpod.net/{token}"
     log(f"pod {pid} ({pod.get('machine', {}).get('gpuDisplayName', 'GPU')}) - status: {base}/status.log")
