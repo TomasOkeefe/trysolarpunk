@@ -52,7 +52,11 @@ characters:
     green rubber boots
 
 # Trained character LoRAs (train_lora.py). Shots that use the character load it and get the trigger word.
-loras: {}
+loras:
+  moss:  # rank 32, 1500 steps on 28 reference clips (train_lora.py, 2026-10-15); step 1000 also in the release
+    url: https://github.com/TomasOkeefe/trysolarpunk/releases/download/moss-lora/moss-v1-1500.safetensors
+    trigger: m0ss
+    strength: 1.0
 
 styles:
   claymation: >-
