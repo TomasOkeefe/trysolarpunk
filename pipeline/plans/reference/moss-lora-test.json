@@ -1,0 +1,46 @@
+{
+  "slug": "moss-lora-test",
+  "style": "claymation",
+  "shots": [
+    {
+      "prompt": "{moss} shuffles down a street with his head bent low over his cupped hands and bonks his head on a lamppost. Static medium shot. Flat grey light.",
+      "product_image": false,
+      "from": "2026-10-19-never-looked-up#0"
+    },
+    {
+      "prompt": "{moss} gasps and points at a huge colourful mural of a smiling sun painted on a brick wall. Static wide shot. Bright saturated colours.",
+      "product_image": false,
+      "from": "2026-10-19-never-looked-up#4"
+    },
+    {
+      "prompt": "{moss} waves at a fluffy orange cat on a windowsill, and the cat slowly blinks back. Static medium shot. Warm sunlight.",
+      "product_image": false,
+      "from": "2026-10-19-never-looked-up#5"
+    },
+    {
+      "prompt": "{moss} and his friends chop vegetables and stir bubbling pots in a crowded little kitchen, laughing. The camera circles slowly. Warm golden light.",
+      "product_image": false,
+      "from": "2026-10-20-kitchen-party#4"
+    },
+    {
+      "prompt": "{moss} dances in the middle of the kitchen, spinning a friend around. The camera circles. Bright warm party light.",
+      "product_image": false,
+      "from": "2026-10-20-kitchen-party#7"
+    },
+    {
+      "prompt": "{moss} climbs a chunky tree and settles among the leaves with a finger on his lips. The camera tilts up with him. Dappled sunlight.",
+      "product_image": false,
+      "from": "2026-10-22-hide-and-seek-champion#3"
+    },
+    {
+      "prompt": "{moss} walks toward the camera on a country path, his raincoat open over a cream t-shirt, and gives a big thumbs up and a wink. The camera tracks backward. Bright morning sun.",
+      "product_image": false,
+      "from": "2026-10-23-not-sponsored#0"
+    },
+    {
+      "prompt": "{moss} laughs as a goat leans over a fence and nibbles his yellow pom-pom. Static medium shot. Bright afternoon light.",
+      "product_image": false,
+      "from": "2026-10-23-not-sponsored#7"
+    }
+  ]
+}
