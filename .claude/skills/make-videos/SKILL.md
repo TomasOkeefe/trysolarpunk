@@ -39,7 +39,8 @@ Writing rules:
   ourselves. Solarpunk hope, not doom. The joke is on the feed, never on the viewer. Never shame
   anyone for using their phone. No real people, brands, politicians, songs, artists or bands
   (not even in the song style).
-- Song: exactly one [Verse] of 4 lines and one [Chorus] of 4 lines (about 45 s). Original lyrics.
+- Song: [Verse] 4 lines, [Chorus] 4 lines, [Verse] 4 lines, [Chorus] 4 lines (16 lines, about 45-60 s;
+  the instrumental intro is trimmed, so 8 lines alone only make a 20-35 s video). Original lyrics.
   Give every video in a batch its own genre, setting and joke; no two hooks alike.
 - Style: each plan picks `"style"` from `config.yaml` `styles` (claymation, felt, printed); it is
   prepended to every shot except the product shot, so don't describe the art style in prompts.
@@ -49,7 +50,7 @@ Writing rules:
   prompt (usually at the start) and it expands to his fixed description; never re-describe him in your
   own words or change his outfit, or he drifts. Use one style for the whole batch when he stars.
 - Story: each video is a small narrative (setup, turn, payoff) and the song tells it. Line up shots with
-  lyric lines: about one line per shot, verse = setup, chorus = payoff. Songs are sung by the same
+  lyric lines: about two lines per shot, verse 1 = setup, chorus = the turn, verse 2 = it working, last chorus = payoff. Songs are sung by the same
   warm male lead (Moss's voice) in different genres.
 - Captions: the lyrics are burned in word by word, so keep lines short and singable, no stage directions.
 - Shots: exactly the count `next` printed. Each prompt starts with the main action, then subject

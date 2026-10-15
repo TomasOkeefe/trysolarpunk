@@ -52,6 +52,9 @@ def validate(plan, shots):
     assert plan["product"] in PRODUCTS, f"product must be one of {PRODUCTS}"
     assert len(plan["hook_text"].split()) <= 7, "hook_text max 7 words"
     assert "[Verse]" in plan["song"]["lyrics"] and "[Chorus]" in plan["song"]["lyrics"]
+    sung = [l for l in plan["song"]["lyrics"].splitlines() if l.strip() and not l.strip().startswith("[")]
+    # 8 lines sing in ~20-35 s once the intro is trimmed: too short for 9 shots
+    assert len(sung) >= 14, f"song needs verse, chorus, verse, chorus (~16 lines), has {len(sung)}"
     assert plan["song"]["title"] and plan["song"]["style"]
     assert len(plan["shots"]) == shots, f"need {shots} shots"
     assert all(s["prompt"].strip() for s in plan["shots"]), "empty shot prompt"

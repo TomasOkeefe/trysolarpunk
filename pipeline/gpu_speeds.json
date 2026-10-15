@@ -1,3 +1,8 @@
 {
- "NVIDIA GeForce RTX 3090": [121]
+ "NVIDIA A40": [
+  50
+ ],
+ "NVIDIA GeForce RTX 3090": [
+  121
+ ]
 }

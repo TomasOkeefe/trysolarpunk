@@ -29,10 +29,11 @@ SEC_PER_CLIP = {
     "NVIDIA GeForce RTX 3090": 121,  # 24 GB, CPU offload (job.sh turns it on)
 }
 SETUP_MIN = 14  # installs, downloads, model loads: paid at the same rate on every card
+VIDEO_MIN = 2   # per video: song, lyric timing, edit (measured: 7 videos took 82 min on an A40 at 50 s a clip)
 SPEEDS = pathlib.Path(__file__).resolve().parents[1] / "gpu_speeds.json"
 
 
-def options(n_clips, in_stock=True):
+def options(n_clips, in_stock=True, n_videos=None):
     """Every (cloud, card) in stock right now (or listed at all), cheapest estimated batch cost first."""
     measured = {g: sorted(v)[len(v) // 2] for g, v in _speeds().items()}  # median of recent runs
     q = """query { gpuTypes { id securePrice communityPrice
@@ -52,7 +53,7 @@ def options(n_clips, in_stock=True):
             price = lp.get("uninterruptablePrice") or list_price
             if (in_stock and not lp.get("stockStatus")) or not price:
                 continue
-            hours = SETUP_MIN / 60 + n_clips * sec / 3600
+            hours = (SETUP_MIN + VIDEO_MIN * (n_videos or round(n_clips / 9))) / 60 + n_clips * sec / 3600
             out.append({"cloud": cloud, "gpu": g["id"], "price": price, "stock": lp["stockStatus"],
                         "sec": sec, "measured": g["id"] in measured, "hours": hours, "cost": price * hours})
     return sorted(out, key=lambda o: o["cost"])

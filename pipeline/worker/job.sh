@@ -173,6 +173,7 @@ for d in $B/*/; do
   ( cd "$GE" && $W/asm/bin/python -m ge.assemble --plan "$d/plan.json" --song "$d/song.flac" --clips "$d/clips" --words "$d/words.json" --out "$OUT/$s/final.mp4" ) \
     && cp "$d/plan.json" "$OUT/$s/plan.json" && echo "$s" >> "$OUT/done.txt" && log "$s: done" \
     || log "$s: assemble FAILED"
+  tar -cf "$OUT/$s/raw.tar" -C "$d" clips song.flac $( [ -f "$d/words.json" ] && echo words.json ) || true
 done
 [ -s "$OUT/done.txt" ] || fail "no video finished"
 stage "DONE"

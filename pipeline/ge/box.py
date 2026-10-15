@@ -61,6 +61,12 @@ def fetch(base, slugs, dest, log):
             got.append(s)
         except Exception as e:  # noqa: BLE001
             log(f"WARNING: could not download {s}: {e}")
+            continue
+        try:  # clips + song + lyric timings, so a re-edit (captions, cuts) runs locally for free
+            os.makedirs(f"{dest}/raw", exist_ok=True)
+            urllib.request.urlretrieve(f"{base}/{s}/raw.tar", f"{dest}/raw/{s}.tar")
+        except Exception as e:  # noqa: BLE001
+            log(f"WARNING: no raw clips for {s}: {e}")
     try:
         urllib.request.urlretrieve(f"{base}/job.log", f"{dest}/job.log")
     except Exception:  # noqa: BLE001
