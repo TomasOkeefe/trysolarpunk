@@ -1,8 +1,32 @@
 // Submits waitlist forms in place. Without JS the form posts normally and the server redirects.
+
+// Which video or site sent this visitor: ?v= from the link, else the referring site's host.
+function visitSource() {
+  const v = new URLSearchParams(location.search).get('v');
+  if (v) return v;
+  try {
+    const host = new URL(document.referrer).host;
+    return host !== location.host ? host.replace(/^www\./, '') : '';
+  } catch {
+    return '';
+  }
+}
+
+const source = visitSource();
+
+// Keep the source when someone taps from the home page through to a product.
+if (source) {
+  for (const a of document.querySelectorAll('a[href^="/"]')) {
+    const url = new URL(a.href);
+    url.searchParams.set('v', source);
+    a.href = url.pathname + url.search;
+  }
+}
+
 for (const form of document.querySelectorAll('form.join')) {
   const msg = form.querySelector('.join-msg');
   const button = form.querySelector('button');
-  form.elements.source.value = new URLSearchParams(location.search).get('v') || '';
+  form.elements.source.value = source;
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();

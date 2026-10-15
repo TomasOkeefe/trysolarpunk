@@ -32,9 +32,12 @@ To make videos, use the `make-videos` skill. In short: Claude writes plans in
 
 ## Waitlist site (`site/`)
 Live at https://trysolarpunk.pages.dev (Cloudflare Pages + D1 `trysolarpunk-waitlist`, free tier).
-Pages: `/`, `/hibernator`, `/eyelid`, `/merch`. Link a video as `/hibernator?v=<plan-slug>` to see
-which video drove signups. `site/list.sh` shows the numbers, `--csv` dumps emails (never commit it).
-Deploy with `cd site && npm run deploy`; check with `npm test` and `test/smoke.sh <url>`.
+Pages: `/`, `/hibernator`, `/eyelid`, `/merch`. TikTok captions can't hold links, so the bio link
+is the way in: set it to `/?v=<tag>` (e.g. a week's batch) and `?v=` follows visitors to the product
+pages; with no `v` the referring site (e.g. `tiktok-com`) is saved. `site/list.sh` shows the numbers,
+`--csv` dumps emails (never commit it). Deploy with `cd site && npm run deploy`; check with
+`npm test` and `test/smoke.sh <url>`, then delete its rows: `npx wrangler d1 execute
+trysolarpunk-waitlist --remote --command "DELETE FROM signups WHERE email LIKE 'smoke+%@example.com'"`.
 `POST /api/join` and the `signups` table stay as they are for the phase 2 animated site
 (spec: `docs/superpowers/specs/2026-10-15-waitlist-site-design.md`).
 
