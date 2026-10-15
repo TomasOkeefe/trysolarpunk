@@ -23,6 +23,8 @@ batch = pathlib.Path(sys.argv[1])
 base = sys.argv[sys.argv.index("--") + 1:]
 GE = pathlib.Path(__file__).resolve().parents[1]
 ENCODE_BATCH = 4  # Gemma keeps every hidden layer (~385 MB per prompt), so encode a few at a time
+if torch.cuda.is_available() and torch.cuda.get_device_properties(0).total_memory < 40 * 2**30:
+    ENCODE_BATCH = 1  # 32 GB cards: bf16 Gemma leaves room for one prompt's hidden states at a time
 PROBE_SHOTS = int(os.environ.get("PROBE_SHOTS", 0))  # GPU probe: render only the first N shots
 CLIPS = os.environ.get("CLIPS_SUBDIR", "clips")
 

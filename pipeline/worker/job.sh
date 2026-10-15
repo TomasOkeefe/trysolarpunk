@@ -109,9 +109,15 @@ stage "clips: waiting for ltx download"
 await $LTX_PID ltx
 GW=$(python3 -c "import yaml,sys;c=yaml.safe_load(open('$GE/config.yaml'));print(c['video']['gen_width'],c['video']['gen_height'],c['video']['clip_frames'])" 2>/dev/null || echo "768 1344 121")
 read -r GWIDTH GHEIGHT GFRAMES <<<"$GW"
-# cards under 40 GB can't hold Gemma or the transformer: stream weights from CPU RAM (~2 min a clip on a 3090)
+# 24 GB cards can't hold Gemma or the transformer: stream weights from CPU RAM (~2 min a clip on a 3090).
+# 32 GB cards fit just barely (one prompt at a time, no fragmentation); if they still run out, the
+# missing clips are retried with offload below.
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 VRAM=$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits | head -1)
-OFFLOAD=(); [ "${VRAM:-0}" -lt 40000 ] && OFFLOAD=(--offload cpu)
+OFFLOAD=(); [ "${VRAM:-0}" -lt 28000 ] && OFFLOAD=(--offload cpu)
+missing_clips() {  # how many shots have no clip yet
+  python3 -c "import json,pathlib,sys;print(sum(not (d/'clips'/f'shot_{i:02d}.mp4').exists() for d in pathlib.Path(sys.argv[1]).iterdir() if (d/'plan.json').exists() for i in range(len(json.loads((d/'plan.json').read_text())['shots']))))" "$B"
+}
 clips() {  # extra args go to LTX, e.g. --offload cpu
 ( cd $W/ltx && STAGE_FILE="$OUT/STAGE" uv run --no-sync python "$GE/worker/gen_clips.py" "$B" -- \
     --transformer-path       "$L/diffusion_models/ltx-2.5-22b-distilled-transformer-bf16.safetensors" \
@@ -137,7 +143,14 @@ fi
 # no --offload: gen_clips.py frees Gemma before loading the transformer, so both never share the card
 stage "clips: render"
 log "VRAM ${VRAM} MiB: ${OFFLOAD[*]:-no offload}"
-clips "${OFFLOAD[@]}" || fail "ltx render"
+TOTAL_CLIPS=$(missing_clips)
+clips "${OFFLOAD[@]}"; rc=$?
+if [ ${#OFFLOAD[@]} -eq 0 ] && [ "$(missing_clips)" -gt 0 ]; then
+  log "$(missing_clips) clips missing after rendering without offload (exit $rc): retrying them with --offload cpu"
+  clips --offload cpu; rc=$?
+fi
+[ "$(missing_clips)" -eq 0 ] || log "$(missing_clips) clips still missing (exit $rc)"
+[ "$(missing_clips)" -lt "$TOTAL_CLIPS" ] || fail "ltx render (exit $rc, no clip made)"
 
 # 5. time the lyrics for the captions (whisper alignment on the demucs vocals); a miss only drops captions
 stage "captions"
