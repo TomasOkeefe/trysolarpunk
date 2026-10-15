@@ -175,7 +175,17 @@ def run_job(cfg, plans, repo_url, dest, log=print, tiers=None, extra=None, colle
     base = f"https://{pid}-8080.proxy.runpod.net/{token}"
     log(f"pod {pid} ({pod.get('machine', {}).get('gpuDisplayName', 'GPU')}) - status: {base}/status.log")
     try:
-        slugs = box.watch(base, time.time() + g["max_runtime_minutes"] * 60, log)
+        try:
+            slugs = box.watch(base, time.time() + g["max_runtime_minutes"] * 60, log)
+        except Exception:
+            # keep the evidence: the pod is deleted right after this
+            for name in ("job.log", "train.log"):
+                try:
+                    urllib.request.urlretrieve(f"{base}/{name}", f"{dest}/{name}")
+                    log(f"saved {dest}/{name}")
+                except Exception:  # noqa: BLE001
+                    pass
+            raise
         return collect(base, slugs, dest, log), {"dph_total": pod.get("costPerHr"),
                                                  "hours": (time.time() - t_rent) / 3600}
     finally:
