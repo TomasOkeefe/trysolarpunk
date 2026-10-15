@@ -54,8 +54,8 @@ if __name__ == "__main__":
     # shots 0 and 3 (claymation + the product shot) so both the plain and the image path are tested
     plan["shots"] = [plan["shots"][0], plan["shots"][3]]
     run.assert_code_pushed()
-    dest = ROOT.parent / "videos" / f"probe-{time.strftime('%m%d-%H%M')}"
-    dest.mkdir(parents=True)
+    dest = ROOT.parent / "videos" / f"probe-{time.strftime('%m%d-%H%M%S')}"
+    dest.mkdir(parents=True, exist_ok=True)
     log = lambda m: print(f"[{time.strftime('%H:%M:%S')}] {m}", flush=True)
     t0 = time.time()
     got, info = runpod.run_job(cfg, [plan], run.REPO_URL, dest, log,
