@@ -1,0 +1,13 @@
+{
+  "name": "trysolarpunk-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "dev": "wrangler pages dev",
+    "deploy": "wrangler pages deploy --branch main"
+  },
+  "devDependencies": {
+    "wrangler": "4.151.0"
+  }
+}

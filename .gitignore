@@ -7,3 +7,6 @@ pipeline/out/
 videos/
 .flash/
 pipeline/availability.jsonl
+site/node_modules/
+site/.wrangler/
+.superpowers/
