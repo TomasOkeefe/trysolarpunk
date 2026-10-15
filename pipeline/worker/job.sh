@@ -59,7 +59,43 @@ for f in "ofl/fraunces/Fraunces%5BSOFT,WONK,opsz,wght%5D.ttf:Fraunces.ttf" "ofl/
   [ -f "$GE/assets/fonts/$dst" ] || curl -sfL "https://raw.githubusercontent.com/google/fonts/main/$src" -o "$GE/assets/fonts/$dst"
 done
 
-# 2. songs (YuE2, ~7 GB of weights, not gated)
+# 2. installs and downloads run in the background while the GPU writes the songs, so the box pays
+# for them once instead of in a row. Background jobs can't call fail(): they leave a reason file.
+L=$MODELS/ltx-2.5
+prep_ltx() {  # LTX-2.5 distilled: code + ~66 GB of gated weights
+  if [ ! -d $W/ltx ]; then
+    git clone -q https://github.com/Lightricks/LTX-2.git $W/ltx && git -C $W/ltx checkout -q $LTX_COMMIT || { echo "ltx clone"; return 1; }
+  fi
+  ( cd $W/ltx && uv sync -q --no-dev --extra natten ) || ( cd $W/ltx && uv sync -q --no-dev ) || { echo "ltx install"; return 1; }
+  ( cd $W/ltx && uv pip install -q "huggingface_hub[cli,hf_transfer]" ) || true
+  # LTX's torch is built for CUDA 13; on an older host driver it silently falls back to the CPU
+  ( cd $W/ltx && uv run --no-sync python -c "import torch; assert torch.cuda.is_available()" ) \
+    || { echo "GPU unusable by LTX's torch (host driver older than CUDA 13: $(nvidia-smi --query-gpu=driver_version --format=csv,noheader))"; return 1; }
+  log "ltx installed, downloading weights"
+  FAST=$(cd $W/ltx && uv run --no-sync python -c "import hf_transfer; print(1)" 2>/dev/null || echo 0)
+  ( cd $W/ltx && HF_HUB_ENABLE_HF_TRANSFER=$FAST HF_TOKEN=$HF_TOKEN uv run --no-sync hf download Lightricks/LTX-2.5 \
+      diffusion_models/ltx-2.5-22b-distilled-transformer-bf16.safetensors \
+      text_encoders/gemma4-12b-with-proj-ltx-2.5-bf16.safetensors \
+      vae/ltx-2.5-video-vae-conv-bf16.safetensors \
+      vae/ltx-2.5-audio-vae-bf16.safetensors \
+      latent_upscale_models/ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors \
+      --local-dir "$L" >/dev/null ) || { echo "ltx download (is HF_TOKEN set and the LTX-2.5 terms accepted?)"; return 1; }
+  log "ltx weights ready"
+}
+prep_asm() {  # captions + edit: stable-ts, demucs and their models
+  uv venv -q -p 3.12 $W/asm && VIRTUAL_ENV=$W/asm uv pip install -q pillow librosa soundfile pyyaml stable-ts demucs \
+    || { echo "asm install"; return 1; }
+  $W/asm/bin/python -c "import stable_whisper; stable_whisper.load_model('medium', device='cpu')
+from demucs.pretrained import get_model; get_model('htdemucs')" >/dev/null 2>&1 || true
+  log "caption tools ready"
+}
+( prep_ltx > $W/ltx.err 2>&1 ) & LTX_PID=$!
+( prep_asm > $W/asm.err 2>&1 ) & ASM_PID=$!
+await() {  # await PID NAME: wait for a background prep job, fail with its reason
+  wait "$1" || fail "$2: $(tail -3 $W/$2.err | tr '\n' ' ')"
+}
+
+# 3. songs (YuE2, ~7 GB of weights, not gated)
 [ -n "${PROBE_MODES:-}" ] || {
 stage "songs"
 [ -d $W/yue ] || git clone --depth 1 https://github.com/multimodal-art-projection/YuE.git $W/yue
@@ -68,26 +104,9 @@ $W/yue/.venv/bin/python "$GE/worker/gen_song.py" "$B" || fail "yue generate"
 log "songs ready: $(ls $B/*/song.flac 2>/dev/null | wc -l)"
 }
 
-# 3. clips (LTX-2.5 distilled, ~66 GB of weights, gated)
-stage "clips: install"
-if [ ! -d $W/ltx ]; then
-  git clone -q https://github.com/Lightricks/LTX-2.git $W/ltx && git -C $W/ltx checkout -q $LTX_COMMIT || fail "ltx clone"
-fi
-( cd $W/ltx && uv sync -q --no-dev --extra natten ) || ( cd $W/ltx && uv sync -q --no-dev ) || fail "ltx install"
-( cd $W/ltx && uv pip install -q "huggingface_hub[cli,hf_transfer]" ) || true
-# LTX's torch is built for CUDA 13; on an older host driver it silently falls back to the CPU
-( cd $W/ltx && uv run --no-sync python -c "import torch; assert torch.cuda.is_available()" ) \
-  || fail "GPU unusable by LTX's torch (host driver older than CUDA 13: $(nvidia-smi --query-gpu=driver_version --format=csv,noheader))"
-stage "clips: download weights"
-L=$MODELS/ltx-2.5
-FAST=$(cd $W/ltx && uv run --no-sync python -c "import hf_transfer; print(1)" 2>/dev/null || echo 0)
-( cd $W/ltx && HF_HUB_ENABLE_HF_TRANSFER=$FAST HF_TOKEN=$HF_TOKEN uv run --no-sync hf download Lightricks/LTX-2.5 \
-    diffusion_models/ltx-2.5-22b-distilled-transformer-bf16.safetensors \
-    text_encoders/gemma4-12b-with-proj-ltx-2.5-bf16.safetensors \
-    vae/ltx-2.5-video-vae-conv-bf16.safetensors \
-    vae/ltx-2.5-audio-vae-bf16.safetensors \
-    latent_upscale_models/ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors \
-    --local-dir "$L" ) || fail "ltx download (is HF_TOKEN set and the LTX-2.5 terms accepted?)"
+# 4. clips
+stage "clips: waiting for ltx download"
+await $LTX_PID ltx
 GW=$(python3 -c "import yaml,sys;c=yaml.safe_load(open('$GE/config.yaml'));print(c['video']['gen_width'],c['video']['gen_height'],c['video']['clip_frames'])" 2>/dev/null || echo "768 1344 121")
 read -r GWIDTH GHEIGHT GFRAMES <<<"$GW"
 # cards under 40 GB can't hold Gemma or the transformer: stream weights from CPU RAM (~2 min a clip on a 3090)
@@ -120,16 +139,16 @@ stage "clips: render"
 log "VRAM ${VRAM} MiB: ${OFFLOAD[*]:-no offload}"
 clips "${OFFLOAD[@]}" || fail "ltx render"
 
-# 4. time the lyrics for the captions (whisper alignment on the demucs vocals); a miss only drops captions
+# 5. time the lyrics for the captions (whisper alignment on the demucs vocals); a miss only drops captions
 stage "captions"
-uv venv -q -p 3.12 $W/asm && VIRTUAL_ENV=$W/asm uv pip install -q pillow librosa soundfile pyyaml stable-ts demucs || fail "asm install"
+await $ASM_PID asm
 for d in $B/*/; do
   [ -f "$d/song.flac" ] || continue
   ( cd "$GE" && $W/asm/bin/python -m ge.lyrics --song "$d/song.flac" --plan "$d/plan.json" --out "$d/words.json" ) \
     || log "$(basename "$d"): lyric timing FAILED (no captions)"
 done
 
-# 5. edit each finished video: beat cuts, hook text, captions, end card, loudness
+# 6. edit each finished video: beat cuts, hook text, captions, end card, loudness
 stage "assemble"
 : > "$OUT/done.txt"
 for d in $B/*/; do
