@@ -1,5 +1,6 @@
 """Talk to the GPU box: pack the plans for it, watch its progress, fetch the finished videos."""
 import base64
+import concurrent.futures
 import gzip
 import json
 import os
@@ -17,8 +18,14 @@ def pack_plans(plans):
     return base64.b64encode(gzip.compress(json.dumps(plans).encode())).decode()
 
 
+_pool = concurrent.futures.ThreadPoolExecutor(max_workers=4)
+
+
 def _get(url, timeout=20):
-    return urllib.request.urlopen(url, timeout=timeout).read().decode()
+    """GET with a hard deadline. urlopen's timeout is per socket read, so a proxy that trickles
+    bytes can hang it for good (it froze the stall watchdog on 2026-10-15)."""
+    fut = _pool.submit(lambda: urllib.request.urlopen(url, timeout=timeout).read().decode())
+    return fut.result(timeout=timeout * 2)
 
 
 STALL_MINUTES = 20  # no stage change for this long (each finished clip is a change) means the box is stuck
