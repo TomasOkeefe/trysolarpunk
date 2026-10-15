@@ -8,6 +8,8 @@
 #       PLAN_FILES space-separated plan paths inside the repo, relative to pipeline/ (runs started by hand)
 #       OUT_TOKEN  random string; outputs are served at http://<box>:8080/<OUT_TOKEN>/
 #       KEEP_MIN   minutes to keep the box alive after finishing so the videos can be fetched (default 40)
+#       PROBE_MODES  GPU probe instead of a batch: e.g. "none cpu" renders 2 shots per LTX offload mode
+#                    (no songs, no edit) and writes timings to $OUT/probe.txt (see probe.py)
 set -uo pipefail
 W=/workspace; GE=${GE_DIR:-$W/repo/pipeline}; TOKEN=${OUT_TOKEN:-run}; OUT=$W/out/$TOKEN; MODELS=$W/models
 B=$W/batch
@@ -58,11 +60,13 @@ for f in "ofl/fraunces/Fraunces%5BSOFT,WONK,opsz,wght%5D.ttf:Fraunces.ttf" "ofl/
 done
 
 # 2. songs (YuE2, ~7 GB of weights, not gated)
+[ -n "${PROBE_MODES:-}" ] || {
 stage "songs"
 [ -d $W/yue ] || git clone --depth 1 https://github.com/multimodal-art-projection/YuE.git $W/yue
 uv venv -q -p 3.12 $W/yue/.venv && VIRTUAL_ENV=$W/yue/.venv uv pip install -q "$W/yue" || fail "yue install"
 $W/yue/.venv/bin/python "$GE/worker/gen_song.py" "$B" || fail "yue generate"
 log "songs ready: $(ls $B/*/song.flac 2>/dev/null | wc -l)"
+}
 
 # 3. clips (LTX-2.5 distilled, ~66 GB of weights, gated)
 stage "clips: install"
@@ -84,10 +88,9 @@ FAST=$(cd $W/ltx && uv run --no-sync python -c "import hf_transfer; print(1)" 2>
     vae/ltx-2.5-audio-vae-bf16.safetensors \
     latent_upscale_models/ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors \
     --local-dir "$L" ) || fail "ltx download (is HF_TOKEN set and the LTX-2.5 terms accepted?)"
-stage "clips: render"
 GW=$(python3 -c "import yaml,sys;c=yaml.safe_load(open('$GE/config.yaml'));print(c['video']['gen_width'],c['video']['gen_height'],c['video']['clip_frames'])" 2>/dev/null || echo "768 1344 121")
 read -r GWIDTH GHEIGHT GFRAMES <<<"$GW"
-# no --offload: gen_clips.py frees Gemma before loading the transformer, so both never share the card
+clips() {  # extra args go to LTX, e.g. --offload cpu
 ( cd $W/ltx && STAGE_FILE="$OUT/STAGE" uv run --no-sync python "$GE/worker/gen_clips.py" "$B" -- \
     --transformer-path       "$L/diffusion_models/ltx-2.5-22b-distilled-transformer-bf16.safetensors" \
     --text-encoder-path      "$L/text_encoders/gemma4-12b-with-proj-ltx-2.5-bf16.safetensors" \
@@ -95,7 +98,23 @@ read -r GWIDTH GHEIGHT GFRAMES <<<"$GW"
     --audio-vae-path         "$L/vae/ltx-2.5-audio-vae-bf16.safetensors" \
     --spatial-upsampler-path "$L/latent_upscale_models/ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors" \
     --width "$GWIDTH" --height "$GHEIGHT" --num-frames "$GFRAMES" --frame-rate 24 \
-    --quantization fp8-cast ) || fail "ltx render"
+    --quantization fp8-cast "$@" )
+}
+if [ -n "${PROBE_MODES:-}" ]; then
+  mkdir -p "$OUT/probe"
+  { nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv,noheader; free -g | sed -n 2p; } > "$OUT/probe.txt"
+  for m in $PROBE_MODES; do
+    stage "probe: offload $m"
+    t0=$(date +%s)
+    CLIPS_SUBDIR=clips_$m PROBE_SHOTS=2 clips --offload "$m" 2>&1 | tee "$OUT/probe_$m.log" | grep --line-buffered -E "done in|encoded|resident|offload|FAILED|Error|error" | sed "s/^/$m: /" >> "$OUT/probe.txt"
+    echo "$m: exit ${PIPESTATUS[0]} after $(( $(date +%s) - t0 ))s" >> "$OUT/probe.txt"
+    for f in $B/*/clips_$m/*.mp4; do [ -f "$f" ] && cp "$f" "$OUT/probe/${m}_$(basename "$f")"; done
+  done
+  : > "$OUT/done.txt"; stage "DONE"; self_destruct_later; wait; exit 0
+fi
+# no --offload: gen_clips.py frees Gemma before loading the transformer, so both never share the card
+stage "clips: render"
+clips || fail "ltx render"
 
 # 4. time the lyrics for the captions (whisper alignment on the demucs vocals); a miss only drops captions
 stage "captions"

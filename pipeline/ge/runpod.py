@@ -56,7 +56,8 @@ def _gpu_name(pid):
     return (p.get("machine") or {}).get("gpuDisplayName") or (p.get("gpu") or {}).get("displayName") or p.get("gpuTypeId")
 
 
-def run_job(cfg, plans, repo_url, dest, log=print):
+def run_job(cfg, plans, repo_url, dest, log=print, tiers=TIERS, extra=None, collect=box.fetch):
+    """extra: fields merged into the pod request (env merges into env); collect(base, slugs, dest, log)."""
     g = cfg["gpu"]
     token = secrets.token_urlsafe(16)
     start = ("apt-get update -qq && apt-get install -y -qq git >/dev/null; "
@@ -76,14 +77,18 @@ def run_job(cfg, plans, repo_url, dest, log=print):
                 "PLANS_B64": box.pack_plans(plans)},
         "dockerStartCmd": ["bash", "-c", start],
     }
+    extra = dict(extra or {})
+    body["env"].update(extra.pop("env", {}))
+    body.update(extra)
     pod = None
-    for cloud, gpus in TIERS:
+    for cloud, gpus in tiers:
         try:
             pod = _req("POST", "/pods", {**body, "cloudType": cloud, "gpuTypeIds": gpus, "gpuTypePriority": "custom"})
             log(f"rented {cloud.lower()} {' / '.join(x.replace('NVIDIA ', '') for x in gpus)} at ${pod.get('costPerHr')}/h")
             break
         except urllib.error.HTTPError as e:
-            log(f"no {cloud.lower()} {' / '.join(x.replace('NVIDIA ', '') for x in gpus)} free ({e.code})")
+            log(f"no {cloud.lower()} {' / '.join(x.replace('NVIDIA ', '') for x in gpus)} free "
+                f"({e.code}: {e.read()[:150].decode(errors='replace').strip()})")
     if pod is None:
         raise SystemExit("no GPU available in any tier; try again later")
     pid = pod["id"]
@@ -91,7 +96,7 @@ def run_job(cfg, plans, repo_url, dest, log=print):
     log(f"pod {pid} ({pod.get('machine', {}).get('gpuDisplayName', 'GPU')}) - status: {base}/status.log")
     try:
         slugs = box.watch(base, time.time() + g["max_runtime_minutes"] * 60, log)
-        return box.fetch(base, slugs, dest, log), {"gpu_name": _gpu_name(pid), "dph_total": pod.get("costPerHr")}
+        return collect(base, slugs, dest, log), {"gpu_name": _gpu_name(pid), "dph_total": pod.get("costPerHr")}
     finally:
         try:
             _req("DELETE", f"/pods/{pid}")

@@ -23,6 +23,8 @@ batch = pathlib.Path(sys.argv[1])
 base = sys.argv[sys.argv.index("--") + 1:]
 GE = pathlib.Path(__file__).resolve().parents[1]
 ENCODE_BATCH = 4  # Gemma keeps every hidden layer (~385 MB per prompt), so encode a few at a time
+PROBE_SHOTS = int(os.environ.get("PROBE_SHOTS", 0))  # GPU probe: render only the first N shots
+CLIPS = os.environ.get("CLIPS_SUBDIR", "clips")
 
 videos = [(d, json.loads((d / "plan.json").read_text())) for d in sorted(batch.iterdir()) if (d / "plan.json").exists()]
 
@@ -35,7 +37,7 @@ def prompt_of(plan, shot):
 
 def shot_args(d, plan, i, shot):
     seed = zlib.crc32(plan["slug"].encode()) % 100000 + i
-    a = ["--prompt", prompt_of(plan, shot), "--seed", str(seed), "--output-path", str(d / "clips" / f"shot_{i:02d}.mp4")]
+    a = ["--prompt", prompt_of(plan, shot), "--seed", str(seed), "--output-path", str(d / CLIPS / f"shot_{i:02d}.mp4")]
     if shot.get("product_image") and plan.get("image"):  # run.py sets the product's render as first frame
         a += ["--image", str(GE / plan["image"]), "0", "0.85"]
     return a
@@ -82,15 +84,20 @@ def main():
                                      for f, v in cache[p]._asdict().items()}) for p in batch_prompts]
     pipe.prompt_encoder = cached_encoder
 
-    # 2. build the transformer once and keep it resident (the stage would otherwise rebuild it per pass)
-    t = time.time()
-    resident = pipe.stage._build_transformer()
-    pipe.stage._transformer_ctx = lambda **_: contextlib.nullcontext(resident)
-    print(f"transformer resident in {time.time() - t:.0f}s, "
-          f"{torch.cuda.memory_allocated() / 2**30:.1f} GB allocated", flush=True)
+    # 2. build the transformer once and keep it resident (the stage would otherwise rebuild it per pass).
+    # With --offload (small cards) LTX streams it from CPU RAM layer by layer instead.
+    if first.offload_mode == D.OffloadMode.NONE:
+        t = time.time()
+        resident = pipe.stage._build_transformer()
+        pipe.stage._transformer_ctx = lambda **_: contextlib.nullcontext(resident)
+        print(f"transformer resident in {time.time() - t:.0f}s, "
+              f"{torch.cuda.memory_allocated() / 2**30:.1f} GB allocated", flush=True)
+    else:
+        print(f"offload {first.offload_mode.value}: transformer streams from CPU", flush=True)
 
     # 3. render; one broken video must not sink the rest of the batch
-    total, finished = sum(len(p["shots"]) for _, p in videos), 0
+    shots_of = lambda p: p["shots"][:PROBE_SHOTS] if PROBE_SHOTS else p["shots"]
+    total, finished = sum(len(shots_of(p)) for _, p in videos), 0
 
     def progress():  # the orchestrator treats an unchanged STAGE as a stall, so report every clip
         if os.environ.get("STAGE_FILE"):
@@ -98,10 +105,10 @@ def main():
 
     progress()
     for d, plan in videos:
-        (d / "clips").mkdir(exist_ok=True)
+        (d / CLIPS).mkdir(exist_ok=True)
         try:
-            for i, shot in enumerate(plan["shots"]):
-                dst = d / "clips" / f"shot_{i:02d}.mp4"
+            for i, shot in enumerate(shots_of(plan)):
+                dst = d / CLIPS / f"shot_{i:02d}.mp4"
                 if dst.exists():
                     continue
                 t = time.time()
@@ -115,7 +122,8 @@ def main():
                 D.encode_video(video=res.video, fps=args.frame_rate, audio=res.audio, output_path=str(dst),
                                video_chunks_number=D.get_video_chunks_number(res.num_frames, res.tiling_config),
                                color_space=None, audio_sampling_rate=None)
-                print(f"{plan['slug']} shot {i} done in {time.time() - t:.0f}s", flush=True)
+                print(f"{plan['slug']} shot {i} done in {time.time() - t:.0f}s, "
+                      f"peak {torch.cuda.max_memory_allocated() / 2**30:.1f} GB", flush=True)
                 finished += 1
                 progress()
         except Exception as e:  # noqa: BLE001
