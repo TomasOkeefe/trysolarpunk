@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Eyelid · Try Solarpunk</title>
+  <meta name="description" content="A sleeve that covers your whole screen. Join the waitlist.">
+  <meta property="og:title" content="The Eyelid">
+  <meta property="og:description" content="A sleeve that closes your screen's eyes. Join the waitlist.">
+  <meta property="og:image" content="/img/eyelid.jpg">
+  <link rel="icon" href="/img/emblem.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Space+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main>
+  <a class="top" href="/"><img src="/img/emblem.svg" alt="">Try Solarpunk</a>
+  <span class="tag">Waitlist open</span>
+  <h1>The Eyelid</h1>
+  <p class="lede">A terracotta sleeve that covers your whole screen, so notifications can't catch your eye. Your phone, eyes closed.</p>
+  <img class="photo" src="/img/eyelid.jpg" alt="The Eyelid sleeve with a closed-eye emblem" width="720" height="960">
+  <form class="join" action="/api/join" method="post">
+    <div class="fields">
+      <p id="join-error">That didn't work. Check the email and try again.</p>
+      <label for="email">Get one when they're printed</label>
+      <input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required>
+      <input type="hidden" name="product" value="eyelid">
+      <input type="hidden" name="source" value="">
+      <div class="hp" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
+      <button type="submit">Join the waitlist</button>
+      <p class="join-msg" role="status"></p>
+      <p class="fine">One email when it ships. No spam, no feed.</p>
+    </div>
+    <div class="thanks" id="joined">
+      <h2>You're on the list.</h2>
+      <p>Your notifications are already sweating.</p>
+    </div>
+  </form>
+  <footer><a href="/">See everything</a> · <a href="https://www.tiktok.com/@trysolarpunk">@trysolarpunk</a></footer>
+</main>
+<script src="/join.js" defer></script>
+</body>
+</html>
