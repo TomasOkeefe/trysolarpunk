@@ -117,7 +117,7 @@ if [ -n "${TRAIN_DATA_URL:-}" ]; then  # LoRA training instead of a batch
   T=$W/train; mkdir -p $T "$OUT/lora"
   stage "train: install"
   ( cd $W/ltx && uv sync -q --no-dev --extra natten --all-packages ) || fail "trainer install"
-  curl -sfL "$TRAIN_DATA_URL" | tar -x -C $T || fail "train data download"
+  curl -sfL "$TRAIN_DATA_URL" | tar -x --no-same-owner -C $T || fail "train data download"
   log "dataset: $(python3 -c "import json;print(len(json.load(open('$T/dataset.json'))))" ) clips"
   stage "train: preprocess"
   ( cd $W/ltx/packages/ltx-trainer && uv run --no-sync python scripts/process_dataset.py $T/dataset.json \
