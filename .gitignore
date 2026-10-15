@@ -6,3 +6,4 @@ pipeline/out/
 .DS_Store
 videos/
 .flash/
+pipeline/availability.jsonl
