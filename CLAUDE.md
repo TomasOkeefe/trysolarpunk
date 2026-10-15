@@ -20,6 +20,8 @@ To make videos, use the `make-videos` skill. In short: Claude writes plans in
 
 - GPU: RunPod, cheapest free 48 GB card (community A6000/A40 first, tiers in `ge/runpod.py`), prepaid credit. Key in `~/.runpod/config.toml` (`flash login`).
   The pod reads the Hugging Face token from the RunPod secret `hf_token`.
+  A launchd job (`~/Library/LaunchAgents/com.trysolarpunk.gpu-stock.plist`) logs RunPod stock every
+  30 min to `pipeline/availability.jsonl`; `python3 -m ge.availability --summary` shows the best hours.
   Modal is the planned next provider once the RunPod credit is used (account exists, not set up).
 - The pod clones github.com/TomasOkeefe/trysolarpunk, so push pipeline code before rendering.
 - `worker/gen_clips.py` relies on private hooks of LTX-2 commit `be6d6d0` (pinned in `job.sh`).

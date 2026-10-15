@@ -59,7 +59,7 @@ gpu:
   # which GPUs, cheapest first: TIERS in ge/runpod.py
   disk_gb: 160
   image: runpod/pytorch:1.4.0-cu1281-torch280-ubuntu2404
-  max_runtime_minutes: 150  # hard kill so a stuck box can't burn money (a 7-video batch should take ~80 min)
+  max_runtime_minutes: 210  # hard kill so a stuck box can't burn money (7 videos: ~75 min on 48 GB, ~165 on a 3090)
 
 tiktok:
   mode: draft               # "draft" (inbox upload, no audit needed) or "direct" (needs TikTok audit)

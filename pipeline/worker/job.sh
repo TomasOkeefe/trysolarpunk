@@ -90,6 +90,9 @@ FAST=$(cd $W/ltx && uv run --no-sync python -c "import hf_transfer; print(1)" 2>
     --local-dir "$L" ) || fail "ltx download (is HF_TOKEN set and the LTX-2.5 terms accepted?)"
 GW=$(python3 -c "import yaml,sys;c=yaml.safe_load(open('$GE/config.yaml'));print(c['video']['gen_width'],c['video']['gen_height'],c['video']['clip_frames'])" 2>/dev/null || echo "768 1344 121")
 read -r GWIDTH GHEIGHT GFRAMES <<<"$GW"
+# cards under 40 GB can't hold Gemma or the transformer: stream weights from CPU RAM (~2 min a clip on a 3090)
+VRAM=$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits | head -1)
+OFFLOAD=(); [ "${VRAM:-0}" -lt 40000 ] && OFFLOAD=(--offload cpu)
 clips() {  # extra args go to LTX, e.g. --offload cpu
 ( cd $W/ltx && STAGE_FILE="$OUT/STAGE" uv run --no-sync python "$GE/worker/gen_clips.py" "$B" -- \
     --transformer-path       "$L/diffusion_models/ltx-2.5-22b-distilled-transformer-bf16.safetensors" \
@@ -114,7 +117,8 @@ if [ -n "${PROBE_MODES:-}" ]; then
 fi
 # no --offload: gen_clips.py frees Gemma before loading the transformer, so both never share the card
 stage "clips: render"
-clips || fail "ltx render"
+log "VRAM ${VRAM} MiB: ${OFFLOAD[*]:-no offload}"
+clips "${OFFLOAD[@]}" || fail "ltx render"
 
 # 4. time the lyrics for the captions (whisper alignment on the demucs vocals); a miss only drops captions
 stage "captions"

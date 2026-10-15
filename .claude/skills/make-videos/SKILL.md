@@ -59,6 +59,10 @@ Writing rules:
 
 ## 3. Check, then render
 
+Cheap GPUs come and go. `python3 -m ge.availability` shows stock now; if community A6000/A40 shows
+none and the user isn't in a hurry, say so and suggest the best hour from `--summary` (render still
+works: it falls back to a community 3090, about 40% more per video, then secure cloud).
+
 ```bash
 cd pipeline && python3 -m ge.concept check plans/<new files>
 python3 -u run.py plans/<new files> > ../videos/run.log 2>&1   # Bash run_in_background: true

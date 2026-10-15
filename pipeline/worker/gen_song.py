@@ -12,7 +12,11 @@ from yue2 import YuE2Pipeline
 
 batch = pathlib.Path(sys.argv[1])
 
-with YuE2Pipeline.from_pretrained("m-a-p/YuE2-3B", device="cuda") as pipe:
+import torch
+
+# YuE2 plans for 24 GiB by default, which is more than a 24 GB card really has
+vram = torch.cuda.get_device_properties(0).total_memory / 2**30
+with YuE2Pipeline.from_pretrained("m-a-p/YuE2-3B", device="cuda", memory_budget_gib=min(24, int(vram) - 4)) as pipe:
     for d in sorted(p.parent for p in batch.glob("*/plan.json")):
         if (d / "song.flac").exists():
             continue

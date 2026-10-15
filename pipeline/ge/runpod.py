@@ -15,11 +15,13 @@ import urllib.request
 from ge import box
 
 API = "https://rest.runpod.io/v1"
-# 48 GB cards, cheapest first (per-hour prices from Oct 2026). Each tier is one create attempt; the first
-# with a free CUDA 13 host wins. A6000/A40 render a clip in ~50 s, as fast as we saw on pricier cards.
+# Cheapest per clip first (Oct 2026 prices). Each tier is one create attempt; the first with a free
+# CUDA 13 host wins. 48 GB cards render a clip in ~50 s; 24 GB cards need LTX's CPU offload (job.sh
+# switches it on) and take ~2 min a clip (probe on a 3090, 2026-10-15), so they rank by cost per clip.
 TIERS = [
-    ("COMMUNITY", ["NVIDIA RTX A6000", "NVIDIA A40"]),                    # $0.33-0.35
-    ("SECURE", ["NVIDIA RTX A6000", "NVIDIA A40"]),                       # $0.59
+    ("COMMUNITY", ["NVIDIA RTX A6000", "NVIDIA A40"]),                    # $0.33-0.35/h, ~0.5 cent a clip
+    ("COMMUNITY", ["NVIDIA GeForce RTX 3090"]),                           # $0.22/h,      ~0.7 cent a clip
+    ("SECURE", ["NVIDIA RTX A6000", "NVIDIA A40"]),                       # $0.59/h,      ~0.8 cent a clip
     ("COMMUNITY", ["NVIDIA L40", "NVIDIA RTX 6000 Ada Generation", "NVIDIA L40S"]),  # $0.69-0.79
     ("SECURE", ["NVIDIA L40", "NVIDIA RTX 6000 Ada Generation", "NVIDIA L40S"]),     # $0.82-1.09
 ]
@@ -68,6 +70,7 @@ def run_job(cfg, plans, repo_url, dest, log=print, tiers=TIERS, extra=None, coll
         "imageName": g["image"],
         "gpuCount": 1,
         "allowedCudaVersions": ["13.0"],  # LTX's torch needs a CUDA 13 driver; older hosts fall back to CPU
+        "minRAMPerGPU": 48,  # LTX's CPU offload (24 GB cards) keeps ~36 GB of weights in RAM
         "containerDiskInGb": 40,
         "volumeInGb": g["disk_gb"],
         "volumeMountPath": "/workspace",
