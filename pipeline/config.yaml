@@ -40,14 +40,10 @@ video:
   ai_label: "AI-generated"  # burned into every video, and the TikTok AIGC flag is set on upload
 
 gpu:
-  provider: runpod          # runpod (default) or vast
   cloud: COMMUNITY          # RunPod community cloud is the cheap tier
-  min_vram_gb: 46           # L40S / A6000 / RTX 6000 Ada class
-  max_dollars_per_hour: 1.20
-  min_reliability: 0.97
   disk_gb: 160
   image: runpod/pytorch:1.4.0-cu1281-torch280-ubuntu2404
-  max_runtime_minutes: 120  # hard kill so a stuck box can't burn money
+  max_runtime_minutes: 150  # hard kill so a stuck box can't burn money (a 7-video batch should take ~80 min)
 
 tiktok:
   mode: draft               # "draft" (inbox upload, no audit needed) or "direct" (needs TikTok audit)

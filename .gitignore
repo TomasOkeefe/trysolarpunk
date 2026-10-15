@@ -4,3 +4,4 @@ products/cad.py
 __pycache__/
 pipeline/out/
 .DS_Store
+videos/

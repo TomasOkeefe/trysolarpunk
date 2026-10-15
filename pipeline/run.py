@@ -1,58 +1,71 @@
-"""Daily run: plan -> GPU (song + clips + edit) -> TikTok.
+"""Render a batch of plans in one RunPod GPU session and save the videos to ../videos/.
 
-  python run.py                    # full run, plan written by Claude
-  python run.py --plan plans/x.json  # use a hand-written plan
-  python run.py --dry-plan         # only write and print today's plan (no GPU, no TikTok)
+  python run.py plans/a.json plans/b.json ...
 
-Env: ANTHROPIC_API_KEY, RUNPOD_API_KEY (or VAST_API_KEY + HF_TOKEN), GE_REPO_URL,
-     TIKTOK_CLIENT_KEY, TIKTOK_CLIENT_SECRET, TIKTOK_REFRESH_TOKEN (optional: skip upload if unset)
+Blocks until the box is done (about 10 min setup + ~1 min per clip), then deletes it.
+The box clones the code from GitHub, so pipeline code changes must be pushed first;
+plans travel with the request and need no push.
+RunPod key: RUNPOD_API_KEY or ~/.runpod/config.toml (written by `flash login`).
 """
-import argparse
-import datetime as dt
 import json
-import os
 import pathlib
+import subprocess
+import sys
+import time
 
 import yaml
 
-from ge import concept, runpod, tiktok, vast
+from ge import concept, runpod
 
 ROOT = pathlib.Path(__file__).resolve().parent
+VIDEOS = ROOT.parent / "videos"
+REPO_URL = "https://github.com/TomasOkeefe/trysolarpunk"
+
+
+def assert_code_pushed():
+    git = lambda *a: subprocess.run(["git", "-C", str(ROOT), *a], capture_output=True, text=True).stdout.strip()
+    dirty = git("status", "--porcelain", "--", "worker", "ge", "assets", "config.yaml")
+    git("fetch", "-q")
+    ahead = git("rev-list", "--count", "@{u}..HEAD")
+    if dirty or ahead not in ("", "0"):
+        sys.exit(f"push the pipeline code first; the GPU box clones it from GitHub\n{dirty}\nunpushed commits: {ahead}")
 
 
 def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--plan")
-    ap.add_argument("--dry-plan", action="store_true")
-    a = ap.parse_args()
+    files = sys.argv[1:]
+    if not files:
+        sys.exit(__doc__)
     cfg = yaml.safe_load((ROOT / "config.yaml").read_text())
+    images = {p["id"]: p.get("image") for p in cfg["products"]}
+    plans = []
+    for f in files:
+        plan = concept.validate(json.loads(pathlib.Path(f).read_text()), cfg["video"]["shots"])
+        plan["image"] = images.get(plan["product"])  # first frame of the product shot (None: text only)
+        plans.append(plan)
+    assert_code_pushed()
 
-    plan = json.loads(pathlib.Path(a.plan).read_text()) if a.plan else concept.write_plan(cfg)
-    plan = concept.validate(plan, cfg["video"]["shots"])
-    plan_file = ROOT / "plans" / f"{plan.get('date', dt.date.today().isoformat())}-{plan['slug']}.json"
-    plan_file.write_text(json.dumps(plan, indent=2))
-    print(json.dumps(plan, indent=2))
-    if a.dry_plan:
-        return
+    t0 = time.time()
+    log = lambda m: print(f"[{time.strftime('%H:%M:%S')}] {m}", flush=True)
+    VIDEOS.mkdir(exist_ok=True)
+    done, info = runpod.run_job(cfg, plans, REPO_URL, VIDEOS, log)
+    hours = (time.time() - t0) / 3600
+    cost = hours * (info.get("dph_total") or 0)
 
-    gpu = runpod if cfg["gpu"].get("provider", "runpod") == "runpod" else vast
-    video, offer = gpu.run_job(cfg, plan, os.environ["GE_REPO_URL"])
-    result = {"date": plan.get("date"), "slug": plan["slug"], "product": plan["product"],
-              "gpu": offer.get("gpu_name"), "dph": offer.get("dph_total")}
-
-    if os.environ.get("TIKTOK_REFRESH_TOKEN"):
-        status = tiktok.upload(video, plan, cfg["tiktok"]["mode"])
-        result["tiktok"] = status.get("status")
-    with open(ROOT / "history.jsonl", "a") as f:
-        f.write(json.dumps(result) + "\n")
-
-    summary = os.environ.get("GITHUB_STEP_SUMMARY")
-    if summary:
-        with open(summary, "a") as f:
-            f.write(f"## {plan['song']['title']}\n\n**Caption to paste:**\n\n"
-                    f"{plan['caption']} {' '.join(plan['hashtags'])}\n\n"
-                    f"Remember to switch on *AI-generated content* when posting.\n")
-    print(json.dumps(result))
+    with open(ROOT / "history.jsonl", "a") as h:
+        for plan in plans:
+            if plan["slug"] not in done:
+                print(f"FAILED  {plan['date']}  {plan['slug']}  (see videos/job.log)")
+                continue
+            name = f"{plan['date']}-{plan['slug']}"
+            (VIDEOS / f"{plan['slug']}.mp4").rename(VIDEOS / f"{name}.mp4")
+            (VIDEOS / f"{plan['slug']}.json").unlink(missing_ok=True)
+            (VIDEOS / f"{name}.txt").write_text(f"{plan['caption']} {' '.join(plan['hashtags'])}\n")
+            h.write(json.dumps({"date": plan["date"], "slug": plan["slug"], "product": plan["product"],
+                                "gpu": info.get("gpu_name"), "dph": info.get("dph_total")}) + "\n")
+            print(f"ok      videos/{name}.mp4")
+    print(f"{len(done)}/{len(plans)} videos, {hours * 60:.0f} min on {info.get('gpu_name')}, about ${cost:.2f}")
+    if not done:
+        sys.exit(1)
 
 
 if __name__ == "__main__":

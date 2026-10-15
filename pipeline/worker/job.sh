@@ -1,14 +1,18 @@
 #!/usr/bin/env bash
-# Runs on the rented GPU box. Produces $OUT/final.mp4 from $GE/plan.json.
+# Runs on the rented GPU box. Renders a batch of videos: $OUT/<slug>/final.mp4 for each plan.
+# Order keeps each model loaded once: all songs (YuE2), then all clips (LTX), then all edits.
 #
 # Expects the repo checked out at /workspace/repo (see the start command in ge/runpod.py).
 # Env:  HF_TOKEN   Hugging Face read token (LTX-2.5 weights are gated: accept the terms once on HF)
-#       PLAN_B64 or PLAN_FILE   the video plan
+#       PLANS_B64  gzipped JSON list of plans (sent by run.py), or
+#       PLAN_FILES space-separated plan paths inside the repo, relative to pipeline/ (runs started by hand)
 #       OUT_TOKEN  random string; outputs are served at http://<box>:8080/<OUT_TOKEN>/
-#       KEEP_MIN   minutes to keep the box alive after finishing so the video can be fetched (default 40)
+#       KEEP_MIN   minutes to keep the box alive after finishing so the videos can be fetched (default 40)
 set -uo pipefail
 W=/workspace; GE=${GE_DIR:-$W/repo/pipeline}; TOKEN=${OUT_TOKEN:-run}; OUT=$W/out/$TOKEN; MODELS=$W/models
-mkdir -p "$OUT" "$MODELS"
+B=$W/batch
+LTX_COMMIT=be6d6d0  # gen_clips.py uses private hooks of this exact version; bump deliberately
+mkdir -p "$OUT" "$MODELS" "$B"
 log()   { echo "[$(date -u +%H:%M:%S)] $*" | tee -a "$OUT/status.log"; }
 stage() { echo "$1" > "$OUT/STAGE"; log "== $1"; }
 # on failure keep serving the log instead of exiting: an exited container gets restarted and would loop
@@ -30,10 +34,21 @@ export DEBIAN_FRONTEND=noninteractive UV_CACHE_DIR=$W/.uv-cache
 export HF_HUB_ENABLE_HF_TRANSFER=0
 apt-get update -qq && apt-get install -y -qq ffmpeg git curl >/dev/null || fail "apt"
 curl -LsSf https://astral.sh/uv/install.sh | sh >/dev/null && export PATH="$HOME/.local/bin:$PATH"
-# the plan: PLAN_B64 (sent by run.py) or PLAN_FILE (a path inside the repo, for runs started by hand)
-if [ -n "${PLAN_B64:-}" ]; then echo "$PLAN_B64" | base64 -d > "$GE/plan.json"
-elif [ -n "${PLAN_FILE:-}" ]; then cp "$GE/$PLAN_FILE" "$GE/plan.json"; fi
-[ -f "$GE/plan.json" ] || fail "no plan.json"
+# the plans: one folder per video, $B/<slug>/plan.json
+python3 - "$B" <<'EOF' || fail "bad plans"
+import base64, gzip, json, os, pathlib, sys
+b, ge = pathlib.Path(sys.argv[1]), pathlib.Path(os.environ.get("GE_DIR", "/workspace/repo/pipeline"))
+if os.environ.get("PLANS_B64"):
+    plans = json.loads(gzip.decompress(base64.b64decode(os.environ["PLANS_B64"])))
+else:
+    plans = [json.loads((ge / f).read_text()) for f in os.environ.get("PLAN_FILES", "").split()]
+assert plans, "no plans"
+for p in plans:
+    (b / p["slug"]).mkdir(exist_ok=True)
+    (b / p["slug"] / "plan.json").write_text(json.dumps(p))
+print(len(plans), "plans")
+EOF
+log "plans: $(ls $B | tr '\n' ' ')"
 
 # 1. fonts for the overlays (not shipped in the repo to keep it small)
 mkdir -p "$GE/assets/fonts"
@@ -42,19 +57,18 @@ for f in "ofl/fraunces/Fraunces%5BSOFT,WONK,opsz,wght%5D.ttf:Fraunces.ttf" "ofl/
   [ -f "$GE/assets/fonts/$dst" ] || curl -sfL "https://raw.githubusercontent.com/google/fonts/main/$src" -o "$GE/assets/fonts/$dst"
 done
 
-# 2. song (YuE2, ~7 GB of weights, not gated)
-stage "song"
-if [ ! -f "$OUT/song.flac" ]; then
-  [ -d $W/yue ] || git clone --depth 1 https://github.com/multimodal-art-projection/YuE.git $W/yue
-  uv venv -q -p 3.12 $W/yue/.venv && VIRTUAL_ENV=$W/yue/.venv uv pip install -q "$W/yue" || fail "yue install"
-  $W/yue/.venv/bin/python "$GE/worker/gen_song.py" "$GE/plan.json" "$W/song" 1 || fail "yue generate"
-  cp "$W/song/song_0/audio.flac" "$OUT/song.flac"
-fi
-log "song ready: $(du -h "$OUT/song.flac" | cut -f1)"
+# 2. songs (YuE2, ~7 GB of weights, not gated)
+stage "songs"
+[ -d $W/yue ] || git clone --depth 1 https://github.com/multimodal-art-projection/YuE.git $W/yue
+uv venv -q -p 3.12 $W/yue/.venv && VIRTUAL_ENV=$W/yue/.venv uv pip install -q "$W/yue" || fail "yue install"
+$W/yue/.venv/bin/python "$GE/worker/gen_song.py" "$B" || fail "yue generate"
+log "songs ready: $(ls $B/*/song.flac 2>/dev/null | wc -l)"
 
 # 3. clips (LTX-2.5 distilled, ~66 GB of weights, gated)
 stage "clips: install"
-[ -d $W/ltx ] || git clone --depth 1 https://github.com/Lightricks/LTX-2.git $W/ltx
+if [ ! -d $W/ltx ]; then
+  git clone -q https://github.com/Lightricks/LTX-2.git $W/ltx && git -C $W/ltx checkout -q $LTX_COMMIT || fail "ltx clone"
+fi
 ( cd $W/ltx && uv sync -q --no-dev --extra natten ) || ( cd $W/ltx && uv sync -q --no-dev ) || fail "ltx install"
 ( cd $W/ltx && uv pip install -q "huggingface_hub[cli,hf_transfer]" ) || true
 stage "clips: download weights"
@@ -70,24 +84,31 @@ FAST=$(cd $W/ltx && uv run --no-sync python -c "import hf_transfer; print(1)" 2>
 stage "clips: render"
 GW=$(python3 -c "import yaml,sys;c=yaml.safe_load(open('$GE/config.yaml'));print(c['video']['gen_width'],c['video']['gen_height'],c['video']['clip_frames'])" 2>/dev/null || echo "768 1344 121")
 read -r GWIDTH GHEIGHT GFRAMES <<<"$GW"
-PRODUCT=$(python3 -c "import json;print(json.load(open('$GE/plan.json'))['product'])")
-IMG="$GE/assets/hib_fridge.jpg"; [ "$PRODUCT" = "eyelid" ] && IMG="$GE/assets/eyelid_studio.jpg"
-( cd $W/ltx && uv run --no-sync python "$GE/worker/gen_clips.py" "$GE/plan.json" "$W/clips" "$IMG" -- \
+# no --offload: gen_clips.py frees Gemma before loading the transformer, so both never share the card
+( cd $W/ltx && uv run --no-sync python "$GE/worker/gen_clips.py" "$B" -- \
     --transformer-path       "$L/diffusion_models/ltx-2.5-22b-distilled-transformer-bf16.safetensors" \
     --text-encoder-path      "$L/text_encoders/gemma4-12b-with-proj-ltx-2.5-bf16.safetensors" \
     --video-vae-path         "$L/vae/ltx-2.5-video-vae-conv-bf16.safetensors" \
     --audio-vae-path         "$L/vae/ltx-2.5-audio-vae-bf16.safetensors" \
     --spatial-upsampler-path "$L/latent_upscale_models/ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors" \
     --width "$GWIDTH" --height "$GHEIGHT" --num-frames "$GFRAMES" --frame-rate 24 \
-    --quantization fp8-cast --offload cpu ) || fail "ltx render"
-log "clips: $(ls $W/clips | wc -l)"
+    --quantization fp8-cast ) || fail "ltx render"
 
-# 4. edit: beat cuts, hook text, AI label, end card, loudness
+# 4. edit each finished video: beat cuts, hook text, AI label, end card, loudness
 stage "assemble"
 uv venv -q -p 3.12 $W/asm && VIRTUAL_ENV=$W/asm uv pip install -q pillow librosa soundfile pyyaml || fail "asm install"
-( cd "$GE" && $W/asm/bin/python -m ge.assemble --plan plan.json --song "$OUT/song.flac" --clips $W/clips --out "$OUT/final.mp4" ) || fail "assemble"
-cp "$GE/plan.json" "$OUT/plan.json"
-for i in 1 4 7; do ffmpeg -loglevel error -y -ss $((i*5)) -i "$OUT/final.mp4" -frames:v 1 -vf scale=360:-2 "$OUT/thumb_$i.jpg"; done
+: > "$OUT/done.txt"
+for d in $B/*/; do
+  s=$(basename "$d"); n=$(python3 -c "import json;print(len(json.load(open('$d/plan.json'))['shots']))")
+  if [ ! -f "$d/song.flac" ] || [ "$(ls $d/clips/shot_*.mp4 2>/dev/null | wc -l)" -ne "$n" ]; then
+    log "$s: SKIPPED (missing song or clips)"; continue
+  fi
+  mkdir -p "$OUT/$s"
+  ( cd "$GE" && $W/asm/bin/python -m ge.assemble --plan "$d/plan.json" --song "$d/song.flac" --clips "$d/clips" --out "$OUT/$s/final.mp4" ) \
+    && cp "$d/plan.json" "$OUT/$s/plan.json" && echo "$s" >> "$OUT/done.txt" && log "$s: done" \
+    || log "$s: assemble FAILED"
+done
+[ -s "$OUT/done.txt" ] || fail "no video finished"
 stage "DONE"
 self_destruct_later
 wait

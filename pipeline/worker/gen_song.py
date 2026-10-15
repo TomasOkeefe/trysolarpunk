@@ -1,19 +1,27 @@
-"""GPU worker: write the song with YuE2.  usage: python gen_song.py plan.json out_dir [candidates]"""
+"""GPU worker: write every song in a batch with YuE2, loading the model once.
+
+usage: python gen_song.py batch_dir      (batch_dir/<slug>/plan.json in, batch_dir/<slug>/song.flac out)
+"""
 import json
 import pathlib
+import shutil
 import sys
+import zlib
 
 from yue2 import YuE2Pipeline
 
-plan = json.loads(pathlib.Path(sys.argv[1]).read_text())
-out = pathlib.Path(sys.argv[2])
-candidates = int(sys.argv[3]) if len(sys.argv) > 3 else 1
-seed0 = abs(hash(plan["slug"])) % 900000 + 100000
+batch = pathlib.Path(sys.argv[1])
 
 with YuE2Pipeline.from_pretrained("m-a-p/YuE2-3B", device="cuda") as pipe:
-    for c in range(candidates):
-        req = {"style": plan["song"]["style"], "lyrics": plan["song"]["lyrics"], "cot": "full", "seed": seed0 + c}
-        song = pipe(**req)
-        d = out / f"song_{c}"
-        song.save_artifacts(str(d))
-        print(f"candidate {c}: {d}/audio.flac truncated={song.truncated}", flush=True)
+    for d in sorted(p.parent for p in batch.glob("*/plan.json")):
+        if (d / "song.flac").exists():
+            continue
+        plan = json.loads((d / "plan.json").read_text())
+        try:
+            song = pipe(style=plan["song"]["style"], lyrics=plan["song"]["lyrics"], cot="full",
+                        seed=zlib.crc32(plan["slug"].encode()) % 900000 + 100000)
+            song.save_artifacts(str(d / "yue"))
+            shutil.copy(d / "yue" / "audio.flac", d / "song.flac")
+            print(f"{plan['slug']}: song ready, truncated={song.truncated}", flush=True)
+        except Exception as e:  # noqa: BLE001
+            print(f"{plan['slug']}: song FAILED: {type(e).__name__}: {e}", flush=True)

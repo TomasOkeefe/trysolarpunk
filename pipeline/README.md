@@ -1,55 +1,47 @@
-# Try Solarpunk: daily TikTok pipeline
+# Try Solarpunk: video pipeline
 
-One video a day, fully generated, for about $30–40/month on RunPod (less once models are cached on a volume).
+Open Claude Code in the repo and ask for videos ("make 7 videos"). Claude writes the plans,
+one rented GPU renders the whole batch, and the videos land in `videos/`. The steps Claude
+follows are in `.claude/skills/make-videos/SKILL.md`.
 
 ```
-Claude writes the plan ──► rented GPU (RunPod) ──────────────────────────► TikTok
-(song, 9 shots, caption)   YuE2 song → LTX-2.5 clips → beat-cut edit          draft in your inbox
-                           (+ hook text, AI label, end card)                  (or direct post after audit)
+Claude writes plans ──► one RunPod GPU session ─────────────────────────────► videos/
+(in the chat, free)     songs (YuE2) → all clips (LTX-2.5) → edits             <date>-<slug>.mp4
+                        (hook text, AI label, end card, -14 LUFS, 1080×1920)   + caption .txt
 ```
 
 | Step | Where | What |
 |---|---|---|
-| Plan | `ge/concept.py` | Claude API writes lyrics, style, 9 shot prompts, hook, caption. Rotates products, avoids repeats (`history.jsonl`). |
-| Song | `worker/gen_song.py` | YuE2-3B, ~45 s, verse + chorus. Free to monetize per the YuE2 license. |
-| Clips | `worker/gen_clips.py` | LTX-2.5 distilled, 768×1344, 5 s each. The product shot uses our render as its first frame so the product looks right. |
-| Edit | `ge/assemble.py` | Cuts on the beat (librosa), hook sticker for 3 s, "AI-generated" label, end card, loudness to −14 LUFS, 1080×1920. |
-| Post | `ge/tiktok.py` | Content Posting API. `draft` until TikTok audits the app, then `direct` (caption + AIGC flag automatic). |
+| Lineup | `ge/concept.py next` | Which product on which day (4 Hibernator, 2 Eyelid, 1 merch a week), recent slugs to avoid. |
+| Check | `ge/concept.py check` | Validates plans before any GPU money is spent. |
+| Render | `run.py` → `ge/runpod.py` → `worker/job.sh` | Rents a pod, waits, downloads the videos, deletes the pod, prints the cost. |
+| Song | `worker/gen_song.py` | YuE2-3B, ~45 s, verse + chorus; one model load for the batch. Free to monetize per the YuE2 license. |
+| Clips | `worker/gen_clips.py` | LTX-2.5 distilled, 768×1344, 5 s each. Gemma encodes every prompt once and is freed, then the transformer stays on the GPU for all clips. The product shot starts from our render. |
+| Edit | `ge/assemble.py` | Beat cuts (librosa), hook text for 3 s, "AI-generated" label, end card, loudness. |
 
-The GPU box destroys itself 40 minutes after finishing (or failing), and the orchestrator destroys it
-as soon as the video is downloaded, so a crash can't leave a GPU billing.
+The orchestrator deletes the pod as soon as the videos are downloaded, and the pod deletes itself
+40 minutes after finishing or failing, so a crash can't leave a GPU billing. One broken video
+doesn't sink the batch.
 
-## One-time setup (about 30 minutes)
+## One-time setup (done)
 
-1. **GitHub**: the repo root is the `try-solarpunk` folder (public, so the GPU box can clone it; STLs stay local).
-   The workflow lives at `.github/workflows/daily.yml` in the repo root. Actions → enable.
-2. **RunPod**: add credit. Settings → API Keys → create a key → repo secret `RUNPOD_API_KEY`.
-3. **Hugging Face**: accept the terms at https://huggingface.co/Lightricks/LTX-2.5, create a *Read* token,
-   and save it in RunPod → Secrets as `hf_token` (the pod reads it there).
-4. **Anthropic API**: console.anthropic.com key → repo secret `ANTHROPIC_API_KEY` (a plan costs ~1¢).
-5. **TikTok developer app** (developers.tiktok.com): add *Login Kit* + *Content Posting API*,
-   scopes `video.upload` (drafts) and `video.publish` (direct). Authorize @trysolarpunk once and store
-   `TIKTOK_CLIENT_KEY`, `TIKTOK_CLIENT_SECRET`, `TIKTOK_REFRESH_TOKEN` as repo secrets.
-   Skip this and the workflow still makes the video; download it from the run's artifacts.
-6. Submit the app for TikTok's Content Posting audit (2–6 weeks), then set `tiktok.mode: direct`.
+- RunPod credit, and `flash login` on this Mac (saves the key to `~/.runpod/config.toml`).
+- Hugging Face: LTX-2.5 terms accepted, read token saved in RunPod → Secrets as `hf_token`.
 
-Run once by hand: Actions → daily-video → Run workflow. After that it runs every morning.
+## Costs
 
-## Costs (1 video/day)
+Community L40S at about $1.10/h: about 10 min of setup plus about 1 min per clip, so a
+7-video batch (63 clips) should be roughly 75 min, about $1.40, or $0.20 a video.
+To be confirmed by the first batch. Planning costs nothing extra (Claude writes the plans in the chat).
 
-| Item | Monthly |
-|---|---|
-| GPU, ~60–75 min/day on a RunPod L40S at $1.09/h | $30–40 |
-| Claude API (plan) | under $1 |
-| GitHub Actions (public repo) | $0 |
-| TikTok, Fourthwall | $0 |
+## By hand
 
-Model downloads (~75 GB) happen on each fresh box and are included in the GPU time above.
-If that gets slow, rent a box with a persistent Vast volume and point `MODELS` at it.
+```bash
+cd pipeline
+python3 -m ge.concept next 7
+python3 -m ge.concept check plans/2026-10-14-face-to-the-wall.json
+python3 run.py plans/2026-10-14-face-to-the-wall.json
+```
 
-## Day-to-day
-
-- Hand-write a plan any time: copy `plans/2026-10-14-face-to-the-wall.json`, run the workflow with its path
-  (e.g. `plans/my-plan.json`, relative to `pipeline/`).
-- Change the voice, products, size or GPU budget in `config.yaml`.
-- Every video carries an on-screen "AI-generated" label; switch on TikTok's AI-generated toggle when posting drafts.
+Change products, voice, sizes or the GPU in `config.yaml`. `ge/tiktok.py` (Content Posting API
+drafts) is kept for later; posting is manual for now.
