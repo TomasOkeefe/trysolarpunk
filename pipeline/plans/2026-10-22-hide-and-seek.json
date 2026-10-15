@@ -1,0 +1,62 @@
+{
+  "slug": "hide-and-seek",
+  "date": "2026-10-22",
+  "product": "eyelid",
+  "style": "printed",
+  "hook_text": "Playing hide and seek with my notifications",
+  "song": {
+    "title": "Can't Find Me",
+    "style": "English, playful surf rock with twangy guitar, bouncy bass, tambourine, cheeky male vocal with whoa-oh backing vocals, 128 BPM",
+    "lyrics": "[Verse]\nPings are counting up to ten\nLooking for me once again\nBut my phone is wrapped in orange\nAnd I'm long gone round the bend\n\n[Chorus]\nCan't find me, can't find me\nI'm up climbing in a tree\nCan't find me, can't find me\nHide and seek and I am free"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "A small figure tiptoes away from a little house and dives into a big round bush, only his feet sticking out and wiggling. Static medium shot. Bright sunny light, saturated greens."
+    },
+    {
+      "product_image": false,
+      "prompt": "A boy climbs a chunky tree and settles on a branch, peeking out through the leaves with a grin. The camera tilts up with him. Dappled sunlight."
+    },
+    {
+      "product_image": true,
+      "prompt": "A hand gently slides a black smartphone all the way down into a slim terracotta-orange sleeve standing upright on a soft cream studio backdrop, until the phone disappears inside and only the rounded thumb notch at the top remains. A small closed-eye emblem is pressed into the front of the sleeve. The hand pulls away and the sleeve stands still, casting a soft shadow. Static close-up, the light slowly turns warmer."
+    },
+    {
+      "product_image": false,
+      "prompt": "A girl paddles a small rowboat across a calm pond toward a little island, ducks following behind. Wide static shot. Bright midday light, blue water."
+    },
+    {
+      "product_image": false,
+      "prompt": "Two friends hide behind a giant sunflower, giggling, as a dog sniffs past. Static medium shot. Warm sunlight."
+    },
+    {
+      "product_image": false,
+      "prompt": "A figure lies in a hammock between two trees reading a book, swaying gently. The camera slowly pushes in. Soft afternoon light."
+    },
+    {
+      "product_image": false,
+      "prompt": "A family has a picnic on a checkered blanket on a hill, passing sandwiches around. Overhead shot, slowly rotating. Bright sunny colours."
+    },
+    {
+      "product_image": false,
+      "prompt": "A kid rolls down a grassy hill, tumbling over and over, then lies laughing at the bottom. Side tracking shot. Golden light."
+    },
+    {
+      "product_image": false,
+      "prompt": "A figure sits on top of a tree house watching stars appear over a little village with glowing windows. The camera slowly pulls back. Deep blue dusk and warm window glow."
+    }
+  ],
+  "endcard": {
+    "line1": "Notifications can't find you.",
+    "line2": "link in bio"
+  },
+  "caption": "My Eyelid is the best hiding spot. The pings have been counting to ten since Tuesday.",
+  "hashtags": [
+    "#touchgrass",
+    "#solarpunk",
+    "#notifications",
+    "#screentime",
+    "#digitalminimalism"
+  ]
+}

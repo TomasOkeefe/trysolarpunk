@@ -1,0 +1,62 @@
+{
+  "slug": "not-sponsored",
+  "date": "2026-10-23",
+  "product": "merch",
+  "style": "claymation",
+  "hook_text": "This walk is not sponsored",
+  "song": {
+    "title": "No Feed No Ads",
+    "style": "English, mellow reggae with offbeat guitar, warm organ, deep bass, laid-back male vocal, 80 BPM",
+    "lyrics": "[Verse]\nNobody paid me for this sunset\nNobody's selling me the breeze\nTook a walk in my favorite tee\nBrought a friend and some sweet peas\n\n[Chorus]\nNo feed, no ads, no end\nJust a long road and a friend\nNo feed, no ads, no end\nRound the bend and round again"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "A man walks toward the camera along a country path in a cream t-shirt, giving a big thumbs up and a wink. The camera tracks backward. Bright morning sun."
+    },
+    {
+      "product_image": false,
+      "prompt": "Two friends share a slice of watermelon sitting on a stone wall beside the path, laughing. Static medium shot. Warm sunny light."
+    },
+    {
+      "product_image": false,
+      "prompt": "A woman picks blackberries from a hedge along the path and pops one in her mouth, eyes closing with delight. Close-up. Dappled light."
+    },
+    {
+      "product_image": false,
+      "prompt": "A goat pokes its head over a fence and nibbles a man's straw hat as he laughs. Static medium shot. Bright midday light."
+    },
+    {
+      "product_image": true,
+      "prompt": "A cream t-shirt with a simple illustration of rolling green hills and a winding path shaped like an infinity loop lies flat on a sunny wooden picnic table next to a basket of apples, a light breeze lifting its sleeve. Soft daylight, warm shadows. Slow overhead push in."
+    },
+    {
+      "product_image": false,
+      "prompt": "A couple sits on a hilltop bench sharing a thermos of tea, the path winding down into a valley below. Static wide shot. Golden afternoon light."
+    },
+    {
+      "product_image": false,
+      "prompt": "A kid skips a stone across a lake, the stone bouncing many times, and pumps a fist. Side view. Glittering afternoon light."
+    },
+    {
+      "product_image": false,
+      "prompt": "A man lies in tall grass with his hat over his face as a butterfly lands on the hat. Static close-up. Warm late light."
+    },
+    {
+      "product_image": false,
+      "prompt": "Two friends walk away down a winding path into the sunset, arms over each other's shoulders. The camera slowly rises. Peach and gold, calm."
+    }
+  ],
+  "endcard": {
+    "line1": "No feed. No ads. No end.",
+    "line2": "link in bio"
+  },
+  "caption": "This walk is not sponsored. Neither is the sunset. The Infinite Stroll tee just came along for the ride.",
+  "hashtags": [
+    "#touchgrass",
+    "#solarpunk",
+    "#adfree",
+    "#gooutside",
+    "#claymation"
+  ]
+}

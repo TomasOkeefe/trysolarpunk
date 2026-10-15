@@ -1,0 +1,62 @@
+{
+  "slug": "phone-hibernation",
+  "date": "2026-10-18",
+  "product": "hibernator",
+  "style": "felt",
+  "hook_text": "My phone is hibernating till spring",
+  "song": {
+    "title": "Hibernate",
+    "style": "English, cozy country waltz, warm acoustic guitar, pedal steel, gentle fiddle, soft female lead vocal, 3/4 time, 90 BPM",
+    "lyrics": "[Verse]\nTucked my phone up on the fridge\nLike a bear inside a den\nLittle brick of mossy green\nWake it up when spring comes in\n\n[Chorus]\nHibernate, hibernate\nAll the pings can wait\nSnow outside and soup inside\nHibernate tonight"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "A fuzzy bear yawns hugely and curls up to sleep inside a cozy cave, snowflakes drifting past the entrance. Static medium shot. Soft blue winter light and a warm amber glow inside."
+    },
+    {
+      "product_image": false,
+      "prompt": "A woman in a knitted hat stirs a big pot of soup on a stove, steam curling up, then sniffs and smiles. The camera pushes in gently. Warm kitchen glow, orange and cream."
+    },
+    {
+      "product_image": false,
+      "prompt": "Two children build a lumpy snowman in a garden, one placing a carrot nose, then both jump with joy. Static wide shot. Bright white snow, soft blue sky."
+    },
+    {
+      "product_image": true,
+      "prompt": "A hand slides a black smartphone face-first into a small rounded moss-green brick stuck to a white fridge door, the phone settling upright. The brick has a round pale yellow disc on its front. Warm kitchen light drifts across the fridge. Static close-up, the camera eases back slightly as the hand pulls away."
+    },
+    {
+      "product_image": false,
+      "prompt": "Two friends sit by a crackling fireplace playing a board game, one throwing up his arms in triumph. Static medium shot. Flickering orange firelight."
+    },
+    {
+      "product_image": false,
+      "prompt": "A man reads a thick book in an armchair with a sleeping cat on his lap, snow falling past the window behind him. The camera slowly drifts closer. Warm lamp light, deep greens and amber."
+    },
+    {
+      "product_image": false,
+      "prompt": "A girl ice skates in a slow wobbly circle on a frozen pond, arms out wide, giggling. The camera circles slowly around her. Pale winter sun, soft blues."
+    },
+    {
+      "product_image": false,
+      "prompt": "Two neighbours pass a steaming pie over a snowy fence, both grinning. Static side view. Golden afternoon light on snow."
+    },
+    {
+      "product_image": false,
+      "prompt": "A bear sleeps peacefully curled in its cave as the snow outside melts and a single green sprout pops up at the entrance in spring sunlight. Slow push in. Soft green and warm gold."
+    }
+  ],
+  "endcard": {
+    "line1": "Let your phone hibernate.",
+    "line2": "link in bio"
+  },
+  "caption": "My phone went into hibernation in its Hibernator. See you in spring, little guy.",
+  "hashtags": [
+    "#touchgrass",
+    "#solarpunk",
+    "#cozy",
+    "#screentime",
+    "#phonefree"
+  ]
+}

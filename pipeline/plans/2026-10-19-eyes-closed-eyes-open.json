@@ -1,0 +1,62 @@
+{
+  "slug": "eyes-closed-eyes-open",
+  "date": "2026-10-19",
+  "product": "eyelid",
+  "style": "printed",
+  "hook_text": "Closed its eyes so mine opened",
+  "song": {
+    "title": "Eyes Closed, Eyes Open",
+    "style": "English, upbeat synth-pop with toy piano, bubbly bass, handclaps, bright playful female vocal, 120 BPM",
+    "lyrics": "[Verse]\nPulled the covers on my screen\nLittle orange sleeping bag\nNow the world is so much brighter\nAll the colors I forgot\n\n[Chorus]\nEyes closed, eyes open\nPhone's asleep and I am woken\nEyes closed, eyes open\nLook up, the sky is golden"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "A small figure pulls off a sleep mask and blinks in amazement at a bright colourful town full of rounded trees and houses. The camera pushes in on his face. Bright morning light, saturated primary colours."
+    },
+    {
+      "product_image": false,
+      "prompt": "A girl rides a chunky bicycle in a loop around a small town square fountain, ringing her bell. The camera follows from the side. Sunny midday light, bright reds and greens."
+    },
+    {
+      "product_image": true,
+      "prompt": "A hand gently slides a black smartphone all the way down into a slim terracotta-orange sleeve standing upright on a soft cream studio backdrop, until the phone disappears inside and only the rounded thumb notch at the top remains. A small closed-eye emblem is pressed into the front of the sleeve. The hand pulls away and the sleeve stands still, casting a soft shadow. Static close-up, the light slowly turns warmer."
+    },
+    {
+      "product_image": false,
+      "prompt": "A hot air balloon slowly rises above a little town of rounded houses and wind turbines, a small figure waving from the basket. The camera tilts up with it. Clear blue sky, soft daylight."
+    },
+    {
+      "product_image": false,
+      "prompt": "Two friends lie on a hill and point up at chunky clouds drifting by. Overhead shot, the camera slowly rotates. Bright daylight, grass green and sky blue."
+    },
+    {
+      "product_image": false,
+      "prompt": "A baker pulls a big round loaf from a rounded brick oven and holds it up proudly. Static medium shot. Warm golden light."
+    },
+    {
+      "product_image": false,
+      "prompt": "A dog chases a bouncing yellow ball across a garden lawn and catches it, tail wagging. Low tracking shot. Bright sunlight."
+    },
+    {
+      "product_image": false,
+      "prompt": "A family plants a small tree on a hillside next to a turning wind turbine, patting the soil together. Static wide shot. Late afternoon warm light."
+    },
+    {
+      "product_image": false,
+      "prompt": "A figure sits in a rooftop garden watching the sun set over a little town as lights blink on in the houses below. The camera slowly pulls back. Peach and gold, calm."
+    }
+  ],
+  "endcard": {
+    "line1": "Close its eyes. Open yours.",
+    "line2": "link in bio"
+  },
+  "caption": "Gave my phone an Eyelid and suddenly the world loaded in full color. No buffering.",
+  "hashtags": [
+    "#touchgrass",
+    "#solarpunk",
+    "#screentime",
+    "#digitalminimalism",
+    "#lookup"
+  ]
+}

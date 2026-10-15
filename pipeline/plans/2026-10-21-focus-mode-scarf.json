@@ -1,0 +1,62 @@
+{
+  "slug": "focus-mode-scarf",
+  "date": "2026-10-21",
+  "product": "hibernator",
+  "style": "felt",
+  "hook_text": "Tapped the eye. Finished a hobby.",
+  "song": {
+    "title": "Focus Mode",
+    "style": "English, mellow indie folk with banjo, soft brushed drums, warm cello, gentle duet vocals, 96 BPM",
+    "lyrics": "[Verse]\nTapped the eye and it went quiet\nPhone face down against the wall\nPicked the sweater I abandoned\nKnitted all the way through fall\n\n[Chorus]\nFocus mode, focus mode\nLittle hands and a long slow road\nFocus mode, focus mode\nLook at all the things I made"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "A woman holds up a finished, wildly long striped scarf that unrolls all the way across the room, beaming with pride. Static wide shot. Warm afternoon light, bright stripes."
+    },
+    {
+      "product_image": false,
+      "prompt": "A man paints a small canvas of a mountain at an easel by the window, adds a final dab and steps back. Static medium shot. Soft daylight."
+    },
+    {
+      "product_image": true,
+      "prompt": "A finger gently taps the round pale yellow disc on a small rounded moss-green brick stuck to a white fridge door, a black smartphone standing upright inside it facing the wall. Warm kitchen light slowly shifts across the fridge. Static close-up."
+    },
+    {
+      "product_image": false,
+      "prompt": "A girl builds a tall wobbly tower of wooden blocks on the floor and it stays standing as she throws her hands up. Static low shot. Warm lamp light."
+    },
+    {
+      "product_image": false,
+      "prompt": "A boy waters a row of seedlings on a sunny windowsill, each one unfolding a tiny leaf. Close-up, the camera slides along the windowsill. Bright morning light, fresh greens."
+    },
+    {
+      "product_image": false,
+      "prompt": "A grandmother teaches a child to play a simple tune on a small piano, both swaying. Static medium shot. Warm golden light."
+    },
+    {
+      "product_image": false,
+      "prompt": "A man fixes a bicycle wheel in a garden shed, spins it and nods happily. Static medium shot. Dusty afternoon sunbeams."
+    },
+    {
+      "product_image": false,
+      "prompt": "Friends gather around a table admiring a lumpy homemade clay vase, passing it around and cheering. Static medium shot. Warm evening light."
+    },
+    {
+      "product_image": false,
+      "prompt": "A woman sits in a window seat wrapped in her long striped scarf, sipping tea as the sun sets over the rooftops. The camera slowly pulls back. Peach and gold, calm."
+    }
+  ],
+  "endcard": {
+    "line1": "Tap the eye. Make something.",
+    "line2": "link in bio"
+  },
+  "caption": "Tapped the eye on my Hibernator, my phone went quiet, and I finally finished the scarf. It is twelve feet long. No regrets.",
+  "hashtags": [
+    "#touchgrass",
+    "#solarpunk",
+    "#hobbies",
+    "#focus",
+    "#phonefree"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "slug": "infinite-stroll",
+  "date": "2026-10-17",
+  "product": "merch",
+  "style": "claymation",
+  "hook_text": "My new feed never ends either",
+  "song": {
+    "title": "Infinite Stroll",
+    "style": "English, cheerful folk march, accordion, snare drum, tuba, whistling, rousing group vocals, 112 BPM",
+    "lyrics": "[Verse]\nSwapped my thumb scroll for my feet\nEvery corner something sweet\nNo ads pop up beside the trees\nJust a dog who wants to meet\n\n[Chorus]\nInfinite stroll, infinite stroll\nNo refresh, just let it roll\nLeft foot, right foot, out we go\nInfinite stroll, infinite stroll"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "A cheerful woman in a yellow raincoat marches out of a round green door onto a winding path, swinging her arms high, a small dog trotting behind her. The camera tracks backwards in front of her. Bright morning sun, grass green and sky blue."
+    },
+    {
+      "product_image": false,
+      "prompt": "A dog with floppy ears trots along a winding path through rolling hills, tail wagging, turning to look back at the camera. Low tracking shot. Golden morning light."
+    },
+    {
+      "product_image": false,
+      "prompt": "Two neighbours wave at each other over a garden fence covered in climbing beans as one walks past with a walking stick. Static medium shot. Warm sunlight, leafy greens."
+    },
+    {
+      "product_image": false,
+      "prompt": "A man stops on a small wooden bridge over a stream and leans on the rail, watching a duck paddle below, smiling. The camera slowly pushes in. Dappled afternoon light, soft blues and greens."
+    },
+    {
+      "product_image": true,
+      "prompt": "A cream t-shirt with a simple illustration of rolling green hills and a winding path shaped like an infinity loop hangs on a wooden hanger against a sunny cream wall, gently swaying in a breeze from an open window. Soft daylight, warm shadows. Static close-up."
+    },
+    {
+      "product_image": false,
+      "prompt": "Three friends walk side by side up a grassy hill toward a big round sun, their long shadows stretching behind them. Wide static shot. Late afternoon gold."
+    },
+    {
+      "product_image": false,
+      "prompt": "A girl hops across stepping stones in a shallow creek, arms out for balance, laughing. The camera tracks with her from the side. Bright clear light, sparkling water."
+    },
+    {
+      "product_image": false,
+      "prompt": "An old man sits on a bench under a big oak tree at a bend in the path and tips his hat to a passing cyclist. Static wide shot. Warm late light, soft greens."
+    },
+    {
+      "product_image": false,
+      "prompt": "A woman stands at the top of a hill with her arms wide as the path winds endlessly away below her into hazy hills under a peach sunset. The camera slowly pulls back. Peach, gold and lavender, calm."
+    }
+  ],
+  "endcard": {
+    "line1": "The only feed worth refreshing.",
+    "line2": "link in bio"
+  },
+  "caption": "Traded the infinite scroll for the Infinite Stroll tee. Same endless feeling, way more trees.",
+  "hashtags": [
+    "#touchgrass",
+    "#solarpunk",
+    "#digitalminimalism",
+    "#gooutside",
+    "#claymation"
+  ]
+}

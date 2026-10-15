@@ -1,0 +1,62 @@
+{
+  "slug": "fridge-family",
+  "date": "2026-10-20",
+  "product": "hibernator",
+  "style": "claymation",
+  "hook_text": "POV: my phone joined the fridge art",
+  "song": {
+    "title": "On The Fridge",
+    "style": "English, 1960s-style soul with horn section, organ, tambourine, warm male lead vocal with backing harmonies, 104 BPM",
+    "lyrics": "[Verse]\nHung my phone up with the art\nRight beside the kid's giraffe\nGrocery list and birthday card\nNow it's part of every laugh\n\n[Chorus]\nOn the fridge, on the fridge\nThat's where the good stuff lives\nOn the fridge, on the fridge\nCome and dance in the kitchen"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "A little kid proudly sticks a crayon drawing of a sun onto a fridge door with a magnet, then jumps with excitement. Static medium shot. Bright kitchen morning light, sunny yellow."
+    },
+    {
+      "product_image": false,
+      "prompt": "A couple dances in a small kitchen, spinning each other around while a pot bubbles on the stove. The camera circles slowly. Warm golden light."
+    },
+    {
+      "product_image": false,
+      "prompt": "A grandpa flips open a cookbook, squints at it, then grins and pulls on an apron. Static close-up. Warm window light."
+    },
+    {
+      "product_image": true,
+      "prompt": "A hand slides a black smartphone face-first into a small rounded moss-green brick stuck to a white fridge door, the phone settling upright. The brick has a round pale yellow disc on its front. Warm kitchen light drifts across the fridge. Static close-up, the camera eases back slightly as the hand pulls away."
+    },
+    {
+      "product_image": false,
+      "prompt": "A family sits around a wooden kitchen table sharing a big bowl of noodles, everyone laughing. Overhead shot, slowly rotating. Warm lamp light, orange and cream."
+    },
+    {
+      "product_image": false,
+      "prompt": "A girl plays a ukulele on the kitchen counter while her cat bats at the strings. Static medium shot. Soft afternoon light."
+    },
+    {
+      "product_image": false,
+      "prompt": "A man opens the fridge, pulls out a slice of watermelon and takes a huge bite. Close-up. Cool fridge light mixing with warm kitchen sun."
+    },
+    {
+      "product_image": false,
+      "prompt": "Friends bake cookies together, one sneaking a bite of dough as another laughs. Static medium shot. Warm golden light."
+    },
+    {
+      "product_image": false,
+      "prompt": "A woman sits on the back steps of the kitchen with a cup of tea, watching fireflies over the garden at dusk. The camera slowly pulls back. Deep blue and warm amber."
+    }
+  ],
+  "endcard": {
+    "line1": "Phone on fridge. Feet on floor.",
+    "line2": "link in bio"
+  },
+  "caption": "My phone lives on the fridge now, in its Hibernator, next to the good drawings. Kitchen dance parties are back.",
+  "hashtags": [
+    "#touchgrass",
+    "#solarpunk",
+    "#kitchendance",
+    "#phonefree",
+    "#claymation"
+  ]
+}
