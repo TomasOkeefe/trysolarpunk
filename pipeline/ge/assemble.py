@@ -87,11 +87,11 @@ def caption_chunks(lines, body):
     return out
 
 
-def caption_png(words, active, tilt, path):
+def caption_png(words, active, tilt, path, cy=1120):
     """One caption state: the chunk's words, the sung one in sun yellow and a touch bigger, slightly tilted."""
     im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
-    f, fa, max_w, cy, lh = font(100, weight=900), font(114, weight=900), 780, 1120, 132
+    f, fa, max_w, lh = font(100, weight=900), font(114, weight=900), 780, 132
     sp = d.textlength(" ", font=f)
     rows, cur, cur_w = [], [], 0
     for i, w in enumerate(words):
@@ -112,8 +112,9 @@ def caption_png(words, active, tilt, path):
     im.rotate(tilt, center=(W / 2, cy), resample=Image.BICUBIC).save(path)
 
 
-def caption_track(lines, body, tmp):
-    """Write an ffmpeg concat list of caption states (blank between lines) and return its path."""
+def caption_track(lines, body, tmp, keep_clear=(0, 0)):
+    """Write an ffmpeg concat list of caption states (blank between lines) and return its path.
+    Captions overlapping keep_clear (the product shot) move below the product so they don't cover it."""
     blank = tmp / "cap_blank.png"
     Image.new("RGBA", (W, H), (0, 0, 0, 0)).save(blank)
     entries, t = [], 0.0
@@ -125,7 +126,8 @@ def caption_track(lines, body, tmp):
             a, b = max(starts[i], start), min(starts[i + 1], end)
             if b - a > 0.01:
                 png = tmp / f"cap_{k:03d}_{i}.png"
-                caption_png([w for w, _ in words], i, (-2.5, 2, -1.5, 3)[k % 4], png)
+                caption_png([w for w, _ in words], i, (-2.5, 2, -1.5, 3)[k % 4], png,
+                            cy=1480 if start < keep_clear[1] and end > keep_clear[0] else 1120)
                 entries.append((png, b - a))
         t = end
     entries.append((blank, max(0.1, body - t) + 5))
@@ -228,7 +230,9 @@ def assemble(plan, song, clips, out, target=45, endcard=3.0, words=None, anim_fp
     run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", body])
 
     hook_png(plan["hook_text"], tmp / "hook.png")
-    caps = caption_track(lines, total - endcard, tmp)
+    prod = next((i for i, s in enumerate(plan["shots"]) if s.get("product_image")), None)
+    clear = (sum(durs[:prod]), sum(durs[:prod + 1])) if prod is not None and prod < len(durs) else (0, 0)
+    caps = caption_track(lines, total - endcard, tmp, clear)
     fade_start = max(0.0, total - 1.5)
     run(["ffmpeg", "-y", "-loglevel", "error", "-i", body, "-i", tmp / "hook.png",
          "-f", "concat", "-safe", "0", "-i", caps, "-i", song,

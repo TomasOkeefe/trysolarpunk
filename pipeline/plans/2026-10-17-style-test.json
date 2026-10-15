@@ -1,0 +1,56 @@
+{
+  "slug": "style-test",
+  "date": "2026-10-17",
+  "product": "hibernator",
+  "style": "",
+  "hook_text": "My phone lives on the fridge now",
+  "song": {
+    "title": "Fridge Phone",
+    "style": "English, bouncy ukulele indie pop, cheerful whistling, hand claps, light glockenspiel, upbeat playful male lead vocal, 118 BPM",
+    "lyrics": "[Verse]\nStuck my phone up on the fridge\nRight beside the grocery list\nNow it's chilling with the magnets\nAnd I'm out here being present\n\n[Chorus]\nBye bye phone, see you later\nNap time on the refrigerator\nBye bye phone, I'm going outside\nThe sun is up and so am I"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A cheerful round-faced woman throws open a kitchen window and leans out, stretching her arms wide as sunlight pours in and a little bird lands on the sill. Potted herbs on the windowsill. The camera pushes in gently. Warm yellows and soft greens."
+    },
+    {
+      "product_image": false,
+      "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A chubby little man rides a bright red bicycle down a curvy hill road, his scarf flapping behind him, rolling green hills and a small wind turbine in the background. The camera tracks alongside him. Sunny sky blue and grass green."
+    },
+    {
+      "product_image": false,
+      "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. Two friends sit at a small wooden table in a rooftop garden and clink big mugs of tea together, laughing, sunflowers swaying behind them. Static medium shot. Golden afternoon light, cream and terracotta tones."
+    },
+    {
+      "product_image": true,
+      "prompt": "A hand slides a black smartphone face-first into a small rounded moss-green brick stuck to a white fridge door, the phone settling upright with a soft click. The brick has a round pale yellow disc on its front. Warm morning kitchen light drifts across the fridge. The camera holds steady in a close-up, then eases back slightly as the hand pulls away."
+    },
+    {
+      "product_image": false,
+      "prompt": "Hand-drawn 2D cartoon animation, wobbly boiling ink outlines, flat gouache colours on textured paper, cute round characters with dot eyes. A girl with a big curly ponytail skips along a sidewalk lined with flower planters, swinging a tote bag, a small dog bouncing beside her. The camera follows sideways. Sunny pastel yellows and greens."
+    },
+    {
+      "product_image": false,
+      "prompt": "Hand-drawn 2D cartoon animation, wobbly boiling ink outlines, flat gouache colours on textured paper, cute round characters with dot eyes. An old man in a straw hat waters a row of tall tomato plants with a watering can, water arcing out in a sparkly stream, a butterfly circling his hat. Static wide shot. Bright morning light, leafy greens and tomato red."
+    },
+    {
+      "product_image": false,
+      "prompt": "Hand-drawn 2D cartoon animation, wobbly boiling ink outlines, flat gouache colours on textured paper, cute round characters with dot eyes. A boy lies on his back in a meadow and points up at a big fluffy cloud that slowly changes shape into a smiling sun. The camera slowly tilts up from the boy to the sky. Soft blue sky, warm cream clouds."
+    },
+    {
+      "product_image": false,
+      "prompt": "Cut-paper and felt stop-motion animation, layered construction-paper shapes and fuzzy felt characters with button eyes, slightly jittery movement, warm craft-table light. A felt girl kneels in a paper garden and pulls a giant orange carrot out of the ground, tumbling backwards with surprise and joy. Static side view. Warm oranges, moss greens and cream."
+    },
+    {
+      "product_image": false,
+      "prompt": "Cut-paper and felt stop-motion animation, layered construction-paper shapes and fuzzy felt characters with button eyes, slightly jittery movement, warm craft-table light. Two felt friends sit on a paper hill watching a big paper sun sink behind layered paper mountains, one resting her head on the other's shoulder. The camera slowly pulls back. Peach, gold and soft purple, a deep calm."
+    }
+  ],
+  "endcard": {
+    "line1": "Give your phone a nap.",
+    "line2": "link in bio"
+  },
+  "caption": "Style test, not for posting.",
+  "hashtags": ["#solarpunk", "#test", "#hibernator"]
+}
