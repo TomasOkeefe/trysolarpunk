@@ -28,7 +28,7 @@ exec >>"$OUT/job.log" 2>&1
 
 # 0. status server first, so progress is visible from the start
 python3 "$GE/worker/serve.py" 8080 "$W/out" &
-stage "setup"
+stage "setup on $(nvidia-smi --query-gpu=name --format=csv,noheader 2>/dev/null | head -1)"
 export DEBIAN_FRONTEND=noninteractive UV_CACHE_DIR=$W/.uv-cache
 # RunPod images set HF_HUB_ENABLE_HF_TRANSFER=1 globally, which breaks downloads in venvs without hf_transfer
 export HF_HUB_ENABLE_HF_TRANSFER=0

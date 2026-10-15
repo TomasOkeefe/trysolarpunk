@@ -41,7 +41,8 @@ def main():
     for f in files:
         plan = concept.validate(json.loads(pathlib.Path(f).read_text()), cfg["video"]["shots"])
         plan["image"] = images.get(plan["product"])  # first frame of the product shot (None: text only)
-        plan.setdefault("style", cfg["video"].get("style", ""))
+        style = plan.get("style", cfg["video"].get("style", ""))
+        plan["style"] = cfg.get("styles", {}).get(style, style)  # a style name, or literal style text
         plan["anim_fps"] = cfg["video"].get("anim_fps")
         plans.append(plan)
     assert_code_pushed()

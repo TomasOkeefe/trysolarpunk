@@ -18,7 +18,7 @@ To make videos, use the `make-videos` skill. In short: Claude writes plans in
 `pipeline/plans/`, `python3 run.py plans/...` renders a whole batch in one RunPod GPU session
 (YuE2 songs, LTX-2.5 clips, lyric captions, ffmpeg edit; TikTok's own AI label via the upload toggle), and videos land in `videos/` (gitignored).
 
-- GPU: RunPod, community L40S, prepaid credit. Key in `~/.runpod/config.toml` (`flash login`).
+- GPU: RunPod, cheapest free 48 GB card (community A6000/A40 first, tiers in `ge/runpod.py`), prepaid credit. Key in `~/.runpod/config.toml` (`flash login`).
   The pod reads the Hugging Face token from the RunPod secret `hf_token`.
   Modal is the planned next provider once the RunPod credit is used (account exists, not set up).
 - The pod clones github.com/TomasOkeefe/trysolarpunk, so push pipeline code before rendering.

@@ -31,8 +31,8 @@ doesn't sink the batch.
 
 ## Costs
 
-Community L40S at about $1.10/h: about 10 min of setup plus about 1 min per clip, so a
-7-video batch (63 clips) should be roughly 75 min, about $1.40, or $0.20 a video.
+Community A6000 at about $0.33/h: about 13 min of setup plus about 50 s per clip, so a
+7-video batch (63 clips) should be roughly 75 min, about $0.45, or 7 cents a video.
 To be confirmed by the first batch. Planning costs nothing extra (Claude writes the plans in the chat).
 
 ## By hand

@@ -15,7 +15,14 @@ import urllib.request
 from ge import box
 
 API = "https://rest.runpod.io/v1"
-GPU_PREFERENCE = ["NVIDIA L40S", "NVIDIA RTX 6000 Ada Generation", "NVIDIA RTX A6000", "NVIDIA A40"]
+# 48 GB cards, cheapest first (per-hour prices from Oct 2026). Each tier is one create attempt; the first
+# with a free CUDA 13 host wins. A6000/A40 render a clip in ~50 s, as fast as we saw on pricier cards.
+TIERS = [
+    ("COMMUNITY", ["NVIDIA RTX A6000", "NVIDIA A40"]),                    # $0.33-0.35
+    ("SECURE", ["NVIDIA RTX A6000", "NVIDIA A40"]),                       # $0.59
+    ("COMMUNITY", ["NVIDIA L40", "NVIDIA RTX 6000 Ada Generation", "NVIDIA L40S"]),  # $0.69-0.79
+    ("SECURE", ["NVIDIA L40", "NVIDIA RTX 6000 Ada Generation", "NVIDIA L40S"]),     # $0.82-1.09
+]
 
 
 def _key():
@@ -58,10 +65,8 @@ def run_job(cfg, plans, repo_url, dest, log=print):
     body = {
         "name": f"ge-{plans[0]['slug']}-x{len(plans)}"[:60],
         "imageName": g["image"],
-        "gpuTypeIds": GPU_PREFERENCE,
         "gpuCount": 1,
         "allowedCudaVersions": ["13.0"],  # LTX's torch needs a CUDA 13 driver; older hosts fall back to CPU
-        "cloudType": g.get("cloud", "COMMUNITY"),
         "containerDiskInGb": 40,
         "volumeInGb": g["disk_gb"],
         "volumeMountPath": "/workspace",
@@ -71,11 +76,16 @@ def run_job(cfg, plans, repo_url, dest, log=print):
                 "PLANS_B64": box.pack_plans(plans)},
         "dockerStartCmd": ["bash", "-c", start],
     }
-    try:
-        pod = _req("POST", "/pods", body)
-    except urllib.error.HTTPError as e:  # no community capacity: try the (pricier) secure cloud once
-        log(f"community cloud refused ({e.code}: {e.read()[:200]!r}); trying secure cloud")
-        pod = _req("POST", "/pods", {**body, "cloudType": "SECURE"})
+    pod = None
+    for cloud, gpus in TIERS:
+        try:
+            pod = _req("POST", "/pods", {**body, "cloudType": cloud, "gpuTypeIds": gpus, "gpuTypePriority": "custom"})
+            log(f"rented {cloud.lower()} {' / '.join(x.replace('NVIDIA ', '') for x in gpus)} at ${pod.get('costPerHr')}/h")
+            break
+        except urllib.error.HTTPError as e:
+            log(f"no {cloud.lower()} {' / '.join(x.replace('NVIDIA ', '') for x in gpus)} free ({e.code})")
+    if pod is None:
+        raise SystemExit("no GPU available in any tier; try again later")
     pid = pod["id"]
     base = f"https://{pid}-8080.proxy.runpod.net/{token}"
     log(f"pod {pid} ({pod.get('machine', {}).get('gpuDisplayName', 'GPU')}) - status: {base}/status.log")
