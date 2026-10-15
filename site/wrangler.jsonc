@@ -1,0 +1,13 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "trysolarpunk",
+  "pages_build_output_dir": "./public",
+  "compatibility_date": "2026-10-01",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "trysolarpunk-waitlist",
+      "database_id": "28285b16-eb2e-41d5-be36-8e15eaa454ec"
+    }
+  ]
+}
