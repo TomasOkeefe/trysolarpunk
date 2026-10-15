@@ -21,9 +21,10 @@ from ge import runpod
 ROOT = pathlib.Path(__file__).resolve().parent
 REPO = "TomasOkeefe/trysolarpunk"
 # 80 GB+ cards train in bf16; 48 GB cards fall back to int8 (lora_config.py), slower
-TIERS = [
-    ("SECURE", ["NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"]),
-    ("COMMUNITY", ["NVIDIA A100 80GB PCIe", "NVIDIA A100-SXM4-80GB"]),
+TIERS = [  # cheapest first; Blackwell PRO 6000s (96 GB) are also faster than A100s
+    ("SECURE", ["NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition"]),          # $0.50/h
+    ("COMMUNITY", ["NVIDIA A100 80GB PCIe", "NVIDIA A100-SXM4-80GB"]),               # $1.19-1.39
+    ("COMMUNITY", ["NVIDIA RTX PRO 6000 Blackwell Workstation Edition"]),             # $1.69
     ("SECURE", ["NVIDIA A100 80GB PCIe", "NVIDIA A100-SXM4-80GB"]),
     ("COMMUNITY", ["NVIDIA H100 PCIe", "NVIDIA H100 80GB HBM3"]),
     ("COMMUNITY", ["NVIDIA RTX A6000", "NVIDIA A40"]),
