@@ -35,14 +35,23 @@ def pick_products(cfg, n):
     return [by_id[i] for i in picks]
 
 
-def expand(plan, characters):
-    """Replace {name} in shot prompts with the character's fixed description."""
+def expand(plan, characters, loras=None):
+    """Replace {name} in shot prompts with the character's fixed description. A character with a
+    trained LoRA (config.yaml loras) gets its trigger word in front, and the plan lists the LoRA."""
+    loras, used = loras or {}, {}
     for s in plan["shots"]:
         p = s["prompt"]
         for name in re.findall(r"\{(\w+)\}", p):
             assert name in characters, f"unknown character {{{name}}}"
-            p = p.replace("{" + name + "}", characters[name])
-        s["prompt"] = p[:1].upper() + p[1:]
+            desc = characters[name]
+            if name in loras:
+                desc = f"{loras[name]['trigger']} {desc}"
+                used[name] = loras[name]
+            p = p.replace("{" + name + "}", desc)
+        triggered = any(p.startswith(l["trigger"]) for l in loras.values())
+        s["prompt"] = p if triggered else p[:1].upper() + p[1:]
+    if used:
+        plan["loras"] = [{"url": l["url"], "strength": l.get("strength", 1.0)} for l in used.values()]
     return plan
 
 
@@ -79,7 +88,7 @@ def main():
         slugs = []
         for f in rest:
             plan = json.loads(pathlib.Path(f).read_text())
-            validate(expand(plan, cfg.get("characters", {})), cfg["video"]["shots"])
+            validate(expand(plan, cfg.get("characters", {}), cfg.get("loras")), cfg["video"]["shots"])
             slugs.append(plan["slug"])
             print(f"ok  {f}")
         assert len(set(slugs)) == len(slugs), "duplicate slugs"

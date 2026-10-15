@@ -51,6 +51,9 @@ characters:
     black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and
     green rubber boots
 
+# Trained character LoRAs (train_lora.py). Shots that use the character load it and get the trigger word.
+loras: {}
+
 styles:
   claymation: >-
     Claymation stop-motion animation, handmade plasticine characters with visible thumbprints

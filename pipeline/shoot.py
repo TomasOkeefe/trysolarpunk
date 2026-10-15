@@ -40,7 +40,7 @@ if __name__ == "__main__":
     ap.add_argument("--frames", type=int, default=49, help="frames per clip (8k+1); 49 is ~2 s")
     a = ap.parse_args()
     cfg = yaml.safe_load((ROOT / "config.yaml").read_text())
-    plan = concept.expand(json.loads(pathlib.Path(a.plan).read_text()), cfg.get("characters", {}))
+    plan = concept.expand(json.loads(pathlib.Path(a.plan).read_text()), cfg.get("characters", {}), cfg.get("loras"))
     style = plan.get("style", cfg["video"].get("style", ""))
     plan["style"] = cfg.get("styles", {}).get(style, style)
     run.assert_code_pushed()

@@ -149,6 +149,21 @@ OFFLOAD=(); [ "${VRAM:-0}" -lt 28000 ] && OFFLOAD=(--offload cpu)
 missing_clips() {  # how many shots have no clip yet
   python3 -c "import json,pathlib,sys;print(sum(not (d/'clips'/f'shot_{i:02d}.mp4').exists() for d in pathlib.Path(sys.argv[1]).iterdir() if (d/'plan.json').exists() for i in range(len(json.loads((d/'plan.json').read_text())['shots']))))" "$B"
 }
+# character LoRAs the plans ask for (concept.expand lists them): download once, apply to the whole batch
+LORA_ARGS=()
+mkdir -p $W/loras
+while read -r url strength; do
+  [ -n "$url" ] || continue
+  f=$W/loras/$(basename "$url")
+  [ -s "$f" ] || curl -sfL "$url" -o "$f" || fail "lora download $url"
+  LORA_ARGS+=(--lora "$f" "$strength"); log "lora: $(basename "$f") at $strength"
+done < <(python3 -c "
+import json, pathlib, sys
+seen = {}
+for p in pathlib.Path(sys.argv[1]).glob('*/plan.json'):
+    for l in json.loads(p.read_text()).get('loras', []):
+        seen[l['url']] = l.get('strength', 1.0)
+for u, s in seen.items(): print(u, s)" "$B")
 clips() {  # extra args go to LTX, e.g. --offload cpu
 ( cd $W/ltx && STAGE_FILE="$OUT/STAGE" uv run --no-sync python "$GE/worker/gen_clips.py" "$B" -- \
     --transformer-path       "$L/diffusion_models/ltx-2.5-22b-distilled-transformer-bf16.safetensors" \
@@ -157,7 +172,7 @@ clips() {  # extra args go to LTX, e.g. --offload cpu
     --audio-vae-path         "$L/vae/ltx-2.5-audio-vae-bf16.safetensors" \
     --spatial-upsampler-path "$L/latent_upscale_models/ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors" \
     --width "$GWIDTH" --height "$GHEIGHT" --num-frames "$GFRAMES" --frame-rate 24 \
-    --quantization fp8-cast "$@" )
+    --quantization fp8-cast "${LORA_ARGS[@]}" "$@" )
 }
 if [ -n "${PROBE_MODES:-}" ]; then
   mkdir -p "$OUT/probe"
