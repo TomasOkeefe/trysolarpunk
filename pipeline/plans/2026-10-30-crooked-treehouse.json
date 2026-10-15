@@ -1,0 +1,62 @@
+{
+  "slug": "crooked-treehouse",
+  "date": "2026-10-30",
+  "product": "hibernator",
+  "hook_text": "No phones this weekend. We built this.",
+  "song": {
+    "title": "Up In The Treehouse",
+    "style": "English, bright indie pop with handclaps, glockenspiel and acoustic guitar, warm friendly male lead vocal, slightly raspy with a sweet child backing vocal, 116 BPM",
+    "lyrics": "[Verse]\nSaturday the phone went on the fridge\nNiece came over with a plan and a wish\nHammer, nails and a pile of wood\nBuilt it crooked but it's built for good\n\n[Chorus]\nUp in the treehouse, up in the leaves\nNobody finds us except the breeze\nUp in the treehouse, way up high\nCloser to the clouds and the big blue sky\n\n[Verse]\nWonky roof and a rope for a door\nLemonade and a sleeping bag floor\nCounted stars until we lost the count\nAn owl came by to check us out\n\n[Chorus]\nUp in the treehouse, up in the leaves\nBest weekend you would ever believe\nUp in the treehouse, way up high\nPhone's asleep and so am I"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "{moss} and his little niece with two puffy pigtails and a red dress wave from the window of a wonky treehouse high in a big oak tree. Low angle, static. Bright blue sky."
+    },
+    {
+      "product_image": true,
+      "prompt": "A hand slides a black smartphone face-first into a small rounded moss-green brick stuck to a white fridge door, the phone settling upright. The brick has a round pale yellow disc on its front. Warm kitchen light drifts across the fridge. Static close-up, the camera eases back slightly as the hand pulls away."
+    },
+    {
+      "product_image": false,
+      "prompt": "his little niece with two puffy pigtails and a red dress holds up a crayon drawing of a treehouse and {moss} gasps with excitement. Static medium shot. Warm morning light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} hammers a plank onto a tree branch while his little niece with two puffy pigtails and a red dress holds it steady. Static medium shot. Dappled sunlight."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} and his little niece with two puffy pigtails and a red dress lift a crooked little roof into place; it tilts and they both laugh. Static wide shot. Golden afternoon light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} climbs up a rope ladder after his little niece with two puffy pigtails and a red dress into the treehouse. The camera tilts up. Dappled light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} and his little niece with two puffy pigtails and a red dress sip lemonade at the treehouse window, swinging their legs. Static medium shot. Warm late light."
+    },
+    {
+      "product_image": false,
+      "prompt": "At night {moss} and his little niece with two puffy pigtails and a red dress lie in sleeping bags looking up at the stars through the treehouse roof, and an owl lands on a branch beside them. Static medium shot. Deep blue moonlight."
+    },
+    {
+      "product_image": false,
+      "prompt": "Sunrise over the crooked treehouse in the big oak, birds waking up in the branches. The camera slowly pulls back. Peach and gold, calm."
+    }
+  ],
+  "endcard": {
+    "line1": "Build something crooked.",
+    "line2": "link in bio"
+  },
+  "caption": "Moss and his niece put the phone in the Hibernator for a weekend and built a very crooked treehouse.",
+  "hashtags": [
+    "#touchgrass",
+    "#solarpunk",
+    "#claymation",
+    "#treehouse",
+    "#phonefree"
+  ],
+  "style": "claymation"
+}

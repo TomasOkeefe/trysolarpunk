@@ -1,0 +1,62 @@
+{
+  "slug": "terrible-trumpet",
+  "date": "2026-10-26",
+  "product": "hibernator",
+  "hook_text": "Phone on the fridge. Trumpet in hand.",
+  "song": {
+    "title": "Toot Toot",
+    "style": "English, joyful brass band ska with trumpets, trombone, offbeat guitar and bouncy drums, warm friendly male lead vocal, slightly raspy, rowdy gang vocals, 140 BPM",
+    "lyrics": "[Verse]\nPhone went quiet on the fridge\nFound a trumpet, dusty, old\nFirst note sounded like a goose\nSecond note was twice as bold\n\n[Chorus]\nToot toot, here comes the band\nPots and pans and a helping hand\nToot toot, down the street\nEverybody's got the beat\n\n[Verse]\nKid next door brought out a drum\nGrandpa brought his washboard too\nSomeone's dog began to howl\nNow the whole block's playing through\n\n[Chorus]\nToot toot, here comes the band\nNobody's scrolling, everybody stands\nToot toot, under the moon\nWe're terrible and right on tune"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "{moss} blasts a shiny trumpet with puffed-out cheeks, and a flock of birds bursts out of a tree behind him. Low angle, static. Bright sunny light."
+    },
+    {
+      "product_image": true,
+      "prompt": "A finger gently taps the round pale yellow disc on a small rounded moss-green brick stuck to a white fridge door, a black smartphone standing upright inside it facing the wall. Warm light slowly shifts across the fridge. Static close-up."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} lifts a dusty trumpet out of an old wooden box in the attic and blows the dust off, delighted. Static medium shot. Dusty sunbeams."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} plays a squeaky note and a white goose next to him honks back, offended. Static medium shot. Warm afternoon light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} marches down the street playing his trumpet while a lanky teenage girl with a purple mohawk joins him banging a big drum. The camera tracks backward. Bright sunny light."
+    },
+    {
+      "product_image": false,
+      "prompt": "An old man with a long white beard plays a washboard while a floppy-eared dog howls along beside him. Static medium shot. Golden light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} leads a tiny parade of kids banging pots and pans down a leafy street. The camera tracks sideways. Late afternoon gold."
+    },
+    {
+      "product_image": false,
+      "prompt": "Neighbors dance in the street under strings of warm lights as {moss} plays his trumpet. The camera circles slowly. Warm evening glow."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} sits on a curb under the moon with a lanky teenage girl with a purple mohawk and the old man, all laughing, the trumpet in his lap. The camera slowly pulls back. Deep blue and warm amber, calm."
+    }
+  ],
+  "endcard": {
+    "line1": "Be terrible at something fun.",
+    "line2": "link in bio"
+  },
+  "caption": "Moss tapped the eye on his Hibernator and found an old trumpet. He is terrible. The whole block joined anyway.",
+  "hashtags": [
+    "#touchgrass",
+    "#solarpunk",
+    "#claymation",
+    "#hobbies",
+    "#phonefree"
+  ],
+  "style": "claymation"
+}

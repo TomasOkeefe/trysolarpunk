@@ -1,0 +1,62 @@
+{
+  "slug": "walking-club",
+  "date": "2026-10-29",
+  "product": "merch",
+  "hook_text": "Started a walking club. It grew.",
+  "song": {
+    "title": "Come Walk With Me",
+    "style": "English, stomping folk-rock march with banjo, big drums and gang vocals, warm friendly male lead vocal, slightly raspy, 120 BPM",
+    "lyrics": "[Verse]\nMonday morning, just me and my shoes\nTuesday came a dog with nothing to lose\nWednesday brought the baker and her son\nThursday, half the town had come\n\n[Chorus]\nInfinite stroll, there's no finish line\nNobody's tracking, everybody's fine\nInfinite stroll, come walk with me\nNo feed, no ads, just company\n\n[Verse]\nFriday we were singing down the lane\nSaturday we laughed right through the rain\nSunday every porch had someone new\nThere's always room, and a shirt for you\n\n[Chorus]\nInfinite stroll, there's no finish line\nOver the hills and past the pines\nInfinite stroll, come walk with me\nNo feed, no ads, just company"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "{moss} leads a huge happy crowd of walkers over the top of a green hill toward the camera, waving. Wide shot, static. Bright morning sun."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} walks alone down a quiet path at dawn, his raincoat open over a cream t-shirt. The camera tracks backward. Soft early light."
+    },
+    {
+      "product_image": false,
+      "prompt": "A scruffy brown dog trots out of a hedge and falls into step beside {moss}, tail wagging. Low tracking shot. Morning light."
+    },
+    {
+      "product_image": false,
+      "prompt": "a tall baker woman with a flour-dusted blue apron and her small son join {moss} on the path, the boy holding a warm loaf. Static medium shot. Warm morning light."
+    },
+    {
+      "product_image": true,
+      "prompt": "A cream t-shirt with a simple illustration of rolling green hills and a winding path shaped like an infinity loop hangs on a wooden hanger against a sunny cream wall, gently swaying in a breeze from an open window. Soft daylight, warm shadows. Static close-up."
+    },
+    {
+      "product_image": false,
+      "prompt": "A crowd of walkers sings arm in arm down a country lane behind {moss}. The camera tracks backward. Golden light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} and the walkers laugh through a rain shower under colorful umbrellas. Static wide shot. Soft grey light with bright umbrellas."
+    },
+    {
+      "product_image": false,
+      "prompt": "Neighbors on their porches wave and step down to join {moss} and the walking crowd. The camera tracks sideways. Late afternoon gold."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} sits on a hilltop with all the walkers watching the sunset, the dog asleep at his feet. The camera slowly pulls back. Peach and gold, calm."
+    }
+  ],
+  "endcard": {
+    "line1": "No feed. No ads. No end.",
+    "line2": "link in bio"
+  },
+  "caption": "Moss started a walking club in his Infinite Stroll tee. Monday it was just him. Sunday it was the whole town.",
+  "hashtags": [
+    "#touchgrass",
+    "#solarpunk",
+    "#claymation",
+    "#gooutside",
+    "#walkingclub"
+  ],
+  "style": "claymation"
+}

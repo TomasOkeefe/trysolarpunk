@@ -1,0 +1,62 @@
+{
+  "slug": "one-seed",
+  "date": "2026-10-27",
+  "product": "hibernator",
+  "hook_text": "One seed. No phone. Five weeks.",
+  "song": {
+    "title": "Grow",
+    "style": "English, gentle folk-pop with fingerpicked guitar, ukulele and whistling, warm friendly male lead vocal, slightly raspy, 104 BPM",
+    "lyrics": "[Verse]\nPlanted one seed in a pot\nPhone went off to the fridge's spot\nEvery morning, water, sun\nTalked to it like it was someone\n\n[Chorus]\nGrow, little sunflower, grow\nHigher than the rooftops go\nNo refresh and no new feed\nJust one patient little seed\n\n[Verse]\nWeek two it was past my knee\nWeek three taller than me\nWeek four neighbors came to see\nWeek five it waved back at me\n\n[Chorus]\nGrow, big sunflower, grow\nLook at all the friends we know\nNo refresh and no new feed\nEverything began with a seed"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "{moss} tilts his head way back in awe at a giant sunflower taller than his little house. Low angle, the camera tilts up. Bright blue sky."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} presses a single seed into a small clay pot of soil on a sunny windowsill. Static close-up. Soft morning light."
+    },
+    {
+      "product_image": true,
+      "prompt": "A hand slides a black smartphone face-first into a small rounded moss-green brick stuck to a white fridge door, the phone settling upright. The brick has a round pale yellow disc on its front. Warm kitchen light drifts across the fridge. Static close-up, the camera eases back slightly as the hand pulls away."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} waters the little pot and whispers to the tiny sprout. Static close-up. Warm morning light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} measures a knee-high sunflower sprout in his garden with a wooden ruler, impressed. Static medium shot. Bright daylight."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} stands on his tiptoes next to a sunflower that is now taller than him. Static medium shot. Golden afternoon light."
+    },
+    {
+      "product_image": false,
+      "prompt": "A woman in a wide straw sunhat and a boy on a red scooter stop and point up at the giant sunflower in the garden of {moss}. Static wide shot. Bright afternoon light."
+    },
+    {
+      "product_image": false,
+      "prompt": "The giant sunflower bends down and brushes a leaf across the beanie of {moss}, who laughs. Static medium shot. Warm golden light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} sits with his neighbors in the shade of the giant sunflower at sunset. The camera slowly pulls back. Peach and gold, calm."
+    }
+  ],
+  "endcard": {
+    "line1": "Grow something slow.",
+    "line2": "link in bio"
+  },
+  "caption": "Moss put his phone in the Hibernator and planted one seed. Five weeks later the whole street comes to visit.",
+  "hashtags": [
+    "#touchgrass",
+    "#solarpunk",
+    "#claymation",
+    "#gardening",
+    "#slowliving"
+  ],
+  "style": "claymation"
+}

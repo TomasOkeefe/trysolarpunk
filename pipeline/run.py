@@ -71,6 +71,7 @@ def main():
         style = plan.get("style", cfg["video"].get("style", ""))
         plan["style"] = cfg.get("styles", {}).get(style, style)  # a style name, or literal style text
         plan["anim_fps"] = cfg["video"].get("anim_fps")
+        plan["target_seconds"] = cfg["video"].get("target_seconds", 45)
         plans.append(plan)
     assert_code_pushed()
 

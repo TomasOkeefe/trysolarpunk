@@ -1,0 +1,62 @@
+{
+  "slug": "grandmas-story",
+  "date": "2026-10-25",
+  "product": "eyelid",
+  "hook_text": "Grandma's story beats my notifications",
+  "song": {
+    "title": "Some Stories Are For Keeps",
+    "style": "English, sweet 1950s doo-wop with piano, upright bass, soft backing harmonies, warm friendly male lead vocal, slightly raspy, 92 BPM",
+    "lyrics": "[Verse]\nGrandma came for Sunday tea\nTold a tale from sixty-three\nThen my pocket gave a buzz\nMissed the part where Grandpa was\n\n[Chorus]\nClose its eyes, Grandma's talking\nClose its eyes, the kettle's rocking\nOrange coat and not a peep\nSome stories are for keeps\n\n[Verse]\nFlour clouds and cherry stains\nSecret recipe explained\nHalf a pinch and twice the love\nRolled it out with floury gloves\n\n[Chorus]\nPie for the neighbors, pie for the street\nPie for the cat with the tiny feet\nClose its eyes, the oven's glowing\nGrandma's secret, now I'm knowing"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "{moss} sits at a kitchen table with a cup of tea, listening wide-eyed as a tiny round grandmother with a white hair bun, a pink cardigan and big red spectacles tells a story with big sweeping hand gestures. Static medium shot. Warm afternoon light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} jumps in his chair as a light flickers in his raincoat pocket, and a tiny round grandmother with a white hair bun, a pink cardigan and big red spectacles raises an eyebrow at him. Static medium shot. Warm kitchen light."
+    },
+    {
+      "product_image": true,
+      "prompt": "A hand gently slides a black smartphone all the way down into a slim terracotta-orange sleeve standing upright on a soft cream studio backdrop, until the phone disappears inside and only the rounded thumb notch at the top remains. A small closed-eye emblem is pressed into the front of the sleeve. The hand pulls away and the sleeve stands still, casting a soft shadow. Static close-up, the light slowly turns warmer."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} leans in with his chin on his hands, laughing along as a tiny round grandmother with a white hair bun, a pink cardigan and big red spectacles reaches the funny part of her story. Slow push in. Warm golden light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} and a tiny round grandmother with a white hair bun, a pink cardigan and big red spectacles roll out pie dough together in a puff of flour, both laughing. Static medium shot. Soft window light."
+    },
+    {
+      "product_image": false,
+      "prompt": "a tiny round grandmother with a white hair bun, a pink cardigan and big red spectacles whispers a secret in the ear of {moss}, who nods very seriously. Static close-up. Warm light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} pulls a golden cherry pie out of the oven with big oven mitts, steam rising. Static medium shot. Warm oven glow."
+    },
+    {
+      "product_image": false,
+      "prompt": "Neighbors crowd at the open kitchen window sniffing the air, a fluffy cat on the sill in front of them. Static wide shot. Golden late light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss}, a tiny round grandmother with a white hair bun, a pink cardigan and big red spectacles and their neighbors share pie around a long garden table at sunset, a cat on a chair beside them. The camera slowly pulls back. Peach and gold, calm."
+    }
+  ],
+  "endcard": {
+    "line1": "Some stories are for keeps.",
+    "line2": "link in bio"
+  },
+  "caption": "Moss slid his phone into its Eyelid so he wouldn't miss the end of Grandma's story. Then she taught him the pie.",
+  "hashtags": [
+    "#touchgrass",
+    "#solarpunk",
+    "#claymation",
+    "#grandma",
+    "#screentime"
+  ],
+  "style": "claymation"
+}

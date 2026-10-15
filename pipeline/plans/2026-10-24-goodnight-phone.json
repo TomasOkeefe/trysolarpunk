@@ -1,0 +1,62 @@
+{
+  "slug": "goodnight-phone",
+  "date": "2026-10-24",
+  "product": "hibernator",
+  "hook_text": "3am. Moss had a plan.",
+  "song": {
+    "title": "Goodnight Phone",
+    "style": "English, dreamy lullaby pop with music box and soft synth pads, brightening into a sunny chorus with handclaps, warm friendly male lead vocal, slightly raspy, 98 BPM",
+    "lyrics": "[Verse]\nThree a.m. and wide awake\nGlowing like a midnight lake\nThumb is tired, eyes are sore\nShuffled down the kitchen floor\n\n[Chorus]\nGoodnight phone, on the fridge you go\nLittle green bed where the pings can't grow\nGoodnight phone, sleep tight, don't call\nI'll see you after I see it all\n\n[Verse]\nSlept like moss upon a stone\nDreamt of gardens, not my phone\nWoke up early, sun was gold\nPancakes warm and coffee bold\n\n[Chorus]\nGood morning world, you were here all along\nBirds on the sill singing my song\nGood morning world, the day is new\nPhone's still asleep and I'm with you"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "{moss} lies wide awake in bed at night with huge round eyes, a cold blue glow flickering on his face. Static medium shot. Dark blue night light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} shuffles down a dark hallway in his boots, yawning, toward the soft light of the kitchen. The camera follows from behind. Dim blue light."
+    },
+    {
+      "product_image": true,
+      "prompt": "A hand slides a black smartphone face-first into a small rounded moss-green brick stuck to a white fridge door late at night, the phone settling upright. The brick has a round pale yellow disc on its front. Soft light from the open fridge falls across it. Static close-up, the camera eases back as the hand pulls away."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} climbs back into bed, pulls the quilt up to his mustache and falls asleep instantly, a little smile on his face. Static medium shot. Soft moonlight."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} sleeps peacefully as tiny glowing flowers bloom around his pillow. Slow push in. Soft dreamy blue and gold light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} wakes as a beam of golden sunrise hits his face, and stretches his arms wide with a huge yawn. Static medium shot. Warm golden morning light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} flips a pancake high out of a pan in a sunny kitchen and catches it. Static medium shot. Bright warm morning light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} opens a kitchen window and two little birds land on the sill, chirping at him. The camera pushes in gently. Fresh morning light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} sits on his front doorstep sipping coffee from a big mug, watching the sun rise over the rooftops. The camera slowly pulls back. Peach and gold, calm."
+    }
+  ],
+  "endcard": {
+    "line1": "Put your phone to bed.",
+    "line2": "link in bio"
+  },
+  "caption": "Moss tucked his phone into its Hibernator at 3am and slept like moss on a stone. Pancakes at sunrise.",
+  "hashtags": [
+    "#touchgrass",
+    "#solarpunk",
+    "#claymation",
+    "#sleep",
+    "#phonefree"
+  ],
+  "style": "claymation"
+}

@@ -1,0 +1,62 @@
+{
+  "slug": "missed-my-stop",
+  "date": "2026-10-28",
+  "product": "eyelid",
+  "hook_text": "Everyone on this train is missing it",
+  "song": {
+    "title": "Above Ground",
+    "style": "English, breezy bossa nova with nylon guitar, soft brushed drums and flute, warm friendly male lead vocal, slightly raspy, 96 BPM",
+    "lyrics": "[Verse]\nMorning train, the usual crowd\nEvery head bowed, nobody loud\nSlid my phone in its orange sleeve\nLooked outside, could not believe\n\n[Chorus]\nMountains rolling past the glass\nCows and rivers, fields of grass\nLook up, look out, look around\nBest show in town is above ground\n\n[Verse]\nGirl across was drawing birds\nShowed me one without a word\nShared my orange, she shared her pen\nDrew the window, drew it again\n\n[Chorus]\nMissed my stop and I don't mind\nLeft the scrolling world behind\nLook up, look out, look around\nBest show in town is above ground"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "{moss} sits in a train carriage full of passengers who all stare down at their laps, the only one looking up and around, curious. Static wide shot. Soft morning light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} glances around the quiet carriage at all the bowed heads and shrugs. Static medium shot. Soft window light."
+    },
+    {
+      "product_image": true,
+      "prompt": "A hand gently slides a black smartphone all the way down into a slim terracotta-orange sleeve standing upright on a soft cream studio backdrop, until the phone disappears inside and only the rounded thumb notch at the top remains. A small closed-eye emblem is pressed into the front of the sleeve. The hand pulls away and the sleeve stands still, casting a soft shadow. Static close-up, the light slowly turns warmer."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} presses his face to the train window, his eyes going wide behind his glasses. Static close-up. Bright daylight."
+    },
+    {
+      "product_image": false,
+      "prompt": "Rolling green mountains, a sparkling river and grazing cows slide past outside a train window. The camera holds steady inside the train. Bright clear daylight."
+    },
+    {
+      "product_image": false,
+      "prompt": "a girl with curly black hair and a yellow scarf across the aisle quietly shows {moss} a drawing of a bird in her sketchbook, and he beams. Static medium shot. Warm window light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} peels an orange and shares it with a girl with curly black hair and a yellow scarf, both laughing. Static medium shot. Golden light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} and a girl with curly black hair and a yellow scarf draw the view together in her sketchbook as fields rush past. Static close-up. Warm afternoon light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} steps off the train onto a tiny countryside station platform at sunset, smiling, as the train pulls away. The camera slowly pulls back. Peach and gold, calm."
+    }
+  ],
+  "endcard": {
+    "line1": "Look up. Look out.",
+    "line2": "link in bio"
+  },
+  "caption": "Moss slid his phone into its Eyelid on the morning train, made a friend, and missed his stop. Worth it.",
+  "hashtags": [
+    "#touchgrass",
+    "#solarpunk",
+    "#claymation",
+    "#commute",
+    "#lookup"
+  ],
+  "style": "claymation"
+}

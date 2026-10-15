@@ -32,7 +32,7 @@ video:
   width: 1080
   height: 1920
   fps: 24
-  target_seconds: 45        # TikTok sweet spot; the song is written short to match
+  target_seconds: 52        # before the 3 s end card; 16-line songs (verse, chorus x2) fill it
   shots: 9                  # clips per video
   gen_width: 768            # LTX output size (stage 1 renders at half), 9:16-ish, divisible by 64
   gen_height: 1344

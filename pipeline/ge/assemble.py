@@ -260,6 +260,6 @@ if __name__ == "__main__":
     words = json.loads(pathlib.Path(a.words).read_text()) if a.words and pathlib.Path(a.words).exists() else None
     plan = json.loads(pathlib.Path(a.plan).read_text())
     plan_anim = plan.get("anim_fps")  # stamped from config.yaml by run.py
-    assemble(plan, a.song, a.clips, a.out, a.target,
+    assemble(plan, a.song, a.clips, a.out, plan.get("target_seconds", a.target),
              words=words, anim_fps=a.anim_fps or plan_anim)
     print("wrote", a.out)
