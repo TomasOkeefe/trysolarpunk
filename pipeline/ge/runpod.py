@@ -15,18 +15,58 @@ import urllib.request
 from ge import box
 
 API = "https://rest.runpod.io/v1"
-# Cheapest per clip first (Oct 2026 prices). Each tier is one create attempt; the first with a free
-# CUDA 13 host wins. 48 GB cards render a clip in ~50 s; 24 GB cards need LTX's CPU offload (job.sh
-# switches it on) and take ~2 min a clip (probe on a 3090, 2026-10-15), so they rank by cost per clip.
-# Offload speed depends on the host's RAM-to-GPU bandwidth: a secure RTX PRO 4500 (32 GB) took 7.5 min
-# a clip with offload, and without it ran out of memory encoding prompts by ~0.2 GB. Not worth a tier.
-TIERS = [
-    ("COMMUNITY", ["NVIDIA RTX A6000", "NVIDIA A40"]),                    # $0.33-0.35/h, ~0.5 cent a clip
-    ("COMMUNITY", ["NVIDIA GeForce RTX 3090"]),                           # $0.22/h,      ~0.7 cent a clip
-    ("SECURE", ["NVIDIA RTX A6000", "NVIDIA A40"]),                       # $0.59/h,      ~0.8 cent a clip
-    ("COMMUNITY", ["NVIDIA L40", "NVIDIA RTX 6000 Ada Generation", "NVIDIA L40S"]),  # $0.69-0.79
-    ("SECURE", ["NVIDIA L40", "NVIDIA RTX 6000 Ada Generation", "NVIDIA L40S"]),     # $0.82-1.09
-]
+# Every card that can run the batch, with seconds per clip (768x1344, 121 frames). Values measured on a
+# real run are kept in gpu_speeds.json and override these; the rest are guesses from bf16 throughput.
+# 32 GB cards (5090, 5000 Ada, PRO 4500) are left out: without offload they run out of memory by ~0.2 GB,
+# and offload speed depends on the host (2 min a clip on one 3090, 7.5 on a PRO 4500).
+SEC_PER_CLIP = {
+    "NVIDIA RTX A6000": 50, "NVIDIA A40": 50,
+    "NVIDIA L40": 42, "NVIDIA RTX 6000 Ada Generation": 36, "NVIDIA L40S": 35,
+    "NVIDIA RTX PRO 5000 Blackwell": 32,
+    "NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition": 28,
+    "NVIDIA RTX PRO 6000 Blackwell Server Edition": 25, "NVIDIA RTX PRO 6000 Blackwell Workstation Edition": 25,
+    "NVIDIA A100-SXM4-40GB": 40, "NVIDIA A100 80GB PCIe": 35, "NVIDIA A100-SXM4-80GB": 33,
+    "NVIDIA GeForce RTX 3090": 121,  # 24 GB, CPU offload (job.sh turns it on)
+}
+SETUP_MIN = 14  # installs, downloads, model loads: paid at the same rate on every card
+SPEEDS = pathlib.Path(__file__).resolve().parents[1] / "gpu_speeds.json"
+
+
+def options(n_clips):
+    """Every (cloud, card) in stock right now, cheapest estimated batch cost first."""
+    measured = {g: sorted(v)[len(v) // 2] for g, v in _speeds().items()}  # median of recent runs
+    q = """query { gpuTypes { id securePrice communityPrice
+      c: lowestPrice(input:{gpuCount:1, secureCloud:false}) { stockStatus uninterruptablePrice }
+      s: lowestPrice(input:{gpuCount:1, secureCloud:true}) { stockStatus uninterruptablePrice } } }"""
+    req = urllib.request.Request("https://api.runpod.io/graphql", data=json.dumps({"query": q}).encode(),
+                                 headers={"Content-Type": "application/json", "Authorization": f"Bearer {_key()}"})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        gpus = json.loads(r.read())["data"]["gpuTypes"]
+    out = []
+    for g in gpus:
+        if g["id"] not in SEC_PER_CLIP:
+            continue
+        sec = measured.get(g["id"], SEC_PER_CLIP[g["id"]])
+        for cloud, k, list_price in (("COMMUNITY", "c", g["communityPrice"]), ("SECURE", "s", g["securePrice"])):
+            lp = g[k] or {}
+            price = lp.get("uninterruptablePrice") or list_price
+            if not lp.get("stockStatus") or not price:
+                continue
+            hours = SETUP_MIN / 60 + n_clips * sec / 3600
+            out.append({"cloud": cloud, "gpu": g["id"], "price": price, "stock": lp["stockStatus"],
+                        "sec": sec, "measured": g["id"] in measured, "hours": hours, "cost": price * hours})
+    return sorted(out, key=lambda o: o["cost"])
+
+
+def _speeds():
+    return json.loads(SPEEDS.read_text()) if SPEEDS.exists() else {}
+
+
+def record_speed(gpu, sec):
+    """Remember a measured seconds-per-clip (last 5 runs per card) so the next ranking uses it."""
+    measured = _speeds()
+    measured[gpu] = (measured.get(gpu, []) + [round(sec)])[-5:]
+    SPEEDS.write_text(json.dumps(measured, indent=1, sort_keys=True) + "\n")
 
 
 def _key():
@@ -51,17 +91,9 @@ def _req(method, path, body=None):
         return json.loads(raw) if raw else {}
 
 
-def _gpu_name(pid):
-    """The GPU is only known once the pod is placed, so ask after the fact."""
-    try:
-        p = _req("GET", f"/pods/{pid}")
-    except Exception:  # noqa: BLE001
-        return None
-    return (p.get("machine") or {}).get("gpuDisplayName") or (p.get("gpu") or {}).get("displayName") or p.get("gpuTypeId")
-
-
-def run_job(cfg, plans, repo_url, dest, log=print, tiers=TIERS, extra=None, collect=box.fetch):
-    """extra: fields merged into the pod request (env merges into env); collect(base, slugs, dest, log)."""
+def run_job(cfg, plans, repo_url, dest, log=print, tiers=None, extra=None, collect=box.fetch):
+    """Rent the cheapest card in stock (or try `tiers`, [(cloud, [gpu ids])], in order), run the batch.
+    extra: fields merged into the pod request (env merges into env); collect(base, slugs, dest, log)."""
     g = cfg["gpu"]
     token = secrets.token_urlsafe(16)
     start = ("apt-get update -qq && apt-get install -y -qq git >/dev/null; "
@@ -85,6 +117,14 @@ def run_job(cfg, plans, repo_url, dest, log=print, tiers=TIERS, extra=None, coll
     extra = dict(extra or {})
     body["env"].update(extra.pop("env", {}))
     body.update(extra)
+    if tiers is None:
+        n = sum(len(p["shots"]) for p in plans)
+        ranked = options(n)
+        log(f"GPUs in stock for {n} clips, cheapest batch first:")
+        for o in ranked[:10]:
+            log(f"  ${o['cost']:.2f}  {o['cloud'].lower():9} {o['gpu'].replace('NVIDIA ', ''):34} ${o['price']}/h  "
+                f"{o['sec']}s/clip{'' if o['measured'] else ' (guess)'}  stock {o['stock']}")
+        tiers = [(o["cloud"], [o["gpu"]]) for o in ranked]
     pod = None
     for cloud, gpus in tiers:
         try:
@@ -95,13 +135,13 @@ def run_job(cfg, plans, repo_url, dest, log=print, tiers=TIERS, extra=None, coll
             log(f"no {cloud.lower()} {' / '.join(x.replace('NVIDIA ', '') for x in gpus)} free "
                 f"({e.code}: {e.read()[:150].decode(errors='replace').strip()})")
     if pod is None:
-        raise SystemExit("no GPU available in any tier; try again later")
+        raise SystemExit("no GPU in stock that can run this; try again later (python3 -m ge.availability)")
     pid = pod["id"]
     base = f"https://{pid}-8080.proxy.runpod.net/{token}"
     log(f"pod {pid} ({pod.get('machine', {}).get('gpuDisplayName', 'GPU')}) - status: {base}/status.log")
     try:
         slugs = box.watch(base, time.time() + g["max_runtime_minutes"] * 60, log)
-        return collect(base, slugs, dest, log), {"gpu_name": _gpu_name(pid), "dph_total": pod.get("costPerHr")}
+        return collect(base, slugs, dest, log), {"dph_total": pod.get("costPerHr")}
     finally:
         try:
             _req("DELETE", f"/pods/{pid}")

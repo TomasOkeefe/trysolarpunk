@@ -59,9 +59,9 @@ Writing rules:
 
 ## 3. Check, then render
 
-Cheap GPUs come and go. `python3 -m ge.availability` shows stock now; if community A6000/A40 shows
-none and the user isn't in a hurry, say so and suggest the best hour from `--summary` (render still
-works: it falls back to a community 3090, about 40% more per video, then secure cloud).
+Cheap GPUs come and go. `run.py` prints every card in stock with its estimated batch cost and rents
+the cheapest. If the cheapest option is well above about $0.40 for 7 videos and the user isn't in a
+hurry, say so and suggest the best hour from `python3 -m ge.availability --summary`.
 
 ```bash
 cd pipeline && python3 -m ge.concept check plans/<new files>

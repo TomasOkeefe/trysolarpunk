@@ -15,7 +15,7 @@ from ge import box, runpod  # noqa: F401  (box installs the User-Agent RunPod's 
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 LOG = ROOT / "availability.jsonl"
-GPUS = ["NVIDIA RTX A5000", "NVIDIA GeForce RTX 3090", "NVIDIA RTX A6000", "NVIDIA A40", "NVIDIA L40S"]
+GPUS = list(runpod.SEC_PER_CLIP)  # every card the pipeline can rent
 RANK = {"High": 3, "Medium": 2, "Low": 1}
 
 
@@ -47,7 +47,7 @@ if __name__ == "__main__":
             hours.setdefault((r["gpu"], h), []).append(RANK.get(r["community"], 0))
         for g in GPUS:
             cells = [f"{sum(v) / len(v):.1f}" if (v := hours.get((g, h))) else " - " for h in range(24)]
-            print(f"{g.replace('NVIDIA ', ''):18} " + " ".join(cells))
+            print(f"{g.replace('NVIDIA ', '')[:18]:18} " + " ".join(cells))
         print("community stock by NY hour 0-23 (3 High, 2 Medium, 1 Low, 0 none)")
     else:
         for r in rows:

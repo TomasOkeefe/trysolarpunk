@@ -9,6 +9,7 @@ RunPod key: RUNPOD_API_KEY or ~/.runpod/config.toml (written by `flash login`).
 """
 import json
 import pathlib
+import re
 import subprocess
 import sys
 import time
@@ -29,6 +30,16 @@ def assert_code_pushed():
     ahead = git("rev-list", "--count", "@{u}..HEAD")
     if dirty or ahead not in ("", "0"):
         sys.exit(f"push the pipeline code first; the GPU box clones it from GitHub\n{dirty}\nunpushed commits: {ahead}")
+
+
+def gpu_and_speed(job_log):
+    """The card the box ran on and its median seconds per clip, from the box's job.log."""
+    if not job_log.exists():
+        return None, None
+    text = job_log.read_text(errors="replace")
+    gpu = re.search(r"== setup on (.+)", text)
+    secs = sorted(int(x) for x in re.findall(r"shot \d+ done in (\d+)s", text))
+    return (gpu.group(1).strip() if gpu else None), (secs[len(secs) // 2] if secs else None)
 
 
 def main():
@@ -53,6 +64,9 @@ def main():
     done, info = runpod.run_job(cfg, plans, REPO_URL, VIDEOS, log)
     hours = (time.time() - t0) / 3600
     cost = hours * (info.get("dph_total") or 0)
+    gpu, sec = gpu_and_speed(VIDEOS / "job.log")
+    if gpu and sec:
+        runpod.record_speed(gpu, sec)
 
     with open(ROOT / "history.jsonl", "a") as h:
         for plan in plans:
@@ -64,9 +78,9 @@ def main():
             (VIDEOS / f"{plan['slug']}.json").unlink(missing_ok=True)
             (VIDEOS / f"{name}.txt").write_text(f"{plan['caption']} {' '.join(plan['hashtags'])}\n")
             h.write(json.dumps({"date": plan["date"], "slug": plan["slug"], "product": plan["product"],
-                                "gpu": info.get("gpu_name"), "dph": info.get("dph_total")}) + "\n")
+                                "gpu": gpu, "dph": info.get("dph_total"), "sec_per_clip": sec}) + "\n")
             print(f"ok      videos/{name}.mp4")
-    print(f"{len(done)}/{len(plans)} videos, {hours * 60:.0f} min on {info.get('gpu_name')}, about ${cost:.2f}")
+    print(f"{len(done)}/{len(plans)} videos, {hours * 60:.0f} min on {gpu} ({sec}s a clip), about ${cost:.2f}")
     if not done:
         sys.exit(1)
 
