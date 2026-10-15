@@ -18,6 +18,8 @@ API = "https://rest.runpod.io/v1"
 # Cheapest per clip first (Oct 2026 prices). Each tier is one create attempt; the first with a free
 # CUDA 13 host wins. 48 GB cards render a clip in ~50 s; 24 GB cards need LTX's CPU offload (job.sh
 # switches it on) and take ~2 min a clip (probe on a 3090, 2026-10-15), so they rank by cost per clip.
+# Offload speed depends on the host's RAM-to-GPU bandwidth: a secure RTX PRO 4500 (32 GB) took 7.5 min
+# a clip with offload, and without it ran out of memory encoding prompts by ~0.2 GB. Not worth a tier.
 TIERS = [
     ("COMMUNITY", ["NVIDIA RTX A6000", "NVIDIA A40"]),                    # $0.33-0.35/h, ~0.5 cent a clip
     ("COMMUNITY", ["NVIDIA GeForce RTX 3090"]),                           # $0.22/h,      ~0.7 cent a clip
