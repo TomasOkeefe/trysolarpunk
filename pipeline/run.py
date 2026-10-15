@@ -59,6 +59,7 @@ def main():
     ap.add_argument("files", nargs="+")
     ap.add_argument("--wait", type=float, default=0, help="hours to wait for a cheap card")
     ap.add_argument("--max-cost", type=float, help="batch dollars worth renting at while waiting")
+    ap.add_argument("--exclude", action="append", default=[], help="skip GPUs whose name contains this (repeatable)")
     a = ap.parse_args()
     files = a.files
     cfg = yaml.safe_load((ROOT / "config.yaml").read_text())
@@ -84,7 +85,8 @@ def main():
         log(f"best possible: ${best['cost']:.2f} on {best['cloud'].lower()} {best['gpu'].replace('NVIDIA ', '')}; "
             f"will rent at <= ${max_cost:.2f}")
     try:
-        done, info = runpod.run_job(cfg, plans, REPO_URL, VIDEOS, log, wait_hours=a.wait, max_cost=max_cost)
+        done, info = runpod.run_job(cfg, plans, REPO_URL, VIDEOS, log, wait_hours=a.wait, max_cost=max_cost,
+                                    exclude=a.exclude)
     except BaseException as e:
         notify(f"Render failed: {str(e)[:80]}")
         raise

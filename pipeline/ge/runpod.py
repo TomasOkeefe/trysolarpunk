@@ -117,7 +117,7 @@ def _rent(body, tiers, log):
 
 
 def run_job(cfg, plans, repo_url, dest, log=print, tiers=None, extra=None, collect=box.fetch,
-            wait_hours=0, max_cost=None):
+            wait_hours=0, max_cost=None, exclude=()):
     """Rent the cheapest card in stock (or try `tiers`, [(cloud, [gpu ids])], in order), run the batch.
     wait_hours/max_cost: until the deadline, only rent a card whose estimated batch cost is <= max_cost,
     checking every 2 min (checks and refused rentals are free); after it, rent the cheapest in stock.
@@ -157,6 +157,7 @@ def run_job(cfg, plans, repo_url, dest, log=print, tiers=None, extra=None, colle
             except Exception as e:  # noqa: BLE001  (network blip while waiting overnight)
                 ranked = []
                 quiet(f"stock check failed: {e}")
+            ranked = [o for o in ranked if not any(x.lower() in o["gpu"].lower() for x in exclude)]
             pick = [o for o in ranked if not waiting or o["cost"] <= max_cost]
             if pick or quiet is log:
                 _show(ranked, n, log if pick else quiet)
