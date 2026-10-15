@@ -26,6 +26,8 @@ exec >>"$OUT/job.log" 2>&1
 python3 "$GE/worker/serve.py" 8080 "$W/out" &
 stage "setup"
 export DEBIAN_FRONTEND=noninteractive UV_CACHE_DIR=$W/.uv-cache
+# RunPod images set HF_HUB_ENABLE_HF_TRANSFER=1 globally, which breaks downloads in venvs without hf_transfer
+export HF_HUB_ENABLE_HF_TRANSFER=0
 apt-get update -qq && apt-get install -y -qq ffmpeg git curl >/dev/null || fail "apt"
 curl -LsSf https://astral.sh/uv/install.sh | sh >/dev/null && export PATH="$HOME/.local/bin:$PATH"
 # the plan: PLAN_B64 (sent by run.py) or PLAN_FILE (a path inside the repo, for runs started by hand)
@@ -53,12 +55,12 @@ log "song ready: $(du -h "$OUT/song.flac" | cut -f1)"
 # 3. clips (LTX-2.5 distilled, ~66 GB of weights, gated)
 stage "clips: install"
 [ -d $W/ltx ] || git clone --depth 1 https://github.com/Lightricks/LTX-2.git $W/ltx
-( cd $W/ltx && uv sync -q --frozen --extra natten ) || ( cd $W/ltx && uv sync -q --frozen ) || fail "ltx install"
+( cd $W/ltx && uv sync -q --no-dev --extra natten ) || ( cd $W/ltx && uv sync -q --no-dev ) || fail "ltx install"
 ( cd $W/ltx && uv pip install -q "huggingface_hub[cli,hf_transfer]" ) || true
 stage "clips: download weights"
 L=$MODELS/ltx-2.5
-FAST=$(cd $W/ltx && uv run python -c "import hf_transfer; print(1)" 2>/dev/null || echo 0)
-( cd $W/ltx && HF_HUB_ENABLE_HF_TRANSFER=$FAST HF_TOKEN=$HF_TOKEN uv run hf download Lightricks/LTX-2.5 \
+FAST=$(cd $W/ltx && uv run --no-sync python -c "import hf_transfer; print(1)" 2>/dev/null || echo 0)
+( cd $W/ltx && HF_HUB_ENABLE_HF_TRANSFER=$FAST HF_TOKEN=$HF_TOKEN uv run --no-sync hf download Lightricks/LTX-2.5 \
     diffusion_models/ltx-2.5-22b-distilled-transformer-bf16.safetensors \
     text_encoders/gemma4-12b-with-proj-ltx-2.5-bf16.safetensors \
     vae/ltx-2.5-video-vae-conv-bf16.safetensors \
@@ -70,7 +72,7 @@ GW=$(python3 -c "import yaml,sys;c=yaml.safe_load(open('$GE/config.yaml'));print
 read -r GWIDTH GHEIGHT GFRAMES <<<"$GW"
 PRODUCT=$(python3 -c "import json;print(json.load(open('$GE/plan.json'))['product'])")
 IMG="$GE/assets/hib_fridge.jpg"; [ "$PRODUCT" = "eyelid" ] && IMG="$GE/assets/eyelid_studio.jpg"
-( cd $W/ltx && uv run python "$GE/worker/gen_clips.py" "$GE/plan.json" "$W/clips" "$IMG" -- \
+( cd $W/ltx && uv run --no-sync python "$GE/worker/gen_clips.py" "$GE/plan.json" "$W/clips" "$IMG" -- \
     --transformer-path       "$L/diffusion_models/ltx-2.5-22b-distilled-transformer-bf16.safetensors" \
     --text-encoder-path      "$L/text_encoders/gemma4-12b-with-proj-ltx-2.5-bf16.safetensors" \
     --video-vae-path         "$L/vae/ltx-2.5-video-vae-conv-bf16.safetensors" \
