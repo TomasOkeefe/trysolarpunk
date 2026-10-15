@@ -30,6 +30,14 @@ To make videos, use the `make-videos` skill. In short: Claude writes plans in
 - TikTok posting is manual for now (owner posts from the phone app; Jomo blocks TikTok in Chrome).
   Automatic drafts via the Content Posting API are a later step.
 
+## Waitlist site (`site/`)
+Live at https://trysolarpunk.pages.dev (Cloudflare Pages + D1 `trysolarpunk-waitlist`, free tier).
+Pages: `/`, `/hibernator`, `/eyelid`, `/merch`. Link a video as `/hibernator?v=<plan-slug>` to see
+which video drove signups. `site/list.sh` shows the numbers, `--csv` dumps emails (never commit it).
+Deploy with `cd site && npm run deploy`; check with `npm test` and `test/smoke.sh <url>`.
+`POST /api/join` and the `signups` table stay as they are for the phase 2 animated site
+(spec: `docs/superpowers/specs/2026-10-15-waitlist-site-design.md`).
+
 ## Store notes
 Fourthwall is still "Coming soon" with all 6 products hidden; it needs a ship-from address and
 payout info before publishing. The tote has a thin margin at $24 (consider $28); stickers are $6.
