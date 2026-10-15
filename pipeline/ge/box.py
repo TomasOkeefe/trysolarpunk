@@ -6,6 +6,12 @@ import os
 import time
 import urllib.request
 
+# RunPod sits behind Cloudflare, which rejects Python's default User-Agent (error 1010).
+# This opener also covers urlretrieve and the REST calls in runpod.py.
+_opener = urllib.request.build_opener()
+_opener.addheaders = [("User-Agent", "trysolarpunk-pipeline/1.0")]
+urllib.request.install_opener(_opener)
+
 
 def pack_plans(plans):
     return base64.b64encode(gzip.compress(json.dumps(plans).encode())).decode()

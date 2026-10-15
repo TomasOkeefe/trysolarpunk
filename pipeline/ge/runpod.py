@@ -22,7 +22,8 @@ def _key():
         return os.environ["RUNPOD_API_KEY"]
     import tomllib
     cfg = pathlib.Path.home() / ".runpod" / "config.toml"
-    key = tomllib.loads(cfg.read_text()).get("apikey") if cfg.exists() else None
+    conf = tomllib.loads(cfg.read_text()) if cfg.exists() else {}
+    key = conf.get("apikey") or conf.get("default", {}).get("api_key")  # runpodctl vs flash login layout
     if not key:
         raise SystemExit("no RunPod key: run `flash login` once (or set RUNPOD_API_KEY)")
     return key
