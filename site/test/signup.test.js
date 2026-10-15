@@ -78,3 +78,12 @@ test('pickSource survives junk referers', () => {
   assert.equal(pickSource('', 'not a url', HOST), '');
   assert.equal(pickSource('', null, HOST), '');
 });
+
+test('non-string fields are rejected, never thrown on', () => {
+  const evil = { toString: 1 };
+  const r = parseSignup({ email: evil, product: 'hibernator' }, null, HOST);
+  assert.equal(r.status, 400);
+  assert.equal(parseSignup({ email: 'a@b.co', product: 'merch', source: evil }, null, HOST).source, '');
+  assert.equal(cleanSource(evil), '');
+  assert.equal(cleanSource(5), '');
+});

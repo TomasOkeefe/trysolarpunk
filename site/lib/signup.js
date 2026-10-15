@@ -5,7 +5,7 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // Which video (or site) a signup came from: lowercase letters, digits and dashes, max 64.
 export function cleanSource(raw) {
-  return String(raw ?? '')
+  return (typeof raw === 'string' ? raw : '')
     .toLowerCase()
     .replace(/[^a-z0-9-]+/g, '-')
     .replace(/^-+|-+$/g, '')
@@ -31,7 +31,7 @@ export function parseSignup(fields, referer, ownHost) {
   const product = PRODUCTS.includes(fields?.product) ? fields.product : null;
   if (fields?.website) return { ok: true, bot: true, product };
   if (!product) return { ok: false, status: 400, error: 'Unknown product.', product };
-  const email = String(fields.email ?? '').trim().toLowerCase();
+  const email = typeof fields.email === 'string' ? fields.email.trim().toLowerCase() : '';
   if (email.length > 254 || !EMAIL.test(email)) {
     return { ok: false, status: 400, error: "That email doesn't look right.", product };
   }
