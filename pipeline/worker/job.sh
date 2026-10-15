@@ -88,7 +88,7 @@ stage "clips: render"
 GW=$(python3 -c "import yaml,sys;c=yaml.safe_load(open('$GE/config.yaml'));print(c['video']['gen_width'],c['video']['gen_height'],c['video']['clip_frames'])" 2>/dev/null || echo "768 1344 121")
 read -r GWIDTH GHEIGHT GFRAMES <<<"$GW"
 # no --offload: gen_clips.py frees Gemma before loading the transformer, so both never share the card
-( cd $W/ltx && uv run --no-sync python "$GE/worker/gen_clips.py" "$B" -- \
+( cd $W/ltx && STAGE_FILE="$OUT/STAGE" uv run --no-sync python "$GE/worker/gen_clips.py" "$B" -- \
     --transformer-path       "$L/diffusion_models/ltx-2.5-22b-distilled-transformer-bf16.safetensors" \
     --text-encoder-path      "$L/text_encoders/gemma4-12b-with-proj-ltx-2.5-bf16.safetensors" \
     --video-vae-path         "$L/vae/ltx-2.5-video-vae-conv-bf16.safetensors" \

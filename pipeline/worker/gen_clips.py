@@ -11,6 +11,7 @@ Written against LTX-2 commit be6d6d0 (pinned in job.sh); it uses a few private h
 """
 import contextlib
 import json
+import os
 import pathlib
 import sys
 import time
@@ -83,6 +84,13 @@ def main():
           f"{torch.cuda.memory_allocated() / 2**30:.1f} GB allocated", flush=True)
 
     # 3. render; one broken video must not sink the rest of the batch
+    total, finished = sum(len(p["shots"]) for _, p in videos), 0
+
+    def progress():  # the orchestrator treats an unchanged STAGE as a stall, so report every clip
+        if os.environ.get("STAGE_FILE"):
+            pathlib.Path(os.environ["STAGE_FILE"]).write_text(f"clips: render {finished}/{total}\n")
+
+    progress()
     for d, plan in videos:
         (d / "clips").mkdir(exist_ok=True)
         try:
@@ -102,6 +110,8 @@ def main():
                                video_chunks_number=D.get_video_chunks_number(res.num_frames, res.tiling_config),
                                color_space=None, audio_sampling_rate=None)
                 print(f"{plan['slug']} shot {i} done in {time.time() - t:.0f}s", flush=True)
+                finished += 1
+                progress()
         except Exception as e:  # noqa: BLE001
             print(f"{plan['slug']} FAILED: {type(e).__name__}: {e}", flush=True)
             torch.cuda.empty_cache()

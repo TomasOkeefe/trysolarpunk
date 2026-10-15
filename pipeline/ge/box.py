@@ -21,12 +21,18 @@ def _get(url, timeout=20):
     return urllib.request.urlopen(url, timeout=timeout).read().decode()
 
 
+STALL_MINUTES = 20  # no stage change for this long (each finished clip is a change) means the box is stuck
+
+
 def watch(base, deadline, log):
     """Poll the box's STAGE file until DONE. Returns the list of finished slugs.
-    base is the box's output URL, or a function returning it (None until the box has an address)."""
-    last, get_base = None, base if callable(base) else (lambda: base)
+    base is the box's output URL, or a function returning it (None until the box has an address).
+    Raises on failure, on a stall and on the deadline, so the caller always exits and cleans up."""
+    last, changed, get_base = None, time.time(), base if callable(base) else (lambda: base)
     while time.time() < deadline:
         time.sleep(30)
+        if time.time() - changed > STALL_MINUTES * 60:
+            raise TimeoutError(f"stalled: stage '{last}' unchanged for {STALL_MINUTES} min")
         url = get_base()
         if not url:
             continue
@@ -36,7 +42,7 @@ def watch(base, deadline, log):
             continue  # box still booting
         if stage != last:
             log(f"stage: {stage}")
-            last = stage
+            last, changed = stage, time.time()
         if stage.startswith("FAILED"):
             raise RuntimeError(f"{stage}\n{_get(f'{url}/job.log')[-3000:]}")
         if stage == "DONE":
