@@ -43,6 +43,14 @@ video:
   anim_fps: 12              # frames held "on twos" for a hand-animated feel; null for smooth 24 fps
   # No AI label is burned in: TikTok shows its own when the AI-generated toggle is on.
 
+# Recurring characters. Write {moss} in a shot prompt and it becomes this exact description, so the
+# character looks the same in every shot and every video. Keep the traits bold and simple.
+characters:
+  moss: >-
+    a small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round
+    black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and
+    green rubber boots
+
 styles:
   claymation: >-
     Claymation stop-motion animation, handmade plasticine characters with visible thumbprints

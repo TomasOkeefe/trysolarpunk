@@ -65,7 +65,8 @@ def main():
     images = {p["id"]: p.get("image") for p in cfg["products"]}
     plans = []
     for f in files:
-        plan = concept.validate(json.loads(pathlib.Path(f).read_text()), cfg["video"]["shots"])
+        plan = concept.validate(concept.expand(json.loads(pathlib.Path(f).read_text()), cfg.get("characters", {})),
+                                cfg["video"]["shots"])
         plan["image"] = images.get(plan["product"])  # first frame of the product shot (None: text only)
         style = plan.get("style", cfg["video"].get("style", ""))
         plan["style"] = cfg.get("styles", {}).get(style, style)  # a style name, or literal style text

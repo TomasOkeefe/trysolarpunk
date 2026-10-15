@@ -2,61 +2,61 @@
   "slug": "not-sponsored",
   "date": "2026-10-23",
   "product": "merch",
-  "style": "claymation",
   "hook_text": "This walk is not sponsored",
   "song": {
     "title": "No Feed No Ads",
-    "style": "English, mellow reggae with offbeat guitar, warm organ, deep bass, laid-back male vocal, 80 BPM",
-    "lyrics": "[Verse]\nNobody paid me for this sunset\nNobody's selling me the breeze\nTook a walk in my favorite tee\nBrought a friend and some sweet peas\n\n[Chorus]\nNo feed, no ads, no end\nJust a long road and a friend\nNo feed, no ads, no end\nRound the bend and round again"
+    "style": "English, mellow reggae, offbeat guitar, warm organ, deep bass, warm friendly male lead vocal, slightly raspy, 80 BPM",
+    "lyrics": "[Verse]\nNobody paid me for this sun\nNobody's selling me the breeze\nWearing my tee and my oldest boots\nSaying hello to all the trees\n\n[Chorus]\nNo feed, no ads, no end\nJust a long road and a friend\nNo feed, no ads, no end\nRound the bend and round again"
   },
   "shots": [
     {
       "product_image": false,
-      "prompt": "A man walks toward the camera along a country path in a cream t-shirt, giving a big thumbs up and a wink. The camera tracks backward. Bright morning sun."
+      "prompt": "{moss} walks toward the camera on a country path, his raincoat open over a cream t-shirt, and gives a big thumbs up and a wink. The camera tracks backward. Bright morning sun."
     },
     {
       "product_image": false,
-      "prompt": "Two friends share a slice of watermelon sitting on a stone wall beside the path, laughing. Static medium shot. Warm sunny light."
+      "prompt": "{moss} stands on a hilltop with arms wide and eyes closed as the wind ruffles his raincoat. Low angle, static. Clear blue sky."
     },
     {
       "product_image": false,
-      "prompt": "A woman picks blackberries from a hedge along the path and pops one in her mouth, eyes closing with delight. Close-up. Dappled light."
+      "prompt": "{moss} laces up his green rubber boots on a doorstep, humming. Static close-up. Warm morning light."
     },
     {
       "product_image": false,
-      "prompt": "A goat pokes its head over a fence and nibbles a man's straw hat as he laughs. Static medium shot. Bright midday light."
+      "prompt": "{moss} waves at a tall oak tree and a little bird pops out and chirps at him. Static medium shot. Dappled sunlight."
     },
     {
       "product_image": true,
-      "prompt": "A cream t-shirt with a simple illustration of rolling green hills and a winding path shaped like an infinity loop lies flat on a sunny wooden picnic table next to a basket of apples, a light breeze lifting its sleeve. Soft daylight, warm shadows. Slow overhead push in."
+      "prompt": "A cream t-shirt with a simple illustration of rolling green hills and a winding path shaped like an infinity loop hangs on a wooden hanger against a sunny cream wall, gently swaying in a breeze from an open window. Soft daylight, warm shadows. Static close-up."
     },
     {
       "product_image": false,
-      "prompt": "A couple sits on a hilltop bench sharing a thermos of tea, the path winding down into a valley below. Static wide shot. Golden afternoon light."
+      "prompt": "{moss} meets a friend at a fork in the path and they bump fists, then walk on together. Static wide shot. Warm afternoon light."
     },
     {
       "product_image": false,
-      "prompt": "A kid skips a stone across a lake, the stone bouncing many times, and pumps a fist. Side view. Glittering afternoon light."
+      "prompt": "{moss} shares a thermos of tea with his friend, sitting on a stone wall. Static medium shot. Golden light."
     },
     {
       "product_image": false,
-      "prompt": "A man lies in tall grass with his hat over his face as a butterfly lands on the hat. Static close-up. Warm late light."
+      "prompt": "{moss} laughs as a goat leans over a fence and nibbles his yellow pom-pom. Static medium shot. Bright afternoon light."
     },
     {
       "product_image": false,
-      "prompt": "Two friends walk away down a winding path into the sunset, arms over each other's shoulders. The camera slowly rises. Peach and gold, calm."
+      "prompt": "{moss} and his friend walk off down a winding path into the sunset, arms over each other's shoulders. The camera slowly rises. Peach and gold, calm."
     }
   ],
   "endcard": {
     "line1": "No feed. No ads. No end.",
     "line2": "link in bio"
   },
-  "caption": "This walk is not sponsored. Neither is the sunset. The Infinite Stroll tee just came along for the ride.",
+  "caption": "Moss's walk is not sponsored. Neither is the sunset. The Infinite Stroll tee just came along for the ride.",
   "hashtags": [
     "#touchgrass",
     "#solarpunk",
+    "#claymation",
     "#adfree",
-    "#gooutside",
-    "#claymation"
-  ]
+    "#gooutside"
+  ],
+  "style": "claymation"
 }

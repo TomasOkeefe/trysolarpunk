@@ -1,0 +1,62 @@
+{
+  "slug": "never-looked-up",
+  "date": "2026-10-19",
+  "product": "eyelid",
+  "hook_text": "Seven years here and never looked up",
+  "song": {
+    "title": "Hello Street",
+    "style": "English, sunny jangly indie pop, chiming electric guitar, tambourine, bright bass, warm friendly male lead vocal, slightly raspy, 124 BPM",
+    "lyrics": "[Verse]\nLived on this street for seven years\nNever looked up past my nose\nSlid my phone in its orange coat\nLifted my chin and there it goes\n\n[Chorus]\nWho painted that? Who's that cat?\nWhen did the trees get tall like that?\nClosed its eyes, I opened mine\nHello street, you're looking fine"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "{moss} shuffles down a street with his head bent low over his cupped hands and bonks his head on a lamppost. Static medium shot. Flat grey light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} rubs his head and stares down at his feet on the sidewalk, sighing. Static close-up. Grey light."
+    },
+    {
+      "product_image": true,
+      "prompt": "A hand gently slides a black smartphone all the way down into a slim terracotta-orange sleeve standing upright on a soft cream studio backdrop, until the phone disappears inside and only the rounded thumb notch at the top remains. A small closed-eye emblem is pressed into the front of the sleeve. The hand pulls away and the sleeve stands still, casting a soft shadow. Static close-up, the light slowly turns warmer."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} slowly lifts his chin and his eyes go wide behind his round glasses as color floods the street around him. The camera pushes in. Light warming to bright gold."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} gasps and points at a huge colourful mural of a smiling sun painted on a brick wall. Static wide shot. Bright saturated colours."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} waves at a fluffy orange cat on a windowsill, and the cat slowly blinks back. Static medium shot. Warm sunlight."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} tilts his head way back to look up at tall green trees arching over the street. Low angle, the camera tilts up. Dappled sunlight."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} closes his eyes and breathes in the sunshine, smiling, his raincoat fluttering in the breeze. Static close-up. Warm golden light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} shakes hands with a neighbour over a garden gate and they both burst out laughing. The camera slowly pulls back. Peach sunset light, calm."
+    }
+  ],
+  "endcard": {
+    "line1": "Close its eyes. Open yours.",
+    "line2": "link in bio"
+  },
+  "caption": "Moss gave his phone an Eyelid and met his street for the first time in seven years. The cat was there the whole time.",
+  "hashtags": [
+    "#touchgrass",
+    "#solarpunk",
+    "#claymation",
+    "#lookup",
+    "#screentime"
+  ],
+  "style": "claymation"
+}

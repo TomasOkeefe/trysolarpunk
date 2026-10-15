@@ -1,0 +1,62 @@
+{
+  "slug": "kitchen-party",
+  "date": "2026-10-20",
+  "product": "hibernator",
+  "hook_text": "Phone went on the fridge. Then this.",
+  "song": {
+    "title": "Kitchen Party",
+    "style": "English, groovy funk with slap bass, horn section, wah guitar, handclaps, warm friendly male lead vocal, slightly raspy, party backing vocals, 110 BPM",
+    "lyrics": "[Verse]\nDinner for one and a glowing light\nSame old noodles every night\nStuck my phone up on the fridge\nCalled my friends, they came in quick\n\n[Chorus]\nKitchen party, pots and pans\nFlour on our noses, clapping hands\nKitchen party, turn it up\nDancing round the coffee cups"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "{moss} eats noodles alone at a small table at night, his face lit by a cold blue glow, a single noodle dangling sadly from his fork. Static medium shot. Dim blue light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} puts down his fork, frowns, and stands up with determination. Static close-up. Light warming."
+    },
+    {
+      "product_image": true,
+      "prompt": "A hand slides a black smartphone face-first into a small rounded moss-green brick stuck to a white fridge door, the phone settling upright. The brick has a round pale yellow disc on its front. Warm kitchen light drifts across the fridge. Static close-up, the camera eases back slightly as the hand pulls away."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} opens his front door and three friends burst in carrying bags of groceries and a guitar, cheering. Static wide shot. Warm hallway light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} and his friends chop vegetables and stir bubbling pots in a crowded little kitchen, laughing. The camera circles slowly. Warm golden light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} claps a ball of dough and flour puffs up into everyone's faces, and they all crack up. Static medium shot. Warm kitchen light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} claps along while a friend plays guitar on the kitchen counter. Static medium shot. Warm lamp light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} dances in the middle of the kitchen, spinning a friend around. The camera circles. Bright warm party light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} sits around a cluttered table with his friends late at night, everyone full and smiling, candles burning low. The camera slowly pulls back. Deep amber, calm."
+    }
+  ],
+  "endcard": {
+    "line1": "Phone on fridge. Feet on floor.",
+    "line2": "link in bio"
+  },
+  "caption": "Moss stuck his phone on the fridge in its Hibernator and the kitchen turned into a party. Flour everywhere. No regrets.",
+  "hashtags": [
+    "#touchgrass",
+    "#solarpunk",
+    "#claymation",
+    "#kitchendance",
+    "#phonefree"
+  ],
+  "style": "claymation"
+}

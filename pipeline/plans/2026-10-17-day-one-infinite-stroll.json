@@ -1,0 +1,62 @@
+{
+  "slug": "day-one-infinite-stroll",
+  "date": "2026-10-17",
+  "product": "merch",
+  "hook_text": "Day 1 of the infinite stroll",
+  "song": {
+    "title": "Infinite Stroll",
+    "style": "English, cheerful folk march, accordion, snare drum, tuba, whistling, warm friendly male lead vocal, slightly raspy, rousing group backing vocals, 112 BPM",
+    "lyrics": "[Verse]\nThumb was tired from the scroll\nCouch was swallowing me whole\nGrabbed my boots and grabbed my hat\nWalked right out and that was that\n\n[Chorus]\nInfinite stroll, on and on\nOver the hill and past the pond\nNever ends and that's the deal\nInfinite stroll, the feed is real"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "{moss} slumps deeper and deeper into a saggy brown couch until the cushions nearly swallow him, only his beanie and glasses poking out. Static medium shot. Dim grey indoor light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} springs up from the couch and hurriedly tugs his beanie down over his ears, determined. Static medium shot. Light brightening."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} flings open a round wooden front door and steps out into bright sunshine, squinting and then grinning wide. The camera pushes in. Warm morning light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} strolls over the top of a grassy green hill, arms swinging high, a big round sun behind him. The camera tracks alongside. Bright morning light, grass green and sky blue."
+    },
+    {
+      "product_image": true,
+      "prompt": "A cream t-shirt with a simple illustration of rolling green hills and a winding path shaped like an infinity loop hangs on a wooden hanger against a sunny cream wall, gently swaying in a breeze from an open window. Soft daylight, warm shadows. Static close-up."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} walks past a little pond and waves at a duck, which quacks back at him. Static wide shot. Dappled light, soft blues and greens."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} walks along an endless winding path through rolling hills as a small bird lands on his yellow pom-pom. The camera follows from behind. Golden light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} walks arm in arm with two new friends who have joined him on the path, all three laughing. The camera tracks backward in front of them. Warm afternoon light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} sits at the top of a hill at sunset, takes a deep breath and smiles as the path winds away below him. The camera slowly pulls back. Peach and gold, calm."
+    }
+  ],
+  "endcard": {
+    "line1": "The only feed worth refreshing.",
+    "line2": "link in bio"
+  },
+  "caption": "Moss traded the infinite scroll for the Infinite Stroll tee. Day 1. The feed is trees now.",
+  "hashtags": [
+    "#touchgrass",
+    "#solarpunk",
+    "#claymation",
+    "#gooutside",
+    "#digitalminimalism"
+  ],
+  "style": "claymation"
+}

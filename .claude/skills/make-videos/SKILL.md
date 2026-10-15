@@ -45,6 +45,12 @@ Writing rules:
   prepended to every shot except the product shot, so don't describe the art style in prompts.
   Write subjects that suit it (simple shapes, one clear action). Rotate styles across a batch.
   The owner liked claymation and felt, disliked hand-drawn 2D ("feels corporate").
+- Character: Moss (`config.yaml` `characters`) is the channel's main character. Write `{moss}` in a
+  prompt (usually at the start) and it expands to his fixed description; never re-describe him in your
+  own words or change his outfit, or he drifts. Use one style for the whole batch when he stars.
+- Story: each video is a small narrative (setup, turn, payoff) and the song tells it. Line up shots with
+  lyric lines: about one line per shot, verse = setup, chorus = payoff. Songs are sung by the same
+  warm male lead (Moss's voice) in different genres.
 - Captions: the lyrics are burned in word by word, so keep lines short and singable, no stage directions.
 - Shots: exactly the count `next` printed. Each prompt starts with the main action, then subject
   details, setting, camera move, light and colour. Solarpunk everyday life: rooftop gardens,

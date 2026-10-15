@@ -1,0 +1,62 @@
+{
+  "slug": "hide-and-seek-champion",
+  "date": "2026-10-22",
+  "product": "eyelid",
+  "hook_text": "Undefeated at hide and seek since this",
+  "song": {
+    "title": "Can't Find Me",
+    "style": "English, playful surf rock, twangy guitar, bouncy bass, tambourine, warm friendly male lead vocal, slightly raspy, whoa-oh backing vocals, 128 BPM",
+    "lyrics": "[Verse]\nKids are counting up to ten\nUsed to buzz and lose again\nTucked my phone in orange tight\nNot a peep and out of sight\n\n[Chorus]\nCan't find me, can't find me\nUp a tree as quiet as can be\nCan't find me, can't find me\nHide and seek champion, that's me"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "{moss} tiptoes away with big exaggerated sneaky steps while a group of kids cover their eyes against a big tree, counting. Static wide shot. Bright sunny park light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} crouches behind a bush, then jumps in surprise as the kids pop up around him pointing and laughing. Static medium shot. Bright sunlight."
+    },
+    {
+      "product_image": true,
+      "prompt": "A hand gently slides a black smartphone all the way down into a slim terracotta-orange sleeve standing upright on a soft cream studio backdrop, until the phone disappears inside and only the rounded thumb notch at the top remains. A small closed-eye emblem is pressed into the front of the sleeve. The hand pulls away and the sleeve stands still, casting a soft shadow. Static close-up, the light slowly turns warmer."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} climbs a chunky tree and settles among the leaves with a finger on his lips. The camera tilts up with him. Dappled sunlight."
+    },
+    {
+      "product_image": false,
+      "prompt": "Kids search under a picnic table and behind a fence, scratching their heads. Static wide shot. Warm afternoon light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} peeks out between the leaves, holding back giggles under his mustache. Static close-up. Dappled green light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} sits silently on a branch next to a squirrel, both perfectly still. Static medium shot. Soft afternoon light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} drops down from the tree with his arms raised in victory as the kids cheer and jump around him. Static wide shot. Golden light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} shares ice cream cones with the kids on a park bench at sunset. The camera slowly pulls back. Peach and gold, calm."
+    }
+  ],
+  "endcard": {
+    "line1": "Notifications can't find you.",
+    "line2": "link in bio"
+  },
+  "caption": "Moss used to lose every round because his phone buzzed. Now it's tucked in an Eyelid and he is unbeatable.",
+  "hashtags": [
+    "#touchgrass",
+    "#solarpunk",
+    "#claymation",
+    "#notifications",
+    "#screentime"
+  ],
+  "style": "claymation"
+}

@@ -1,0 +1,62 @@
+{
+  "slug": "phone-hibernates-like-a-bear",
+  "date": "2026-10-18",
+  "product": "hibernator",
+  "hook_text": "My phone is hibernating like a bear",
+  "song": {
+    "title": "Hibernate",
+    "style": "English, cozy country waltz, acoustic guitar, pedal steel, gentle fiddle, warm friendly male lead vocal, slightly raspy, 3/4 time, 90 BPM",
+    "lyrics": "[Verse]\nWinter nights, the buzzing grew\nPinging all the whole night through\nSaw a bear asleep for months\nThought my phone could try it once\n\n[Chorus]\nHibernate, hibernate\nLittle brick, the pings can wait\nSoup and snow and stories read\nWake me when the flowers bloom"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "{moss} lies in bed at night wide awake with huge round eyes as a cold blue light flickers on the wall beside him. Static medium shot. Dark blue night light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} peeks out of a frosty window and sees a fuzzy brown bear yawning and curling up inside a snowy cave in the woods. Over the shoulder shot. Pale blue moonlight."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} taps his chin, then his eyes light up with an idea and he grins under his mustache. Static close-up. Warm lamp light."
+    },
+    {
+      "product_image": true,
+      "prompt": "A hand slides a black smartphone face-first into a small rounded moss-green brick stuck to a white fridge door, the phone settling upright. The brick has a round pale yellow disc on its front. Warm kitchen light drifts across the fridge. Static close-up, the camera eases back slightly as the hand pulls away."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} stirs a big pot of soup on a stove, steam curling up around his glasses, and sniffs happily. The camera pushes in gently. Warm kitchen glow, orange and cream."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} ducks behind a snowman as a snowball flies past, then pops up laughing and throws one back. Static wide shot. Bright white snow, soft blue sky."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} reads a thick book in an armchair by a crackling fire with a sleeping cat on his lap. The camera slowly drifts closer. Warm firelight."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} wobbles across a frozen pond on ice skates, holding hands with a friend, both giggling. The camera circles slowly. Pale winter sun."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} opens his front door to melting snow and a single green sprout poking up, and stretches his arms wide in the spring sunshine. Slow push in. Soft green and warm gold."
+    }
+  ],
+  "endcard": {
+    "line1": "Let your phone hibernate.",
+    "line2": "link in bio"
+  },
+  "caption": "Moss put his phone into hibernation in its Hibernator. Soup, snow, books. See you in spring, little guy.",
+  "hashtags": [
+    "#touchgrass",
+    "#solarpunk",
+    "#claymation",
+    "#cozy",
+    "#phonefree"
+  ],
+  "style": "claymation"
+}

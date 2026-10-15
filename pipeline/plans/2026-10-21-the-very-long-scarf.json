@@ -1,0 +1,62 @@
+{
+  "slug": "the-very-long-scarf",
+  "date": "2026-10-21",
+  "product": "hibernator",
+  "hook_text": "Phone away for a week. Then this.",
+  "song": {
+    "title": "Focus Mode",
+    "style": "English, warm indie folk with banjo, plucked strings and brushed drums building to a stomping finish, warm friendly male lead vocal, slightly raspy, 100 BPM",
+    "lyrics": "[Verse]\nTapped the eye, the room went still\nFound some yarn up on the shelf\nClick clack click through Monday night\nTuesday I surprised myself\n\n[Chorus]\nLonger, longer, out the door\nDown the street and round the shore\nTapped the eye and look at that\nScarves for everyone and the cat"
+  },
+  "shots": [
+    {
+      "product_image": false,
+      "prompt": "{moss} sits buried in a giant mountain of colourful striped knitted scarf, only his beanie and glasses poking out, grinning. Static wide shot. Warm afternoon light."
+    },
+    {
+      "product_image": true,
+      "prompt": "A finger gently taps the round pale yellow disc on a small rounded moss-green brick stuck to a white fridge door, a black smartphone standing upright inside it facing the wall. Warm light slowly shifts across the fridge. Static close-up."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} pulls a basket of yarn and knitting needles down from a shelf, eyes lighting up. Static medium shot. Soft daylight."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} knits fast in an armchair at night by lamplight, needles flying. The camera pushes in. Warm lamp light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} stares in surprise as the striped scarf spills off his lap across the floor and out the open door. Static wide shot. Morning light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} walks down a street unrolling an endless striped scarf behind him as neighbours point and laugh. The camera tracks backward. Bright sunny light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} wraps a length of scarf around a neighbour's neck, then around a happy dog. Static medium shot. Warm sunlight."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} wraps a tiny bit of scarf around a cat, who looks very pleased. Static close-up. Warm afternoon light."
+    },
+    {
+      "product_image": false,
+      "prompt": "{moss} sits on a hill with his neighbours, all wrapped together in one long striped scarf, watching the sunset. The camera slowly pulls back. Peach and gold, calm."
+    }
+  ],
+  "endcard": {
+    "line1": "Tap the eye. Make something.",
+    "line2": "link in bio"
+  },
+  "caption": "Moss tapped the eye on his Hibernator, found some yarn, and now the whole street has scarves. The cat too.",
+  "hashtags": [
+    "#touchgrass",
+    "#solarpunk",
+    "#claymation",
+    "#knitting",
+    "#hobbies"
+  ],
+  "style": "claymation"
+}
