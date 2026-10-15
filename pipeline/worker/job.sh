@@ -10,6 +10,8 @@
 #       KEEP_MIN   minutes to keep the box alive after finishing so the videos can be fetched (default 40)
 #       PROBE_MODES  GPU probe instead of a batch: e.g. "none cpu" renders 2 shots per LTX offload mode
 #                    (no songs, no edit) and writes timings to $OUT/probe.txt (see probe.py)
+#       CLIPS_ONLY   1 = render the shots and ship them as $OUT/<slug>/raw.tar, no songs or edit (see shoot.py)
+#       GEN_FRAMES   override the frames per clip (config.yaml clip_frames), e.g. 49 for ~2 s
 set -uo pipefail
 W=/workspace; GE=${GE_DIR:-$W/repo/pipeline}; TOKEN=${OUT_TOKEN:-run}; OUT=$W/out/$TOKEN; MODELS=$W/models
 B=$W/batch
@@ -96,7 +98,7 @@ await() {  # await PID NAME: wait for a background prep job, fail with its reaso
 }
 
 # 3. songs (YuE2, ~7 GB of weights, not gated)
-[ -n "${PROBE_MODES:-}" ] || {
+[ -n "${PROBE_MODES:-}${CLIPS_ONLY:-}" ] || {
 stage "songs"
 [ -d $W/yue ] || git clone --depth 1 https://github.com/multimodal-art-projection/YuE.git $W/yue
 uv venv -q -p 3.12 $W/yue/.venv && VIRTUAL_ENV=$W/yue/.venv uv pip install -q "$W/yue" || fail "yue install"
@@ -109,6 +111,7 @@ stage "clips: waiting for ltx download"
 await $LTX_PID ltx
 GW=$(python3 -c "import yaml,sys;c=yaml.safe_load(open('$GE/config.yaml'));print(c['video']['gen_width'],c['video']['gen_height'],c['video']['clip_frames'])" 2>/dev/null || echo "768 1344 121")
 read -r GWIDTH GHEIGHT GFRAMES <<<"$GW"
+GFRAMES=${GEN_FRAMES:-$GFRAMES}
 # 24 GB cards can't hold Gemma or the transformer: stream weights from CPU RAM (~2 min a clip on a 3090).
 # 32 GB cards fit just barely (one prompt at a time, no fragmentation); if they still run out, the
 # missing clips are retried with offload below.
@@ -151,6 +154,15 @@ if [ ${#OFFLOAD[@]} -eq 0 ] && [ "$(missing_clips)" -gt 0 ]; then
 fi
 [ "$(missing_clips)" -eq 0 ] || log "$(missing_clips) clips still missing (exit $rc)"
 [ "$(missing_clips)" -lt "$TOTAL_CLIPS" ] || fail "ltx render (exit $rc, no clip made)"
+
+if [ -n "${CLIPS_ONLY:-}" ]; then
+  : > "$OUT/done.txt"
+  for d in $B/*/; do
+    s=$(basename "$d"); mkdir -p "$OUT/$s"
+    tar -cf "$OUT/$s/raw.tar" -C "$d" clips && echo "$s" >> "$OUT/done.txt"
+  done
+  stage "DONE"; self_destruct_later; wait; exit 0
+fi
 
 # 5. time the lyrics for the captions (whisper alignment on the demucs vocals); a miss only drops captions
 stage "captions"
