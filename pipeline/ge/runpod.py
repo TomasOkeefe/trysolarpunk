@@ -32,8 +32,8 @@ SETUP_MIN = 14  # installs, downloads, model loads: paid at the same rate on eve
 SPEEDS = pathlib.Path(__file__).resolve().parents[1] / "gpu_speeds.json"
 
 
-def options(n_clips):
-    """Every (cloud, card) in stock right now, cheapest estimated batch cost first."""
+def options(n_clips, in_stock=True):
+    """Every (cloud, card) in stock right now (or listed at all), cheapest estimated batch cost first."""
     measured = {g: sorted(v)[len(v) // 2] for g, v in _speeds().items()}  # median of recent runs
     q = """query { gpuTypes { id securePrice communityPrice
       c: lowestPrice(input:{gpuCount:1, secureCloud:false}) { stockStatus uninterruptablePrice }
@@ -50,7 +50,7 @@ def options(n_clips):
         for cloud, k, list_price in (("COMMUNITY", "c", g["communityPrice"]), ("SECURE", "s", g["securePrice"])):
             lp = g[k] or {}
             price = lp.get("uninterruptablePrice") or list_price
-            if not lp.get("stockStatus") or not price:
+            if (in_stock and not lp.get("stockStatus")) or not price:
                 continue
             hours = SETUP_MIN / 60 + n_clips * sec / 3600
             out.append({"cloud": cloud, "gpu": g["id"], "price": price, "stock": lp["stockStatus"],
@@ -91,8 +91,35 @@ def _req(method, path, body=None):
         return json.loads(raw) if raw else {}
 
 
-def run_job(cfg, plans, repo_url, dest, log=print, tiers=None, extra=None, collect=box.fetch):
+def best_case(n_clips):
+    """Estimated batch cost on the cheapest card RunPod lists, in stock or not: the price worth waiting for."""
+    return options(n_clips, in_stock=False)[0]
+
+
+def _show(ranked, n, log):
+    log(f"GPUs in stock for {n} clips, cheapest batch first:")
+    for o in ranked[:10]:
+        log(f"  ${o['cost']:.2f}  {o['cloud'].lower():9} {o['gpu'].replace('NVIDIA ', ''):34} ${o['price']}/h  "
+            f"{o['sec']}s/clip{'' if o['measured'] else ' (guess)'}  stock {o['stock']}")
+
+
+def _rent(body, tiers, log):
+    for cloud, gpus in tiers:
+        try:
+            pod = _req("POST", "/pods", {**body, "cloudType": cloud, "gpuTypeIds": gpus, "gpuTypePriority": "custom"})
+            log(f"rented {cloud.lower()} {' / '.join(x.replace('NVIDIA ', '') for x in gpus)} at ${pod.get('costPerHr')}/h")
+            return pod
+        except urllib.error.HTTPError as e:
+            log(f"no {cloud.lower()} {' / '.join(x.replace('NVIDIA ', '') for x in gpus)} free "
+                f"({e.code}: {e.read()[:150].decode(errors='replace').strip()})")
+    return None
+
+
+def run_job(cfg, plans, repo_url, dest, log=print, tiers=None, extra=None, collect=box.fetch,
+            wait_hours=0, max_cost=None):
     """Rent the cheapest card in stock (or try `tiers`, [(cloud, [gpu ids])], in order), run the batch.
+    wait_hours/max_cost: until the deadline, only rent a card whose estimated batch cost is <= max_cost,
+    checking every 2 min (checks and refused rentals are free); after it, rent the cheapest in stock.
     extra: fields merged into the pod request (env merges into env); collect(base, slugs, dest, log)."""
     g = cfg["gpu"]
     token = secrets.token_urlsafe(16)
@@ -117,31 +144,39 @@ def run_job(cfg, plans, repo_url, dest, log=print, tiers=None, extra=None, colle
     extra = dict(extra or {})
     body["env"].update(extra.pop("env", {}))
     body.update(extra)
-    if tiers is None:
+    if tiers is not None:
+        pod = _rent(body, tiers, log)
+    else:
         n = sum(len(p["shots"]) for p in plans)
-        ranked = options(n)
-        log(f"GPUs in stock for {n} clips, cheapest batch first:")
-        for o in ranked[:10]:
-            log(f"  ${o['cost']:.2f}  {o['cloud'].lower():9} {o['gpu'].replace('NVIDIA ', ''):34} ${o['price']}/h  "
-                f"{o['sec']}s/clip{'' if o['measured'] else ' (guess)'}  stock {o['stock']}")
-        tiers = [(o["cloud"], [o["gpu"]]) for o in ranked]
-    pod = None
-    for cloud, gpus in tiers:
-        try:
-            pod = _req("POST", "/pods", {**body, "cloudType": cloud, "gpuTypeIds": gpus, "gpuTypePriority": "custom"})
-            log(f"rented {cloud.lower()} {' / '.join(x.replace('NVIDIA ', '') for x in gpus)} at ${pod.get('costPerHr')}/h")
-            break
-        except urllib.error.HTTPError as e:
-            log(f"no {cloud.lower()} {' / '.join(x.replace('NVIDIA ', '') for x in gpus)} free "
-                f"({e.code}: {e.read()[:150].decode(errors='replace').strip()})")
-    if pod is None:
-        raise SystemExit("no GPU in stock that can run this; try again later (python3 -m ge.availability)")
+        deadline, pod, quiet = time.time() + wait_hours * 3600, None, log
+        while pod is None:
+            waiting = time.time() < deadline and max_cost is not None
+            try:
+                ranked = options(n)
+            except Exception as e:  # noqa: BLE001  (network blip while waiting overnight)
+                ranked = []
+                quiet(f"stock check failed: {e}")
+            pick = [o for o in ranked if not waiting or o["cost"] <= max_cost]
+            if pick or quiet is log:
+                _show(ranked, n, log if pick else quiet)
+            pod = _rent(body, [(o["cloud"], [o["gpu"]]) for o in pick], quiet if not pick else log)
+            if pod is None:
+                if not waiting:
+                    raise SystemExit("no GPU in stock that can run this; try again later (python3 -m ge.availability)")
+                if quiet is log:
+                    log(f"waiting for a card at <= ${max_cost:.2f} for the batch (until "
+                        f"{time.strftime('%a %H:%M', time.localtime(deadline))}, then the cheapest in stock); "
+                        "checking every 2 min")
+                quiet = lambda m: None  # only report the round that rents
+                time.sleep(120)
+    t_rent = time.time()
     pid = pod["id"]
     base = f"https://{pid}-8080.proxy.runpod.net/{token}"
     log(f"pod {pid} ({pod.get('machine', {}).get('gpuDisplayName', 'GPU')}) - status: {base}/status.log")
     try:
         slugs = box.watch(base, time.time() + g["max_runtime_minutes"] * 60, log)
-        return collect(base, slugs, dest, log), {"dph_total": pod.get("costPerHr")}
+        return collect(base, slugs, dest, log), {"dph_total": pod.get("costPerHr"),
+                                                 "hours": (time.time() - t_rent) / 3600}
     finally:
         try:
             _req("DELETE", f"/pods/{pid}")
