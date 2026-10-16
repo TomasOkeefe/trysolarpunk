@@ -82,6 +82,7 @@ posting:
   organization_id: 6ad21a9eb20703c768d73c05
   timezone: America/New_York
   default_time: "18:00"                   # when Buffer has no slot that weekday
+  daily_times: ["12:00", "19:00", "15:30"]  # for queue --per-day (first n used)
   bucket: trysolarpunk-media              # R2, Standard class, 30-day expiry rule
   cloudflare_account: 83c3790251e34cce0d1bb108446631a8
   public_url: https://pub-0bed9458521a4a2a8f926a6d87473c61.r2.dev

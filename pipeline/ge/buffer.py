@@ -1,6 +1,7 @@
 """Post finished videos to TikTok through Buffer, so nobody has to open TikTok.
 
   python3 -m ge.buffer queue ../videos/2026-10-17-day-one-infinite-stroll.mp4 ...
+  python3 -m ge.buffer queue --per-day 2 ../videos/*.mp4   # ignore plan dates: 2 a day from today
   python3 -m ge.buffer status     # scheduled / sent / failed; frees R2 space once a video is sent
 
 Buffer's TikTok app passed TikTok's audit, so its posts go public with the AI-generated label on.
@@ -90,14 +91,32 @@ def save(posts):
     POSTS.write_text(json.dumps(posts, indent=2) + "\n")
 
 
-def due_at(date, tz):
+def at(date, hhmm):
+    return dt.datetime.combine(date, dt.time(*map(int, hhmm.split(":"))), zoneinfo.ZoneInfo(CFG["timezone"]))
+
+
+def future(when):
+    return when > dt.datetime.now(dt.timezone.utc) + dt.timedelta(minutes=15)
+
+
+def due_at(date):
     """The plan's date at Buffer's first posting slot that day, or None (next free queue slot) if past."""
     sched = buffer("channels", "get", "--id", CFG["channel_id"], "--fields", "postingSchedule.day,postingSchedule.times")
     day = date.strftime("%a").lower()
     times = next((s["times"] for s in sched["postingSchedule"] if s["day"] == day and not s.get("paused")), [])
-    hh, mm = map(int, (times[0] if times else CFG["default_time"]).split(":"))
-    when = dt.datetime.combine(date, dt.time(hh, mm), zoneinfo.ZoneInfo(tz))
-    return when if when > dt.datetime.now(dt.timezone.utc) + dt.timedelta(minutes=15) else None
+    when = at(date, times[0] if times else CFG["default_time"])
+    return when if future(when) else None
+
+
+def spread(start, per_day, count):
+    """count future posting times, per_day a day (config daily_times) from start on."""
+    if per_day > len(CFG["daily_times"]):
+        sys.exit(f"--per-day {per_day}: config.yaml posting.daily_times has only {len(CFG['daily_times'])} times")
+    out, day = [], start
+    while len(out) < count:
+        out += [w for w in (at(day, t) for t in sorted(CFG["daily_times"][:per_day])) if future(w)][:count - len(out)]
+        day += dt.timedelta(days=1)
+    return out
 
 
 def scheduled_count():
@@ -107,7 +126,8 @@ def scheduled_count():
     return len(r["items"]) + (100 if r["pageInfo"]["hasNextPage"] else 0)
 
 
-def queue(video):
+def queue(video, when="plan"):
+    """when: a datetime, or \"plan\" for the plan's date at Buffer's first slot that day."""
     video = pathlib.Path(video).resolve()
     name, posts = video.stem, load()
     if name in posts:
@@ -124,7 +144,8 @@ def queue(video):
         sys.exit(f"Buffer's free queue is full ({BUFFER_FREE_QUEUE} scheduled); wait for some to send")
     check_r2_room(size)
 
-    when = due_at(dt.date.fromisoformat(m.group(1)), CFG["timezone"])
+    if when == "plan":
+        when = due_at(dt.date.fromisoformat(m.group(1)))
     key = f"{name}-{secrets.token_hex(6)}.mp4"  # unguessable, so nobody else can run up reads
     post = {"channelId": CFG["channel_id"], "schedulingType": "automatic", "text": caption,
             "assets": [{"video": {"url": f"{CFG['public_url']}/{key}", "metadata": {"thumbnailOffset": 1000}}}],
@@ -173,11 +194,15 @@ def main():
     sub = ap.add_subparsers(dest="cmd", required=True)
     q = sub.add_parser("queue", help="upload videos and schedule them on Buffer")
     q.add_argument("videos", nargs="+")
+    q.add_argument("--per-day", type=int, help="ignore plan dates: post in file order, this many a day")
+    q.add_argument("--start", type=dt.date.fromisoformat, default=dt.date.today(), help="first day for --per-day")
     sub.add_parser("status", help="show post status; delete sent videos from R2")
     a = ap.parse_args()
     if a.cmd == "queue":
-        for v in a.videos:
-            queue(v)
+        videos = sorted(a.videos, key=lambda v: pathlib.Path(v).name)
+        times = spread(a.start, a.per_day, len(videos)) if a.per_day else ["plan"] * len(videos)
+        for v, when in zip(videos, times):
+            queue(v, when)
     else:
         status()
 
