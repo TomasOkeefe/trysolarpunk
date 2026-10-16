@@ -11,7 +11,9 @@ Two modes (RENDER_MODE):
   re-render with the detailing IC-LoRA. Fewer artifacts, about twice the GPU time. The two passes use
   differently fused transformers, so every shot does pass 1 first (state saved to shot_NN.s1.pt),
   then the detailing transformer is built once for every pass 2. A "sing" shot is rendered against
-  the song's isolated vocals (audio frozen in pass 1), so the character lip-syncs the line.
+  the song's isolated vocals (audio frozen in pass 1), so the character lip-syncs the line. Real
+  vocals pull LTX toward live-action singers (Moss turned into a man in a hoodie), so a sing shot
+  first renders its scene without the vocals and uses that first frame as the anchor frame.
 
 With batch_dir/<slug>/timeline.json (ge.timeline) every clip is rendered at the length its cut needs.
 
@@ -202,7 +204,8 @@ def main():
     from ltx_pipelines.utils.constants import DISTILLED_SIGMAS, STAGE_2_DISTILLED_SIGMAS
     from ltx_pipelines.utils.helpers import decode_keyframes_from_slots, ensure_tiling_config, tiling_scale_factors_for_vae
     from ltx_pipelines.utils.media_io import decode_audio_from_file, encode_video
-    from ltx_pipelines.utils.types import ModalitySpec
+    from ltx_pipelines.utils.types import ImageConditioningInput, ModalitySpec
+    from PIL import Image
 
     audio_conditioner = AudioConditioner(first.model_paths.audio_vae(), torch.bfloat16, pipe.device)
     s1_of = lambda args: pathlib.Path(args.output_path).with_suffix(".s1.pt")
@@ -218,27 +221,52 @@ def main():
         frames = AudioLatentShape.from_duration(batch=1, duration=seconds).frames
         return lat[:, :, :frames].to(torch.bfloat16)
 
+    def decode(latent, keyframes, nf, requested, height, width, fps, gen):
+        latent, n = trim_video_to_requested_frames(latent, canvas_frames=nf, requested_frames=requested,
+                                                   temporal_upscalings=0, temporal_scale=VIDEO_SCALE_FACTORS.time)
+        kf = decode_keyframes_from_slots(torch.cat(list(keyframes.values()), dim=2), list(keyframes), n)
+        vae = pipe.video_decoder
+        tiling = ensure_tiling_config(
+            AUTO_TILING, scale_factors=tiling_scale_factors_for_vae(vae.checkpoint_path), vae_checkpoint_path=vae.checkpoint_path,
+            video_shape=VideoPixelShape(batch=1, frames=n, height=height, width=width, fps=fps),
+            diffvae_optimization=vae.diffvae_optimization, device=pipe.device, keyframes=kf is not None)
+        return vae(latent, tiling, gen, keyframes=kf), n, tiling
+
+    def stage1(args, ctx, images, audio_spec, gen, nf, positions):
+        return denoise_stage1(
+            stage=pipe.stage, image_conditioner=pipe.image_conditioner, images=images,
+            video_shape=VideoPixelShape(batch=1, frames=nf, height=args.height // 2, width=args.width // 2, fps=args.frame_rate),
+            positions=positions, video_context=ctx.video_encoding, audio_context=ctx.audio_encoding,
+            sigmas=DISTILLED_SIGMAS, noiser=GaussianNoiser(generator=gen), device=pipe.device, dtype=torch.bfloat16,
+            audio_spec=audio_spec, **pipe._sampler_kwargs(args.seed, D.ANCESTRAL_NOISE_SEED_OFFSET))
+
     def pass1(d, plan, i, shot, args):
         if pathlib.Path(args.output_path).exists() or s1_of(args).exists():
             return False
         ctx = encoded(args.prompt)
         nf, _, positions = resolve_canvas(args.num_frames)
-        gen = torch.Generator(device=pipe.device).manual_seed(args.seed)
-        audio_spec = None
+        images = pipe.image_conditioner.resolve_crf(args.images)
+        audio_spec, anchored = None, False
         sing = sing_audio(d, i)
         if sing:
+            if not images:  # the scene without vocals first: its first frame keeps the look
+                g = torch.Generator(device=pipe.device).manual_seed(args.seed)
+                plain = stage1(args, ctx, images, None, g, nf, positions)
+                video, _, _ = decode(plain.video_state.latent[:1], plain.keyframes, nf, args.num_frames,
+                                     args.height // 2, args.width // 2, args.frame_rate, g)
+                frame = list(video)[0][0].float()  # drain the iterator so the decoder is freed
+                frame = frame.clamp(0, 1).mul(255).byte().cpu().numpy()
+                anchor = pathlib.Path(args.output_path).with_suffix(".anchor.png")
+                Image.fromarray(frame).save(anchor)
+                images = pipe.image_conditioner.resolve_crf([ImageConditioningInput(str(anchor), 0, 1.0)])
+                anchored = True
             audio_spec = ModalitySpec(latent=vocal_latent(*sing, nf / args.frame_rate), conditioning_fps=args.frame_rate,
                                       context=ctx.audio_encoding, frozen=True, noise_scale=0.0)
-        s1 = denoise_stage1(
-            stage=pipe.stage, image_conditioner=pipe.image_conditioner,
-            images=pipe.image_conditioner.resolve_crf(args.images),
-            video_shape=VideoPixelShape(batch=1, frames=nf, height=args.height // 2, width=args.width // 2, fps=args.frame_rate),
-            positions=positions, video_context=ctx.video_encoding, audio_context=ctx.audio_encoding,
-            sigmas=DISTILLED_SIGMAS, noiser=GaussianNoiser(generator=gen), device=pipe.device, dtype=torch.bfloat16,
-            audio_spec=audio_spec, **pipe._sampler_kwargs(args.seed, D.ANCESTRAL_NOISE_SEED_OFFSET))
+        gen = torch.Generator(device=pipe.device).manual_seed(args.seed)
+        s1 = stage1(args, ctx, images, audio_spec, gen, nf, positions)
         torch.save({"ref": s1.video_state.latent[:1].cpu(), "kf": {k: v.cpu() for k, v in s1.keyframes.items()},
                     "audio": s1.audio_state.latent.cpu(), "frames": nf, "requested": args.num_frames,
-                    "gen": gen.get_state()}, s1_of(args))
+                    "anchored": anchored, "gen": gen.get_state()}, s1_of(args))
         return True
 
     def pass2(d, plan, i, shot, args):
@@ -252,22 +280,16 @@ def main():
         nf = st["frames"]
         s2 = denoise_stage2(
             stage=pipe.stage_detailing, image_conditioner=pipe.image_conditioner, upsampler=pipe.upsampler,
-            images=pipe.image_conditioner.resolve_crf(args.images),
+            # an anchor frame is half-res: pass 2 takes the look from the pass-1 reference instead
+            images=[] if st.get("anchored") else pipe.image_conditioner.resolve_crf(args.images),
             video_shape=VideoPixelShape(batch=1, frames=nf, height=args.height, width=args.width, fps=args.frame_rate),
             keyframes={k: v.to(pipe.device) for k, v in st["kf"].items()},
             half_res_reference=st["ref"].to(pipe.device), downscale_factor=pipe._detailing_downscale,
             audio_latent=st["audio"].to(pipe.device), video_context=ctx.video_encoding, audio_context=ctx.audio_encoding,
             sigmas=STAGE_2_DISTILLED_SIGMAS, noiser=GaussianNoiser(generator=gen), device=pipe.device,
             dtype=torch.bfloat16, **pipe._sampler_kwargs(args.seed, D.ANCESTRAL_STAGE_2_NOISE_SEED_OFFSET))
-        latent, n = trim_video_to_requested_frames(s2.video_state.latent, canvas_frames=nf, requested_frames=st["requested"],
-                                                   temporal_upscalings=0, temporal_scale=VIDEO_SCALE_FACTORS.time)
-        kf = decode_keyframes_from_slots(torch.cat(list(s2.keyframes.values()), dim=2), list(s2.keyframes), n)
-        vae = pipe.video_decoder
-        tiling = ensure_tiling_config(
-            AUTO_TILING, scale_factors=tiling_scale_factors_for_vae(vae.checkpoint_path), vae_checkpoint_path=vae.checkpoint_path,
-            video_shape=VideoPixelShape(batch=1, frames=n, height=args.height, width=args.width, fps=args.frame_rate),
-            diffvae_optimization=vae.diffvae_optimization, device=pipe.device, keyframes=kf is not None)
-        video = vae(latent, tiling, gen, keyframes=kf)
+        video, n, tiling = decode(s2.video_state.latent, s2.keyframes, nf, st["requested"],
+                                  args.height, args.width, args.frame_rate, gen)
         # no audio track: the edit lays the song over every clip
         encode_video(video=video, fps=int(args.frame_rate), audio=None, output_path=str(dst),
                      video_chunks_number=get_video_chunks_number(n, tiling))
