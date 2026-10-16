@@ -45,7 +45,10 @@ def gpu_and_speed(job_log):
         return None, None
     text = job_log.read_text(errors="replace")
     gpu = re.search(r"== setup on (.+)", text)
-    secs = sorted(int(x) for x in re.findall(r"shot \d+ done in (\d+)s", text))
+    per = {}  # dfr renders each shot in two passes: a clip costs both
+    for slug, shot, sec in re.findall(r"(\S+) shot (\d+) (?:pass \d )?done in (\d+)s", text):
+        per[slug, shot] = per.get((slug, shot), 0) + int(sec)
+    secs = sorted(per.values())
     return (gpu.group(1).strip() if gpu else None), (secs[len(secs) // 2] if secs else None)
 
 
@@ -68,7 +71,7 @@ def modal_spent_this_month():
 def modal_estimate(plans):
     from ge import modal_runner
     clips = sum(len(p["shots"]) for p in plans)
-    return (6 + 2 * len(plans) + clips * 35 / 60) / 60 * modal_runner.GPU_PER_HOUR
+    return (6 + 2 * len(plans) + clips * 55 / 60) / 60 * modal_runner.GPU_PER_HOUR  # dfr: ~53 s a clip on an L40S
 
 
 def render(a, cfg, plans, log, max_cost, only):
