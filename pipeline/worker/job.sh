@@ -15,8 +15,10 @@
 #       TRAIN_DATA_URL  train a video LoRA instead of rendering (see train_lora.py): a tar with dataset.json
 #                    + clips; TRAIN_TRIGGER, TRAIN_STEPS, TRAIN_BUCKETS; checkpoints land in $OUT/lora/
 set -uo pipefail
-W=/workspace; GE=${GE_DIR:-$W/repo/pipeline}; TOKEN=${OUT_TOKEN:-run}; OUT=$W/out/$TOKEN; MODELS=$W/models
-B=$W/batch
+W=${WORK_DIR:-/workspace}; GE=${GE_DIR:-$W/repo/pipeline}; TOKEN=${OUT_TOKEN:-run}; OUT=$W/out/$TOKEN
+MODELS=${MODELS_DIR:-$W/models}; B=$W/batch
+# PREBUILT=1 (Modal): ffmpeg, uv and the three venvs are baked into the image, so skip every install
+LTX=${LTX_DIR:-$W/ltx}; YUE=${YUE_DIR:-$W/yue}; ASM=${ASM_DIR:-$W/asm}; PREBUILT=${PREBUILT:-}
 LTX_COMMIT=be6d6d0  # gen_clips.py uses private hooks of this exact version; bump deliberately
 mkdir -p "$OUT" "$MODELS" "$B"
 log()   { echo "[$(date -u +%H:%M:%S)] $*" | tee -a "$OUT/status.log"; }
@@ -41,8 +43,10 @@ stage "setup on $(nvidia-smi --query-gpu=name --format=csv,noheader 2>/dev/null 
 export DEBIAN_FRONTEND=noninteractive UV_CACHE_DIR=$W/.uv-cache
 # RunPod images set HF_HUB_ENABLE_HF_TRANSFER=1 globally, which breaks downloads in venvs without hf_transfer
 export HF_HUB_ENABLE_HF_TRANSFER=0
-apt-get update -qq && apt-get install -y -qq ffmpeg git curl >/dev/null || fail "apt"
-curl -LsSf https://astral.sh/uv/install.sh | sh >/dev/null && export PATH="$HOME/.local/bin:$PATH"
+if [ -z "$PREBUILT" ]; then
+  apt-get update -qq && apt-get install -y -qq ffmpeg git curl >/dev/null || fail "apt"
+  curl -LsSf https://astral.sh/uv/install.sh | sh >/dev/null && export PATH="$HOME/.local/bin:$PATH"
+fi
 # the plans: one folder per video, $B/<slug>/plan.json
 python3 - "$B" <<'EOF' || fail "bad plans"
 import base64, gzip, json, os, pathlib, sys
@@ -70,17 +74,19 @@ done
 # for them once instead of in a row. Background jobs can't call fail(): they leave a reason file.
 L=$MODELS/ltx-2.5
 prep_ltx() {  # LTX-2.5 distilled: code + ~66 GB of gated weights
-  if [ ! -d $W/ltx ]; then
-    git clone -q https://github.com/Lightricks/LTX-2.git $W/ltx && git -C $W/ltx checkout -q $LTX_COMMIT || { echo "ltx clone"; return 1; }
+  if [ ! -d $LTX ]; then
+    git clone -q https://github.com/Lightricks/LTX-2.git $LTX && git -C $LTX checkout -q $LTX_COMMIT || { echo "ltx clone"; return 1; }
   fi
-  ( cd $W/ltx && uv sync -q --no-dev --extra natten ) || ( cd $W/ltx && uv sync -q --no-dev ) || { echo "ltx install"; return 1; }
-  ( cd $W/ltx && uv pip install -q "huggingface_hub[cli,hf_transfer]" ) || true
+  if [ -z "$PREBUILT" ]; then
+    ( cd $LTX && uv sync -q --no-dev --extra natten ) || ( cd $LTX && uv sync -q --no-dev ) || { echo "ltx install"; return 1; }
+    ( cd $LTX && uv pip install -q "huggingface_hub[cli,hf_transfer]" ) || true
+  fi
   # LTX's torch is built for CUDA 13; on an older host driver it silently falls back to the CPU
-  ( cd $W/ltx && uv run --no-sync python -c "import torch; assert torch.cuda.is_available()" ) \
+  ( cd $LTX && uv run --no-sync python -c "import torch; assert torch.cuda.is_available()" ) \
     || { echo "GPU unusable by LTX's torch (host driver older than CUDA 13: $(nvidia-smi --query-gpu=driver_version --format=csv,noheader))"; return 1; }
   log "ltx installed, downloading weights"
-  FAST=$(cd $W/ltx && uv run --no-sync python -c "import hf_transfer; print(1)" 2>/dev/null || echo 0)
-  ( cd $W/ltx && HF_HUB_ENABLE_HF_TRANSFER=$FAST HF_TOKEN=$HF_TOKEN uv run --no-sync hf download Lightricks/LTX-2.5 \
+  FAST=$(cd $LTX && uv run --no-sync python -c "import hf_transfer; print(1)" 2>/dev/null || echo 0)
+  ( cd $LTX && HF_HUB_ENABLE_HF_TRANSFER=$FAST HF_TOKEN=$HF_TOKEN uv run --no-sync hf download Lightricks/LTX-2.5 \
       diffusion_models/ltx-2.5-22b-distilled-transformer-bf16.safetensors \
       text_encoders/gemma4-12b-with-proj-ltx-2.5-bf16.safetensors \
       vae/ltx-2.5-video-vae-conv-bf16.safetensors \
@@ -90,14 +96,16 @@ prep_ltx() {  # LTX-2.5 distilled: code + ~66 GB of gated weights
   log "ltx weights ready"
 }
 prep_asm() {  # captions + edit: stable-ts, demucs and their models
-  uv venv -q -p 3.12 $W/asm && VIRTUAL_ENV=$W/asm uv pip install -q pillow librosa soundfile pyyaml stable-ts demucs \
-    || { echo "asm install"; return 1; }
-  $W/asm/bin/python -c "import stable_whisper; stable_whisper.load_model('medium', device='cpu')
+  if [ -z "$PREBUILT" ]; then
+    uv venv -q -p 3.12 $ASM && VIRTUAL_ENV=$ASM uv pip install -q pillow librosa soundfile pyyaml stable-ts demucs \
+      || { echo "asm install"; return 1; }
+  fi
+  $ASM/bin/python -c "import stable_whisper; stable_whisper.load_model('medium', device='cpu')
 from demucs.pretrained import get_model; get_model('htdemucs')" >/dev/null 2>&1 || true
   log "caption tools ready"
 }
-( prep_ltx > $W/ltx.err 2>&1 ) & LTX_PID=$!
-( prep_asm > $W/asm.err 2>&1 ) & ASM_PID=$!
+( prep_ltx > $LTX.err 2>&1 ) & LTX_PID=$!
+( prep_asm > $ASM.err 2>&1 ) & ASM_PID=$!
 await() {  # await PID NAME: wait for a background prep job, fail with its reason
   wait "$1" || fail "$2: $(tail -3 $W/$2.err | tr '\n' ' ')"
 }
@@ -105,9 +113,11 @@ await() {  # await PID NAME: wait for a background prep job, fail with its reaso
 # 3. songs (YuE2, ~7 GB of weights, not gated)
 [ -n "${PROBE_MODES:-}${CLIPS_ONLY:-}${TRAIN_DATA_URL:-}" ] || {
 stage "songs"
-[ -d $W/yue ] || git clone --depth 1 https://github.com/multimodal-art-projection/YuE.git $W/yue
-uv venv -q -p 3.12 $W/yue/.venv && VIRTUAL_ENV=$W/yue/.venv uv pip install -q "$W/yue" || fail "yue install"
-$W/yue/.venv/bin/python "$GE/worker/gen_song.py" "$B" || fail "yue generate"
+if [ -z "$PREBUILT" ]; then
+  [ -d $YUE ] || git clone --depth 1 https://github.com/multimodal-art-projection/YuE.git $YUE
+  uv venv -q -p 3.12 $YUE/.venv && VIRTUAL_ENV=$YUE/.venv uv pip install -q "$YUE" || fail "yue install"
+fi
+$YUE/.venv/bin/python "$GE/worker/gen_song.py" "$B" || fail "yue generate"
 log "songs ready: $(ls $B/*/song.flac 2>/dev/null | wc -l)"
 }
 
@@ -119,11 +129,11 @@ VRAM_MIB=$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits | h
 if [ -n "${TRAIN_DATA_URL:-}" ]; then  # LoRA training instead of a batch
   T=$W/train; mkdir -p $T "$OUT/lora"
   stage "train: install"
-  ( cd $W/ltx && uv sync -q --no-dev --extra natten --all-packages ) || fail "trainer install"
+  ( cd $LTX && uv sync -q --no-dev --extra natten --all-packages ) || fail "trainer install"
   curl -sfL "$TRAIN_DATA_URL" | tar -x --no-same-owner -C $T || fail "train data download"
   log "dataset: $(python3 -c "import json;print(len(json.load(open('$T/dataset.json'))))" ) clips"
   stage "train: preprocess"
-  ( cd $W/ltx/packages/ltx-trainer && uv run --no-sync python scripts/process_dataset.py $T/dataset.json \
+  ( cd $LTX/packages/ltx-trainer && uv run --no-sync python scripts/process_dataset.py $T/dataset.json \
       --resolution-buckets "${TRAIN_BUCKETS:-512x896x49}" --skip-audio --lora-trigger "${TRAIN_TRIGGER:-}" \
       --model-path "$L/diffusion_models/ltx-2.5-22b-distilled-transformer-bf16.safetensors" \
       --text-encoder-path "$L/text_encoders/gemma4-12b-with-proj-ltx-2.5-bf16.safetensors" \
@@ -133,7 +143,7 @@ if [ -n "${TRAIN_DATA_URL:-}" ]; then  # LoRA training instead of a batch
   stage "train: steps"
   # the watchdog needs a changing STAGE: mirror the trainer's latest step line every minute
   ( while sleep 60; do l=$(grep -a -o -E "[Ss]tep[ :]+[0-9]+[^,]{0,20}" "$OUT/train.log" | tail -1); [ -n "$l" ] && echo "train: $l" > "$OUT/STAGE"; done ) & TICK=$!
-  ( cd $W/ltx/packages/ltx-trainer && uv run --no-sync python scripts/train.py $T/config.yaml --disable-progress-bars ) >> "$OUT/train.log" 2>&1
+  ( cd $LTX/packages/ltx-trainer && uv run --no-sync python scripts/train.py $T/config.yaml --disable-progress-bars ) >> "$OUT/train.log" 2>&1
   rc=$?; kill $TICK 2>/dev/null
   find "$OUT/lora" -name "*.safetensors" | sort > "$OUT/lora/files.txt"
   [ -s "$OUT/lora/files.txt" ] || fail "training (exit $rc): $(tail -5 $OUT/train.log | tr '\n' ' ')"
@@ -168,7 +178,7 @@ for p in pathlib.Path(sys.argv[1]).glob('*/plan.json'):
         seen[l['url']] = l.get('strength', 1.0)
 for u, s in seen.items(): print(u, s)" "$B")
 clips() {  # extra args go to LTX, e.g. --offload cpu
-( cd $W/ltx && STAGE_FILE="$OUT/STAGE" uv run --no-sync python "$GE/worker/gen_clips.py" "$B" -- \
+( cd $LTX && STAGE_FILE="$OUT/STAGE" uv run --no-sync python "$GE/worker/gen_clips.py" "$B" -- \
     --transformer-path       "$L/diffusion_models/ltx-2.5-22b-distilled-transformer-bf16.safetensors" \
     --text-encoder-path      "$L/text_encoders/gemma4-12b-with-proj-ltx-2.5-bf16.safetensors" \
     --video-vae-path         "$L/vae/ltx-2.5-video-vae-conv-bf16.safetensors" \
@@ -215,7 +225,7 @@ stage "captions"
 await $ASM_PID asm
 for d in $B/*/; do
   [ -f "$d/song.flac" ] || continue
-  ( cd "$GE" && $W/asm/bin/python -m ge.lyrics --song "$d/song.flac" --plan "$d/plan.json" --out "$d/words.json" ) \
+  ( cd "$GE" && $ASM/bin/python -m ge.lyrics --song "$d/song.flac" --plan "$d/plan.json" --out "$d/words.json" ) \
     || log "$(basename "$d"): lyric timing FAILED (no captions)"
 done
 
@@ -228,7 +238,7 @@ for d in $B/*/; do
     log "$s: SKIPPED (missing song or clips)"; continue
   fi
   mkdir -p "$OUT/$s"
-  ( cd "$GE" && $W/asm/bin/python -m ge.assemble --plan "$d/plan.json" --song "$d/song.flac" --clips "$d/clips" --words "$d/words.json" --out "$OUT/$s/final.mp4" ) \
+  ( cd "$GE" && $ASM/bin/python -m ge.assemble --plan "$d/plan.json" --song "$d/song.flac" --clips "$d/clips" --words "$d/words.json" --out "$OUT/$s/final.mp4" ) \
     && cp "$d/plan.json" "$OUT/$s/plan.json" && echo "$s" >> "$OUT/done.txt" && log "$s: done" \
     || log "$s: assemble FAILED"
   tar -cf "$OUT/$s/raw.tar" -C "$d" clips song.flac $( [ -f "$d/words.json" ] && echo words.json ) || true

@@ -1,0 +1,90 @@
+"""Render a batch on Modal instead of RunPod. Same worker (worker/job.sh), different host.
+
+Why Modal: a pooled multi-cloud GPU supply (rarely "no capacity"), $30/month of free credits on the
+Starter plan, and the job keeps running in the cloud when this Mac sleeps. The installs are baked
+into the image once; model weights live on the `ge-models` volume, so a run skips ~10 min of setup.
+Each run works in `ge-work:/runs/<run_id>/`, so a preempted run resumes where it stopped.
+
+Driven by run.py (`--provider modal`, or automatically when no cheap RunPod card is free).
+One-time setup (owner): `python3 -m modal token new`, and a Modal secret named `huggingface`
+holding HF_TOKEN (the LTX-2.5 weights are gated).
+"""
+import os
+import pathlib
+import subprocess
+import time
+
+import modal
+
+APP = "trysolarpunk"
+LTX_COMMIT = "be6d6d0"  # keep in step with worker/job.sh
+GPUS = ["L40S", "A100-80GB"]  # 48 GB+ so LTX runs without offload; L40S is the cheapest that fits
+PIPELINE = pathlib.Path(__file__).resolve().parent
+
+app = modal.App(APP)
+models = modal.Volume.from_name("ge-models", create_if_missing=True)
+work = modal.Volume.from_name("ge-work", create_if_missing=True)
+
+image = (
+    modal.Image.debian_slim(python_version="3.12")
+    .apt_install("git", "curl", "ffmpeg", "build-essential")
+    .pip_install("uv", "pyyaml")
+    .run_commands(
+        f"git clone -q https://github.com/Lightricks/LTX-2.git /opt/ltx && git -C /opt/ltx checkout -q {LTX_COMMIT}",
+        "cd /opt/ltx && (uv sync -q --no-dev --extra natten || uv sync -q --no-dev)",
+        "cd /opt/ltx && uv pip install -q 'huggingface_hub[cli,hf_transfer]'",
+        "git clone -q --depth 1 https://github.com/multimodal-art-projection/YuE.git /opt/yue",
+        "uv venv -q -p 3.12 /opt/yue/.venv && VIRTUAL_ENV=/opt/yue/.venv uv pip install -q /opt/yue",
+        "uv venv -q -p 3.12 /opt/asm && VIRTUAL_ENV=/opt/asm uv pip install -q pillow librosa soundfile pyyaml stable-ts demucs",
+    )
+    .env({"PREBUILT": "1", "LTX_DIR": "/opt/ltx", "YUE_DIR": "/opt/yue", "ASM_DIR": "/opt/asm",
+          "MODELS_DIR": "/models", "HF_HOME": "/models/hf", "XDG_CACHE_HOME": "/models/cache",
+          "TORCH_HOME": "/models/torch", "HF_HUB_ENABLE_HF_TRANSFER": "0"})
+    .add_local_dir(PIPELINE, "/root/pipeline", ignore=["plans/**", "__pycache__/**", "*.pyc", "*.log"])
+)
+
+
+@app.function(image=image, gpu=GPUS, timeout=4 * 3600, volumes={"/models": models, "/work": work},
+              secrets=[modal.Secret.from_name("huggingface")], retries=modal.Retries(max_retries=2))
+def render(run_id: str, plans_b64: str, extra_env: dict | None = None) -> list[str]:
+    """Run worker/job.sh for one batch. Returns the slugs that finished."""
+    run = pathlib.Path("/work/runs") / run_id
+    run.mkdir(parents=True, exist_ok=True)
+    # the mounted code is read-only; job.sh writes fonts into it, so work on a copy
+    subprocess.run(["cp", "-r", "/root/pipeline", "/tmp/pipeline"], check=True)
+    env = {**os.environ, "WORK_DIR": str(run), "GE_DIR": "/tmp/pipeline", "OUT_TOKEN": "out",
+           "PLANS_B64": plans_b64, "KEEP_MIN": "0", **(extra_env or {})}
+    # job.sh waits on its status server at the end; on Modal nothing needs to fetch from it, so stop it
+    proc = subprocess.Popen(["bash", "/tmp/pipeline/worker/job.sh"], env=env)
+    out = run / "out" / "out"
+    while proc.poll() is None:
+        try:
+            stage = (out / "STAGE").read_text().strip()
+        except OSError:
+            stage = ""
+        if stage == "DONE" or stage.startswith("FAILED"):
+            proc.terminate()
+            break
+        work.commit()  # make progress (STAGE, finished clips) visible to the watcher and to a retry
+        time.sleep(30)
+    work.commit()
+    done = out / "done.txt"
+    return done.read_text().split() if done.exists() else []
+
+
+@app.function(image=modal.Image.debian_slim(python_version="3.12"), gpu="T4", timeout=600,
+              volumes={"/models": models})
+def gpu_check() -> str:
+    """Cheap smoke test: driver version and whether LTX's CUDA 13 torch sees the GPU."""
+    return subprocess.run(["nvidia-smi", "--query-gpu=name,driver_version", "--format=csv,noheader"],
+                          capture_output=True, text=True).stdout
+
+
+@app.function(image=image, gpu="T4", timeout=900)
+def ltx_check() -> str:
+    """Smoke test on the real image: LTX's torch must see the GPU (it silently uses the CPU otherwise)."""
+    r = subprocess.run(["bash", "-c", "cd /opt/ltx && uv run --no-sync python -c "
+                        "'import torch; print(torch.__version__, torch.cuda.is_available(), torch.cuda.get_device_name(0))'; "
+                        "nvidia-smi --query-gpu=driver_version --format=csv,noheader"],
+                       capture_output=True, text=True)
+    return r.stdout + r.stderr[-2000:]

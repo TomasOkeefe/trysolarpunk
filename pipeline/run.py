@@ -55,6 +55,45 @@ def notify(msg):
                    capture_output=True)
 
 
+CHEAP_RUNPOD = [("community", "A6000"), ("community", "A40")]
+MODAL_FREE_PER_MONTH = 30.0  # Modal Starter plan credits
+
+
+def modal_spent_this_month():
+    f, month = ROOT / "history.jsonl", time.strftime("%Y-%m")
+    rows = [json.loads(l) for l in f.read_text().splitlines() if l.strip()] if f.exists() else []
+    return sum(r.get("cost", 0) for r in rows if r.get("provider") == "modal" and r.get("month") == month)
+
+
+def modal_estimate(plans):
+    from ge import modal_runner
+    clips = sum(len(p["shots"]) for p in plans)
+    return (6 + 2 * len(plans) + clips * 35 / 60) / 60 * modal_runner.GPU_PER_HOUR
+
+
+def render(a, cfg, plans, log, max_cost, only):
+    """Pick where to render (see --provider) and run the batch there."""
+    from ge import modal_runner
+    if a.provider == "modal":
+        return modal_runner.run_job(cfg, plans, VIDEOS, log)
+    if a.provider == "runpod":
+        return runpod.run_job(cfg, plans, REPO_URL, VIDEOS, log, wait_hours=a.wait, max_cost=max_cost,
+                              exclude=a.exclude, only=only)
+    try:  # auto: a cheap community card on RunPod if one is free this minute
+        return runpod.run_job(cfg, plans, REPO_URL, VIDEOS, log, only=only or CHEAP_RUNPOD, exclude=a.exclude)
+    except SystemExit as e:
+        if "no allowed GPU" not in str(e):
+            raise
+    spent, est = modal_spent_this_month(), modal_estimate(plans)
+    if spent + est <= MODAL_FREE_PER_MONTH:
+        log(f"no cheap RunPod card free; Modal (free credits: ${spent:.2f} of ${MODAL_FREE_PER_MONTH:.0f} used "
+            f"this month, this batch ~${est:.2f})")
+        return modal_runner.run_job(cfg, plans, VIDEOS, log)
+    log(f"Modal credits nearly used (${spent:.2f} this month); waiting for a cheap RunPod card")
+    return runpod.run_job(cfg, plans, REPO_URL, VIDEOS, log, wait_hours=a.wait or 168, only=only or CHEAP_RUNPOD,
+                          exclude=a.exclude)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("files", nargs="+")
@@ -64,6 +103,9 @@ def main():
     ap.add_argument("--only", action="append", default=[], metavar="CLOUD:GPU",
                     help="rent only these, e.g. community:A6000 (repeatable); with --wait, never anything else")
     ap.add_argument("--no-post", action="store_true", help="don't queue the videos on Buffer (tests)")
+    ap.add_argument("--provider", choices=["auto", "runpod", "modal"], default="auto",
+                    help="auto: a community A6000/A40 on RunPod if one is free right now, else Modal while this "
+                         "month's free credits last, else wait for the cheap RunPod cards")
     a = ap.parse_args()
     files = a.files
     cfg = yaml.safe_load((ROOT / "config.yaml").read_text())
@@ -90,8 +132,7 @@ def main():
         log(f"best possible: ${best['cost']:.2f} on {best['cloud'].lower()} {best['gpu'].replace('NVIDIA ', '')}; "
             f"will rent at <= ${max_cost:.2f}")
     try:
-        done, info = runpod.run_job(cfg, plans, REPO_URL, VIDEOS, log, wait_hours=a.wait, max_cost=max_cost,
-                                    exclude=a.exclude, only=only)
+        done, info = render(a, cfg, plans, log, max_cost, only)
     except BaseException as e:
         notify(f"Render failed: {str(e)[:80]}")
         raise
@@ -111,7 +152,9 @@ def main():
             (VIDEOS / f"{plan['slug']}.json").unlink(missing_ok=True)
             (VIDEOS / f"{name}.txt").write_text(f"{plan['caption']} {' '.join(plan['hashtags'])}\n")
             h.write(json.dumps({"date": plan["date"], "slug": plan["slug"], "product": plan["product"],
-                                "gpu": gpu, "dph": info.get("dph_total"), "sec_per_clip": sec}) + "\n")
+                                "gpu": gpu, "dph": info.get("dph_total"), "sec_per_clip": sec,
+                                "provider": info.get("provider", "runpod"), "month": time.strftime("%Y-%m"),
+                                "cost": round(cost / max(1, len(done)), 3)}) + "\n")
             print(f"ok      videos/{name}.mp4")
     print(f"{len(done)}/{len(plans)} videos, {hours * 60:.0f} min on {gpu} ({sec}s a clip), about ${cost:.2f}")
     notify(f"{len(done)}/{len(plans)} videos ready in videos/, about ${cost:.2f}")
