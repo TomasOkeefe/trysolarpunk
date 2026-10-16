@@ -1,0 +1,142 @@
+{
+  "slug": "cut-the-strings",
+  "date": "2026-11-03",
+  "product": "hibernator",
+  "style": "claymation",
+  "hook_text": "I was a puppet for years",
+  "song": {
+    "title": "Cut The Strings",
+    "style": "English, soulful gospel-tinged indie folk blues, stomping kick drum and hand claps, swelling church organ, gritty slide guitar, choir harmonies, deep warm male baritone lead rising to a raw falsetto, slow-burning and anthemic, 120 BPM",
+    "lyrics": "[Verse]\nI was a boy with mud on my knees\nRunning with friends through the apple trees\nThen a small light settled in my palm\nAnd it sang me quiet and it sang me calm\n\n[Chorus]\nPull the string and I laugh for you\nPull the string and I'm angry too\nPull the string and I cry on cue\nEvery string leads me back to you\n\n[Verse]\nThen I laid my phone in a bed of green\nOn the fridge door, quiet and unseen\nEvery string went slack and fell away\nAnd my friends came back in the light of day\n\n[Chorus]\nNow I laugh and I mean it true\nHands in the soil and the sky is blue\nFriends at the table, the night is new\nNo more strings, it's just me and you"
+  },
+  "shots": [
+    {
+      "prompt": "A little plasticine boy with a big round head, rosy cheeks, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stomps through a big mud puddle and laughs as brown mud splashes up around him. Low angle, the camera rushes in toward him. Warm golden afternoon light."
+    },
+    {
+      "line": 1,
+      "prompt": "The little plasticine boy in round black glasses, a moss-green beanie with a yellow pom-pom and a mustard-yellow raincoat races two friends through an orchard of apple trees: a girl in a red dress with two big orange pigtails and a boy in a blue striped sweater with curly black hair. The camera tracks fast alongside them. Dappled warm sunlight."
+    },
+    {
+      "prompt": "The three plasticine kids tumble into a pile of golden autumn leaves at the bottom of a grassy hill, laughing, leaves flying up. The camera cranes down onto them from above. Warm late afternoon light."
+    },
+    {
+      "line": 2,
+      "prompt": "A small black phone drops gently into the open plasticine palm of the little boy in round black glasses and a moss-green beanie, a soft white glow lighting up his surprised face. Extreme close-up, the camera pushes in fast on his eyes. Warm room light, cool glow."
+    },
+    {
+      "prompt": "The little boy in round black glasses and a moss-green beanie sits alone on a wooden swing staring down at a glowing phone while his two friends wave at him from across the playground, the girl in a red dress with orange pigtails and the boy in a blue striped sweater. The camera slowly pulls back. Golden evening light."
+    },
+    {
+      "line": 3,
+      "prompt": "{moss} sits slumped on a saggy sofa staring at a glowing phone while the seasons change in the window behind him, snow then flowers then falling leaves, and his mustache grows in. The camera slowly pushes in. Dim grey room, cold glow on his face."
+    },
+    {
+      "prompt": "The girl in a red dress with orange pigtails knocks on a round green front door, waits, then walks away with her head down as the door stays shut. The camera tracks with her down the steps. Soft overcast light."
+    },
+    {
+      "line": 4,
+      "sing": true,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, thin white marionette strings tied to his wrists and head rising straight up out of frame, a forced puppet grin jerking onto his face. The camera pushes in slowly. Dim room, cold glow."
+    },
+    {
+      "prompt": "{moss} is yanked up onto his tiptoes by thin white marionette strings tied to his wrists and head, his arms flopping like a puppet as he laughs at the phone in his hand. Low angle, the camera whips around him. Dim room, cold glow."
+    },
+    {
+      "line": 5,
+      "prompt": "{moss} stamps his boot and shakes his fist at a glowing phone, his face scrunched up red with anger, thin white marionette strings on his wrists jerking his arms up and down. The camera crash zooms in on his face. Harsh flickering light."
+    },
+    {
+      "prompt": "Extreme close-up of thin white marionette strings snapping tight on a plasticine wrist, pulling a chunky clay hand into a clenched fist. The camera follows the string upward. Dark background, rim light on the string."
+    },
+    {
+      "line": 6,
+      "prompt": "{moss} sits on the floor crying big clay tears onto a glowing phone, thin white marionette strings lifting his arms to wipe his eyes like a puppet. The camera slowly orbits around him. Dim blue room, one warm lamp."
+    },
+    {
+      "prompt": "A single big clay teardrop rolls down a rosy plasticine cheek behind round black glasses and splashes onto a phone screen glowing plain white. Extreme close-up, the camera tilts down with the tear. Dim warm lamp light."
+    },
+    {
+      "line": 7,
+      "sing": true,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, eyes sad behind his glasses, thin white marionette strings tied to his head and wrists rising up into darkness. The camera pulls back and rises fast to reveal the strings. Dim room, warm lamp on his face."
+    },
+    {
+      "prompt": "Far above a tiny clay house, a giant pale hand in a grey hoodie sleeve holds a wooden marionette cross, its thin white strings dropping down through the clouds and the roof. The camera cranes up the strings to the hand. Moody grey sky."
+    },
+    {
+      "prompt": "{moss} looks up from his phone and out of his window at a big lit-up billboard showing a small moss-green brick holding a phone on a white fridge, no words, a soft green glow falling across his face. The camera pushes in over his shoulder toward the billboard. Warm evening light."
+    },
+    {
+      "line": 8,
+      "product_image": true,
+      "prompt": "A hand slides a black smartphone face-first into a small rounded moss-green brick stuck to a white fridge door, the phone settling upright. The brick has a round pale yellow disc on its front. Warm morning light drifts across the fridge. Close-up, the camera eases back as the hand pulls away."
+    },
+    {
+      "line": 9,
+      "prompt": "{moss} steps back from his fridge in a sunny kitchen and takes a deep breath, his shoulders dropping, the thin white marionette strings on his wrists going loose. The camera slowly circles him. Warm morning sunlight through the window."
+    },
+    {
+      "prompt": "Extreme close-up of a pair of small silver scissors snipping a thin white marionette string above a plasticine head in a green knitted beanie, the cut string curling away. The camera follows the falling string. Bright warm light."
+    },
+    {
+      "line": 10,
+      "prompt": "Thin white marionette strings go slack and float down like ribbons around {moss}, who flexes his free arms and grins in surprise. The camera spins around him fast. Warm golden light pouring in."
+    },
+    {
+      "prompt": "Far above the clay rooftops, the giant pale hand in a grey hoodie sleeve fumbles and drops its wooden marionette cross, which tumbles away into the clouds. The camera tilts up as it falls past. Bright blue sky breaking through grey clouds."
+    },
+    {
+      "line": 11,
+      "prompt": "{moss} flings open his round green front door and his two grown-up friends are there grinning, a woman in a red dress with two big orange pigtails and a man in a blue striped sweater with curly black hair. The camera rushes forward through the doorway. Bright warm daylight."
+    },
+    {
+      "prompt": "{moss} and his friend in a blue striped sweater with curly black hair throw their arms around each other in a big hug on the front step, laughing. The camera slowly orbits around them. Warm golden sunlight."
+    },
+    {
+      "line": 12,
+      "sing": true,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, laughing between words in a sunny rooftop garden full of tomatoes and sunflowers. The camera pushes in. Warm golden light."
+    },
+    {
+      "prompt": "{moss} and the woman in a red dress with orange pigtails splash each other with a garden hose on a rooftop garden, water sparkling in the sun. The camera whips between them. Bright warm afternoon light."
+    },
+    {
+      "line": 13,
+      "prompt": "{moss} kneels in a rooftop garden and presses a seedling into dark soil with his chunky clay hands, then looks up at a wide bright blue sky. Low angle, the camera tilts up with his gaze to the sky. Warm afternoon sunlight."
+    },
+    {
+      "prompt": "Two chunky plasticine hands cup a handful of dark crumbly soil with a small green sprout in it. Extreme close-up, the camera pushes in slowly. Warm golden light."
+    },
+    {
+      "line": 14,
+      "prompt": "{moss} laughs at a long wooden table under string lights on a rooftop, passing a big bowl of food to the woman in a red dress with orange pigtails and the man in a blue striped sweater. The camera cranes slowly over the table. Warm string-light glow at dusk."
+    },
+    {
+      "prompt": "A big clay pie is set down in the middle of the long table and chunky clay hands reach in from every side. Top-down view, the camera spins slowly. Warm string-light glow."
+    },
+    {
+      "line": 15,
+      "sing": true,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, eyes bright behind his glasses, his friends laughing at the table behind him under warm string lights. The camera slowly pulls back. Warm lantern glow at dusk."
+    },
+    {
+      "prompt": "{moss} leans back in his chair at the rooftop table and looks up at the first stars, a contented smile under his mustache, a single cut marionette string drifting away on the breeze. The camera slowly rises above him. Warm string lights against a deep blue dusk sky."
+    },
+    {
+      "prompt": "A little clay rooftop full of friends at a glowing table, string lights twinkling, a tiny crescent moon over the town. The camera slowly drifts up and away. Warm golden glow against a deep blue night."
+    }
+  ],
+  "endcard": {
+    "line1": "Cut the strings.",
+    "line2": "link in bio"
+  },
+  "caption": "moss grew up on a string. one fridge brick later he's back at the table with his friends. the Hibernator, for phones that need a nap",
+  "hashtags": [
+    "#claymation",
+    "#touchgrass",
+    "#solarpunk",
+    "#phonefree",
+    "#digitaldetox"
+  ]
+}

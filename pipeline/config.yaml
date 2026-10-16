@@ -60,8 +60,9 @@ loras:
     trigger: m0ss
     # 1.0 washed out everything else (beige blank extras, clay-blob houses, haze): the LoRA saw only Moss on
     # plain backdrops and is fused into every shot of the batch. 0.6 kept Moss on-model with sets and side
-    # characters as crisp as no LoRA (A/B 2026-10-16, videos/tests/lora-ab.mp4).
-    strength: 0.6
+    # characters as crisp as no LoRA (A/B 2026-10-16, videos/tests/lora-ab.mp4). 0.2 to 0.8 all stayed crisp
+    # (videos/tests/lora-ab-6.mp4); below 0.4 Moss drifts a little. The owner picked 0.3.
+    strength: 0.3
 
 styles:
   claymation: >-
