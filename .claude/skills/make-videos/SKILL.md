@@ -79,7 +79,9 @@ Writing rules:
   details, setting, camera move, light and colour. Solarpunk everyday life: rooftop gardens,
   bikes, shared meals, sunlight, people looking up. No readable text, logos, phone screens
   showing apps, or famous people. Avoid crowds of small repeated objects (LTX invents props,
-  e.g. a floating chain of tomatoes); prefer one clear subject and simple motion.
+  e.g. a floating chain of tomatoes); prefer one clear subject and simple motion. LTX can't draw
+  thin lines: a marionette-strings story fell flat (owner, 2026-10-16), the strings vanished or
+  smeared. Carry the idea with big solid objects instead (a cage, a giant hand, a leash, a weight).
 - Exactly one shot has `"product_image": true`, showing the product exactly as `next` describes it,
   with gentle motion (a hand placing a phone in it, light shifting). For hibernator and eyelid the
   render in `assets/` becomes that shot's first frame, so describe what is in that photo.
