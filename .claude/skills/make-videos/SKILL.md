@@ -89,6 +89,10 @@ Then render, one of two ways:
   on power even with the lid closed; on battery a closed lid sleeps and everything here freezes). Don't babysit the wait: check `videos/run.log` when the user is back, and only arm
   the Monitor once a line says "rented".
 
+- **Only the cheap cards** (the owner's standing choice, 2026-10-16): wait for a community A6000/A40
+  and nothing else, renting only while the Mac is plugged in:
+  `cd pipeline && nohup caffeinate -s python3 -u run.py --wait 168 --only community:A6000 --only community:A40 plans/<new files> > ../videos/run.log 2>&1 &`
+
 `run.py` itself aborts and deletes the pod after 20 min without a stage change (each finished clip is
 a change), and the pod fails fast if LTX can't see the GPU.
 

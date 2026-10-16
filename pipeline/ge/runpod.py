@@ -8,6 +8,7 @@ import json
 import os
 import pathlib
 import secrets
+import subprocess
 import time
 import urllib.error
 import urllib.request
@@ -92,6 +93,14 @@ def _req(method, path, body=None):
         return json.loads(raw) if raw else {}
 
 
+def on_power():
+    """True when the Mac is plugged in (caffeinate -s only keeps it awake on power)."""
+    try:
+        return "AC Power" in subprocess.run(["pmset", "-g", "batt"], capture_output=True, text=True).stdout
+    except Exception:  # noqa: BLE001  (not a Mac)
+        return True
+
+
 def best_case(n_clips):
     """Estimated batch cost on the cheapest card RunPod lists, in stock or not: the price worth waiting for."""
     return options(n_clips, in_stock=False)[0]
@@ -117,7 +126,7 @@ def _rent(body, tiers, log):
 
 
 def run_job(cfg, plans, repo_url, dest, log=print, tiers=None, extra=None, collect=box.fetch,
-            wait_hours=0, max_cost=None, exclude=()):
+            wait_hours=0, max_cost=None, exclude=(), only=()):
     """Rent the cheapest card in stock (or try `tiers`, [(cloud, [gpu ids])], in order), run the batch.
     wait_hours/max_cost: until the deadline, only rent a card whose estimated batch cost is <= max_cost,
     checking every 2 min (checks and refused rentals are free); after it, rent the cheapest in stock.
@@ -150,27 +159,34 @@ def run_job(cfg, plans, repo_url, dest, log=print, tiers=None, extra=None, colle
         pod = _rent(body, tiers, log)
     else:
         n = sum(len(p["shots"]) for p in plans)
-        deadline, pod, quiet = time.time() + wait_hours * 3600, None, log
+        deadline, pod, quiet, waited = time.time() + wait_hours * 3600, None, log, False
         while pod is None:
-            waiting = time.time() < deadline and max_cost is not None
-            try:
-                ranked = options(n)
+            within = time.time() < deadline
+            try:  # with `only`, try those cards even when RunPod's stock flag says none (a try is free)
+                ranked = options(n, in_stock=not only)
             except Exception as e:  # noqa: BLE001  (network blip while waiting overnight)
                 ranked = []
                 quiet(f"stock check failed: {e}")
             ranked = [o for o in ranked if not any(x.lower() in o["gpu"].lower() for x in exclude)]
-            pick = [o for o in ranked if not waiting or o["cost"] <= max_cost]
-            if pick or quiet is log:
-                _show(ranked, n, log if pick else quiet)
-            pod = _rent(body, [(o["cloud"], [o["gpu"]]) for o in pick], quiet if not pick else log)
+            if only:
+                ranked = [o for o in ranked if any(c.upper() == o["cloud"] and g.lower() in o["gpu"].lower()
+                                                   for c, g in only)]
+            pick = [o for o in ranked if not (within and max_cost is not None) or o["cost"] <= max_cost]
+            if wait_hours and not on_power():
+                pick = []  # renting on battery: the laptop may sleep mid-render and lose the videos
+                if not waited:
+                    log("on battery: will only rent while the Mac is plugged in")
+            if pick and not waited:
+                _show(pick, n, log)
+            pod = _rent(body, [(o["cloud"], [o["gpu"]]) for o in pick], quiet if waited else log)
             if pod is None:
-                if not waiting:
-                    raise SystemExit("no GPU in stock that can run this; try again later (python3 -m ge.availability)")
-                if quiet is log:
-                    log(f"waiting for a card at <= ${max_cost:.2f} for the batch (until "
-                        f"{time.strftime('%a %H:%M', time.localtime(deadline))}, then the cheapest in stock); "
+                if not within:
+                    raise SystemExit("no allowed GPU free; try again later (python3 -m ge.availability)")
+                if not waited:
+                    allowed = " / ".join(f"{c.lower()} {g}" for c, g in only) if only else f"a card at <= ${max_cost:.2f}"
+                    log(f"waiting for {allowed} (until {time.strftime('%a %H:%M', time.localtime(deadline))}); "
                         "checking every 2 min")
-                quiet = lambda m: None  # only report the round that rents
+                quiet, waited = (lambda m: None), True  # only report the round that rents
                 time.sleep(120)
     t_rent = time.time()
     pid = pod["id"]
