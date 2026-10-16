@@ -28,7 +28,7 @@ Save each as `pipeline/plans/<date>-<slug>.json`. Shape (see `plans/2026-10-14-f
   "hook_text": "max 7 words, shown big for the first 3 s",
   "song": {"title": "...", "style": "genre, instruments, vocal character, English, tempo in BPM",
            "lyrics": "[Verse]\n4 lines\n\n[Chorus]\n4 lines"},
-  "shots": [{"prompt": "one cinematic paragraph, <=120 words", "product_image": false}],
+  "shots": [{"prompt": "one cinematic paragraph, <=120 words", "line": 4, "sing": false, "product_image": false}],
   "endcard": {"line1": "max 6 words", "line2": "link in bio"},
   "caption": "max 150 chars, no hashtags", "hashtags": ["#touchgrass", "..."]
 }
@@ -49,11 +49,22 @@ Writing rules:
 - Character: Moss (`config.yaml` `characters`) is the channel's main character. Write `{moss}` in a
   prompt (usually at the start) and it expands to his fixed description; never re-describe him in your
   own words or change his outfit, or he drifts. Use one style for the whole batch when he stars.
-- Story: each video is a small narrative (setup, turn, payoff) and the song tells it. Line up shots with
-  lyric lines: about two lines per shot, verse 1 = setup, chorus = the turn, verse 2 = it working, last chorus = payoff. Songs are sung by the same
-  warm male lead (Moss's voice) in different genres.
+- Story: each video is a small narrative (setup, turn, payoff) and the song tells it: verse 1 = setup,
+  chorus = the turn, verse 2 = it working, last chorus = payoff. Songs are sung by the same warm male
+  lead (Moss's voice) in different genres.
+- Pace (the owner found 9 slow shots boring): 18 shots of about 3 s. Give most shots `"line": k`, the
+  0-based sung line (of the 16) it starts on, so the cut lands as that line starts and the picture shows
+  what the words say; shots without `line` split the time between anchored ones (use them for
+  instrumental breaks and quick inserts). Lines must increase.
+- Moss sings: mark 3 to 5 chorus shots `"sing": true` (with a `line`): Moss sings that line to camera
+  and is lip-synced to the vocals (dfr mode). Write "{moss} sings to the camera, mouth moving with the
+  words, ..." in a medium close-up. Never the product shot.
+- Movement: every shot has a camera move (push in, pull back, track, orbit, crane, tilt); at most 3
+  "static". Prefer a clear physical action with a mini payoff (bonks a lamppost, pops up with an apple).
+- Night shots: light Moss with warm practical light (lanterns, candles, string lights); cold blue
+  night light turns him purple.
 - Captions: the lyrics are burned in word by word, so keep lines short and singable, no stage directions.
-- Shots: exactly the count `next` printed. Each prompt starts with the main action, then subject
+- Shots: exactly the count `next` printed (18). Each prompt starts with the main action, then subject
   details, setting, camera move, light and colour. Solarpunk everyday life: rooftop gardens,
   bikes, shared meals, sunlight, people looking up. No readable text, logos, phone screens
   showing apps, or famous people. Avoid crowds of small repeated objects (LTX invents props,
@@ -99,7 +110,8 @@ a change), and the pod fails fast if LTX can't see the GPU.
 `run.py` refuses to start if pipeline code is unpushed (the GPU box clones it from GitHub);
 commit and push code changes first. Plans don't need pushing. It rents one GPU, renders the
 whole batch, downloads `videos/<date>-<slug>.mp4` plus a `.txt` caption, deletes the GPU and
-prints the cost. Expect about 10 min of setup plus about 1 min per clip.
+prints the cost. Expect about 10 min of setup plus about 1 min per clip (dfr renders each shot in two
+passes; see `video.render` in config.yaml).
 
 ## 4. After
 

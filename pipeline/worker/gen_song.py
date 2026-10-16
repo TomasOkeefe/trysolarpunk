@@ -14,12 +14,13 @@ batch = pathlib.Path(sys.argv[1])
 
 import torch
 
+todo = [d for d in sorted(p.parent for p in batch.glob("*/plan.json")) if not (d / "song.flac").exists()]
+if not todo:  # songs already there (a re-render or a smoke test): don't load the model
+    sys.exit(0)
 # YuE2 plans for 24 GiB by default, which is more than a 24 GB card really has
 vram = torch.cuda.get_device_properties(0).total_memory / 2**30
 with YuE2Pipeline.from_pretrained("m-a-p/YuE2-3B", device="cuda", memory_budget_gib=min(24, int(vram) - 4)) as pipe:
-    for d in sorted(p.parent for p in batch.glob("*/plan.json")):
-        if (d / "song.flac").exists():
-            continue
+    for d in todo:
         plan = json.loads((d / "plan.json").read_text())
         try:
             song = pipe(style=plan["song"]["style"], lyrics=plan["song"]["lyrics"], cot="full",

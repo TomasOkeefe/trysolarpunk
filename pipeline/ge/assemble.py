@@ -193,16 +193,20 @@ def probe_duration(path):
 
 
 # ------------------------------------------------------------------ main
-def assemble(plan, song, clips, out, target=45, endcard=3.0, words=None, anim_fps=None):
+def assemble(plan, song, clips, out, target=45, endcard=3.0, words=None, anim_fps=None, timeline=None):
     clips = sorted(pathlib.Path(clips).glob("shot_*.mp4"))
     n = len(clips)
     assert n, "no clips"
     # start the song just before the first sung word, so the vocals (and the chorus) land in the video
     lines = [l for l in (words or []) if l]
-    offset = max(0.0, min(w["s"] for l in lines for w in l) - 0.8) if lines else 0.0
+    if timeline and len(timeline["shots"]) == n:  # cuts planned before rendering (ge.timeline)
+        offset, total, endcard = timeline["offset"], timeline["total"], timeline["endcard"]
+        durs = [s["dur"] for s in timeline["shots"]]
+    else:
+        offset = max(0.0, min(w["s"] for l in lines for w in l) - 0.8) if lines else 0.0
+        total = min(probe_duration(song) - offset, target + endcard)
+        durs = cut_points(song, n, total, endcard, offset)
     lines = [[{**w, "s": w["s"] - offset, "e": w["e"] - offset} for w in l] for l in lines]
-    total = min(probe_duration(song) - offset, target + endcard)
-    durs = cut_points(song, n, total, endcard, offset)
     tmp = pathlib.Path(tempfile.mkdtemp())
 
     parts = []
@@ -254,12 +258,14 @@ if __name__ == "__main__":
     ap.add_argument("--clips", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--words", help="lyric timings from ge.lyrics (optional)")
+    ap.add_argument("--timeline", help="cut plan from ge.timeline (optional)")
     ap.add_argument("--target", type=float, default=45)
     ap.add_argument("--anim-fps", type=int, help="hold frames at this rate, e.g. 12")
     a = ap.parse_args()
     words = json.loads(pathlib.Path(a.words).read_text()) if a.words and pathlib.Path(a.words).exists() else None
     plan = json.loads(pathlib.Path(a.plan).read_text())
     plan_anim = plan.get("anim_fps")  # stamped from config.yaml by run.py
+    tl = json.loads(pathlib.Path(a.timeline).read_text()) if a.timeline and pathlib.Path(a.timeline).exists() else None
     assemble(plan, a.song, a.clips, a.out, plan.get("target_seconds", a.target),
-             words=words, anim_fps=a.anim_fps or plan_anim)
+             words=words, anim_fps=a.anim_fps or plan_anim, timeline=tl)
     print("wrote", a.out)

@@ -1,0 +1,93 @@
+{
+  "slug": "back-from-the-dead",
+  "date": "2026-10-31",
+  "product": "hibernator",
+  "style": "claymation",
+  "hook_text": "I was a zombie all week",
+  "song": {
+    "title": "Back From The Dead",
+    "style": "English, spooky surf rockabilly with twangy reverb guitar, slapped upright bass, theremin swoops and handclaps, warm friendly male lead vocal, slightly raspy, playful, 124 BPM",
+    "lyrics": "[Verse]\nSeven days I shuffled slow\nThumb on glass and face aglow\nDidn't need a zombie mask\nScrolling was my only task\n\n[Chorus]\nWake up, wake up, it's Halloween\nPhone's asleep in its brick of green\nWake up, wake up, the night is new\nBack from the dead and I'm dancing with you\n\n[Verse]\nCarved a grin on a pumpkin head\nBobbed for apples, soaking wet\nKnocked on doors down leafy streets\nTrading jokes for candy sweets\n\n[Chorus]\nWake up, wake up, it's Halloween\nRealest night I've ever seen\nWake up, wake up, the moon is high\nBack from the dead and I feel alive"
+  },
+  "shots": [
+    {
+      "prompt": "{moss} shuffles straight toward the camera down a dark street with his arms stiffly out like a zombie, eyes glazed, staring down at a glowing phone, a sickly green light on his face. The camera slowly backs away in front of him. Dark street, cold green glow."
+    },
+    {
+      "line": 1,
+      "prompt": "Extreme close-up of a chunky plasticine thumb swiping up and up on a black phone whose screen glows plain white, the light flickering on rosy cheeks and round black glasses. The camera pushes in. Cold white glow in the dark."
+    },
+    {
+      "line": 2,
+      "prompt": "{moss} shuffles past a shop window full of rubber monster masks without looking up from his phone and bonks his head on a lamppost, wobbling. The camera tracks sideways with him. Dim evening light, green and purple."
+    },
+    {
+      "line": 3,
+      "prompt": "{moss} lies slumped on a saggy sofa staring at his phone as orange autumn leaves blow in through an open window and pile up on him. The camera slowly circles above him. Gloomy grey room, one orange streak of light."
+    },
+    {
+      "line": 4,
+      "sing": true,
+      "prompt": "{moss} jumps up in his kitchen and sings loudly to the camera, mouth opening wide with every word, eyes wide awake behind his glasses, a glowing jack-o-lantern on the counter beside him. Medium close-up, the camera pushes in. Warm flickering orange candle light."
+    },
+    {
+      "line": 5,
+      "product_image": true,
+      "prompt": "A hand slides a black smartphone face-first into a small rounded moss-green brick stuck to a white fridge door, the phone settling upright. The brick has a round pale yellow disc on its front. Warm flickering orange candle light drifts across the fridge. Close-up, the camera eases back as the hand pulls away."
+    },
+    {
+      "line": 6,
+      "prompt": "{moss} flings open his round front door and a whirl of orange autumn leaves blows in around him, a huge full moon over the rooftops outside. The camera rushes forward through the doorway behind him. Warm porch light, deep blue night."
+    },
+    {
+      "line": 7,
+      "sing": true,
+      "prompt": "{moss} sings to the camera with a huge grin, mouth moving with the words, dancing on a leafy street next to a little kid in a white bedsheet ghost costume. The camera slowly orbits around them. Warm orange lantern light, string lights."
+    },
+    {
+      "prompt": "A crooked little street of tiny clay houses glows with carved jack-o-lanterns on every step while small costumed kids run past with candy buckets. The camera cranes up over the rooftops. Warm orange glow under a deep blue sky."
+    },
+    {
+      "line": 8,
+      "prompt": "{moss} carves a big toothy grin into a fat orange pumpkin at a wooden picnic table, his tongue poking out in concentration. The camera slowly circles the table. Warm lantern light."
+    },
+    {
+      "prompt": "A candle is lowered into the carved pumpkin and its toothy grin bursts into a warm glow, reflected in round black glasses behind it. The camera pushes in fast on the glowing grin. Orange firelight in the dark."
+    },
+    {
+      "line": 9,
+      "prompt": "{moss} plunges his face into a wooden tub of water full of floating red apples and pops up dripping with an apple in his teeth, his glasses crooked. Low angle, quick push in. Warm porch light, splashing water."
+    },
+    {
+      "line": 10,
+      "prompt": "{moss} knocks on a round green door and it swings open to reveal a cheerful old woman in a pointy witch hat holding out a big bowl of candy. The camera follows over his shoulder. Warm doorway light, autumn leaves on the step."
+    },
+    {
+      "line": 11,
+      "prompt": "{moss} sits on a doorstep next to a giggling little girl in a puffy pumpkin costume, the two of them swapping candies and laughing. The camera slowly pushes in. Cosy orange porch light."
+    },
+    {
+      "prompt": "A flock of little black paper bats flutters across a huge glowing full moon above crooked rooftops. The camera tilts down from the moon to a street full of glowing pumpkins. Silver moon, warm orange street."
+    },
+    {
+      "line": 12,
+      "sing": true,
+      "prompt": "{moss} sings joyfully to the camera at a little street party, mouth wide open on every word, string lights and stacked pumpkins behind him and neighbours in costumes cheering. Medium close-up, the camera pushes in. Warm string-light glow."
+    },
+    {
+      "line": 13,
+      "prompt": "{moss} leads a short conga line of three neighbours dressed as a witch, a skeleton and a bedsheet ghost, kicking up piles of orange leaves down the street. The camera tracks alongside them. Warm orange lantern light."
+    },
+    {
+      "line": 15,
+      "sing": true,
+      "prompt": "{moss} throws his arms wide and sings to the camera under a huge full moon, mouth moving with the words, orange leaves swirling around him in the wind. The camera slowly pulls back and rises. Warm lantern light on his face, deep blue sky."
+    }
+  ],
+  "endcard": {
+    "line1": "Come back to life.",
+    "line2": "link in bio"
+  },
+  "caption": "moss was a phone zombie all week. one night with his phone asleep in the Hibernator and he came back to life. happy halloween",
+  "hashtags": ["#halloween", "#solarpunk", "#claymation", "#touchgrass", "#phonefree"]
+}

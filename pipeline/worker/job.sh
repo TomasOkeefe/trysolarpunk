@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Runs on the rented GPU box. Renders a batch of videos: $OUT/<slug>/final.mp4 for each plan.
-# Order keeps each model loaded once: all songs (YuE2), then all clips (LTX), then all edits.
+# Order keeps each model loaded once: all songs (YuE2), lyric timing + cut plan (whisper), all clips (LTX),
+# then all edits. The cuts come before the clips so each clip is rendered at its cut's length.
 #
 # Expects the repo checked out at /workspace/repo (see the start command in ge/runpod.py).
 # Env:  HF_TOKEN   Hugging Face read token (LTX-2.5 weights are gated: accept the terms once on HF)
@@ -73,6 +74,7 @@ done
 # 2. installs and downloads run in the background while the GPU writes the songs, so the box pays
 # for them once instead of in a row. Background jobs can't call fail(): they leave a reason file.
 L=$MODELS/ltx-2.5
+DETAIL_REPO=Lightricks/LTX-2.5-22b-IC-LoRA-Pixel-Spatial-Upscaler; DETAIL_FILE=ltx-2.5-22b-ic-lora-pixel-spatial-upscaler-x2-1.0.safetensors
 prep_ltx() {  # LTX-2.5 distilled: code + ~66 GB of gated weights
   if [ ! -d $LTX ]; then
     git clone -q https://github.com/Lightricks/LTX-2.git $LTX && git -C $LTX checkout -q $LTX_COMMIT || { echo "ltx clone"; return 1; }
@@ -92,7 +94,11 @@ prep_ltx() {  # LTX-2.5 distilled: code + ~66 GB of gated weights
       vae/ltx-2.5-video-vae-conv-bf16.safetensors \
       vae/ltx-2.5-audio-vae-bf16.safetensors \
       latent_upscale_models/ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors \
+      vae/ltx-2.5-video-vae-bf16.safetensors \
       --local-dir "$L" >/dev/null ) || { echo "ltx download (is HF_TOKEN set and the LTX-2.5 terms accepted?)"; return 1; }
+  # the detailing IC-LoRA for RENDER_MODE=dfr (its own gated repo); without it the batch renders distilled
+  ( cd $LTX && HF_TOKEN=$HF_TOKEN uv run --no-sync hf download $DETAIL_REPO $DETAIL_FILE --local-dir "$L/loras" >/dev/null ) \
+    || log "detailing LoRA download failed (terms of $DETAIL_REPO not accepted?): rendering distilled"
   log "ltx weights ready"
 }
 prep_asm() {  # captions + edit: stable-ts, demucs and their models
@@ -121,7 +127,22 @@ $YUE/.venv/bin/python "$GE/worker/gen_song.py" "$B" || fail "yue generate"
 log "songs ready: $(ls $B/*/song.flac 2>/dev/null | wc -l)"
 }
 
-# 4. clips
+# 4. time the lyrics (whisper on the demucs vocals, kept for singing shots), then plan the cuts; a miss
+# only drops captions and line-locked cuts
+[ -n "${PROBE_MODES:-}${CLIPS_ONLY:-}${TRAIN_DATA_URL:-}" ] || {
+stage "captions"
+await $ASM_PID asm
+for d in $B/*/; do
+  [ -f "$d/song.flac" ] || continue
+  ( cd "$GE" && $ASM/bin/python -m ge.lyrics --song "$d/song.flac" --plan "$d/plan.json" --out "$d/words.json" --vocals-out "$d/vocals.wav" ) \
+    || log "$(basename "$d"): lyric timing FAILED (no captions)"
+  ( cd "$GE" && $ASM/bin/python -m ge.timeline --plan "$d/plan.json" --song "$d/song.flac" --words "$d/words.json" --out "$d/timeline.json" ) \
+    && log "$(basename "$d"): $(python3 -c "import json;t=json.load(open('$d/timeline.json'));print(len(t['shots']),'cuts,',sum(s['sing'] for s in t['shots']),'singing')")" \
+    || log "$(basename "$d"): cut plan FAILED (even cuts)"
+done
+}
+
+# 5. clips
 stage "clips: waiting for ltx download"
 await $LTX_PID ltx
 
@@ -177,15 +198,24 @@ for p in pathlib.Path(sys.argv[1]).glob('*/plan.json'):
     for l in json.loads(p.read_text()).get('loras', []):
         seen[l['url']] = l.get('strength', 1.0)
 for u, s in seen.items(): print(u, s)" "$B")
+# RENDER_MODE (config.yaml video.render): dfr = LTX's production path (fewer artifacts, ~2x the time, lip-synced
+# singing shots); it needs the detailing LoRA, the DiffVAE and a 44 GB+ card with no offload
+RENDER_MODE=$(python3 -c "import yaml;print(yaml.safe_load(open('$GE/config.yaml'))['video'].get('render','distilled'))" 2>/dev/null || echo distilled)
+if [ "$RENDER_MODE" = dfr ] && { [ "${VRAM_MIB:-0}" -lt 44000 ] || [ ! -s "$L/loras/$DETAIL_FILE" ]; }; then
+  log "dfr needs a 44 GB+ card and the detailing LoRA: rendering distilled"; RENDER_MODE=distilled
+fi
 clips() {  # extra args go to LTX, e.g. --offload cpu
-( cd $LTX && STAGE_FILE="$OUT/STAGE" uv run --no-sync python "$GE/worker/gen_clips.py" "$B" -- \
+  local mode=$RENDER_MODE vae=ltx-2.5-video-vae-conv-bf16.safetensors extra=()
+  [[ " $* " == *" --offload "* ]] && mode=distilled
+  [ "$mode" = dfr ] && vae=ltx-2.5-video-vae-bf16.safetensors && extra=(--detailing-lora "$L/loras/$DETAIL_FILE")
+( cd $LTX && STAGE_FILE="$OUT/STAGE" RENDER_MODE=$mode uv run --no-sync python "$GE/worker/gen_clips.py" "$B" -- \
     --transformer-path       "$L/diffusion_models/ltx-2.5-22b-distilled-transformer-bf16.safetensors" \
     --text-encoder-path      "$L/text_encoders/gemma4-12b-with-proj-ltx-2.5-bf16.safetensors" \
-    --video-vae-path         "$L/vae/ltx-2.5-video-vae-conv-bf16.safetensors" \
+    --video-vae-path         "$L/vae/$vae" \
     --audio-vae-path         "$L/vae/ltx-2.5-audio-vae-bf16.safetensors" \
     --spatial-upsampler-path "$L/latent_upscale_models/ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors" \
     --width "$GWIDTH" --height "$GHEIGHT" --num-frames "$GFRAMES" --frame-rate 24 \
-    --quantization fp8-cast "${LORA_ARGS[@]}" "$@" )
+    --quantization fp8-cast "${LORA_ARGS[@]}" "${extra[@]}" "$@" )
 }
 if [ -n "${PROBE_MODES:-}" ]; then
   mkdir -p "$OUT/probe"
@@ -201,9 +231,13 @@ if [ -n "${PROBE_MODES:-}" ]; then
 fi
 # no --offload: gen_clips.py frees Gemma before loading the transformer, so both never share the card
 stage "clips: render"
-log "VRAM ${VRAM} MiB: ${OFFLOAD[*]:-no offload}"
+log "VRAM ${VRAM} MiB: ${OFFLOAD[*]:-no offload}, render $RENDER_MODE"
 TOTAL_CLIPS=$(missing_clips)
 clips "${OFFLOAD[@]}"; rc=$?
+if [ "$RENDER_MODE" = dfr ] && [ "$(missing_clips)" -gt 0 ]; then
+  log "$(missing_clips) clips missing after dfr (exit $rc): rendering them distilled"
+  RENDER_MODE=distilled; clips; rc=$?
+fi
 if [ ${#OFFLOAD[@]} -eq 0 ] && [ "$(missing_clips)" -gt 0 ]; then
   log "$(missing_clips) clips missing after rendering without offload (exit $rc): retrying them with --offload cpu"
   clips --offload cpu; rc=$?
@@ -220,15 +254,6 @@ if [ -n "${CLIPS_ONLY:-}" ]; then
   stage "DONE"; self_destruct_later; wait; exit 0
 fi
 
-# 5. time the lyrics for the captions (whisper alignment on the demucs vocals); a miss only drops captions
-stage "captions"
-await $ASM_PID asm
-for d in $B/*/; do
-  [ -f "$d/song.flac" ] || continue
-  ( cd "$GE" && $ASM/bin/python -m ge.lyrics --song "$d/song.flac" --plan "$d/plan.json" --out "$d/words.json" ) \
-    || log "$(basename "$d"): lyric timing FAILED (no captions)"
-done
-
 # 6. edit each finished video: beat cuts, hook text, captions, end card, loudness
 stage "assemble"
 : > "$OUT/done.txt"
@@ -238,7 +263,7 @@ for d in $B/*/; do
     log "$s: SKIPPED (missing song or clips)"; continue
   fi
   mkdir -p "$OUT/$s"
-  ( cd "$GE" && $ASM/bin/python -m ge.assemble --plan "$d/plan.json" --song "$d/song.flac" --clips "$d/clips" --words "$d/words.json" --out "$OUT/$s/final.mp4" ) \
+  ( cd "$GE" && $ASM/bin/python -m ge.assemble --plan "$d/plan.json" --song "$d/song.flac" --clips "$d/clips" --words "$d/words.json" --timeline "$d/timeline.json" --out "$OUT/$s/final.mp4" ) \
     && cp "$d/plan.json" "$OUT/$s/plan.json" && echo "$s" >> "$OUT/done.txt" && log "$s: done" \
     || log "$s: assemble FAILED"
   tar -cf "$OUT/$s/raw.tar" -C "$d" clips song.flac $( [ -f "$d/words.json" ] && echo words.json ) || true
