@@ -22,6 +22,10 @@ GPUS = ["L40S", "A100-80GB"]  # 48 GB+ so LTX runs without offload; L40S is the 
 PIPELINE = pathlib.Path(__file__).resolve().parent
 
 app = modal.App(APP)
+# model caches point into the volume, set at run time: as image env they made the build write into
+# /models, and Modal won't mount a volume on a non-empty path
+CACHES = {"MODELS_DIR": "/models", "HF_HOME": "/models/hf", "XDG_CACHE_HOME": "/models/cache",
+          "TORCH_HOME": "/models/torch"}
 models = modal.Volume.from_name("ge-models", create_if_missing=True)
 work = modal.Volume.from_name("ge-work", create_if_missing=True)
 
@@ -38,8 +42,7 @@ image = (
         "uv venv -q -p 3.12 /opt/asm && VIRTUAL_ENV=/opt/asm uv pip install -q pillow librosa soundfile pyyaml stable-ts demucs",
     )
     .env({"PREBUILT": "1", "LTX_DIR": "/opt/ltx", "YUE_DIR": "/opt/yue", "ASM_DIR": "/opt/asm",
-          "MODELS_DIR": "/models", "HF_HOME": "/models/hf", "XDG_CACHE_HOME": "/models/cache",
-          "TORCH_HOME": "/models/torch", "HF_HUB_ENABLE_HF_TRANSFER": "0"})
+          "HF_HUB_ENABLE_HF_TRANSFER": "0"})
     .add_local_dir(PIPELINE, "/root/pipeline", ignore=["plans/**", "__pycache__/**", "*.pyc", "*.log"])
 )
 
@@ -52,7 +55,7 @@ def render(run_id: str, plans_b64: str, extra_env: dict | None = None) -> list[s
     run.mkdir(parents=True, exist_ok=True)
     # the mounted code is read-only; job.sh writes fonts into it, so work on a copy
     subprocess.run(["cp", "-r", "/root/pipeline", "/tmp/pipeline"], check=True)
-    env = {**os.environ, "WORK_DIR": str(run), "GE_DIR": "/tmp/pipeline", "OUT_TOKEN": "out",
+    env = {**os.environ, **CACHES, "WORK_DIR": str(run), "GE_DIR": "/tmp/pipeline", "OUT_TOKEN": "out",
            "PLANS_B64": plans_b64, "KEEP_MIN": "0", **(extra_env or {})}
     # job.sh waits on its status server at the end; on Modal nothing needs to fetch from it, so stop it
     proc = subprocess.Popen(["bash", "/tmp/pipeline/worker/job.sh"], env=env)
@@ -112,7 +115,7 @@ def fetch_models() -> str:
     report = []
     for cmd in steps:
         t = time.time()
-        r = subprocess.run(["bash", "-c", cmd], capture_output=True, text=True)
+        r = subprocess.run(["bash", "-c", cmd], capture_output=True, text=True, env={**os.environ, **CACHES})
         report.append(f"exit {r.returncode} in {time.time() - t:.0f}s: {cmd[:60]}... {r.stderr[-300:] if r.returncode else ''}")
         models.commit()
     du = subprocess.run(["du", "-sh", "/models"], capture_output=True, text=True).stdout
