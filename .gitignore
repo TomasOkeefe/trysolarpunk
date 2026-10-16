@@ -10,3 +10,4 @@ pipeline/availability.jsonl
 site/node_modules/
 site/.wrangler/
 .superpowers/
+pipeline/daily_state.json

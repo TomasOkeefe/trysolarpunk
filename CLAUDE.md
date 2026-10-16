@@ -37,6 +37,11 @@ To make videos, use the `make-videos` skill. In short: Claude writes plans in
   Free-tier guards in `ge/buffer.py` (R2 has no spending cap): max 40 files / 1 GB in the bucket,
   Standard class only, 30-day expiry rule; Buffer's free queue holds 10 posts. Our own TikTok
   developer app can't work: TikTok's audit rejects tools that post only to your own account.
+- Comments and DMs: no API can read or answer them yet (Buffer replies to TikTok comments only in
+  its web app; DMs have no API). `python3 -m ge.buffer report` shows views and comment counts. The
+  launchd job `com.trysolarpunk.daily` (10:00, log `/tmp/trysolarpunk-daily.log`) runs
+  `ge/daily.py`: cleans R2, notifies once when Buffer's changelog adds comment/DM endpoints (then
+  build replies), and sends a weekly stats notification on Mondays (weekly on purpose).
 
 ## Waitlist site (`site/`)
 Live at https://trysolarpunk.pages.dev (Cloudflare Pages + D1 `trysolarpunk-waitlist`, free tier).

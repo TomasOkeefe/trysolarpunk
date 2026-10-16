@@ -3,6 +3,7 @@
   python3 -m ge.buffer queue ../videos/2026-10-17-day-one-infinite-stroll.mp4 ...
   python3 -m ge.buffer queue --per-day 2 ../videos/*.mp4   # ignore plan dates: 2 a day from today
   python3 -m ge.buffer status     # scheduled / sent / failed; frees R2 space once a video is sent
+  python3 -m ge.buffer report     # views and comment counts, last 7 days
 
 Buffer's TikTok app passed TikTok's audit, so its posts go public with the AI-generated label on.
 (Our own TikTok app never could: TikTok rejects tools that only post to your own account.)
@@ -189,6 +190,25 @@ def status():
         print(f"removed stray R2 file {key}")
 
 
+def report(days=7):
+    """Views, comments and likes of the posts sent in the last `days` days, from Buffer's metrics
+    (refreshed about once a day). Comment text isn't in Buffer's API yet, only counts."""
+    since = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=days)).isoformat()
+    r = buffer("posts", "list", "--fields", "items.id,items.text,items.sentAt,items.metrics.type,items.metrics.value,"
+               "items.metricsUpdatedAt,pageInfo.hasNextPage",
+               payload={"organizationId": CFG["organization_id"], "filter": {
+                   "channelIds": [CFG["channel_id"]], "status": ["sent"], "dueAt": {"start": since}}})
+    names = {p["post_id"]: n for n, p in load().items()}
+    rows = []
+    for it in r["items"]:
+        m = {x["type"]: x["value"] for x in it.get("metrics") or []}
+        rows.append({"name": names.get(it["id"], it["text"][:40]), "sent": it["sentAt"], "views": m.get("views", 0),
+                     "comments": m.get("comments", 0), "likes": m.get("reactions", 0), "updated": it.get("metricsUpdatedAt")})
+    if r["pageInfo"]["hasNextPage"]:
+        print(f"note: more than {len(rows)} posts in {days} days; report shows the first page only")
+    return sorted(rows, key=lambda x: x["sent"] or "")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -197,12 +217,20 @@ def main():
     q.add_argument("--per-day", type=int, help="ignore plan dates: post in file order, this many a day")
     q.add_argument("--start", type=dt.date.fromisoformat, default=dt.date.today(), help="first day for --per-day")
     sub.add_parser("status", help="show post status; delete sent videos from R2")
+    rp = sub.add_parser("report", help="views and comment counts of recent posts")
+    rp.add_argument("--days", type=int, default=7)
     a = ap.parse_args()
     if a.cmd == "queue":
         videos = sorted(a.videos, key=lambda v: pathlib.Path(v).name)
         times = spread(a.start, a.per_day, len(videos)) if a.per_day else ["plan"] * len(videos)
         for v, when in zip(videos, times):
             queue(v, when)
+    elif a.cmd == "report":
+        rows = report(a.days)
+        for x in rows:
+            print(f"{x['views']:>7} views {x['comments']:>4} comments {x['likes']:>5} likes  {x['name']}")
+        print(f"{sum(x['views'] for x in rows)} views, {sum(x['comments'] for x in rows)} comments, {len(rows)} posts "
+              f"in {a.days} days (metrics refresh daily)")
     else:
         status()
 
