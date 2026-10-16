@@ -10,7 +10,7 @@
   "2026-10-17-day-one-infinite-stroll": {
     "post_id": "6ad22007f24c5797a23df93e",
     "key": "2026-10-17-day-one-infinite-stroll-fcfb877dfd9d.mp4",
-    "due_at": "2026-10-16T23:00:00.000Z",
+    "due_at": "2026-10-17T23:00:00.000Z",
     "status": "scheduled",
     "sent_at": null,
     "link": null
@@ -18,7 +18,7 @@
   "2026-10-18-phone-hibernates-like-a-bear": {
     "post_id": "6ad22017b948bf9e9d968194",
     "key": "2026-10-18-phone-hibernates-like-a-bear-d9c0b8c6aa92.mp4",
-    "due_at": "2026-10-17T16:00:00.000Z",
+    "due_at": "2026-10-18T16:00:00.000Z",
     "status": "scheduled",
     "sent_at": null,
     "link": null
@@ -26,7 +26,7 @@
   "2026-10-19-never-looked-up": {
     "post_id": "6ad2202525d13dd62ee8de50",
     "key": "2026-10-19-never-looked-up-f0d42ccbff9a.mp4",
-    "due_at": "2026-10-17T23:00:00.000Z",
+    "due_at": "2026-10-18T23:00:00.000Z",
     "status": "scheduled",
     "sent_at": null,
     "link": null
@@ -34,7 +34,7 @@
   "2026-10-20-kitchen-party": {
     "post_id": "6ad22033f24c5797a23e0d06",
     "key": "2026-10-20-kitchen-party-b13746624cbc.mp4",
-    "due_at": "2026-10-18T16:00:00.000Z",
+    "due_at": "2026-10-19T16:00:00.000Z",
     "status": "scheduled",
     "sent_at": null,
     "link": null
@@ -42,7 +42,7 @@
   "2026-10-21-the-very-long-scarf": {
     "post_id": "6ad2204125d13dd62ee8eb0f",
     "key": "2026-10-21-the-very-long-scarf-2d1c60036b48.mp4",
-    "due_at": "2026-10-18T23:00:00.000Z",
+    "due_at": "2026-10-19T23:00:00.000Z",
     "status": "scheduled",
     "sent_at": null,
     "link": null
@@ -50,7 +50,7 @@
   "2026-10-22-hide-and-seek-champion": {
     "post_id": "6ad22050b948bf9e9d969f79",
     "key": "2026-10-22-hide-and-seek-champion-7e09626197df.mp4",
-    "due_at": "2026-10-19T16:00:00.000Z",
+    "due_at": "2026-10-20T16:00:00.000Z",
     "status": "scheduled",
     "sent_at": null,
     "link": null
@@ -58,7 +58,31 @@
   "2026-10-23-not-sponsored": {
     "post_id": "6ad220602fe657de6ea62d47",
     "key": "2026-10-23-not-sponsored-eeab474c888e.mp4",
-    "due_at": "2026-10-19T23:00:00.000Z",
+    "due_at": "2026-10-20T23:00:00.000Z",
+    "status": "scheduled",
+    "sent_at": null,
+    "link": null
+  },
+  "2026-11-01-bedroom-to-stadium": {
+    "post_id": "6ad27801a060272a757c8198",
+    "key": "2026-11-01-bedroom-to-stadium-e97d970a493a.mp4",
+    "due_at": "2026-10-16T23:00:00.000Z",
+    "status": "scheduled",
+    "sent_at": null,
+    "link": null
+  },
+  "2026-11-02-he-was-there": {
+    "post_id": "6ad2781372d3b743708f12d1",
+    "key": "2026-11-02-he-was-there-ffd741dff3a0.mp4",
+    "due_at": "2026-10-17T16:00:00.000Z",
+    "status": "scheduled",
+    "sent_at": null,
+    "link": null
+  },
+  "2026-10-31-back-from-the-dead-max-cuts": {
+    "post_id": "6ad2782993503c7a0a5bde67",
+    "key": "2026-10-31-back-from-the-dead-max-cuts-5c4f607e4f85.mp4",
+    "due_at": "2026-10-31T16:00:00.000Z",
     "status": "scheduled",
     "sent_at": null,
     "link": null
