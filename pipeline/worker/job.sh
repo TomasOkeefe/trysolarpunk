@@ -136,7 +136,7 @@ for d in $B/*/; do
   [ -f "$d/song.flac" ] || continue
   ( cd "$GE" && $ASM/bin/python -m ge.lyrics --song "$d/song.flac" --plan "$d/plan.json" --out "$d/words.json" --vocals-out "$d/vocals.wav" ) \
     || log "$(basename "$d"): lyric timing FAILED (no captions)"
-  ( cd "$GE" && $ASM/bin/python -m ge.timeline --plan "$d/plan.json" --song "$d/song.flac" --words "$d/words.json" --out "$d/timeline.json" ) \
+  ( cd "$GE" && $ASM/bin/python -m ge.timeline --plan "$d/plan.json" --song "$d/song.flac" --vocals "$d/vocals.wav" --words "$d/words.json" --out "$d/timeline.json" ) \
     && log "$(basename "$d"): $(python3 -c "import json;t=json.load(open('$d/timeline.json'));print(len(t['shots']),'cuts,',sum(s['sing'] for s in t['shots']),'singing')")" \
     || log "$(basename "$d"): cut plan FAILED (even cuts)"
 done
@@ -263,10 +263,13 @@ for d in $B/*/; do
     log "$s: SKIPPED (missing song or clips)"; continue
   fi
   mkdir -p "$OUT/$s"
-  ( cd "$GE" && $ASM/bin/python -m ge.assemble --plan "$d/plan.json" --song "$d/song.flac" --clips "$d/clips" --words "$d/words.json" --timeline "$d/timeline.json" --out "$OUT/$s/final.mp4" ) \
+  # ge.timeline's edit of the song (long instrumental breaks cut) when there is one
+  SONG=$d/song.flac; WORDS=$d/words.json
+  [ -f "$d/song_edit.flac" ] && [ -f "$d/timeline.json" ] && SONG=$d/song_edit.flac && WORDS=$d/words_edit.json
+  ( cd "$GE" && $ASM/bin/python -m ge.assemble --plan "$d/plan.json" --song "$SONG" --clips "$d/clips" --words "$WORDS" --timeline "$d/timeline.json" --out "$OUT/$s/final.mp4" ) \
     && cp "$d/plan.json" "$OUT/$s/plan.json" && echo "$s" >> "$OUT/done.txt" && log "$s: done" \
     || log "$s: assemble FAILED"
-  tar -cf "$OUT/$s/raw.tar" -C "$d" clips song.flac $( [ -f "$d/words.json" ] && echo words.json ) || true
+  tar -cf "$OUT/$s/raw.tar" -C "$d" clips song.flac $(cd "$d" && ls words.json words_edit.json song_edit.flac timeline.json 2>/dev/null) || true
 done
 [ -s "$OUT/done.txt" ] || fail "no video finished"
 stage "DONE"

@@ -67,9 +67,6 @@
       "prompt": "{moss} sits on a doorstep next to a giggling little girl in a puffy pumpkin costume, the two of them swapping candies and laughing. The camera slowly pushes in. Cosy orange porch light."
     },
     {
-      "prompt": "A flock of little black paper bats flutters across a huge glowing full moon above crooked rooftops. The camera tilts down from the moon to a street full of glowing pumpkins. Silver moon, warm orange street."
-    },
-    {
       "line": 12,
       "sing": true,
       "prompt": "{moss} sings joyfully to the camera at a little street party, mouth wide open on every word, string lights and stacked pumpkins behind him and neighbours in costumes cheering. Medium close-up, the camera pushes in. Warm string-light glow."
@@ -77,6 +74,10 @@
     {
       "line": 13,
       "prompt": "{moss} leads a short conga line of three neighbours dressed as a witch, a skeleton and a bedsheet ghost, kicking up piles of orange leaves down the street. The camera tracks alongside them. Warm orange lantern light."
+    },
+    {
+      "prompt": "A flock of little black paper bats flutters across a huge glowing full moon above crooked rooftops. The camera tilts down from the moon to a street full of glowing pumpkins. Silver moon, warm orange street.",
+      "line": 14
     },
     {
       "line": 15,
@@ -89,5 +90,11 @@
     "line2": "link in bio"
   },
   "caption": "moss was a phone zombie all week. one night with his phone asleep in the Hibernator and he came back to life. happy halloween",
-  "hashtags": ["#halloween", "#solarpunk", "#claymation", "#touchgrass", "#phonefree"]
+  "hashtags": [
+    "#halloween",
+    "#solarpunk",
+    "#claymation",
+    "#touchgrass",
+    "#phonefree"
+  ]
 }

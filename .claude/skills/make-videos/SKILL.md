@@ -41,6 +41,8 @@ Writing rules:
   (not even in the song style).
 - Song: [Verse] 4 lines, [Chorus] 4 lines, [Verse] 4 lines, [Chorus] 4 lines (16 lines, about 45-60 s;
   the instrumental intro is trimmed, so 8 lines alone only make a 20-35 s video). Original lyrics.
+  `ge.timeline` cuts YuE's long instrumental breaks and ends the video when the singing ends (max 72 s);
+  keep lines short (6-8 syllables) and the tempo 110-130 BPM so the whole song lands near 55-60 s.
   Give every video in a batch its own genre, setting and joke; no two hooks alike.
 - Style: each plan picks `"style"` from `config.yaml` `styles` (claymation, felt, printed); it is
   prepended to every shot except the product shot, so don't describe the art style in prompts.

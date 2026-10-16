@@ -73,7 +73,9 @@ def sing_audio(d, i):
     tl = timeline(d)
     if not tl or i >= len(tl["shots"]) or not tl["shots"][i].get("sing"):
         return None
-    src = d / "vocals.wav" if (d / "vocals.wav").exists() else d / "song.flac"
+    # the timeline's times are on its edited song (breaks cut) when it made one
+    names = ("vocals_edit.wav", "song_edit.flac") if tl.get("song") else ("vocals.wav", "song.flac")
+    src = next((d / n for n in names if (d / n).exists()), d / "song.flac")
     return str(src), tl["offset"] + tl["shots"][i]["start"]
 
 
