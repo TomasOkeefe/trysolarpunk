@@ -69,6 +69,17 @@ def quiet_runs(vocals, min_len=MAX_GAP):
     return runs
 
 
+def merge(spans):
+    """Overlapping (start, end) spans joined into one."""
+    out = []
+    for a, b in sorted(spans):
+        if out and a <= out[-1][1]:
+            out[-1] = (out[-1][0], max(out[-1][1], b))
+        else:
+            out.append((a, b))
+    return out
+
+
 def keep_segments(first, last, gaps, beat_times):
     """Song stretches to keep: first..last minus each long gap, cut on a beat and resumed whole bars later."""
     segs, cur = [], first
@@ -166,9 +177,13 @@ def build(plan, song, out, vocals=None, words=None, endcard=3.0):
     gaps = quiet_runs(vocals) if vocals else []
     if gaps and gaps[-1][1] >= length - 0.5:  # the vocals know when the singing stopped
         last_word = min(last_word, gaps[-1][0])
+    # a choir humming through a break hides it from quiet_runs (2026-10-16: a 17 s break between "back to"
+    # and "you" pushed the last chorus out of the video), so long gaps between sung words count too
+    words_flat = sorted((w for l in lines for w in l), key=lambda w: w["s"])
+    gaps = merge(gaps + [(a["e"], b["s"]) for a, b in zip(words_flat, words_flat[1:]) if b["s"] - a["e"] > MAX_GAP])
     segs = keep_segments(first, min(length, last_word + TAIL), gaps, bt)
     edit_len = sum(b - a for a, b in segs)
-    body = min(edit_len, MAX_BODY, plan.get("max_seconds") or MAX_BODY)  # max_seconds: short tests
+    body = min(edit_len, plan.get("max_seconds") or MAX_BODY)  # max_seconds: short tests, or a slow song that needs longer
 
     lines_e = [[{**w, "s": round(to_edit(w["s"], segs), 3), "e": round(to_edit(w["e"], segs), 3)} for w in l] for l in lines]
     # a line that starts too late for the video is dropped (its shots fall back to even cuts)
