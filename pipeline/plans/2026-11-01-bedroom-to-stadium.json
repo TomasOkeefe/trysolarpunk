@@ -1,0 +1,144 @@
+{
+  "slug": "bedroom-to-stadium",
+  "date": "2026-11-01",
+  "product": "eyelid",
+  "style": "claymation",
+  "hook_text": "From doomscroller to drill legend",
+  "song": {
+    "title": "Come Up",
+    "style": "English, UK drill beat with sliding 808 bass, dark piano and choir stabs, skittering hi-hats, confident playful male rap vocal with a warm tone, 142 BPM",
+    "lyrics": "[Verse]\nThumb on the glass at three a.m.\nWatching other man live the dream again\nHad bars in my head, never wrote them down\nJust scrolled through the come up of the whole town\n\n[Chorus]\nPhone in the sleeve, now I'm on my come up\nEyes off the feed, I watch the sun come up\nBars in the book where the scroll used to be\nNobody living my dream but me\n\n[Verse]\nWrote on the rooftop, wrote on the train\nOpen mic Tuesday, came back again\nGran in the front row throwing up signs\nNow the whole block knows all of my lines\n\n[Chorus]\nPhone in the sleeve, now I'm on my come up\nStadium lights and the lanterns come up\nBars in the book where the scroll used to be\nNobody living my dream but me"
+  },
+  "shots": [
+    {
+      "prompt": "{moss} lies in bed at 3am staring at his glowing phone, eyes huge behind his round glasses, a tiny stage and spotlights reflected in the lenses. Crash zoom from the whole bed into his glasses. Warm bedside lamp light."
+    },
+    {
+      "prompt": "A chunky plasticine thumb flicks up and up on a glowing phone, the camera whip-panning with every flick. Warm bedside lamp light."
+    },
+    {
+      "prompt": "{moss} sits slumped on his bedroom floor while the glow of his phone throws a giant shadow of a rapper performing on the wall behind him. He sighs. The camera pushes in fast. Warm lamp light, long shadows.",
+      "line": 1
+    },
+    {
+      "prompt": "{moss} raps into a hairbrush in front of his bedroom mirror, then deflates and drops his arms. The camera orbits fast around him. Warm lamp light."
+    },
+    {
+      "prompt": "Close-up: {moss} raps to the camera in his messy bedroom, his mouth opening wide under his bushy mustache, hands chopping the air to the beat. The camera pushes in fast. Warm lamp light.",
+      "line": 2,
+      "sing": true
+    },
+    {
+      "prompt": "A blank notebook falls off a shelf and lands open on the floor beside a pile of empty pages. The camera tilts down fast. Warm lamp light."
+    },
+    {
+      "prompt": "FPV drone shot swoops out of a glowing bedroom window, loops over a tiny clay town at night full of warm windows, and dives back in to find {moss} still scrolling in bed. Warm window glow.",
+      "line": 3
+    },
+    {
+      "prompt": "{moss} freezes mid-scroll, his eyes going wide behind his glasses. Dolly zoom on his face. Warm lamp light."
+    },
+    {
+      "prompt": "A hand slides a black smartphone all the way down into a slim terracotta-orange sleeve standing upright on a soft cream studio backdrop, until only the rounded thumb notch at the top shows. A small closed-eye emblem is pressed into the front of the sleeve. The hand pulls away and the sleeve stands still, casting a soft shadow. The camera pushes in slowly, the light turning warmer.",
+      "product_image": true,
+      "line": 4
+    },
+    {
+      "prompt": "{moss} snatches a notebook and a pencil off his desk and sprints out of his bedroom door. The camera whips around after him. Bright morning light."
+    },
+    {
+      "prompt": "Close-up: {moss} raps to the camera on a sunny rooftop garden at sunrise, his mouth opening wide under his bushy mustache, the sun rising behind him. The camera cranes up. Golden sunrise light.",
+      "line": 5,
+      "sing": true
+    },
+    {
+      "prompt": "The sun bursts over the rooftops of a tiny clay town and the camera whip-pans to {moss} throwing both arms in the air. Golden morning light."
+    },
+    {
+      "prompt": "{moss} scribbles furiously in a notebook on a park bench, pencil flying. Crash zoom onto the pencil. Bright sunny park light.",
+      "line": 6
+    },
+    {
+      "prompt": "Notebook pages flap and swirl around {moss} in a gust of wind while he grins. The camera spins around him. Bright daylight."
+    },
+    {
+      "prompt": "Close-up: {moss} raps to the camera in a sunny community garden, his mouth opening wide under his bushy mustache, tapping his own chest. The camera pushes in fast. Warm sunlight.",
+      "line": 7,
+      "sing": true
+    },
+    {
+      "prompt": "{moss} races a bicycle down a green hill past spinning wind turbines, rubber boots on the pedals. The camera tracks alongside fast. Bright sunshine."
+    },
+    {
+      "prompt": "{moss} writes in his notebook on a sunny tram full of hanging plants, bobbing his head. The camera tracks down the aisle toward him. Bright window light.",
+      "line": 8
+    },
+    {
+      "prompt": "{moss} raps into a microphone inside a tiny closet studio lined with egg-box foam, big headphones squashed over his beanie. The camera orbits fast. Warm desk lamp light."
+    },
+    {
+      "prompt": "{moss} steps onto a tiny wooden stage in a garden cafe holding a microphone, a few neighbours on folding chairs. Low angle, the camera rushes toward the stage. Warm string lights.",
+      "line": 9
+    },
+    {
+      "prompt": "A man on a folding chair nods slowly, then faster, then leaps to his feet. Crash zoom. Warm string lights."
+    },
+    {
+      "prompt": "Close-up: {moss} raps to the camera on the little garden cafe stage, his mouth opening wide under his bushy mustache, string lights behind him. The camera orbits fast. Warm string lights.",
+      "line": 10,
+      "sing": true
+    },
+    {
+      "prompt": "A tiny grandma in a cardigan in the front row throws both hands up and cheers. Whip pan onto her. Warm string lights."
+    },
+    {
+      "prompt": "Neighbours lean out of the windows of a street of tiny clay houses, nodding along as {moss} struts past below. FPV shot flying down the street. Warm evening light.",
+      "line": 11
+    },
+    {
+      "prompt": "Three kids on bikes ride alongside {moss}, all bouncing to the beat. The camera tracks low beside them. Golden evening light."
+    },
+    {
+      "prompt": "Close-up: {moss} raps to the camera on a giant stadium stage, his mouth opening wide under his bushy mustache, golden spotlights blazing behind him. The camera rushes in. Warm golden stage light.",
+      "line": 12,
+      "sing": true
+    },
+    {
+      "prompt": "A huge stadium crowd holds up glowing paper lanterns, waving them side to side. The camera sweeps low over them. Warm golden glow at dusk."
+    },
+    {
+      "prompt": "Giant stadium floodlights flare on one by one around a packed clay stadium at dusk. The camera cranes up fast over the stands. Golden light.",
+      "line": 13
+    },
+    {
+      "prompt": "{moss} walks out of a dark backstage tunnel toward a roaring bright stage. The camera follows close behind him. Warm golden backlight."
+    },
+    {
+      "prompt": "{moss} holds his battered notebook high over his head to the stadium crowd like a trophy. The camera orbits fast around him. Golden spotlight.",
+      "line": 14
+    },
+    {
+      "prompt": "Golden confetti explodes over the stadium stage. The camera spins upward through it. Warm golden light."
+    },
+    {
+      "prompt": "Close-up: {moss} raps the last line to the camera with his arms wide, his mouth opening wide under his bushy mustache, golden confetti falling around him. The camera slowly pulls back. Warm golden stage light.",
+      "line": 15,
+      "sing": true
+    },
+    {
+      "prompt": "After the show {moss} sits alone on the edge of the empty stadium stage, swinging his rubber boots and smiling up as paper lanterns float into the night sky. The camera cranes slowly up and away. Warm lantern light, deep blue sky."
+    }
+  ],
+  "endcard": {
+    "line1": "Block the feed. Live it.",
+    "line2": "link in bio"
+  },
+  "caption": "moss spent years watching other people live his dream. one Eyelid later he's rapping to a stadium full of lanterns. your turn",
+  "hashtags": [
+    "#drill",
+    "#claymation",
+    "#solarpunk",
+    "#touchgrass",
+    "#phonefree"
+  ]
+}

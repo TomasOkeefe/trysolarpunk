@@ -71,7 +71,7 @@ Writing rules:
 - Night shots: light Moss with warm practical light (lanterns, candles, string lights); cold blue
   night light turns him purple.
 - Captions: the lyrics are burned in word by word, so keep lines short and singable, no stage directions.
-- Shots: exactly the count `next` printed (18). Each prompt starts with the main action, then subject
+- Shots: exactly the count `next` printed (32). Each prompt starts with the main action, then subject
   details, setting, camera move, light and colour. Solarpunk everyday life: rooftop gardens,
   bikes, shared meals, sunlight, people looking up. No readable text, logos, phone screens
   showing apps, or famous people. Avoid crowds of small repeated objects (LTX invents props,
