@@ -88,3 +88,32 @@ def ltx_check() -> str:
                         "nvidia-smi --query-gpu=driver_version --format=csv,noheader"],
                        capture_output=True, text=True)
     return r.stdout + r.stderr[-2000:]
+
+
+LTX_FILES = ["diffusion_models/ltx-2.5-22b-distilled-transformer-bf16.safetensors",
+             "text_encoders/gemma4-12b-with-proj-ltx-2.5-bf16.safetensors",
+             "vae/ltx-2.5-video-vae-conv-bf16.safetensors", "vae/ltx-2.5-audio-vae-bf16.safetensors",
+             "latent_upscale_models/ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors"]  # as in job.sh
+
+
+@app.function(image=image, cpu=4, memory=16384, timeout=3 * 3600, volumes={"/models": models},
+              secrets=[modal.Secret.from_name("huggingface")])
+def fetch_models() -> str:
+    """Put every model on the ge-models volume with a cheap CPU container, so GPU time isn't spent
+    downloading: LTX-2.5 (~70 GB, gated), YuE2 songs, whisper medium + demucs for the captions."""
+    steps = [
+        "cd /opt/ltx && HF_HUB_ENABLE_HF_TRANSFER=1 uv run --no-sync hf download Lightricks/LTX-2.5 "
+        + " ".join(LTX_FILES) + " --local-dir /models/ltx-2.5",
+        "/opt/yue/.venv/bin/python -c \"from huggingface_hub import snapshot_download as s; "
+        "[s(r) for r in ('m-a-p/YuE2-3B', 'm-a-p/YuE2-Vae')]\"",
+        "/opt/asm/bin/python -c \"import stable_whisper; stable_whisper.load_model('medium', device='cpu'); "
+        "from demucs.pretrained import get_model; get_model('htdemucs')\"",
+    ]
+    report = []
+    for cmd in steps:
+        t = time.time()
+        r = subprocess.run(["bash", "-c", cmd], capture_output=True, text=True)
+        report.append(f"exit {r.returncode} in {time.time() - t:.0f}s: {cmd[:60]}... {r.stderr[-300:] if r.returncode else ''}")
+        models.commit()
+    du = subprocess.run(["du", "-sh", "/models"], capture_output=True, text=True).stdout
+    return "\n".join(report) + "\n" + du
