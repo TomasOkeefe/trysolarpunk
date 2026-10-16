@@ -68,6 +68,10 @@ Writing rules:
   dolly zoom, crane); at most 3 "static". Prefer a clear physical action with a mini payoff (bonks a
   lamppost, pops up with an apple). The wildest moves smear into blur and odd props (a candy shot
   became teddy bears), so keep the subject simple and big in frame.
+- Side characters: LTX renders a vague "neighbour", "crowd" or "skinny guitarist" as a blank beige
+  clay figure, sometimes looking naked (2026-10-16). Give every other person clothes plus one bold feature
+  ("a grandma in a purple cardigan and pearl glasses", "a guitarist in a red shirt and blue jeans with a
+  tall black quiff") and keep them to one or two per shot.
 - Night shots: light Moss with warm practical light (lanterns, candles, string lights); cold blue
   night light turns him purple.
 - Captions: the lyrics are burned in word by word, so keep lines short and singable, no stage directions.
