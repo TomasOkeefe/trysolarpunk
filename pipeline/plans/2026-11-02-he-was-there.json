@@ -1,0 +1,143 @@
+{
+  "slug": "he-was-there",
+  "date": "2026-11-02",
+  "product": "merch",
+  "style": "claymation",
+  "hook_text": "No phone, so he saw everything",
+  "song": {
+    "title": "I Was There",
+    "style": "English, intense cinematic hip hop, driving muted electric guitar riff, pounding piano chords, heavy boom bap drums, urgent determined male rap vocal with a warm raspy tone, 86 BPM",
+    "lyrics": "[Verse]\nSmall town kid with his braces on tight\nKids yelled run and I ran into the light\nNever owned a screen, kept my head held high\nSo the whole century came strolling by\n\n[Chorus]\nI was there, I was there, with my eyes wide open\nNo feed, no ads, just the moment unbroken\nHistory rolling and I ran right through\nDidn't watch it on a screen, I lived it too\n\n[Verse]\nTaught a kid with a guitar how to shake that hip\nPing pong champ with a lightning flip\nWatched a rocket climb from a crowded roof\nRan coast to coast and the beard's the proof\n\n[Chorus]\nI was there, I was there, with my eyes wide open\nThree years running and my boots still going\nNow I sit on the bench with a cookie tin\nPut the phone down, let the story begin"
+  },
+  "shots": [
+    {
+      "prompt": "A single white feather floats down past the rooftops of a tiny clay town, the camera following it in one long glide until it lands at the green rubber boots of {moss} sitting on a bus-stop bench. Golden afternoon light."
+    },
+    {
+      "prompt": "{moss} opens a round cookie tin on the bench and offers it to a woman in a big red hat sitting beside him. The camera whips onto the tin. Golden afternoon light."
+    },
+    {
+      "prompt": "{moss} sprints down a dirt road in clunky metal leg braces that snap off and fly apart as he speeds up. The camera tracks alongside fast. Dust and golden light.",
+      "line": 1
+    },
+    {
+      "prompt": "Pieces of metal leg brace tumble through the air past the camera while dust kicks up behind. Crash zoom. Golden light."
+    },
+    {
+      "prompt": "Close-up: {moss} raps to the camera in a sunny wheat field with his chin held high, his mouth opening wide under his bushy mustache. The camera pushes in fast. Golden light.",
+      "line": 2,
+      "sing": true
+    },
+    {
+      "prompt": "{moss} stands in a field looking up as clouds race across the sky in fast motion. The camera spins around him. Bright sky."
+    },
+    {
+      "prompt": "A marching band in old-fashioned uniforms with huge brass tubas parades past {moss} on a small town main street. The camera tracks down the street with them. Bright sunshine.",
+      "line": 3
+    },
+    {
+      "prompt": "A big round wall clock spins its hands wildly while the window beside it flicks from day to night and back. Crash zoom on the clock. Warm room light."
+    },
+    {
+      "prompt": "Close-up: {moss} raps to the camera on a rooftop above a tiny clay city, his mouth opening wide under his bushy mustache, fists pumping. The camera circles him fast. Warm sunset light.",
+      "line": 4,
+      "sing": true
+    },
+    {
+      "prompt": "{moss} waves from the back seat of a rolling open-top car in a parade while paper confetti rains down. The camera tracks alongside. Bright sunshine."
+    },
+    {
+      "prompt": "A cream t-shirt with a simple illustration of rolling green hills and a winding path shaped like an infinity loop hangs on a wooden hanger against a sunny cream wall, swaying in a breeze from an open window. Soft daylight, warm shadows. The camera slowly pushes in.",
+      "product_image": true,
+      "line": 5
+    },
+    {
+      "prompt": "{moss} takes a huge deep breath on a windy green hilltop, his raincoat flapping. The camera orbits slowly around him. Soft golden light."
+    },
+    {
+      "prompt": "{moss} bursts through a finish-line ribbon while people in old-fashioned hats cheer behind a rope. Low angle, the camera whips along with him. Bright daylight.",
+      "line": 6
+    },
+    {
+      "prompt": "Old-fashioned press cameras pop bright white flashes at {moss}, who blinks behind his glasses. Crash zoom. Warm light."
+    },
+    {
+      "prompt": "Close-up: {moss} raps to the camera pointing two fingers at his own eyes, his mouth opening wide under his bushy mustache, a cheering sunlit crowd behind him. The camera pushes in fast. Warm sunlight.",
+      "line": 7,
+      "sing": true
+    },
+    {
+      "prompt": "FPV drone shot flying fast over a tiny clay country of farms, small towns and rivers at golden hour. Golden light."
+    },
+    {
+      "prompt": "{moss} teaches a skinny young guitarist with a tall black quiff how to wiggle his hips in a 1950s diner, the kid copying him. The camera orbits fast. Warm jukebox glow.",
+      "line": 8
+    },
+    {
+      "prompt": "The skinny young guitarist with the tall black quiff leaps onto a tiny stage and swivels his hips wildly. Crash zoom. Warm stage light."
+    },
+    {
+      "prompt": "{moss} smashes a ping pong ball across a table in a huge bright arena, the ball a white streak. The camera whips with the ball. Bright arena light.",
+      "line": 9
+    },
+    {
+      "prompt": "Extreme close-up of {moss}'s round glasses, eyes darting left and right as a ping pong ball blurs back and forth in the lenses. Bright light."
+    },
+    {
+      "prompt": "A huge white rocket blasts off into a blue sky on a pillar of fire and smoke while {moss} and his neighbours watch from a rooftop. The camera tilts up fast with the rocket. Bright daylight.",
+      "line": 10
+    },
+    {
+      "prompt": "{moss} pushes his glasses up his nose in awe on the rooftop, the rocket's trail reflected in his lenses. Crash zoom. Bright daylight."
+    },
+    {
+      "prompt": "{moss} with a long shaggy brown beard down to his belly runs along an endless desert highway. The camera tracks low beside his rubber boots. Golden sunset.",
+      "line": 11
+    },
+    {
+      "prompt": "A long line of joggers runs behind {moss} down the desert highway. The camera cranes up to show the line stretching to the horizon. Golden sunset."
+    },
+    {
+      "prompt": "Close-up: {moss} raps to the camera on the desert highway at sunset, his long shaggy beard blowing in the wind, his mouth opening wide under his bushy mustache. The camera pushes in fast. Golden sunset light.",
+      "line": 12,
+      "sing": true
+    },
+    {
+      "prompt": "{moss} suddenly stops dead in the middle of the highway and the joggers behind him skid to a halt and bump into each other. The camera whips around. Golden sunset."
+    },
+    {
+      "prompt": "Green rubber boots pound down a country road as the seasons change around them from rain to snow to sunshine. The camera tracks low beside the boots.",
+      "line": 13
+    },
+    {
+      "prompt": "{moss} turns and walks home across a golden field of tall grass. The camera cranes up and back. Golden evening light."
+    },
+    {
+      "prompt": "{moss} sits on the bus-stop bench holding his cookie tin, a little boy with a big red cap and the woman in the big red hat leaning in to listen. The camera pushes in. Warm afternoon light.",
+      "line": 14
+    },
+    {
+      "prompt": "The woman in the big red hat laughs and takes a cookie from the tin. Close-up, the camera whips onto her smile. Warm afternoon light."
+    },
+    {
+      "prompt": "Close-up: {moss} raps the last line to the camera from the bench, his mouth opening wide under his bushy mustache, a white feather drifting past his face. The camera slowly pulls back. Warm afternoon light.",
+      "line": 15,
+      "sing": true
+    },
+    {
+      "prompt": "The white feather lifts off the bench and floats up over the rooftops into a big blue sky. The camera follows it up and away. Warm golden light."
+    }
+  ],
+  "endcard": {
+    "line1": "Be there for it.",
+    "line2": "link in bio"
+  },
+  "caption": "moss never owned a phone, so he ended up in every chapter of history. now he just runs in his Infinite Stroll tee",
+  "hashtags": [
+    "#claymation",
+    "#history",
+    "#rap",
+    "#solarpunk",
+    "#phonefree"
+  ]
+}
