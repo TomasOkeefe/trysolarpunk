@@ -44,5 +44,10 @@ python3 -m ge.concept check plans/2026-10-14-face-to-the-wall.json
 python3 run.py plans/2026-10-14-face-to-the-wall.json
 ```
 
-Change products, voice, sizes or the GPU in `config.yaml`. `ge/tiktok.py` (Content Posting API
-drafts) is kept for later; posting is manual for now.
+Change products, voice, sizes or the GPU in `config.yaml`. Posting: `run.py` queues each video on
+Buffer (`ge/buffer.py`, settings under `posting:` in `config.yaml`):
+
+```bash
+python3 -m ge.buffer queue ../videos/2026-10-18-phone-hibernates-like-a-bear.mp4
+python3 -m ge.buffer status
+```

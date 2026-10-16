@@ -105,6 +105,7 @@ prints the cost. Expect about 10 min of setup plus about 1 min per clip.
 
 - Report: videos made, failures, minutes and dollars (one short list).
 - If something failed, read `videos/job.log` (grep for FAILED or Traceback) before guessing.
-- Commit `pipeline/plans/` and `pipeline/history.jsonl` and push.
-- Posting is manual for now: the user posts from the TikTok app with the `.txt` caption and the
-  AI-generated toggle on.
+- `run.py` queues each new video on Buffer for its plan's date (TikTok AI label on). Check with
+  `python3 -m ge.buffer status`; queue a video by hand with `python3 -m ge.buffer queue <mp4>`.
+  The owner never opens TikTok, so never ask them to post or check it.
+- Commit `pipeline/plans/`, `pipeline/history.jsonl` and `pipeline/posts.json` and push.

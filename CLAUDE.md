@@ -16,7 +16,7 @@ Products: the Hibernator (moss green fridge brick for your phone, magnets + NFC)
 ## Pipeline (`pipeline/`)
 To make videos, use the `make-videos` skill. In short: Claude writes plans in
 `pipeline/plans/`, `python3 run.py plans/...` renders a whole batch in one RunPod GPU session
-(YuE2 songs, LTX-2.5 clips, lyric captions, ffmpeg edit; TikTok's own AI label via the upload toggle), and videos land in `videos/` (gitignored).
+(YuE2 songs, LTX-2.5 clips, lyric captions, ffmpeg edit; TikTok's own AI label set when posting), and videos land in `videos/` (gitignored).
 
 - GPU: RunPod, prepaid credit. Before renting, `ge/runpod.py` checks live price and stock of every card that
   can run the batch (community and secure) and rents the cheapest estimated batch cost; measured
@@ -30,8 +30,13 @@ To make videos, use the `make-videos` skill. In short: Claude writes plans in
   `m0ss`, and the batch loads his LoRA (`config.yaml` loras, weights on the `moss-lora` GitHub release).
   Retrain with `train_lora.py` (dataset in `videos/lora/moss-data`, ~$1.30 on a community PRO 6000).
 - `worker/gen_clips.py` relies on private hooks of LTX-2 commit `be6d6d0` (pinned in `job.sh`).
-- TikTok posting is manual for now (owner posts from the phone app; Jomo blocks TikTok in Chrome).
-  Automatic drafts via the Content Posting API are a later step.
+- TikTok posting is automatic and the owner never opens TikTok (it's the habit they're quitting).
+  `run.py` hands each video to `ge/buffer.py`: upload to the public R2 bucket `trysolarpunk-media`,
+  then a Buffer post (free plan, `buffer` CLI, logged in via `buffer init`) on the plan's date with
+  TikTok's AI label. `python3 -m ge.buffer status` shows posts and deletes sent videos from R2.
+  Free-tier guards in `ge/buffer.py` (R2 has no spending cap): max 40 files / 1 GB in the bucket,
+  Standard class only, 30-day expiry rule; Buffer's free queue holds 10 posts. Our own TikTok
+  developer app can't work: TikTok's audit rejects tools that post only to your own account.
 
 ## Waitlist site (`site/`)
 Live at https://trysolarpunk.pages.dev (Cloudflare Pages + D1 `trysolarpunk-waitlist`, free tier).

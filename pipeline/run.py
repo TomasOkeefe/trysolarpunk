@@ -8,6 +8,7 @@
 caffeinate so it survives closing Claude Code and keeps the Mac awake (see the make-videos skill).
 
 Blocks until the box is done (about 10 min setup + ~1 min per clip), then deletes it.
+Then each new video is queued on Buffer for TikTok on its plan's date (ge/buffer.py); --no-post skips that.
 The box clones the code from GitHub, so pipeline code changes must be pushed first;
 plans travel with the request and need no push.
 RunPod key: RUNPOD_API_KEY or ~/.runpod/config.toml (written by `flash login`).
@@ -22,7 +23,7 @@ import time
 
 import yaml
 
-from ge import concept, runpod
+from ge import buffer, concept, runpod
 
 ROOT = pathlib.Path(__file__).resolve().parent
 VIDEOS = ROOT.parent / "videos"
@@ -62,6 +63,7 @@ def main():
     ap.add_argument("--exclude", action="append", default=[], help="skip GPUs whose name contains this (repeatable)")
     ap.add_argument("--only", action="append", default=[], metavar="CLOUD:GPU",
                     help="rent only these, e.g. community:A6000 (repeatable); with --wait, never anything else")
+    ap.add_argument("--no-post", action="store_true", help="don't queue the videos on Buffer (tests)")
     a = ap.parse_args()
     files = a.files
     cfg = yaml.safe_load((ROOT / "config.yaml").read_text())
@@ -113,6 +115,14 @@ def main():
             print(f"ok      videos/{name}.mp4")
     print(f"{len(done)}/{len(plans)} videos, {hours * 60:.0f} min on {gpu} ({sec}s a clip), about ${cost:.2f}")
     notify(f"{len(done)}/{len(plans)} videos ready in videos/, about ${cost:.2f}")
+    if not a.no_post:
+        for plan in plans:
+            if plan["slug"] in done:
+                try:
+                    buffer.queue(VIDEOS / f"{plan['date']}-{plan['slug']}.mp4")
+                except (Exception, SystemExit) as e:
+                    print(f"NOT QUEUED  {plan['date']}-{plan['slug']}: {e}")
+                    notify(f"Buffer queue failed: {str(e)[:80]}")
     if not done:
         sys.exit(1)
 
