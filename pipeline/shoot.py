@@ -16,7 +16,7 @@ import urllib.request
 import yaml
 
 import run
-from ge import concept, runpod
+from ge import box, concept, runpod
 
 ROOT = pathlib.Path(__file__).resolve().parent
 
@@ -25,12 +25,12 @@ def collect(base, slugs, dest, log):
     got = []
     for s in slugs:
         tar = dest / f"{s}.tar"
-        urllib.request.urlretrieve(f"{base}/{s}/raw.tar", tar)
+        box.download(f"{base}/{s}/raw.tar", tar)
         with tarfile.open(tar) as t:
             t.extractall(dest / s, filter="data")
         tar.unlink()
         got.append(s)
-    urllib.request.urlretrieve(f"{base}/job.log", dest / "job.log")
+    box.download(f"{base}/job.log", dest / "job.log")
     return got
 
 

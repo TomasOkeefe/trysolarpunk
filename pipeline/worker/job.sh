@@ -31,6 +31,9 @@ self_destruct_later() {
   ) >/dev/null 2>&1 &
 }
 exec >>"$OUT/job.log" 2>&1
+# hard limit that doesn't depend on the computer that rented the box (it can sleep): delete the pod
+( sleep $(( ${MAX_MIN:-240} * 60 )); echo "hard limit ${MAX_MIN:-240} min reached" >> "$OUT/status.log"
+  [ -n "${RUNPOD_POD_ID:-}" ] && runpodctl remove pod "$RUNPOD_POD_ID" ) >/dev/null 2>&1 &
 
 # 0. status server first, so progress is visible from the start
 python3 "$GE/worker/serve.py" 8080 "$W/out" &

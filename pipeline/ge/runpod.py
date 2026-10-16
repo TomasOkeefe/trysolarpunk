@@ -138,6 +138,7 @@ def run_job(cfg, plans, repo_url, dest, log=print, tiers=None, extra=None, colle
         "volumeMountPath": "/workspace",
         "ports": ["8080/http"],
         "env": {"OUT_TOKEN": token, "GE_REPO": repo_url, "KEEP_MIN": "40",
+                "MAX_MIN": str(g["max_runtime_minutes"] + 20),
                 "HF_TOKEN": "{{ RUNPOD_SECRET_hf_token }}",
                 "PLANS_B64": box.pack_plans(plans)},
         "dockerStartCmd": ["bash", "-c", start],
@@ -182,7 +183,7 @@ def run_job(cfg, plans, repo_url, dest, log=print, tiers=None, extra=None, colle
             # keep the evidence: the pod is deleted right after this
             for name in ("job.log", "train.log"):
                 try:
-                    urllib.request.urlretrieve(f"{base}/{name}", f"{dest}/{name}")
+                    box.download(f"{base}/{name}", f"{dest}/{name}", 30)
                     log(f"saved {dest}/{name}")
                 except Exception:  # noqa: BLE001
                     pass

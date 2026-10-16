@@ -16,7 +16,7 @@ import urllib.request
 import yaml
 
 import run
-from ge import runpod
+from ge import box, runpod
 
 ROOT = pathlib.Path(__file__).resolve().parent
 REPO = "TomasOkeefe/trysolarpunk"
@@ -54,11 +54,11 @@ def collect_into(dest):
             rel = f.split(f"/{token_root}/", 1)[1]
             out = dest / pathlib.Path(rel).name
             log(f"downloading {rel}")
-            urllib.request.urlretrieve(f"{base}/{rel}", out)
+            box.download(f"{base}/{rel}", out)
             got.append(out.name)
         for name in ("train.log", "job.log"):
             try:
-                urllib.request.urlretrieve(f"{base}/{name}", dest / name)
+                box.download(f"{base}/{name}", dest / name)
             except Exception:  # noqa: BLE001
                 pass
         return got

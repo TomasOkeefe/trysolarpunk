@@ -82,11 +82,11 @@ Then render, one of two ways:
   task only wakes you when it exits, so without the Monitor a hung pod is invisible.
 - **Cheapest** (the default when there's no rush): wait up to 24 h for a card near the best price,
   detached so it survives closing Claude Code, with the Mac kept awake:
-  `cd pipeline && nohup caffeinate -i python3 -u run.py --wait 24 plans/<new files> > ../videos/run.log 2>&1 &`
+  `cd pipeline && nohup caffeinate -s python3 -u run.py --wait 24 plans/<new files> > ../videos/run.log 2>&1 &`
   It checks stock every 2 min (free) and rents only a card within 15% of the best listed batch cost
   (about $0.40 for 7 videos); after 24 h it takes the cheapest in stock. A macOS notification says when
-  the videos are ready or the run failed. Tell the user the Mac must stay on (lid closed on battery
-  still sleeps). Don't babysit the wait: check `videos/run.log` when the user is back, and only arm
+  the videos are ready or the run failed. Tell the user the Mac must be plugged in (caffeinate -s keeps it awake
+  on power even with the lid closed; on battery a closed lid sleeps and everything here freezes). Don't babysit the wait: check `videos/run.log` when the user is back, and only arm
   the Monitor once a line says "rented".
 
 `run.py` itself aborts and deletes the pod after 20 min without a stage change (each finished clip is

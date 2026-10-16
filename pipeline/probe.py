@@ -15,7 +15,7 @@ import urllib.request
 import yaml
 
 import run
-from ge import concept, runpod
+from ge import box, concept, runpod
 
 ROOT = pathlib.Path(__file__).resolve().parent
 
@@ -25,14 +25,14 @@ def collect(base, slugs, dest, log):
     got = []
     for name in ["probe.txt", "job.log"] + [f"probe_{m}.log" for m in MODES]:
         try:
-            urllib.request.urlretrieve(f"{base}/{name}", dest / name)
+            box.download(f"{base}/{name}", dest / name)
             got.append(name)
         except Exception as e:  # noqa: BLE001
             log(f"no {name}: {e}")
     for m in MODES:
         for i in range(2):
             try:
-                urllib.request.urlretrieve(f"{base}/probe/{m}_shot_{i:02d}.mp4", dest / f"{m}_shot_{i:02d}.mp4")
+                box.download(f"{base}/probe/{m}_shot_{i:02d}.mp4", dest / f"{m}_shot_{i:02d}.mp4")
                 got.append(f"{m}_shot_{i:02d}.mp4")
             except Exception:  # noqa: BLE001
                 pass
