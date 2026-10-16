@@ -16,6 +16,10 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 W, H, FPS = 1080, 1920, 24
+# Edit dynamics (the owner found the first quality pass still too calm): each cut lands with a quick zoom
+# punch that settles in PUNCH_S, then the frame keeps drifting (in, out, in...) by DRIFT; shots that open
+# a chorus flash white. Digital moves over on-twos animation, like a stop-motion music video.
+PUNCH, PUNCH_S, DRIFT, FLASH_S = 0.08, 0.22, 0.06, 0.16
 INK, CREAM, SUN, MOSS = (42, 36, 32), (246, 241, 228), (242, 193, 78), (47, 93, 58)
 
 
@@ -193,7 +197,36 @@ def probe_duration(path):
 
 
 # ------------------------------------------------------------------ main
-def assemble(plan, song, clips, out, target=45, endcard=3.0, words=None, anim_fps=None, timeline=None):
+def chorus_lines(lyrics):
+    """Indexes (in sung lines) of the first line of every chorus."""
+    out, idx, section = [], 0, ""
+    for l in lyrics.splitlines():
+        l = l.strip()
+        if l.startswith("["):
+            section = l.lower()
+            first = True
+        elif l:
+            if "chorus" in section and first:
+                out.append(idx)
+            first = False
+            idx += 1
+    return out
+
+
+def motion_filter(i, d, flash, PUNCH=PUNCH, PUNCH_S=PUNCH_S, DRIFT=DRIFT, FLASH_S=FLASH_S):
+    """Zoom punch at the cut, then a slow drift (alternating in and out), plus a white flash."""
+    settle = f"{PUNCH}*pow(max(0,1-t/{PUNCH_S}),2)"
+    drift = f"{DRIFT}*min(t/{max(d, 0.5):.3f},1)" if i % 2 == 0 else f"{DRIFT}*(1-min(t/{max(d, 0.5):.3f},1))"
+    z = f"(1+{settle}+{drift})"
+    vf = (f"scale=w='trunc({W}*{z}/2)*2':h='trunc({H}*{z}/2)*2':eval=frame:flags=bicubic,"
+          f"crop={W}:{H}")
+    if flash:
+        vf += f",fade=t=in:st=0:d={FLASH_S}:color=white"
+    return vf
+
+
+def assemble(plan, song, clips, out, target=45, endcard=3.0, words=None, anim_fps=None, timeline=None,
+             dynamic=True):
     clips = sorted(pathlib.Path(clips).glob("shot_*.mp4"))
     n = len(clips)
     assert n, "no clips"
@@ -211,12 +244,20 @@ def assemble(plan, song, clips, out, target=45, endcard=3.0, words=None, anim_fp
 
     parts = []
     step = f"fps={anim_fps}," if anim_fps else ""  # hold frames ("on twos") for a hand-animated feel
+    flash_at = set()
+    edit = {k.upper(): v for k, v in (plan.get("edit") or {}).items()}  # e.g. {"punch": 0.15, "drift": 0.12}
+    if dynamic and timeline:  # the shots anchored on a chorus's first line
+        firsts = set(chorus_lines(plan["song"]["lyrics"]))
+        flash_at = {i for i, s in enumerate(plan["shots"]) if s.get("line") in firsts and i > 0}
     for i, (clip, d) in enumerate(zip(clips, durs)):
         cd = probe_duration(clip)
-        speed = max(1.0, d / cd)  # if the beat gap is longer than the clip, slow it a touch
+        fast = (timeline["shots"][i].get("speed", 1.0) if timeline and i < len(timeline["shots"]) else 1.0)
+        # faster than real time when the timeline asked (snappier motion), slower only to fill a gap
+        speed = max(1.0, d / cd) if fast == 1.0 else 1 / fast
         p = tmp / f"p{i:02d}.mp4"
         vf = (f"setpts={speed:.4f}*PTS,scale={W}:{H}:force_original_aspect_ratio=increase,"
-              f"crop={W}:{H},{step}fps={FPS},format=yuv420p")
+              f"crop={W}:{H},{step}fps={FPS},"
+              + (motion_filter(i, d, i in flash_at, **edit) + "," if dynamic else "") + "format=yuv420p")
         run(["ffmpeg", "-y", "-loglevel", "error", "-i", clip, "-t", f"{d:.3f}", "-vf", vf, "-an",
              "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", p])
         parts.append(p)
@@ -261,11 +302,12 @@ if __name__ == "__main__":
     ap.add_argument("--timeline", help="cut plan from ge.timeline (optional)")
     ap.add_argument("--target", type=float, default=45)
     ap.add_argument("--anim-fps", type=int, help="hold frames at this rate, e.g. 12")
+    ap.add_argument("--calm", action="store_true", help="no zoom punches, drift or flashes")
     a = ap.parse_args()
     words = json.loads(pathlib.Path(a.words).read_text()) if a.words and pathlib.Path(a.words).exists() else None
     plan = json.loads(pathlib.Path(a.plan).read_text())
     plan_anim = plan.get("anim_fps")  # stamped from config.yaml by run.py
     tl = json.loads(pathlib.Path(a.timeline).read_text()) if a.timeline and pathlib.Path(a.timeline).exists() else None
     assemble(plan, a.song, a.clips, a.out, plan.get("target_seconds", a.target),
-             words=words, anim_fps=a.anim_fps or plan_anim, timeline=tl)
+             words=words, anim_fps=a.anim_fps or plan_anim, timeline=tl, dynamic=not a.calm)
     print("wrote", a.out)

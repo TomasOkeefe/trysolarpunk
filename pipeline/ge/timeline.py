@@ -23,6 +23,8 @@ FPS = 24
 LEAD = 0.15        # a line's shot starts this much before its first word
 MIN_SHOT = 1.0     # seconds
 MIN_FRAMES = 33    # LTX frame counts are 8k+1
+MAX_FRAMES = 145   # ~6 s: attention grows with the square of the length (a 44 s shot took 417 s and ran
+                   # out of memory on 2026-10-16); a longer cut plays its clip a little slower instead
 MAX_GAP = 3.0      # longer silences in the vocals get cut
 MAX_BODY = 72.0    # seconds before the end card (a full 16-line song; write tight lines to stay near 55)
 PRE_ROLL = 0.8     # music before the first word
@@ -110,7 +112,7 @@ def splice(src, segs, dst):
 
 def frames_for(seconds):
     n = math.ceil(seconds * FPS) + 2  # a little spare so the cut never runs past the clip
-    return max(MIN_FRAMES, 8 * math.ceil((n - 1) / 8) + 1)
+    return min(MAX_FRAMES, max(MIN_FRAMES, 8 * math.ceil((n - 1) / 8) + 1))
 
 
 def plan_cuts(plan, body, lines, beat_times=None, endcard=3.0):
@@ -143,8 +145,11 @@ def plan_cuts(plan, body, lines, beat_times=None, endcard=3.0):
     out = []
     for i in range(n):
         dur = round(starts[i + 1] - starts[i], 3)
-        out.append({"start": round(starts[i], 3), "dur": dur, "frames": frames_for(dur),
-                    "sing": bool(shots[i].get("sing")) and i in anchors})
+        sing = bool(shots[i].get("sing")) and i in anchors
+        # "speed" (shot, else plan): render that much more motion and play it faster; lip sync stays 1x
+        speed = 1.0 if sing else float(shots[i].get("speed", plan.get("speed", 1.0)))
+        out.append({"start": round(starts[i], 3), "dur": dur, "frames": frames_for(dur * speed),
+                    "sing": sing, "speed": speed})
     return out
 
 
@@ -163,7 +168,7 @@ def build(plan, song, out, vocals=None, words=None, endcard=3.0):
         last_word = min(last_word, gaps[-1][0])
     segs = keep_segments(first, min(length, last_word + TAIL), gaps, bt)
     edit_len = sum(b - a for a, b in segs)
-    body = min(edit_len, MAX_BODY)
+    body = min(edit_len, MAX_BODY, plan.get("max_seconds") or MAX_BODY)  # max_seconds: short tests
 
     lines_e = [[{**w, "s": round(to_edit(w["s"], segs), 3), "e": round(to_edit(w["e"], segs), 3)} for w in l] for l in lines]
     # a line that starts too late for the video is dropped (its shots fall back to even cuts)

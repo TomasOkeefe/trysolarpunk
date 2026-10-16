@@ -24,7 +24,7 @@ with YuE2Pipeline.from_pretrained("m-a-p/YuE2-3B", device="cuda", memory_budget_
         plan = json.loads((d / "plan.json").read_text())
         try:
             song = pipe(style=plan["song"]["style"], lyrics=plan["song"]["lyrics"], cot="full",
-                        seed=zlib.crc32(plan["slug"].encode()) % 900000 + 100000)
+                        seed=plan["song"].get("seed") or zlib.crc32(plan["slug"].encode()) % 900000 + 100000)
             song.save_artifacts(str(d / "yue"))
             shutil.copy(d / "yue" / "audio.flac", d / "song.flac")
             print(f"{plan['slug']}: song ready, truncated={song.truncated}", flush=True)

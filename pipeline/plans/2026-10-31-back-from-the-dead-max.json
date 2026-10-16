@@ -1,0 +1,150 @@
+{
+  "slug": "back-from-the-dead-max",
+  "date": "2026-10-31",
+  "product": "hibernator",
+  "style": "claymation",
+  "hook_text": "I was a zombie all week",
+  "song": {
+    "title": "Back From The Dead",
+    "style": "English, spooky surf rockabilly with twangy reverb guitar, slapped upright bass, theremin swoops and handclaps, warm friendly male lead vocal, slightly raspy, playful, 124 BPM",
+    "lyrics": "[Verse]\nSeven days I shuffled slow\nThumb on glass and face aglow\nDidn't need a zombie mask\nScrolling was my only task\n\n[Chorus]\nWake up, wake up, it's Halloween\nPhone's asleep in its brick of green\nWake up, wake up, the night is new\nBack from the dead and I'm dancing with you\n\n[Verse]\nCarved a grin on a pumpkin head\nBobbed for apples, soaking wet\nKnocked on doors down leafy streets\nTrading jokes for candy sweets\n\n[Chorus]\nWake up, wake up, it's Halloween\nRealest night I've ever seen\nWake up, wake up, the moon is high\nBack from the dead and I feel alive",
+    "seed": 644598
+  },
+  "shots": [
+    {
+      "prompt": "FPV drone shot racing low down a dark clay street straight at {moss} shuffling like a zombie with stiff arms out, a sickly green glow on his face, the camera flying right up to his glasses. Green glow, deep shadows."
+    },
+    {
+      "prompt": "Crash zoom into {moss}'s glazed eyes behind his round black glasses, green light flickering across the lenses. Cold green glow."
+    },
+    {
+      "prompt": "Extreme close-up of a chunky plasticine thumb flicking up and up on a phone that glows plain white, the camera spinning fast around the thumb. Cold white glow in the dark.",
+      "line": 1
+    },
+    {
+      "prompt": "{moss} walks face-first into a lamppost and bounces backwards, wobbling. Low angle, the camera whips sideways with the impact. Dim street light."
+    },
+    {
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, rubber monster masks hanging in a shop window behind him. The camera pushes in fast. Shop window glow.",
+      "line": 2,
+      "sing": true
+    },
+    {
+      "prompt": "A row of rubber monster masks in a shop window all turn their heads at once, the camera whip-panning across them. Purple and green shop light."
+    },
+    {
+      "prompt": "Overhead shot spinning fast above {moss} slumped on a saggy sofa staring at his phone while orange autumn leaves pour in through the window and bury him. Gloomy grey room, orange leaves.",
+      "line": 3
+    },
+    {
+      "prompt": "Dolly zoom on {moss}'s face as he finally looks up from his phone, the room stretching away behind him. One warm streak of light."
+    },
+    {
+      "prompt": "Close-up: {moss} leaps up in his kitchen and sings to the camera, mouth wide open under his mustache, a glowing jack-o-lantern beside him. The camera snaps in close. Warm flickering candle light.",
+      "line": 4,
+      "sing": true
+    },
+    {
+      "prompt": "A carved jack-o-lantern on a kitchen counter bursts alight, its grin blazing. Crash zoom into its glowing mouth. Orange firelight."
+    },
+    {
+      "line": 5,
+      "product_image": true,
+      "prompt": "A hand slides a black smartphone face-first into a small rounded moss-green brick stuck to a white fridge door, the phone settling upright. The brick has a round pale yellow disc on its front. Warm flickering orange candle light drifts across the fridge. Close-up, the camera quickly pulls back as the hand flicks away."
+    },
+    {
+      "prompt": "{moss} slams the fridge door shut with a hip bump and spins away dancing. The camera whips around with him. Warm candle light."
+    },
+    {
+      "prompt": "{moss} kicks open his round front door and a tornado of orange leaves blasts toward the camera. The camera rushes out through the doorway past him into the moonlit street. Warm porch light, deep blue night.",
+      "line": 6
+    },
+    {
+      "prompt": "FPV drone shot swooping off a porch and up over the rooftops of a tiny clay town glowing with jack-o-lanterns. Warm orange glow under a deep blue sky."
+    },
+    {
+      "prompt": "Close-up: {moss} sings to the camera, mouth moving with the words under his mustache, dancing with a little kid in a white bedsheet ghost costume. The camera orbits fast around them. warm orange lantern light.",
+      "line": 7,
+      "sing": true
+    },
+    {
+      "prompt": "A little kid in a white bedsheet ghost costume spins round and round, the camera spinning with them, string lights streaking past. warm orange lantern light."
+    },
+    {
+      "prompt": "{moss} scoops the gooey insides out of a fat orange pumpkin and flings a handful straight at the camera. Splat. warm orange lantern light.",
+      "line": 8
+    },
+    {
+      "prompt": "Crash zoom into a freshly carved pumpkin as a candle flares inside and its toothy grin lights up. Orange firelight in the dark."
+    },
+    {
+      "prompt": "{moss} pops up out of a tub of floating red apples with water exploding upward, an apple in his teeth, glasses crooked. Low angle, the camera tilts up fast. Warm porch light, flying water.",
+      "line": 9
+    },
+    {
+      "prompt": "Extreme close-up of water drops flying off round black glasses, the camera whipping past. Sparkling warm light."
+    },
+    {
+      "prompt": "FPV shot racing behind {moss} as he runs up the steps of a crooked little house and knocks on a round green door. warm orange lantern light, autumn leaves flying.",
+      "line": 10
+    },
+    {
+      "prompt": "A round green door flies open and a cheerful old woman in a pointy witch hat thrusts a huge bowl of candy at the camera. Crash zoom. Warm doorway light."
+    },
+    {
+      "prompt": "Close-up: {moss} sings to the camera on a doorstep beside a giggling little girl in a puffy pumpkin costume, swapping candies. The camera circles them quickly. Cosy orange porch light.",
+      "line": 11,
+      "sing": true
+    },
+    {
+      "prompt": "Wrapped candies tumble through the air toward the camera as it spins. Bright colourful candy, warm light."
+    },
+    {
+      "prompt": "Close-up: {moss} sings to the camera at a street party, mouth wide open under his mustache, string lights and stacked pumpkins behind him. The camera pushes in fast. Warm string-light glow.",
+      "line": 12,
+      "sing": true
+    },
+    {
+      "prompt": "Three neighbours dressed as a witch, a skeleton and a bedsheet ghost jump into the air together, the camera whipping up with them. warm orange lantern light."
+    },
+    {
+      "prompt": "{moss} leads a conga line of costumed neighbours through piles of orange leaves, the camera racing alongside at ground level as leaves blast past the lens. warm orange lantern light.",
+      "line": 13
+    },
+    {
+      "prompt": "A clay skeleton drops into the splits on the street and throws his arms up. Crash zoom. warm orange lantern light."
+    },
+    {
+      "prompt": "The camera rockets straight up from a glowing street past a flock of little black paper bats toward a huge full moon. Silver moon, warm orange street below.",
+      "line": 14
+    },
+    {
+      "prompt": "A flock of little black paper bats swarms straight at the camera and bursts apart around it. Silver moonlight."
+    },
+    {
+      "prompt": "Close-up: {moss} throws his arms wide and sings to the camera under a huge full moon, mouth wide under his mustache, orange leaves swirling. The camera orbits fast and rises. Warm lantern light on his face, deep blue sky.",
+      "line": 15,
+      "sing": true
+    },
+    {
+      "prompt": "{moss} falls backwards into a huge pile of orange leaves laughing as the leaves explode upward. The camera cranes up and away. Warm lantern light, deep blue night."
+    }
+  ],
+  "endcard": {
+    "line1": "Come back to life.",
+    "line2": "link in bio"
+  },
+  "caption": "moss was a phone zombie all week. one night with his phone asleep in the Hibernator and he came back to life. happy halloween",
+  "hashtags": [
+    "#halloween",
+    "#solarpunk",
+    "#claymation",
+    "#touchgrass",
+    "#phonefree"
+  ],
+  "speed": 1.3,
+  "edit": {
+    "punch": 0.15,
+    "drift": 0.12
+  }
+}

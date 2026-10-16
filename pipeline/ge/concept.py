@@ -65,7 +65,7 @@ def validate(plan, shots):
     # 8 lines sing in ~20-35 s once the intro is trimmed: too short for 9 shots
     assert len(sung) >= 14, f"song needs verse, chorus, verse, chorus (~16 lines), has {len(sung)}"
     assert plan["song"]["title"] and plan["song"]["style"]
-    assert len(plan["shots"]) == shots, f"need {shots} shots"
+    assert 12 <= len(plan["shots"]) <= 40, f"need 12-40 shots (default {shots})"
     assert all(s["prompt"].strip() for s in plan["shots"]), "empty shot prompt"
     assert sum(1 for s in plan["shots"] if s.get("product_image")) == 1, "need exactly one product shot"
     # line-locked cuts (ge.timeline): "line" is the 0-based sung line a shot starts on
@@ -73,7 +73,7 @@ def validate(plan, shots):
     assert all(isinstance(k, int) and 0 <= k < len(sung) for _, k in anchored), f"line must be 0..{len(sung) - 1}"
     ks = [k for _, k in anchored]
     assert ks == sorted(set(ks)), "shot lines must increase"
-    assert all(k >= i // 2 for i, k in anchored), "too many shots before their line (each shot needs >= ~1.5 s)"
+    assert all(k >= i // 3 for i, k in anchored), "too many shots before their line (each shot needs >= ~1 s)"
     singing = [s for s in plan["shots"] if s.get("sing")]
     assert all(s.get("line") is not None and not s.get("product_image") for s in singing), "a sing shot needs a line, not the product"
     assert len(singing) <= 6, "max 6 singing shots"

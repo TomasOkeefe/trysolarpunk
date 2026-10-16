@@ -14,6 +14,9 @@ Two modes (RENDER_MODE):
   the song's isolated vocals (audio frozen in pass 1), so the character lip-syncs the line. Real
   vocals pull LTX toward live-action singers (Moss turned into a man in a hoodie), so a sing shot
   first renders its scene without the vocals and uses that first frame as the anchor frame.
+  Lip sync needs LTX's audio-to-video guidance (an extra pass with the audio cross-attention cut,
+  pushed away from; A2V_SCALE, LTX's default 3) and the vocals kept frozen in pass 2 too; without
+  them the mouth moved but not with the words (owner, 2026-10-16).
 
 With batch_dir/<slug>/timeline.json (ge.timeline) every clip is rendered at the length its cut needs.
 
@@ -42,6 +45,7 @@ if torch.cuda.is_available() and torch.cuda.get_device_properties(0).total_memor
 PROBE_SHOTS = int(os.environ.get("PROBE_SHOTS", 0))  # GPU probe: render only the first N shots
 CLIPS = os.environ.get("CLIPS_SUBDIR", "clips")
 MODE = os.environ.get("RENDER_MODE", "distilled")
+A2V_SCALE = float(os.environ.get("A2V_SCALE", 3.0))  # a shot's "a2v" overrides it
 
 videos = [(d, json.loads((d / "plan.json").read_text())) for d in sorted(batch.iterdir()) if (d / "plan.json").exists()]
 
@@ -207,6 +211,10 @@ def main():
     from ltx_pipelines.utils.helpers import decode_keyframes_from_slots, ensure_tiling_config, tiling_scale_factors_for_vae
     from ltx_pipelines.utils.media_io import decode_audio_from_file, encode_video
     from ltx_pipelines.utils.types import ImageConditioningInput, ModalitySpec
+    from ltx_core.components.guiders import MultiModalGuider, MultiModalGuiderParams
+    from ltx_pipelines import dfr_stages as DS
+    from ltx_pipelines.utils.denoisers import GuidedDenoiser
+    import dataclasses
     from PIL import Image
 
     audio_conditioner = AudioConditioner(first.model_paths.audio_vae(), torch.bfloat16, pipe.device)
@@ -233,6 +241,25 @@ def main():
             video_shape=VideoPixelShape(batch=1, frames=n, height=height, width=width, fps=fps),
             diffvae_optimization=vae.diffvae_optimization, device=pipe.device, keyframes=kf is not None)
         return vae(latent, tiling, gen, keyframes=kf), n, tiling
+
+    @contextlib.contextmanager
+    def singing(scale=None):
+        """Inside: DFR's stages keep the audio frozen and, given a scale, use a2v guidance (lip sync on the
+        vocals). Guidance doubles the batch: fine at pass 1's half res, too big for pass 2 on a 48 GB card."""
+        simple, prep2 = DS.SimpleDenoiser, DS._prepare_stage2_specs
+        if scale:
+            guider = MultiModalGuider(params=MultiModalGuiderParams(modality_scale=scale))
+            DS.SimpleDenoiser = lambda v, a: GuidedDenoiser(v_context=v, a_context=a, video_guider=guider,
+                                                            audio_guider=MultiModalGuider(params=MultiModalGuiderParams()))
+
+        def frozen_audio(*a, **k):
+            prep = prep2(*a, **k)
+            return prep._replace(audio=dataclasses.replace(prep.audio, frozen=True, noise_scale=0.0))
+        DS._prepare_stage2_specs = frozen_audio
+        try:
+            yield
+        finally:
+            DS.SimpleDenoiser, DS._prepare_stage2_specs = simple, prep2
 
     def stage1(args, ctx, images, audio_spec, gen, nf, positions):
         return denoise_stage1(
@@ -265,8 +292,10 @@ def main():
             audio_spec = ModalitySpec(latent=vocal_latent(*sing, nf / args.frame_rate), conditioning_fps=args.frame_rate,
                                       context=ctx.audio_encoding, frozen=True, noise_scale=0.0)
         gen = torch.Generator(device=pipe.device).manual_seed(args.seed)
-        s1 = stage1(args, ctx, images, audio_spec, gen, nf, positions)
-        torch.save({"ref": s1.video_state.latent[:1].cpu(), "kf": {k: v.cpu() for k, v in s1.keyframes.items()},
+        scale = float(shot.get("a2v", A2V_SCALE)) if sing else None
+        with singing(scale) if sing else contextlib.nullcontext():
+            s1 = stage1(args, ctx, images, audio_spec, gen, nf, positions)
+        torch.save({"a2v": scale, "ref": s1.video_state.latent[:1].cpu(), "kf": {k: v.cpu() for k, v in s1.keyframes.items()},
                     "audio": s1.audio_state.latent.cpu(), "frames": nf, "requested": args.num_frames,
                     "anchored": anchored, "gen": gen.get_state()}, s1_of(args))
         return True
@@ -280,16 +309,17 @@ def main():
         gen = torch.Generator(device=pipe.device)
         gen.set_state(st["gen"])
         nf = st["frames"]
-        s2 = denoise_stage2(
-            stage=pipe.stage_detailing, image_conditioner=pipe.image_conditioner, upsampler=pipe.upsampler,
-            # an anchor frame is half-res: pass 2 takes the look from the pass-1 reference instead
-            images=[] if st.get("anchored") else pipe.image_conditioner.resolve_crf(args.images),
-            video_shape=VideoPixelShape(batch=1, frames=nf, height=args.height, width=args.width, fps=args.frame_rate),
-            keyframes={k: v.to(pipe.device) for k, v in st["kf"].items()},
-            half_res_reference=st["ref"].to(pipe.device), downscale_factor=pipe._detailing_downscale,
-            audio_latent=st["audio"].to(pipe.device), video_context=ctx.video_encoding, audio_context=ctx.audio_encoding,
-            sigmas=STAGE_2_DISTILLED_SIGMAS, noiser=GaussianNoiser(generator=gen), device=pipe.device,
-            dtype=torch.bfloat16, **pipe._sampler_kwargs(args.seed, D.ANCESTRAL_STAGE_2_NOISE_SEED_OFFSET))
+        with singing() if st.get("a2v") else contextlib.nullcontext():
+            s2 = denoise_stage2(
+                stage=pipe.stage_detailing, image_conditioner=pipe.image_conditioner, upsampler=pipe.upsampler,
+                # an anchor frame is half-res: pass 2 takes the look from the pass-1 reference instead
+                images=[] if st.get("anchored") else pipe.image_conditioner.resolve_crf(args.images),
+                video_shape=VideoPixelShape(batch=1, frames=nf, height=args.height, width=args.width, fps=args.frame_rate),
+                keyframes={k: v.to(pipe.device) for k, v in st["kf"].items()},
+                half_res_reference=st["ref"].to(pipe.device), downscale_factor=pipe._detailing_downscale,
+                audio_latent=st["audio"].to(pipe.device), video_context=ctx.video_encoding, audio_context=ctx.audio_encoding,
+                sigmas=STAGE_2_DISTILLED_SIGMAS, noiser=GaussianNoiser(generator=gen), device=pipe.device,
+                dtype=torch.bfloat16, **pipe._sampler_kwargs(args.seed, D.ANCESTRAL_STAGE_2_NOISE_SEED_OFFSET))
         video, n, tiling = decode(s2.video_state.latent, s2.keyframes, nf, st["requested"],
                                   args.height, args.width, args.frame_rate, gen)
         # no audio track: the edit lays the song over every clip
