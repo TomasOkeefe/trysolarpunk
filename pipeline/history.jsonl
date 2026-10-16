@@ -7,3 +7,10 @@
 {"date": "2026-10-21", "slug": "the-very-long-scarf", "product": "hibernator", "gpu": "NVIDIA A40", "dph": 0.59, "sec_per_clip": 50}
 {"date": "2026-10-22", "slug": "hide-and-seek-champion", "product": "eyelid", "gpu": "NVIDIA A40", "dph": 0.59, "sec_per_clip": 50}
 {"date": "2026-10-23", "slug": "not-sponsored", "product": "merch", "gpu": "NVIDIA A40", "dph": 0.59, "sec_per_clip": 50}
+{"date": "2026-10-24", "slug": "goodnight-phone", "product": "hibernator", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 28, "provider": "modal", "month": "2026-10", "cost": 0.205}
+{"date": "2026-10-25", "slug": "grandmas-story", "product": "eyelid", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 28, "provider": "modal", "month": "2026-10", "cost": 0.205}
+{"date": "2026-10-26", "slug": "terrible-trumpet", "product": "hibernator", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 28, "provider": "modal", "month": "2026-10", "cost": 0.205}
+{"date": "2026-10-27", "slug": "one-seed", "product": "hibernator", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 28, "provider": "modal", "month": "2026-10", "cost": 0.205}
+{"date": "2026-10-28", "slug": "missed-my-stop", "product": "eyelid", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 28, "provider": "modal", "month": "2026-10", "cost": 0.205}
+{"date": "2026-10-29", "slug": "walking-club", "product": "merch", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 28, "provider": "modal", "month": "2026-10", "cost": 0.205}
+{"date": "2026-10-30", "slug": "crooked-treehouse", "product": "hibernator", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 28, "provider": "modal", "month": "2026-10", "cost": 0.205}
