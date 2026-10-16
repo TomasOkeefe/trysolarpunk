@@ -11,3 +11,4 @@ site/node_modules/
 site/.wrangler/
 .superpowers/
 pipeline/daily_state.json
+studio/node_modules/

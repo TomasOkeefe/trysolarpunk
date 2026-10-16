@@ -1,0 +1,9 @@
+{
+  "name": "trysolarpunk-studio",
+  "private": true,
+  "type": "module",
+  "description": "Local review board for the videos, wired into the running Claude Code session as a channel",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1"
+  }
+}

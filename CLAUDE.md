@@ -43,6 +43,13 @@ To make videos, use the `make-videos` skill. In short: Claude writes plans in
   `ge/daily.py`: cleans R2, notifies once when Buffer's changelog adds comment/DM endpoints (then
   build replies), and sends a weekly stats notification on Mondays (weekly on purpose).
 
+## Studio (`studio/`)
+Local review page at http://localhost:8790, wired into the running Claude Code session as a channel
+(the pattern of Anthropic's fakechat demo). `studio/start.sh` starts Claude Code with it (`-c` continues the
+last conversation). The owner's messages, shot flags ("redo" + note) and approvals arrive as
+`<channel source="studio">`; answer only with its `reply` tool (attach videos and frames via `files`),
+and use `status` for render progress. Shot marks persist in `videos/studio/reviews.json`.
+
 ## Waitlist site (`site/`)
 Live at https://trysolarpunk.pages.dev (Cloudflare Pages + D1 `trysolarpunk-waitlist`, free tier).
 Pages: `/`, `/hibernator`, `/eyelid`, `/merch`. TikTok captions can't hold links, so the bio link
