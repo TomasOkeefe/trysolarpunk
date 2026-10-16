@@ -54,15 +54,20 @@ Writing rules:
 - Story: each video is a small narrative (setup, turn, payoff) and the song tells it: verse 1 = setup,
   chorus = the turn, verse 2 = it working, last chorus = payoff. Songs are sung by the same warm male
   lead (Moss's voice) in different genres.
-- Pace (the owner found 9 slow shots boring): 18 shots of about 3 s. Give most shots `"line": k`, the
-  0-based sung line (of the 16) it starts on, so the cut lands as that line starts and the picture shows
-  what the words say; shots without `line` split the time between anchored ones (use them for
-  instrumental breaks and quick inserts). Lines must increase.
-- Moss sings: mark 3 to 5 chorus shots `"sing": true` (with a `line`): Moss sings that line to camera
-  and is lip-synced to the vocals (dfr mode). Write "{moss} sings to the camera, mouth moving with the
-  words, ..." in a medium close-up. Never the product shot.
-- Movement: every shot has a camera move (push in, pull back, track, orbit, crane, tilt); at most 3
-  "static". Prefer a clear physical action with a mini payoff (bonks a lamppost, pops up with an apple).
+- Pace (owner, 2026-10-16: liked the "max" test's fast cuts, not its zoom/flash transitions): 32 shots
+  of about 2 s, plain hard cuts. Two shots per sung line: one with `"line": k` (0-based, of the 16) so
+  the cut lands as that line starts and shows what the words say, then one insert without `line`
+  (a reaction, a close-up detail, a payoff). Lines must increase. See
+  `plans/2026-10-31-back-from-the-dead-max.json` (but leave out its "edit" and "speed": the edit
+  is hard cuts by default and config.yaml sets speed 1.3).
+- Moss sings: mark up to 6 shots `"sing": true` (with a `line`), verses as well as choruses: Moss sings
+  that line to camera, driven by the vocals (dfr mode). His mustache hides his mouth unless asked:
+  write "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, ...".
+  Never the product shot.
+- Movement: every shot has a strong camera move (crash zoom, whip pan, FPV fly-through, fast orbit,
+  dolly zoom, crane); at most 3 "static". Prefer a clear physical action with a mini payoff (bonks a
+  lamppost, pops up with an apple). The wildest moves smear into blur and odd props (a candy shot
+  became teddy bears), so keep the subject simple and big in frame.
 - Night shots: light Moss with warm practical light (lanterns, candles, string lights); cold blue
   night light turns him purple.
 - Captions: the lyrics are burned in word by word, so keep lines short and singable, no stage directions.

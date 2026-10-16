@@ -16,9 +16,9 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 W, H, FPS = 1080, 1920, 24
-# Edit dynamics (the owner found the first quality pass still too calm): each cut lands with a quick zoom
-# punch that settles in PUNCH_S, then the frame keeps drifting (in, out, in...) by DRIFT; shots that open
-# a chorus flash white. Digital moves over on-twos animation, like a stop-motion music video.
+# Optional edit effects, only when a plan has "edit": each cut lands with a quick zoom punch that settles
+# in PUNCH_S, the frame drifts (in, out, in...) by DRIFT, shots that open a chorus flash white. The owner
+# liked fast cuts but not these transitions (2026-10-16), so the default is plain hard cuts.
 PUNCH, PUNCH_S, DRIFT, FLASH_S = 0.08, 0.22, 0.06, 0.16
 INK, CREAM, SUN, MOSS = (42, 36, 32), (246, 241, 228), (242, 193, 78), (47, 93, 58)
 
@@ -309,5 +309,5 @@ if __name__ == "__main__":
     plan_anim = plan.get("anim_fps")  # stamped from config.yaml by run.py
     tl = json.loads(pathlib.Path(a.timeline).read_text()) if a.timeline and pathlib.Path(a.timeline).exists() else None
     assemble(plan, a.song, a.clips, a.out, plan.get("target_seconds", a.target),
-             words=words, anim_fps=a.anim_fps or plan_anim, timeline=tl, dynamic=not a.calm)
+             words=words, anim_fps=a.anim_fps or plan_anim, timeline=tl, dynamic=bool(plan.get("edit")) and not a.calm)
     print("wrote", a.out)
