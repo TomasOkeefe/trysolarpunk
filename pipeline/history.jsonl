@@ -16,3 +16,4 @@
 {"date": "2026-10-30", "slug": "crooked-treehouse", "product": "hibernator", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 28, "provider": "modal", "month": "2026-10", "cost": 0.205}
 {"date": "2026-10-31", "slug": "back-from-the-dead", "product": "hibernator", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 53, "provider": "modal", "month": "2026-10", "cost": 0.638}
 {"date": "2026-10-31", "slug": "back-from-the-dead-max", "product": "hibernator", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 32, "provider": "modal", "month": "2026-10", "cost": 0.76}
+{"date": "2026-11-01", "slug": "bedroom-to-stadium", "product": "eyelid", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 28, "provider": "modal", "month": "2026-10", "cost": 0.654}
