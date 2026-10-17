@@ -44,6 +44,13 @@
    ],
    "ratio": 1.25,
    "bg": "#efdff5"
+  },
+  "table-clay": {
+   "w": [
+    400
+   ],
+   "ratio": 1.25,
+   "bg": "#c8b093"
   }
  },
  "greenhouse": {
@@ -82,6 +89,13 @@
    ],
    "ratio": 1.25,
    "bg": "#f8dfa4"
+  },
+  "table-clay": {
+   "w": [
+    400
+   ],
+   "ratio": 1.25,
+   "bg": "#e0d9c2"
   }
  },
  "hibernator": {
@@ -120,6 +134,33 @@
    ],
    "ratio": 1.25,
    "bg": "#e8f5f3"
+  },
+  "fridge-clay": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#e5decf"
+  },
+  "fridge-moss": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#e4decf"
+  },
+  "fridgewide-moss": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 0.6667,
+   "bg": "#e5dfd0"
   }
  },
  "kids-table": {
@@ -254,15 +295,42 @@
    ],
    "ratio": 1.25,
    "bg": "#c2e8ed"
+  },
+  "table-morning": {
+   "w": [
+    400
+   ],
+   "ratio": 1.25,
+   "bg": "#e1c5a7"
   }
  },
  "bunk": {
   "hero-bone": {
    "w": [
-    400
+    400,
+    800,
+    1200
    ],
    "ratio": 1.25,
-   "bg": "#f8caaa"
+   "bg": "#f8c9a9"
+  },
+  "hero-clay": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#e8f1c9"
+  },
+  "hero-moss": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f8d5c9"
   }
  },
  "community-crew": {
@@ -288,28 +356,88 @@
  "crypt": {
   "hero-bone": {
    "w": [
-    400
+    400,
+    800,
+    1200
    ],
    "ratio": 1.25,
-   "bg": "#eedef5"
+   "bg": "#eedff6"
+  },
+  "hero-glow": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#12273b"
+  },
+  "hero-ink": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f8c9a9"
   }
  },
  "dice": {
   "hero-sun": {
    "w": [
-    400
+    400,
+    800,
+    1200
    ],
    "ratio": 1.25,
-   "bg": "#c0e6ea"
+   "bg": "#c1e6eb"
+  },
+  "hero-clay": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#e6f0c7"
+  },
+  "hero-ink": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f8c8a7"
   }
  },
  "doghouse": {
   "hero-clay": {
    "w": [
-    400
+    400,
+    800,
+    1200
    ],
    "ratio": 1.25,
-   "bg": "#c3e8ee"
+   "bg": "#c3e9ee"
+  },
+  "hero-ink": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#e8f1ca"
+  },
+  "hero-moss": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f8d5ca"
   }
  },
  "grass-socks": {
@@ -469,10 +597,30 @@
  "thumb-stone": {
   "hero-moss": {
    "w": [
-    400
+    400,
+    800,
+    1200
    ],
    "ratio": 1.25,
-   "bg": "#f7dda2"
+   "bg": "#f8dfa5"
+  },
+  "hero-bloom": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#e6f0c8"
+  },
+  "hero-sun": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#eddef5"
   }
  }
 }

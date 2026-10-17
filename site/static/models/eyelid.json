@@ -1,0 +1,64 @@
+{
+ "colorways": {
+  "clay": {
+   "eyelid-body": "#D9764A",
+   "eyelid-eye": "#2A2420",
+   "eyelid-label": "#2A2420",
+   "phone-frame": "#55524E",
+   "phone-back": "#2B2A2C",
+   "phone-screen": "#060607",
+   "phone-rings": "#3A3836",
+   "phone-lenses": "#05060A"
+  },
+  "moss": {
+   "eyelid-body": "#2F5D3A",
+   "eyelid-eye": "#2A2420",
+   "eyelid-label": "#2A2420",
+   "phone-frame": "#55524E",
+   "phone-back": "#2B2A2C",
+   "phone-screen": "#060607",
+   "phone-rings": "#3A3836",
+   "phone-lenses": "#05060A"
+  },
+  "sun": {
+   "eyelid-body": "#F2C14E",
+   "eyelid-eye": "#2A2420",
+   "eyelid-label": "#2A2420",
+   "phone-frame": "#55524E",
+   "phone-back": "#2B2A2C",
+   "phone-screen": "#060607",
+   "phone-rings": "#3A3836",
+   "phone-lenses": "#05060A"
+  },
+  "bloom": {
+   "eyelid-body": "#E9A6A0",
+   "eyelid-eye": "#2A2420",
+   "eyelid-label": "#2A2420",
+   "phone-frame": "#55524E",
+   "phone-back": "#2B2A2C",
+   "phone-screen": "#060607",
+   "phone-rings": "#3A3836",
+   "phone-lenses": "#05060A"
+  },
+  "night": {
+   "eyelid-body": "#2A2420",
+   "eyelid-eye": "#F6F1E4",
+   "eyelid-label": "#F6F1E4",
+   "phone-frame": "#55524E",
+   "phone-back": "#2B2A2C",
+   "phone-screen": "#060607",
+   "phone-rings": "#3A3836",
+   "phone-lenses": "#05060A"
+  }
+ },
+ "parts": [
+  "eyelid-body",
+  "eyelid-eye",
+  "eyelid-label",
+  "phone-frame",
+  "phone-back",
+  "phone-screen",
+  "phone-rings",
+  "phone-lenses"
+ ]
+}

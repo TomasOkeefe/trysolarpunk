@@ -1,0 +1,40 @@
+{
+ "colorways": {
+  "morning": {
+   "sunup-hill": "#2F5D3A",
+   "sunup-sun": "#F2C14E",
+   "sunup-face": "#F6F1E4",
+   "sunup-ink": "#2A2420",
+   "sunup-hands": "#2A2420",
+   "sunup-alarm": "#D9764A",
+   "sunup-grass": "#9BC53D"
+  },
+  "dusk": {
+   "sunup-hill": "#D9764A",
+   "sunup-sun": "#E9A6A0",
+   "sunup-face": "#F6F1E4",
+   "sunup-ink": "#2A2420",
+   "sunup-hands": "#2A2420",
+   "sunup-alarm": "#2F5D3A",
+   "sunup-grass": "#F2C14E"
+  },
+  "midnight": {
+   "sunup-hill": "#1E2A3A",
+   "sunup-sun": "#EDE6D3",
+   "sunup-face": "#2A2420",
+   "sunup-ink": "#F6F1E4",
+   "sunup-hands": "#F6F1E4",
+   "sunup-alarm": "#F2C14E",
+   "sunup-grass": "#2F5D3A"
+  }
+ },
+ "parts": [
+  "sunup-hill",
+  "sunup-sun",
+  "sunup-face",
+  "sunup-ink",
+  "sunup-hands",
+  "sunup-alarm",
+  "sunup-grass"
+ ]
+}

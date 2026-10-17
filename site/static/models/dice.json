@@ -1,0 +1,28 @@
+{
+ "colorways": {
+  "sun": {
+   "die0": "#F2C14E",
+   "die0-ink": "#2A2420",
+   "die1": "#2F5D3A",
+   "die1-ink": "#F6F1E4"
+  },
+  "clay": {
+   "die0": "#D9764A",
+   "die0-ink": "#F6F1E4",
+   "die1": "#EDE6D3",
+   "die1-ink": "#2A2420"
+  },
+  "ink": {
+   "die0": "#2A2420",
+   "die0-ink": "#F2C14E",
+   "die1": "#9BC53D",
+   "die1-ink": "#2A2420"
+  }
+ },
+ "parts": [
+  "die0",
+  "die0-ink",
+  "die1",
+  "die1-ink"
+ ]
+}

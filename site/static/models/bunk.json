@@ -1,0 +1,52 @@
+{
+ "colorways": {
+  "bone": {
+   "bunk-frame": "#EDE6D3",
+   "bunk-mattress": "#F6F1E4",
+   "bunk-blanket": null,
+   "bunk-sun": "#F2C14E",
+   "bunk-ink": "#2A2420",
+   "phone-frame": "#55524E",
+   "phone-back": "#2B2A2C",
+   "phone-screen": "#060607",
+   "phone-rings": "#3A3836",
+   "phone-lenses": "#05060A"
+  },
+  "moss": {
+   "bunk-frame": "#2F5D3A",
+   "bunk-mattress": "#F6F1E4",
+   "bunk-blanket": null,
+   "bunk-sun": "#F2C14E",
+   "bunk-ink": "#2A2420",
+   "phone-frame": "#55524E",
+   "phone-back": "#2B2A2C",
+   "phone-screen": "#060607",
+   "phone-rings": "#3A3836",
+   "phone-lenses": "#05060A"
+  },
+  "clay": {
+   "bunk-frame": "#D9764A",
+   "bunk-mattress": "#F6F1E4",
+   "bunk-blanket": null,
+   "bunk-sun": "#F2C14E",
+   "bunk-ink": "#2A2420",
+   "phone-frame": "#55524E",
+   "phone-back": "#2B2A2C",
+   "phone-screen": "#060607",
+   "phone-rings": "#3A3836",
+   "phone-lenses": "#05060A"
+  }
+ },
+ "parts": [
+  "bunk-frame",
+  "bunk-mattress",
+  "bunk-blanket",
+  "bunk-sun",
+  "bunk-ink",
+  "phone-frame",
+  "phone-back",
+  "phone-screen",
+  "phone-rings",
+  "phone-lenses"
+ ]
+}

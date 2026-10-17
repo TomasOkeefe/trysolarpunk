@@ -1,0 +1,29 @@
+{
+ "colorways": {
+  "moss": {
+   "stone0": "#2F5D3A",
+   "stone1": "#F2C14E",
+   "stone2": "#E9A6A0"
+  },
+  "sun": {
+   "stone0": "#F2C14E",
+   "stone1": "#A7C6CE",
+   "stone2": "#2F5D3A"
+  },
+  "bloom": {
+   "stone0": "#E9A6A0",
+   "stone1": "#2F5D3A",
+   "stone2": "#F2C14E"
+  },
+  "sky": {
+   "stone0": "#A7C6CE",
+   "stone1": "#E9A6A0",
+   "stone2": "#F2C14E"
+  }
+ },
+ "parts": [
+  "stone0",
+  "stone1",
+  "stone2"
+ ]
+}

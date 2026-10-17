@@ -1,0 +1,29 @@
+{
+ "colorways": {
+  "sun": {
+   "sundial-plate": "#F2C14E",
+   "sundial-gnomon": "#F2C14E",
+   "sundial-ink": "#2A2420"
+  },
+  "bone": {
+   "sundial-plate": "#EDE6D3",
+   "sundial-gnomon": "#D9764A",
+   "sundial-ink": "#2A2420"
+  },
+  "clay": {
+   "sundial-plate": "#D9764A",
+   "sundial-gnomon": "#D9764A",
+   "sundial-ink": "#2A2420"
+  },
+  "moss": {
+   "sundial-plate": "#2F5D3A",
+   "sundial-gnomon": "#F2C14E",
+   "sundial-ink": "#F6F1E4"
+  }
+ },
+ "parts": [
+  "sundial-plate",
+  "sundial-gnomon",
+  "sundial-ink"
+ ]
+}

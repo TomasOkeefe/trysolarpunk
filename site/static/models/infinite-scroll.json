@@ -1,0 +1,29 @@
+{
+ "colorways": {
+  "ink": {
+   "scroll-body": "#2A2420",
+   "scroll-wheel": "#F2C14E",
+   "scroll-label": "#F6F1E4"
+  },
+  "bone": {
+   "scroll-body": "#EDE6D3",
+   "scroll-wheel": "#D9764A",
+   "scroll-label": "#2A2420"
+  },
+  "moss": {
+   "scroll-body": "#2F5D3A",
+   "scroll-wheel": "#9BC53D",
+   "scroll-label": "#F6F1E4"
+  },
+  "bloom": {
+   "scroll-body": "#E9A6A0",
+   "scroll-wheel": "#2F5D3A",
+   "scroll-label": "#2A2420"
+  }
+ },
+ "parts": [
+  "scroll-body",
+  "scroll-wheel",
+  "scroll-label"
+ ]
+}

@@ -1,0 +1,64 @@
+{
+ "colorways": {
+  "clay": {
+   "greenhouse-body": "#D9764A",
+   "greenhouse-label": "#2A2420",
+   "greenhouse-soil": "#3B2A20",
+   "leaf0": null,
+   "leaf1": null,
+   "leaf2": null,
+   "leaf3": null,
+   "leaf4": null,
+   "leaf5": null,
+   "leaf6": null
+  },
+  "bone": {
+   "greenhouse-body": "#EDE6D3",
+   "greenhouse-label": "#2A2420",
+   "greenhouse-soil": "#3B2A20",
+   "leaf0": null,
+   "leaf1": null,
+   "leaf2": null,
+   "leaf3": null,
+   "leaf4": null,
+   "leaf5": null,
+   "leaf6": null
+  },
+  "moss": {
+   "greenhouse-body": "#2F5D3A",
+   "greenhouse-label": "#F6F1E4",
+   "greenhouse-soil": "#3B2A20",
+   "leaf0": null,
+   "leaf1": null,
+   "leaf2": null,
+   "leaf3": null,
+   "leaf4": null,
+   "leaf5": null,
+   "leaf6": null
+  },
+  "ink": {
+   "greenhouse-body": "#2A2420",
+   "greenhouse-label": "#F6F1E4",
+   "greenhouse-soil": "#3B2A20",
+   "leaf0": null,
+   "leaf1": null,
+   "leaf2": null,
+   "leaf3": null,
+   "leaf4": null,
+   "leaf5": null,
+   "leaf6": null
+  }
+ },
+ "parts": [
+  "greenhouse-body",
+  "greenhouse-label",
+  "greenhouse-soil",
+  "leaf0",
+  "leaf1",
+  "leaf2",
+  "leaf3",
+  "leaf4",
+  "leaf5",
+  "leaf6"
+ ]
+}

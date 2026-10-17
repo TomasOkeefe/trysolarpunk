@@ -1,0 +1,44 @@
+{
+ "colorways": {
+  "bone": {
+   "crypt-box": "#EDE6D3",
+   "crypt-lid": "#EDE6D3",
+   "crypt-text": "#2A2420",
+   "phone-frame": "#55524E",
+   "phone-back": "#2B2A2C",
+   "phone-screen": "#060607",
+   "phone-rings": "#3A3836",
+   "phone-lenses": "#05060A"
+  },
+  "ink": {
+   "crypt-box": "#2A2420",
+   "crypt-lid": "#2A2420",
+   "crypt-text": "#EDE6D3",
+   "phone-frame": "#55524E",
+   "phone-back": "#2B2A2C",
+   "phone-screen": "#060607",
+   "phone-rings": "#3A3836",
+   "phone-lenses": "#05060A"
+  },
+  "glow": {
+   "crypt-box": "#C9E6A1",
+   "crypt-lid": "#C9E6A1",
+   "crypt-text": "#2F5D3A",
+   "phone-frame": "#55524E",
+   "phone-back": "#2B2A2C",
+   "phone-screen": "#060607",
+   "phone-rings": "#3A3836",
+   "phone-lenses": "#05060A"
+  }
+ },
+ "parts": [
+  "crypt-box",
+  "crypt-lid",
+  "crypt-text",
+  "phone-frame",
+  "phone-back",
+  "phone-screen",
+  "phone-rings",
+  "phone-lenses"
+ ]
+}

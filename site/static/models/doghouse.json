@@ -1,0 +1,48 @@
+{
+ "colorways": {
+  "clay": {
+   "dog-walls": "#F6F1E4",
+   "dog-roof": "#D9764A",
+   "dog-plate": "#F2C14E",
+   "dog-text": "#2A2420",
+   "phone-frame": "#55524E",
+   "phone-back": "#2B2A2C",
+   "phone-screen": "#060607",
+   "phone-rings": "#3A3836",
+   "phone-lenses": "#05060A"
+  },
+  "moss": {
+   "dog-walls": "#F2C14E",
+   "dog-roof": "#2F5D3A",
+   "dog-plate": "#F6F1E4",
+   "dog-text": "#2A2420",
+   "phone-frame": "#55524E",
+   "phone-back": "#2B2A2C",
+   "phone-screen": "#060607",
+   "phone-rings": "#3A3836",
+   "phone-lenses": "#05060A"
+  },
+  "ink": {
+   "dog-walls": "#E9A6A0",
+   "dog-roof": "#2A2420",
+   "dog-plate": "#F6F1E4",
+   "dog-text": "#2A2420",
+   "phone-frame": "#55524E",
+   "phone-back": "#2B2A2C",
+   "phone-screen": "#060607",
+   "phone-rings": "#3A3836",
+   "phone-lenses": "#05060A"
+  }
+ },
+ "parts": [
+  "dog-walls",
+  "dog-roof",
+  "dog-plate",
+  "dog-text",
+  "phone-frame",
+  "phone-back",
+  "phone-screen",
+  "phone-rings",
+  "phone-lenses"
+ ]
+}

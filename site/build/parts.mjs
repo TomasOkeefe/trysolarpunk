@@ -12,6 +12,16 @@ const MANIFEST = join(ROOT, 'static', 'img', 'p', 'manifest.json');
 const manifest = existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8')) : {};
 
 export const img = (slug, key) => manifest[slug]?.[key];
+// Extra shots of a product (not the colourway heroes, not the wide crops): { shot: [colourway ids] }
+export function shots(slug) {
+  const out = {};
+  for (const key of Object.keys(manifest[slug] || {})) {
+    const [shot, ...rest] = key.split('-');
+    if (shot === 'hero' || shot.endsWith('wide')) continue;
+    (out[shot] ??= []).push(rest.join('-'));
+  }
+  return out;
+}
 export const hasModel = (slug) => existsSync(join(ROOT, 'static', 'models', `${slug}.glb`));
 export const heroKey = (p, cw = p.colorways[0].id) => `hero-${cw}`;
 export const ready = (p) => Boolean(img(p.slug, heroKey(p)));
@@ -67,6 +77,7 @@ export function card(p, { eager = false, sizes } = {}) {
     </div>
   </a>
   ${cws.length > 1 ? html`<ul class="card-swatches" aria-label="${cws.length} colours">${cws.map((c) => html`<li><span class="sw" style="${swatch(c)}" title="${c.name}"></span></li>`)}</ul>` : ''}
+  <div class="card-quick js-only"><button type="button" data-quick-add="${p.slug}" aria-label="Add ${p.name} to your bag">Add</button></div>
 </article>`;
 }
 

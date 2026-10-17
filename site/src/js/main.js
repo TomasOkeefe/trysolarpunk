@@ -2,7 +2,7 @@ import { wireJoinForms } from './api.js';
 import { initBag } from './bag.js';
 import { initMotion } from './motion.js';
 import { initNav } from './nav.js';
-import { initProduct } from './product.js';
+import { initProduct, initQuickAdd } from './product.js';
 import { initReel } from './reel.js';
 import { carrySource } from './source.js';
 
@@ -10,6 +10,7 @@ carrySource();
 initNav();
 initBag();
 initProduct();
+initQuickAdd();
 wireJoinForms();
 initReel();
 initMotion();

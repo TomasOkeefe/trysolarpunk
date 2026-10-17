@@ -2,7 +2,7 @@
 import { CATEGORIES, PRODUCTS, bySlug } from '../lib/catalog.js';
 import { html, money, raw } from './html.mjs';
 import {
-  TIKTOK, bg, card, category, emblem, grid, hasModel, heroKey, img, imageUrl, inCategory, joinForm, live, page, pic, swatch,
+  TIKTOK, bg, card, category, emblem, grid, hasModel, heroKey, img, imageUrl, inCategory, joinForm, live, page, pic, shots, swatch,
 } from './parts.mjs';
 
 const WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty'];
@@ -53,7 +53,9 @@ function home(assets) {
 
 ${lead && ready(lead) ? html`
 <section class="feature" id="featured" style="--bg: ${bg(lead)}">
-  <a class="feature-media" href="/${lead.slug}" tabindex="-1">${pic(lead.slug, heroKey(lead), { alt: 'The Hibernator in moss green, a phone tucked in face to the wall', sizes: '(min-width: 900px) 55vw, 100vw' })}</a>
+  <a class="feature-media" href="/${lead.slug}" tabindex="-1">${img(lead.slug, 'fridge-moss')
+    ? pic(lead.slug, 'fridge-moss', { alt: 'The Hibernator on a fridge door with a phone tucked in, next to a shopping list that ends with touch grass', sizes: '(min-width: 900px) 55vw, 100vw' })
+    : pic(lead.slug, heroKey(lead), { alt: 'The Hibernator in moss green, a phone tucked in face to the wall', sizes: '(min-width: 900px) 55vw, 100vw' })}</a>
   <div class="feature-copy">
     <p class="no">No. ${lead.no}</p>
     <h2 class="feature-name">${lead.name}</h2>
@@ -156,8 +158,11 @@ function categoryPage(c, assets) {
 
 // ------------------------------------------------------------------ product
 
+const SHOT_ALT = { fridge: 'on a fridge door, next to the shopping list', desk: 'on a desk', detail: 'up close' };
+
 function product(p, assets) {
   const cws = p.colorways.filter((c) => img(p.slug, heroKey(p, c.id)));
+  const extra = shots(p.slug);
   const c = category(p.category);
   const related = live().filter((q) => q.category === p.category && q.slug !== p.slug).slice(0, 4);
   const more = related.length < 4 ? live().filter((q) => q.category !== p.category && q.slug !== p.slug).slice(0, 4 - related.length) : [];
@@ -165,8 +170,13 @@ function product(p, assets) {
 <section class="pdp" data-product="${p.slug}">
   <div class="pdp-media">
     <div class="pdp-stage" style="--bg: ${bg(p)}; view-transition-name: p-${p.slug}" data-stage>
-      ${cws.map((cw, i) => html`<div class="pdp-shot ${i === 0 ? 'is-on' : ''}" data-cw="${cw.id}" style="--bg: ${bg(p, cw.id)}">${pic(p.slug, heroKey(p, cw.id), { alt: `${p.name} in ${cw.name}`, sizes: '(min-width: 1000px) 55vw, 100vw', eager: i === 0 })}</div>`)}
+      ${cws.map((cw, i) => html`<div class="pdp-shot ${i === 0 ? 'is-on' : ''}" data-shot="hero" data-cw="${cw.id}" style="--bg: ${bg(p, cw.id)}">${pic(p.slug, heroKey(p, cw.id), { alt: `${p.name} in ${cw.name}`, sizes: '(min-width: 1000px) 55vw, 100vw', eager: i === 0 })}</div>`)}
+      ${Object.entries(extra).map(([shot, ids]) => ids.map((id) => html`<div class="pdp-shot" data-shot="${shot}" data-cw="${id}" style="--bg: ${img(p.slug, `${shot}-${id}`).bg}">${pic(p.slug, `${shot}-${id}`, { alt: `${p.name} ${SHOT_ALT[shot] || ''}`.trim(), sizes: '(min-width: 1000px) 55vw, 100vw' })}</div>`))}
       ${p.limited ? html`<span class="tag tag-limited">${p.limited}</span>` : ''}
+      ${Object.keys(extra).length ? html`<div class="pdp-thumbs js-only" role="group" aria-label="Photos">
+        <button type="button" class="thumb is-on" data-thumb="hero" aria-label="Product photo" aria-pressed="true"><img src="${imageUrl(p.slug, heroKey(p), 400)}" alt="" width="56" height="70"></button>
+        ${Object.entries(extra).map(([shot, ids]) => html`<button type="button" class="thumb" data-thumb="${shot}" aria-label="${SHOT_ALT[shot] || shot}" aria-pressed="false"><img src="${imageUrl(p.slug, `${shot}-${ids[0]}`, 400)}" alt="" width="56" height="70"></button>`)}
+      </div>` : ''}
       ${hasModel(p.slug) ? html`<button class="spin-btn js-only" type="button" data-spin aria-pressed="false"><span class="spin-icon" aria-hidden="true"></span><span data-spin-label>Spin it in 3D</span></button>` : ''}
     </div>
   </div>
@@ -192,6 +202,11 @@ function product(p, assets) {
     <div class="nojs-only">${joinForm(p.slug)}</div>
   </div>
 </section>
+
+<div class="buybar js-only" data-buybar hidden>
+  <div class="buybar-text"><span>${p.name}</span><strong>${money(p.price)}</strong></div>
+  <button class="btn btn-sun" type="button" data-buybar-add>Add to bag</button>
+</div>
 
 <section class="pdp-story">
   <div class="pdp-body">${p.body.map((t) => html`<p>${t}</p>`)}</div>
