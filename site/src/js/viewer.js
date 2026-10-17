@@ -31,18 +31,26 @@ export async function startViewer(stage, slug, colorway) {
   scene.environmentIntensity = 0.75;
 
   const model = gltf.scene;
+  // three strips dots and other reserved characters from node names, so compare names without them
+  const norm = (n) => n.replace(/[^a-z0-9-]/gi, '');
+  const tables = Object.fromEntries(Object.entries(table.colorways).map(([cw, parts]) => [cw, Object.fromEntries(Object.entries(parts).map(([k, v]) => [norm(k), v]))]));
+
   // plain materials: matte plastic for the print, glass and metal for the phone
   model.traverse((o) => {
     if (!o.isMesh) return;
     o.castShadow = true;
     o.receiveShadow = true;
     const old = o.material;
-    const glossy = /screen|lenses|back/.test(o.name) && /phone/.test(o.name);
-    const metal = /phone-(frame|rings)/.test(o.name);
+    const plate = /phone-?(screen|back|lenses)/.test(o.name);
+    const metal = /phone-?(frame|rings)/.test(o.name);
     o.material = new THREE.MeshStandardMaterial({
       color: old.color,
-      roughness: glossy ? 0.12 : metal ? 0.35 : 0.62,
+      roughness: plate ? 0.12 : metal ? 0.35 : 0.62,
       metalness: metal ? 0.9 : 0,
+      // the glass plates sit a hair proud of the phone body: draw them on top so they never flicker
+      polygonOffset: plate,
+      polygonOffsetFactor: plate ? -2 : 0,
+      polygonOffsetUnits: plate ? -2 : 0,
     });
     old.dispose();
   });
@@ -75,10 +83,11 @@ export async function startViewer(stage, slug, colorway) {
   const aim = new THREE.Vector3(0, size.y * 0.45, 0);
 
   function recolor(cw) {
-    const colors = table.colorways[cw];
+    const colors = tables[cw];
     if (!colors) return;
     model.traverse((o) => {
-      if (o.isMesh && colors[o.name]) o.material.color.set(colors[o.name]);
+      const c = o.isMesh && colors[norm(o.name)];
+      if (c) o.material.color.set(c);
     });
   }
   recolor(colorway);

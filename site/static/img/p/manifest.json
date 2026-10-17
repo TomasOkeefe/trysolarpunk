@@ -47,10 +47,21 @@
   },
   "table-clay": {
    "w": [
-    400
+    400,
+    800,
+    1200
    ],
    "ratio": 1.25,
-   "bg": "#c8b093"
+   "bg": "#c9b093"
+  },
+  "table-moss": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#c9b093"
   }
  },
  "greenhouse": {
@@ -92,10 +103,12 @@
   },
   "table-clay": {
    "w": [
-    400
+    400,
+    800,
+    1200
    ],
    "ratio": 1.25,
-   "bg": "#e0d9c2"
+   "bg": "#e1d9c2"
   }
  },
  "hibernator": {
@@ -154,6 +167,15 @@
    "bg": "#e4decf"
   },
   "fridgewide-moss": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 0.6667,
+   "bg": "#e5dfd0"
+  },
+  "fridgewide-clay": {
    "w": [
     400,
     800,
@@ -298,10 +320,12 @@
   },
   "table-morning": {
    "w": [
-    400
+    400,
+    800,
+    1200
    ],
    "ratio": 1.25,
-   "bg": "#e1c5a7"
+   "bg": "#e2c6a7"
   }
  },
  "bunk": {
@@ -443,7 +467,9 @@
  "grass-socks": {
   "hero-moss": {
    "w": [
-    400
+    400,
+    800,
+    1200
    ],
    "ratio": 1.25,
    "bg": "#f4d2c6"
@@ -472,7 +498,9 @@
  "lights-out-kit": {
   "hero-morning": {
    "w": [
-    400
+    400,
+    800,
+    1200
    ],
    "ratio": 1.25,
    "bg": "#c1e7ec"
@@ -481,7 +509,9 @@
  "moss-beanie": {
   "hero-moss": {
    "w": [
-    400
+    400,
+    800,
+    1200
    ],
    "ratio": 1.25,
    "bg": "#f8c8a8"
@@ -490,19 +520,23 @@
  "moss-head": {
   "hero-classic": {
    "w": [
-    400
+    400,
+    800,
+    1200
    ],
    "ratio": 1.25,
-   "bg": "#f8e0a6"
+   "bg": "#f9e0a6"
   }
  },
  "starter-kit": {
   "hero-moss": {
    "w": [
-    400
+    400,
+    800,
+    1200
    ],
    "ratio": 1.25,
-   "bg": "#f8e0a7"
+   "bg": "#f9e1a8"
   }
  },
  "stickers": {
@@ -588,10 +622,21 @@
  "sunrise-cap": {
   "hero-cream": {
    "w": [
-    400
+    400,
+    800,
+    1200
    ],
    "ratio": 1.25,
-   "bg": "#e7f1ca"
+   "bg": "#e8f2ca"
+  },
+  "hero-moss": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f9e0a7"
   }
  },
  "thumb-stone": {
@@ -621,6 +666,15 @@
    ],
    "ratio": 1.25,
    "bg": "#eddef5"
+  },
+  "hero-sky": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f8c8a8"
   }
  }
 }

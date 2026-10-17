@@ -158,7 +158,7 @@ function categoryPage(c, assets) {
 
 // ------------------------------------------------------------------ product
 
-const SHOT_ALT = { fridge: 'on a fridge door, next to the shopping list', desk: 'on a desk', detail: 'up close' };
+const SHOT_ALT = { fridge: 'on a fridge door, next to the shopping list', table: 'on a wooden table at home', detail: 'up close' };
 
 function product(p, assets) {
   const cws = p.colorways.filter((c) => img(p.slug, heroKey(p, c.id)));
@@ -238,11 +238,19 @@ const FAQ = [
   ['Will you email me a lot?', 'No. One email when your things are ready. If you sign up for every drop, one email per drop.'],
 ];
 
+// A loose row of photos: where the objects end up living.
+function aboutStrip() {
+  const picks = [['hibernator', 'fridge-moss'], ['sunup', 'table-morning'], ['eyelid', 'table-moss'], ['greenhouse', 'table-clay'], ['moss-head', 'hero-classic']]
+    .filter(([s, k]) => img(s, k));
+  if (!picks.length) return '';
+  return html`<section class="strip" aria-label="Our objects at home">${picks.map(([s, k], i) => html`<a class="strip-card s${i}" href="/${s}">${pic(s, k, { alt: bySlug(s).name, sizes: '(min-width: 900px) 22vw, 60vw' })}</a>`)}</section>`;
+}
+
 function about(assets) {
   const body = html`
 <section class="about-hero">
   ${emblem(120)}
-  <h1>We’re not anti-phone. We’re anti-feed.</h1>
+  <h1>We’re not <span class="nowrap">anti-phone.</span> We’re <span class="nowrap">anti-feed.</span></h1>
   <p class="about-lede">Try Solarpunk makes small, nice objects for people who want to spend less time scrolling. Phone beds, thumb things, clocks that are only clocks. Printed to order in New York.</p>
 </section>
 <section class="about-body">
@@ -257,6 +265,7 @@ function about(assets) {
     <p>Our videos star Moss, a little guy in a green beanie. He is made with AI, and labelled that way. The images on this site are renders of the same files we print. The plastic is very real.</p>
   </div>
 </section>
+${aboutStrip()}
 <section class="how" id="how-reserving-works" aria-labelledby="how-title">
   <h2 id="how-title">How reserving works</h2>
   <ol class="how-steps">

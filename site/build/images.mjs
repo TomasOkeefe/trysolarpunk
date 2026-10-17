@@ -32,6 +32,11 @@ for (const model of existsSync(RENDERS) ? readdirSync(RENDERS) : []) {
     mkdirSync(outDir, { recursive: true });
     const newest = statSync(src).mtimeMs;
     const meta = await sharp(src).metadata();
+    if (meta.width < 1000) {
+      // a quick preview render, not a final one: keep it off the site
+      if (manifest[slug]) delete manifest[slug][key];
+      continue;
+    }
     const widths = WIDTHS.filter((w) => w <= meta.width);
     const fresh = widths.every((w) =>
       ['avif', 'webp'].every((ext) => {

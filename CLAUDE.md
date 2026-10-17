@@ -62,7 +62,11 @@ Spec: `docs/superpowers/specs/2026-10-16-catalog-store-design.md`.
 - Product images: renders come from `products/blender/` (local, gitignored: SDF CAD in Blender's
   Python; `blender -b --factory-startup -P render.py -- <model> --shots hero --colorways a,b`,
   `batch.sh` for everything). `npm run images` converts `products/renders/` into `static/img/p/`
-  (committed) and the manifest; a product with no render is left off the site.
+  (committed) and the manifest; a product with no render is left off the site. Shots other than
+  `hero-<colourway>` (e.g. `fridge-moss`, `table-clay`) become extra photos on the product page.
+- 3D "Spin it" viewer: `products/blender/export.py <model>` (or `export_all.sh`) writes a decimated
+  GLB plus a colour table to `products/glb/`; `npm run models` compresses them into `static/models/`.
+  These low-res shapes are public by nature (the STLs stay private).
 - Old URLs still work: `/hibernator`, `/eyelid`, `/merch`. TikTok captions can't hold links, so the
   bio link is the way in: set it to `/?v=<tag>` and `?v=` rides along every internal link; with no
   `v` the referring site (e.g. `tiktok-com`) is saved.

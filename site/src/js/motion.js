@@ -47,10 +47,11 @@ export function initMotion() {
 
   for (const el of document.querySelectorAll('[data-split]')) {
     const words = splitWords(el);
+    // words start readable (60%, still 3:1 on sun yellow) and settle to full ink as you scroll
     gsap.fromTo(
       words,
-      { opacity: 0.16 },
-      { opacity: 1, stagger: 0.12, ease: 'none', scrollTrigger: { trigger: el, start: 'top 82%', end: 'bottom 45%', scrub: true } },
+      { opacity: 0.6, yPercent: 18 },
+      { opacity: 1, yPercent: 0, stagger: 0.12, ease: 'none', scrollTrigger: { trigger: el, start: 'top 85%', end: 'bottom 55%', scrub: true } },
     );
   }
 
