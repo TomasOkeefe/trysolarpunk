@@ -374,13 +374,14 @@ export function startMeadow(canvas, hero) {
   // ------------------------------------------------------------ layout
 
   const view = { w: 1, h: 1, aspect: 1, horizon: 0 };
+  let dprCap = coarse ? 1.6 : 1.75;
   function layout() {
     const r = hero.getBoundingClientRect();
     view.w = Math.max(1, r.width);
     view.h = Math.max(1, r.height);
     view.aspect = view.w / view.h;
     const narrow = view.aspect < 0.9;
-    renderer.setPixelRatio(Math.min(devicePixelRatio, coarse ? 1.6 : 1.75));
+    renderer.setPixelRatio(Math.min(devicePixelRatio, dprCap));
     renderer.setSize(view.w, view.h, false);
     pollenMat.uniforms.uPx.value = renderer.getPixelRatio();
     cam.aspect = view.aspect;
@@ -489,11 +490,29 @@ export function startMeadow(canvas, hero) {
   for (let i = 0; i < 26; i++) bloom((Math.random() * 2 - 1) * 5, -Math.random() * 9 + 1.5, 0.4 + Math.random() * 1.6);
 
   let lastT = 0;
+  // slow phones: if the first couple of seconds average under ~30 fps, halve the grass and the
+  // resolution once, quietly
+  let probeFrames = 0;
+  let probeTime = 0;
+  let downgraded = false;
   function frame() {
     raf = requestAnimationFrame(frame);
     const t = now();
-    const dt = Math.min(t - lastT, 0.05);
+    const raw = t - lastT;
+    const dt = Math.min(raw, 0.05);
     lastT = t;
+    if (!downgraded && t > 0.8 && raw < 0.5) {
+      probeFrames++;
+      probeTime += raw;
+      if (probeFrames === 45) {
+        if (probeTime / probeFrames > 1 / 30) {
+          downgraded = true;
+          dprCap = 1;
+          grassGeo.instanceCount = Math.floor(N / 2);
+          layout();
+        }
+      }
+    }
     grassMat.uniforms.uTime.value = t;
     if (!reduce) grassMat.uniforms.uGrow.value = Math.min(1, 1 - Math.pow(1 - Math.min(t / 1.6, 1), 3));
     push += (pushTarget - push) * 0.08;
