@@ -10,13 +10,13 @@ export const COLORS = {
 };
 
 export const CATEGORIES = [
-  { id: 'bedtime', name: 'Bedtime for phones', blurb: 'Places your phone sleeps, so you can too.', tint: 'butter' },
-  { id: 'thumb', name: 'Thumb rehab', blurb: 'Something else for the thumb that keeps reaching.', tint: 'peach' },
-  { id: 'analog', name: 'Analog instead', blurb: 'Each one does a single phone job, then leaves you alone.', tint: 'sky' },
-  { id: 'company', name: 'Phones down, people up', blurb: 'For dinners, parties and other in-person events.', tint: 'sage' },
-  { id: 'moss', name: 'By Moss', blurb: 'Things starring our mascot. He approves of all of them.', tint: 'lilac' },
-  { id: 'merch', name: 'Merch', blurb: 'Clothes and small stuff for the anti-algorithm.', tint: 'blush' },
-  { id: 'kits', name: 'Kits', blurb: 'A few things together, for a few dollars less.', tint: 'oat' },
+  { id: 'bedtime', name: 'Bedtime for phones', blurb: 'Places your phone sleeps, so you can too.', tint: 'butter', more: 'More for bedtime' },
+  { id: 'thumb', name: 'Thumb rehab', blurb: 'Something else for the thumb that keeps reaching.', tint: 'peach', more: 'More thumb rehab' },
+  { id: 'analog', name: 'Analog instead', blurb: 'Each one does a single phone job, then leaves you alone.', tint: 'sky', more: 'More analog things' },
+  { id: 'company', name: 'Phones down, people up', blurb: 'For dinners, parties and other in-person events.', tint: 'sage', more: 'More for company' },
+  { id: 'moss', name: 'By Moss', blurb: 'Things starring our mascot. He approves of all of them.', tint: 'lilac', more: 'More by Moss' },
+  { id: 'merch', name: 'Merch', blurb: 'Clothes and small stuff for the anti-algorithm.', tint: 'blush', more: 'More merch' },
+  { id: 'kits', name: 'Kits', blurb: 'A few things together, for a few dollars less.', tint: 'oat', more: 'More kits' },
 ];
 
 const cw = (id, name, ...swatch) => ({ id, name, swatch: swatch.map((c) => COLORS[c] || c) });

@@ -313,6 +313,51 @@ export function startMeadow(canvas, hero) {
   flowers.frustumCulled = false;
   scene.add(flowers);
   const petals = [HEX.cream, HEX.cream, HEX.bloom, 0xffffff, HEX.clay].map(col);
+
+  // pollen: soft specks drifting up through the light
+  const P = coarse ? 90 : 180;
+  const pollenPos = new Float32Array(P * 3);
+  const pollenSeed = new Float32Array(P);
+  for (let i = 0; i < P; i++) {
+    pollenPos.set([(Math.random() * 2 - 1) * 6, Math.random() * 1.6, 4 - Math.random() * 12], i * 3);
+    pollenSeed[i] = Math.random() * 100;
+  }
+  const pollenGeo = new THREE.BufferGeometry();
+  pollenGeo.setAttribute('position', new THREE.BufferAttribute(pollenPos, 3));
+  pollenGeo.setAttribute('aSeed', new THREE.BufferAttribute(pollenSeed, 1));
+  const pollenMat = new THREE.ShaderMaterial({
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+    uniforms: { uTime: grassMat.uniforms.uTime, uWind: grassMat.uniforms.uWind, uPx: { value: renderer.getPixelRatio() }, uColor: { value: col(0xfff2c4) } },
+    vertexShader: /* glsl */ `
+      uniform float uTime; uniform float uWind; uniform float uPx;
+      attribute float aSeed;
+      varying float vA;
+      void main() {
+        vec3 p = position;
+        float t = uTime * uWind;
+        p.y = mod(p.y + t * (0.05 + fract(aSeed) * 0.06), 1.8);
+        p.x += sin(t * 0.4 + aSeed) * 0.25;
+        p.z += cos(t * 0.3 + aSeed * 1.7) * 0.2;
+        vec4 mv = viewMatrix * vec4(p, 1.0);
+        gl_Position = projectionMatrix * mv;
+        gl_PointSize = uPx * (2.0 + fract(aSeed * 3.1) * 3.0) * (6.0 / -mv.z);
+        vA = smoothstep(0.0, 0.3, p.y) * smoothstep(1.8, 1.2, p.y) * (0.35 + 0.65 * fract(aSeed * 7.3));
+      }`,
+    fragmentShader: /* glsl */ `
+      uniform vec3 uColor;
+      varying float vA;
+      void main() {
+        float d = length(gl_PointCoord - 0.5);
+        float a = smoothstep(0.5, 0.0, d) * vA * 0.75;
+        gl_FragColor = vec4(uColor, a);
+        #include <colorspace_fragment>
+      }`,
+  });
+  const pollen = new THREE.Points(pollenGeo, pollenMat);
+  pollen.frustumCulled = false;
+  scene.add(pollen);
   let next = 0;
 
   function bloom(x, z, t) {
@@ -337,6 +382,7 @@ export function startMeadow(canvas, hero) {
     const narrow = view.aspect < 0.9;
     renderer.setPixelRatio(Math.min(devicePixelRatio, coarse ? 1.6 : 1.75));
     renderer.setSize(view.w, view.h, false);
+    pollenMat.uniforms.uPx.value = renderer.getPixelRatio();
     cam.aspect = view.aspect;
     cam.fov = narrow ? 44 : 30;
     cam.position.set(0, narrow ? 1.2 : 1.05, 6.4);
@@ -400,7 +446,7 @@ export function startMeadow(canvas, hero) {
     pushTarget = 1;
     if (e.buttons === 1 || e.pointerType === 'touch') {
       if (!lastBloom || lastBloom.distanceTo(g.world) > 0.45) {
-        bloom(g.world.x, g.world.z, clock.elapsedTime);
+        bloom(g.world.x, g.world.z, now());
         lastBloom = g.world.clone();
       }
     }
@@ -415,7 +461,7 @@ export function startMeadow(canvas, hero) {
     if (!g || g.p.y > view.horizon - 0.02) return;
     target.copy(g.world);
     pushTarget = 1;
-    const t = clock.elapsedTime;
+    const t = now();
     for (let i = 0; i < 5; i++) {
       const a = Math.random() * Math.PI * 2;
       const r = Math.random() * 0.45;
@@ -433,7 +479,8 @@ export function startMeadow(canvas, hero) {
 
   // ------------------------------------------------------------ loop
 
-  const clock = new THREE.Clock();
+  const t0 = performance.now();
+  const now = () => (performance.now() - t0) / 1000;
   let running = false;
   let raf = 0;
   let scrollP = 0;
@@ -444,7 +491,7 @@ export function startMeadow(canvas, hero) {
   let lastT = 0;
   function frame() {
     raf = requestAnimationFrame(frame);
-    const t = clock.getElapsedTime();
+    const t = now();
     const dt = Math.min(t - lastT, 0.05);
     lastT = t;
     grassMat.uniforms.uTime.value = t;

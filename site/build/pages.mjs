@@ -10,7 +10,8 @@ const words = (n) => WORDS[n] || String(n);
 const cap = (s) => s[0].toUpperCase() + s.slice(1);
 const catHref = (id) => (id === 'merch' ? '/merch' : `/shop/${id}`);
 
-const objects = () => live().filter((p) => !['merch', 'kits'].includes(p.category));
+// the printed objects are numbered 001 to 099; merch starts at 101, kits at 201
+const objects = () => live().filter((p) => Number(p.no) < 100);
 
 function chips(active) {
   const cats = CATEGORIES.filter((c) => inCategory(c.id).length);
@@ -238,7 +239,7 @@ function product(p, assets) {
 </section>
 
 <section class="related" aria-labelledby="related-title">
-  <div class="section-head"><h2 id="related-title">${related.length ? `More ${c.name.toLowerCase()}` : 'You might also like'}</h2></div>
+  <div class="section-head"><h2 id="related-title">${related.length ? c.more : 'You might also like'}</h2></div>
   ${grid([...related, ...more])}
 </section>`;
   return {
