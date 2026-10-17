@@ -5,6 +5,7 @@ import { initNav } from './nav.js';
 import { initProduct, initQuickAdd } from './product.js';
 import { initReel } from './reel.js';
 import { carrySource } from './source.js';
+import { initThumb } from './thumb.js';
 
 carrySource();
 initNav();
@@ -14,6 +15,7 @@ initQuickAdd();
 wireJoinForms();
 initReel();
 initMotion();
+initThumb();
 
 const hero = document.querySelector('[data-hero]');
 const canvas = hero?.querySelector('[data-meadow]');
