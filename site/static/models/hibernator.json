@@ -1,0 +1,54 @@
+{
+ "colorways": {
+  "moss": {
+   "hibernator-body": "#2F5D3A",
+   "hibernator-badge": "#F2C14E",
+   "hibernator-eye": "#2A2420",
+   "phone-frame": "#55524E",
+   "phone-back": "#2B2A2C",
+   "phone-screen": "#060607",
+   "phone-rings": "#3A3836",
+   "phone-lenses": "#05060A"
+  },
+  "clay": {
+   "hibernator-body": "#D9764A",
+   "hibernator-badge": "#F6F1E4",
+   "hibernator-eye": "#2A2420",
+   "phone-frame": "#55524E",
+   "phone-back": "#2B2A2C",
+   "phone-screen": "#060607",
+   "phone-rings": "#3A3836",
+   "phone-lenses": "#05060A"
+  },
+  "bone": {
+   "hibernator-body": "#EDE6D3",
+   "hibernator-badge": "#D9764A",
+   "hibernator-eye": "#2A2420",
+   "phone-frame": "#55524E",
+   "phone-back": "#2B2A2C",
+   "phone-screen": "#060607",
+   "phone-rings": "#3A3836",
+   "phone-lenses": "#05060A"
+  },
+  "night": {
+   "hibernator-body": "#2A2420",
+   "hibernator-badge": "#F2C14E",
+   "hibernator-eye": "#2A2420",
+   "phone-frame": "#55524E",
+   "phone-back": "#2B2A2C",
+   "phone-screen": "#060607",
+   "phone-rings": "#3A3836",
+   "phone-lenses": "#05060A"
+  }
+ },
+ "parts": [
+  "hibernator-body",
+  "hibernator-badge",
+  "hibernator-eye",
+  "phone-frame",
+  "phone-back",
+  "phone-screen",
+  "phone-rings",
+  "phone-lenses"
+ ]
+}

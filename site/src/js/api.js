@@ -27,8 +27,15 @@ export function wireJoinForms(root = document) {
       msg.textContent = '';
       const f = new FormData(form);
       const r = await join({ email: f.get('email'), product: f.get('product'), website: f.get('website') || '' });
-      if (r.ok) form.classList.add('done');
-      else msg.textContent = r.error;
+      if (r.ok) {
+        form.classList.add('done');
+        try {
+          const done = JSON.parse(localStorage.getItem('tsp-reserved') || '[]');
+          localStorage.setItem('tsp-reserved', JSON.stringify([...new Set([...done, f.get('product')])]));
+        } catch {
+          /* fine */
+        }
+      } else msg.textContent = r.error;
       button.disabled = false;
     });
   }

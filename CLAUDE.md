@@ -50,18 +50,29 @@ last conversation). The owner's messages, shot flags ("redo" + note) and approva
 `<channel source="studio">`; answer only with its `reply` tool (attach videos and frames via `files`),
 and use `status` for render progress. Shot marks persist in `videos/studio/reviews.json`.
 
-## Waitlist site (`site/`)
+## Store site (`site/`)
 Live at https://trysolarpunk.pages.dev (Cloudflare Pages + D1 `trysolarpunk-waitlist`, free tier).
-Pages: `/`, `/hibernator`, `/eyelid`, `/merch`. TikTok captions can't hold links, so the bio link
-is the way in: set it to `/?v=<tag>` (e.g. a week's batch) and `?v=` follows visitors to the product
-pages; with no `v` the referring site (e.g. `tiktok-com`) is saved. `site/list.sh` shows the numbers,
-`--csv` dumps emails (never commit it). Deploy with `cd site && npm run deploy`; check with
-`npm test` and `test/smoke.sh <url>`, then delete its rows: `npx wrangler d1 execute
-trysolarpunk-waitlist --remote --command "DELETE FROM signups WHERE email LIKE 'smoke+%@example.com'"`.
-`POST /api/join` and the `signups` table stay as they are for the phase 2 animated site
-(spec: `docs/superpowers/specs/2026-10-15-waitlist-site-design.md`).
+"The catalog, volume one": every product is a reservation (a waitlist signup, nothing charged).
+`site/lib/catalog.js` is the one list of products, prices and colourways; `POST /api/join` accepts
+its slugs (plus `merch`, `everything`). The bag reserves several at once, one signup per product.
+Spec: `docs/superpowers/specs/2026-10-16-catalog-store-design.md`.
+- Build: `npm run build` (Node + esbuild + sharp, `build/` renders pages into `dist/`, gitignored).
+  `npm run dev` = build + `wrangler pages dev`. `npm run preview` deploys the `preview` branch
+  (https://preview.trysolarpunk.pages.dev); `npm run deploy` deploys production.
+- Product images: renders come from `products/blender/` (local, gitignored: SDF CAD in Blender's
+  Python; `blender -b --factory-startup -P render.py -- <model> --shots hero --colorways a,b`,
+  `batch.sh` for everything). `npm run images` converts `products/renders/` into `static/img/p/`
+  (committed) and the manifest; a product with no render is left off the site.
+- Old URLs still work: `/hibernator`, `/eyelid`, `/merch`. TikTok captions can't hold links, so the
+  bio link is the way in: set it to `/?v=<tag>` and `?v=` rides along every internal link; with no
+  `v` the referring site (e.g. `tiktok-com`) is saved.
+- `site/list.sh` shows the numbers, `--csv` dumps emails (never commit it). Check with `npm test`,
+  `test/weight.sh` and `test/smoke.sh <url>`, then delete its rows: `npx wrangler d1 execute
+  trysolarpunk-waitlist --remote --command "DELETE FROM signups WHERE email LIKE 'smoke+%@example.com'"`.
 
 ## Store notes
 Fourthwall is still "Coming soon" with all 6 products hidden; it needs a ship-from address and
-payout info before publishing. The tote has a thin margin at $24 (consider $28); stickers are $6.
-CAD, STLs and `videos/` are gitignored.
+payout info before publishing. The tote has a thin margin at $24 (the site lists $28); stickers are $6.
+The site's catalog (24 products) is bigger than Fourthwall's; prices there are Claude's proposal.
+The Hibernator and Eyelid on the site are the v2 redesigns (videos still show v1).
+CAD, STLs, `products/blender/`, `products/renders/` and `videos/` are gitignored.

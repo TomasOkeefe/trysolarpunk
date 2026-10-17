@@ -168,10 +168,30 @@ async function reserve(event) {
   } catch {
     /* fine */
   }
+  markReserved();
+}
+
+// Mark what this browser has already reserved: a tag on cards, a note on product pages.
+function markReserved() {
+  let done = [];
+  try {
+    done = JSON.parse(localStorage.getItem('tsp-reserved') || '[]');
+  } catch {
+    return;
+  }
+  for (const slug of done) {
+    for (const media of document.querySelectorAll(`[data-card="${CSS.escape(slug)}"] .card-media`)) {
+      if (!media.querySelector('.reserved-tag')) media.insertAdjacentHTML('beforeend', '<span class="reserved-tag">Reserved</span>');
+    }
+  }
+  const pdp = document.querySelector('[data-product]');
+  const note = document.querySelector('[data-reserved-note]');
+  if (pdp && note && done.includes(pdp.dataset.product)) note.hidden = false;
 }
 
 export function initBag() {
   render();
+  markReserved();
   document.addEventListener('click', (event) => {
     const t = event.target.closest('[data-bag-open], [data-bag-close], [data-rm]');
     if (!t) return;

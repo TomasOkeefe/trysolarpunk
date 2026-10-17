@@ -12,6 +12,7 @@ const MANIFEST = join(ROOT, 'static', 'img', 'p', 'manifest.json');
 const manifest = existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8')) : {};
 
 export const img = (slug, key) => manifest[slug]?.[key];
+export const hasModel = (slug) => existsSync(join(ROOT, 'static', 'models', `${slug}.glb`));
 export const heroKey = (p, cw = p.colorways[0].id) => `hero-${cw}`;
 export const ready = (p) => Boolean(img(p.slug, heroKey(p)));
 export const live = () => PRODUCTS.filter(ready);
@@ -52,13 +53,14 @@ export function card(p, { eager = false, sizes } = {}) {
   const alt = cws[1];
   return html`<article class="card" style="--bg: ${bg(p)}" data-card="${p.slug}">
   <a class="card-link" href="/${p.slug}">
-    <div class="card-media">
+    <div class="card-media" style="view-transition-name: p-${p.slug}">
       ${pic(p.slug, heroKey(p), { alt: `${p.name} in ${p.colorways[0].name}`, eager, sizes, cls: 'card-img is-on', attrs: `data-cw="${p.colorways[0].id}"` })}
       ${alt ? pic(p.slug, heroKey(p, alt.id), { alt: '', sizes, cls: 'card-img', attrs: `data-cw="${alt.id}" aria-hidden="true"` }) : ''}
       ${p.limited ? html`<span class="tag tag-limited">${p.limited}</span>` : ''}
       ${p.was ? html`<span class="tag">Save ${money(p.was - p.price)}</span>` : ''}
     </div>
     <div class="card-info">
+      <p class="card-no">No. ${p.no}</p>
       <h3 class="card-name">${p.name}</h3>
       <p class="card-price">${money(p.price)}</p>
       <p class="card-line">${p.line}</p>
@@ -68,7 +70,14 @@ export function card(p, { eager = false, sizes } = {}) {
 </article>`;
 }
 
-export const grid = (products, opts = {}) => html`<div class="grid ${opts.cls || ''}">${products.map((p, i) => card(p, { eager: opts.eager && i < 4, sizes: opts.sizes }))}</div>`;
+// Editorial tiles that sit between products on the home page, keyed by the position they follow.
+const INTERLUDES = {
+  5: html`<aside class="interlude"><p>Nothing here gets made until someone wants it.</p><small>Reserve what you like. The most wanted gets printed first.</small></aside>`,
+  13: html`<a class="interlude sun" href="/shop/thumb"><p>Your thumb deserves a hobby.</p><small>See: thumb rehab</small></a>`,
+};
+
+export const grid = (products, opts = {}) =>
+  html`<div class="grid ${opts.cls || ''}">${products.map((p, i) => [card(p, { eager: opts.eager && i < 4, sizes: opts.sizes }), opts.interludes ? INTERLUDES[i + 1] : ''])}</div>`;
 
 // ------------------------------------------------------------------ shell
 

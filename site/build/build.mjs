@@ -59,6 +59,34 @@ for (const p of live()) {
     .toFile(join(DIST, 'og', `${p.slug}.jpg`));
 }
 
+// the home share card: logo and tagline on the left, four products on the right
+{
+  const BRAND = join(ROOT, '..', 'brand');
+  const card = async (slug, key, w, h) => {
+    const m = img(slug, key);
+    const src = join(ROOT, 'static', 'img', 'p', slug, `${key}-${m.w[m.w.length - 1]}.webp`);
+    const photo = await sharp(src).resize(w - 8, h - 8, { fit: 'cover', position: 'attention' }).png().toBuffer();
+    const round = Buffer.from(`<svg width="${w - 8}" height="${h - 8}"><rect width="${w - 8}" height="${h - 8}" rx="18" fill="#fff"/></svg>`);
+    const inner = await sharp(photo).composite([{ input: round, blend: 'dest-in' }]).png().toBuffer();
+    const frame = Buffer.from(`<svg width="${w}" height="${h}"><rect x="2" y="2" width="${w - 4}" height="${h - 4}" rx="22" fill="#2A2420"/></svg>`);
+    return sharp(frame).composite([{ input: inner, left: 4, top: 4 }]).png().toBuffer();
+  };
+  const picks = [['hibernator', 'hero-moss'], ['eyelid', 'hero-clay'], ['sunup', 'hero-morning'], ['sundial', 'hero-sun']].filter(([s, k]) => img(s, k));
+  const cards = await Promise.all(picks.map(([s, k]) => card(s, k, 255, 285)));
+  const emblem = await sharp(join(BRAND, 'emblem.png')).resize(250, 250).toBuffer();
+  const word = await sharp(join(BRAND, 'wordmark.png')).resize(500).toBuffer();
+  const tagline = await sharp(join(BRAND, 'banner.png')).extract({ left: 805, top: 535, width: 860, height: 60 }).resize(470).toBuffer();
+  await sharp({ create: { width: 1200, height: 630, channels: 3, background: '#F6F1E4' } })
+    .composite([
+      { input: emblem, left: 64, top: 70 },
+      { input: word, left: 64, top: 360 },
+      { input: tagline, left: 66, top: 470 },
+      ...cards.map((input, i) => ({ input, left: 640 + (i % 2) * 267, top: 24 + Math.floor(i / 2) * 297 })),
+    ])
+    .jpeg({ quality: 84, mozjpeg: true })
+    .toFile(join(DIST, 'img', 'og.jpg'));
+}
+
 writeFileSync(join(DIST, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${all.filter((p) => p.path !== '/404').map((p) => `  <url><loc>${SITE}${p.path}</loc></url>`).join('\n')}

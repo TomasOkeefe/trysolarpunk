@@ -22,8 +22,8 @@ const hex = (r, g, b) => '#' + [r, g, b].map((v) => Math.round(v).toString(16).p
 
 for (const model of existsSync(RENDERS) ? readdirSync(RENDERS) : []) {
   const dir = join(RENDERS, model);
-  if (!statSync(dir).isDirectory()) continue;
-  const slug = SLUG[model] || model;
+  if (!statSync(dir).isDirectory() || model.startsWith('_')) continue;
+  const slug = SLUG[model] || model.replace(/_/g, '-');
   for (const file of readdirSync(dir).filter((f) => f.endsWith('.png'))) {
     const key = file.replace(/\.png$/, '');
     if (key.includes('-test') || key.includes('-wip')) continue;

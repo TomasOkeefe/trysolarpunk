@@ -2,7 +2,7 @@
 import { CATEGORIES, PRODUCTS, bySlug } from '../lib/catalog.js';
 import { html, money, raw } from './html.mjs';
 import {
-  TIKTOK, bg, card, category, emblem, grid, heroKey, img, imageUrl, inCategory, joinForm, live, page, pic, swatch,
+  TIKTOK, bg, card, category, emblem, grid, hasModel, heroKey, img, imageUrl, inCategory, joinForm, live, page, pic, swatch,
 } from './parts.mjs';
 
 const WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty'];
@@ -79,7 +79,7 @@ ${lead && ready(lead) ? html`
 <section class="catalog" id="catalog" aria-labelledby="catalog-title">
   <div class="section-head"><h2 id="catalog-title">The whole catalog</h2><p>${cap(words(all.length))} things. Reserve what you like and pay nothing until it’s printed.</p></div>
   ${chips(null)}
-  ${grid(all, { eager: false })}
+  ${grid(all, { eager: false, interludes: true })}
 </section>
 
 <section class="moss" aria-labelledby="moss-title">
@@ -144,7 +144,7 @@ function categoryPage(c, assets) {
     <p>${c.blurb}</p>
   </div>
   ${chips(c.id)}
-  ${grid(ps, { eager: true })}
+  ${ps.length ? grid(ps, { eager: true }) : html`<p class="listing-empty">The first run is being printed as we speak. Leave your email and we’ll tell you the day it drops.</p>`}
   ${c.id === 'merch' ? html`<div class="listing-join">${joinForm('merch', { label: 'Tell me when the merch drops', button: 'Tell me' })}</div>` : ''}
 </section>`;
   return {
@@ -164,9 +164,10 @@ function product(p, assets) {
   const body = html`
 <section class="pdp" data-product="${p.slug}">
   <div class="pdp-media">
-    <div class="pdp-stage" style="--bg: ${bg(p)}" data-stage>
+    <div class="pdp-stage" style="--bg: ${bg(p)}; view-transition-name: p-${p.slug}" data-stage>
       ${cws.map((cw, i) => html`<div class="pdp-shot ${i === 0 ? 'is-on' : ''}" data-cw="${cw.id}" style="--bg: ${bg(p, cw.id)}">${pic(p.slug, heroKey(p, cw.id), { alt: `${p.name} in ${cw.name}`, sizes: '(min-width: 1000px) 55vw, 100vw', eager: i === 0 })}</div>`)}
       ${p.limited ? html`<span class="tag tag-limited">${p.limited}</span>` : ''}
+      ${hasModel(p.slug) ? html`<button class="spin-btn js-only" type="button" data-spin aria-pressed="false"><span class="spin-icon" aria-hidden="true"></span><span data-spin-label>Spin it in 3D</span></button>` : ''}
     </div>
   </div>
   <div class="pdp-info">
@@ -187,6 +188,7 @@ function product(p, assets) {
       <button class="btn btn-sun btn-wide js-only" type="submit">Add to bag</button>
     </form>
     <p class="pdp-note">Pay nothing now. We print in batches in New York and send one email when yours is ready.</p>
+    <p class="pdp-reserved js-only" data-reserved-note hidden>You’re already on the list for this one. Adding it again is fine, we only email once.</p>
     <div class="nojs-only">${joinForm(p.slug)}</div>
   </div>
 </section>
@@ -270,7 +272,7 @@ export function pages(assets) {
   return [
     home(assets),
     shop(assets),
-    ...CATEGORIES.filter((c) => inCategory(c.id).length).map((c) => categoryPage(c, assets)),
+    ...CATEGORIES.filter((c) => inCategory(c.id).length || c.id === 'merch').map((c) => categoryPage(c, assets)),
     ...live().map((p) => product(p, assets)),
     about(assets),
     notFound(assets),

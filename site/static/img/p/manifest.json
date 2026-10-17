@@ -125,10 +125,30 @@
  "kids-table": {
   "hero-sun": {
    "w": [
-    400
+    400,
+    800,
+    1200
    ],
    "ratio": 1.25,
-   "bg": "#e6f3f0"
+   "bg": "#e7f3f1"
+  },
+  "hero-bone": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f7c8a7"
+  },
+  "hero-clay": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#e5eec6"
   }
  },
  "infinite-scroll": {
@@ -234,6 +254,225 @@
    ],
    "ratio": 1.25,
    "bg": "#c2e8ed"
+  }
+ },
+ "bunk": {
+  "hero-bone": {
+   "w": [
+    400
+   ],
+   "ratio": 1.25,
+   "bg": "#f8caaa"
+  }
+ },
+ "community-crew": {
+  "hero-natural": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#bad8da"
+  },
+  "hero-sun": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#e2edeb"
+  }
+ },
+ "crypt": {
+  "hero-bone": {
+   "w": [
+    400
+   ],
+   "ratio": 1.25,
+   "bg": "#eedef5"
+  }
+ },
+ "dice": {
+  "hero-sun": {
+   "w": [
+    400
+   ],
+   "ratio": 1.25,
+   "bg": "#c0e6ea"
+  }
+ },
+ "doghouse": {
+  "hero-clay": {
+   "w": [
+    400
+   ],
+   "ratio": 1.25,
+   "bg": "#c3e8ee"
+  }
+ },
+ "grass-socks": {
+  "hero-moss": {
+   "w": [
+    400
+   ],
+   "ratio": 1.25,
+   "bg": "#f4d2c6"
+  }
+ },
+ "grass-tee": {
+  "hero-moss": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f5dda3"
+  },
+  "hero-natural": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f5d3c7"
+  }
+ },
+ "lights-out-kit": {
+  "hero-morning": {
+   "w": [
+    400
+   ],
+   "ratio": 1.25,
+   "bg": "#c1e7ec"
+  }
+ },
+ "moss-beanie": {
+  "hero-moss": {
+   "w": [
+    400
+   ],
+   "ratio": 1.25,
+   "bg": "#f8c8a8"
+  }
+ },
+ "moss-head": {
+  "hero-classic": {
+   "w": [
+    400
+   ],
+   "ratio": 1.25,
+   "bg": "#f8e0a6"
+  }
+ },
+ "starter-kit": {
+  "hero-moss": {
+   "w": [
+    400
+   ],
+   "ratio": 1.25,
+   "bg": "#f8e0a7"
+  }
+ },
+ "stickers": {
+  "hero-community": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#badce1"
+  },
+  "hero-grass": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f5c7a7"
+  },
+  "hero-stroll": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#e1e9c3"
+  },
+  "hero-sun": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f5dda3"
+  }
+ },
+ "stroll-poster": {
+  "hero-natural": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#1f602e"
+  }
+ },
+ "stroll-tee": {
+  "hero-natural": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#dce4bf"
+  },
+  "hero-sage": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f4dda2"
+  }
+ },
+ "stroll-tote": {
+  "hero-natural": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f3c5a3"
+  }
+ },
+ "sunrise-cap": {
+  "hero-cream": {
+   "w": [
+    400
+   ],
+   "ratio": 1.25,
+   "bg": "#e7f1ca"
+  }
+ },
+ "thumb-stone": {
+  "hero-moss": {
+   "w": [
+    400
+   ],
+   "ratio": 1.25,
+   "bg": "#f7dda2"
   }
  }
 }
