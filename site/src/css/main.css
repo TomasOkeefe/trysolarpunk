@@ -514,6 +514,46 @@ html:not(.js) .js-only { display: none !important; }
 .listing-join { margin-top: 4rem; max-width: 34rem; }
 .listing-empty { font: 800 clamp(1.4rem, 2.6vw, 2.2rem)/1.15 var(--serif); font-variation-settings: 'SOFT' 100, 'WONK' 1; max-width: 26ch; }
 
+/* ---------------------------------------------------------------- at home */
+
+.athome { padding: 0 0 clamp(4rem, 9vw, 8rem); }
+.athome .section-head { max-width: var(--max); margin-inline: auto; padding: 0 var(--gutter); }
+.athome-row {
+  display: flex;
+  gap: clamp(.8rem, 2vw, 1.5rem);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: .5rem var(--gutter) 1.5rem;
+  scroll-padding-inline: var(--gutter);
+  scrollbar-width: none;
+}
+.athome-row::-webkit-scrollbar { display: none; }
+.athome-card {
+  position: relative;
+  flex: 0 0 clamp(260px, 30vw, 430px);
+  aspect-ratio: 4 / 5;
+  border: var(--line);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  scroll-snap-align: start;
+  text-decoration: none;
+}
+.athome-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.athome-card:hover img { transform: scale(1.04); }
+.athome-cap {
+  position: absolute;
+  left: .8rem;
+  right: .8rem;
+  bottom: .8rem;
+  padding: .75rem .95rem;
+  border: 2px solid var(--ink);
+  border-radius: var(--r-md);
+  background: var(--cream);
+  font-size: .95rem;
+  line-height: 1.35;
+}
+.athome-cap strong { display: block; font: 800 1.15rem/1.1 var(--serif); font-variation-settings: 'SOFT' 100, 'WONK' 1; margin-bottom: .15rem; }
+
 /* ---------------------------------------------------------------- moss */
 
 .moss { display: grid; gap: 3rem; padding: clamp(4.5rem, 10vw, 9rem) var(--gutter); background: var(--moss); color: var(--cream); overflow: hidden; }

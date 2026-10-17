@@ -22,6 +22,25 @@ function chips(active) {
 
 // ------------------------------------------------------------------ home
 
+const AT_HOME = [
+  ['hibernator', 'fridge-moss', 'On the fridge, two rooms from your bed.'],
+  ['sunup', 'table-morning', 'On the nightstand, where the phone used to be.'],
+  ['eyelid', 'table-moss', 'Face up on the table, eyes closed.'],
+  ['greenhouse', 'table-clay', 'On the desk. Phone in the basement.'],
+  ['moss-head', 'table-classic', 'On the shelf, growing a haircut.'],
+  ['infinite-scroll', 'table-ink', 'Next to the coffee, for the 11 pm itch.'],
+  ['dice', 'table-sun', 'Roll before you open an app.'],
+];
+
+function atHome() {
+  const shots = AT_HOME.filter(([s, k]) => img(s, k));
+  if (shots.length < 3) return '';
+  return html`<section class="athome" aria-labelledby="athome-title">
+  <div class="section-head"><h2 id="athome-title">Where they live</h2><p>Out of the box and into the house, where they quietly take a job off your phone.</p></div>
+  <div class="athome-row">${shots.map(([s, k, caption]) => html`<a class="athome-card" href="/${s}">${pic(s, k, { alt: `${bySlug(s).name}. ${caption}`, sizes: '(min-width: 900px) 28vw, 78vw' })}<span class="athome-cap"><strong>${bySlug(s).name}</strong> ${caption}</span></a>`)}</div>
+</section>`;
+}
+
 function home(assets) {
   const lead = bySlug('hibernator');
   const all = live();
@@ -83,6 +102,8 @@ ${lead && ready(lead) ? html`
   ${chips(null)}
   ${grid(all, { eager: false, interludes: true })}
 </section>
+
+${atHome()}
 
 <section class="moss" aria-labelledby="moss-title">
   <div class="moss-copy">

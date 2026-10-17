@@ -32,6 +32,7 @@ export function wireJoinForms(root = document) {
         try {
           const done = JSON.parse(localStorage.getItem('tsp-reserved') || '[]');
           localStorage.setItem('tsp-reserved', JSON.stringify([...new Set([...done, f.get('product')])]));
+          localStorage.setItem('tsp-email', f.get('email'));
         } catch {
           /* fine */
         }

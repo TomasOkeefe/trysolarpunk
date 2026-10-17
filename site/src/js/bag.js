@@ -154,6 +154,7 @@ async function reserve(event) {
     el.msg.textContent = failed.error;
     return;
   }
+  rememberEmail(email);
   const names = slugs.map((s) => bySlug[s].n);
   el.doneList.textContent = names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names.at(-1)}` : names[0];
   items = [];
@@ -189,9 +190,22 @@ function markReserved() {
   if (pdp && note && done.includes(pdp.dataset.product)) note.hidden = false;
 }
 
+// The last email used to reserve, kept only in this browser, filled in for next time.
+export function rememberEmail(email) {
+  try {
+    if (email) localStorage.setItem('tsp-email', email);
+    const known = localStorage.getItem('tsp-email');
+    if (!known) return;
+    for (const input of document.querySelectorAll('input[type=email]')) if (!input.value) input.value = known;
+  } catch {
+    /* private mode */
+  }
+}
+
 export function initBag() {
   render();
   markReserved();
+  rememberEmail();
   document.addEventListener('click', (event) => {
     const t = event.target.closest('[data-bag-open], [data-bag-close], [data-rm]');
     if (!t) return;
