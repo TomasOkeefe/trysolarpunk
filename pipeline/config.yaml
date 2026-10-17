@@ -15,13 +15,13 @@ brand:
 products:
   - id: hibernator
     name: Hibernator
-    pitch: A brick that sticks to your fridge. Your phone goes in face to the wall. Tap the eye and it switches on your Focus mode.
-    visual: a small rounded moss-green 3D-printed brick on a white fridge door holding a phone upright, a pale yellow round disc on its front
+    pitch: A quilted brick that sticks to your fridge, a sleeping bag for your phone. It goes in face to the wall. Tap the sun badge and it switches on your Focus mode.
+    visual: a small quilted moss-green 3D-printed brick shaped like a puffy sleeping bag, on a cream fridge door, holding a phone upright face to the door, a round sun-yellow badge with a black closed eye on its front
     image: assets/hib_fridge.jpg     # used as the first frame of the product shot
   - id: eyelid
     name: Eyelid
-    pitch: A sleeve that fully covers your screen, so notifications can't pull you in.
-    visual: a slim terracotta-orange 3D-printed sleeve with a closed-eye emblem, a phone sliding into it
+    pitch: A sleeve that fully covers your screen, so notifications can't pull you in. Its top edge is a closed eyelid, so your phone looks asleep.
+    visual: a slim terracotta-orange 3D-printed sleeve whose top edge is cut like a closed eyelid with a black liner and lashes, a phone tucked inside
     image: assets/eyelid_studio.jpg
   - id: merch
     name: Infinite Stroll tee
