@@ -1,6 +1,8 @@
 // The catalog: every product, category and colourway on the site. The build renders pages from
 // it and POST /api/join accepts its slugs, so a product can't be reserved unless it's listed here.
 // Prices are what each thing will cost at launch. Nothing is charged before then.
+// When a product goes on sale, give it `buy: '<Fourthwall product URL>'`: its page then shows a
+// Buy button that goes to the store, and the bag sends people there instead of reserving it.
 
 export const COLORS = {
   moss: '#2F5D3A', sprout: '#9BC53D', sun: '#F2C14E', cream: '#F6F1E4', clay: '#D9764A', ink: '#2A2420',
@@ -12,6 +14,7 @@ export const CATEGORIES = [
   { id: 'thumb', name: 'Thumb rehab', blurb: 'Something else for the thumb that keeps reaching.', tint: 'peach' },
   { id: 'analog', name: 'Analog instead', blurb: 'Each one does a single phone job, then leaves you alone.', tint: 'sky' },
   { id: 'company', name: 'Phones down, people up', blurb: 'For dinners, parties and other in-person events.', tint: 'sage' },
+  { id: 'moss', name: 'By Moss', blurb: 'Things starring our mascot. He approves of all of them.', tint: 'lilac' },
   { id: 'merch', name: 'Merch', blurb: 'Clothes and small stuff for the anti-algorithm.', tint: 'blush' },
   { id: 'kits', name: 'Kits', blurb: 'A few things together, for a few dollars less.', tint: 'oat' },
 ];
@@ -263,7 +266,7 @@ export const PRODUCTS = [
     slug: 'moss-head',
     no: '013',
     name: 'Moss Head',
-    category: 'company',
+    category: 'moss',
     price: 38,
     line: 'A planter of our mascot. Grow him some hair.',
     colorways: [cw('classic', 'Classic', 'moss', 'sun', '#E8B9A0')],
@@ -322,7 +325,7 @@ export const PRODUCTS = [
     slug: 'moss-beanie',
     no: '104',
     name: 'The Moss Beanie',
-    category: 'merch',
+    category: 'moss',
     price: 32,
     line: 'Dress like Moss.',
     colorways: [cw('moss', 'Moss + Sun pompom', 'moss', 'sun')],

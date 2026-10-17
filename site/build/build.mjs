@@ -29,7 +29,7 @@ const result = await esbuild.build({
   outdir: join(DIST, 'assets'),
   entryNames: '[name]-[hash]',
   chunkNames: 'c-[hash]',
-  external: ['/fonts/*', '/img/*', '/video/*', '/models/*'],
+  external: ['/fonts/*', '/img/*', '/video/*', '/models/*', '/ar/*'],
   metafile: true,
   legalComments: 'none',
   logLevel: 'warning',
@@ -100,6 +100,11 @@ writeFileSync(join(DIST, '_headers'), `/assets/*
 /img/p/*
   Cache-Control: public, max-age=604800
 /video/*
+  Cache-Control: public, max-age=604800
+/ar/*
+  Content-Type: model/vnd.usdz+zip
+  Cache-Control: public, max-age=604800
+/models/*
   Cache-Control: public, max-age=604800
 /*
   X-Content-Type-Options: nosniff

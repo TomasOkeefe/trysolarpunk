@@ -2,7 +2,7 @@
 import { CATEGORIES, PRODUCTS, bySlug } from '../lib/catalog.js';
 import { html, money, raw } from './html.mjs';
 import {
-  TIKTOK, bg, card, category, emblem, grid, hasModel, heroKey, img, imageUrl, inCategory, joinForm, live, page, pic, shots, swatch,
+  TIKTOK, bg, card, category, emblem, grid, hasAR, hasModel, heroKey, img, imageUrl, inCategory, joinForm, live, page, pic, shots, swatch,
 } from './parts.mjs';
 
 const WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty'];
@@ -206,7 +206,7 @@ function product(p, assets) {
     <p class="no">No. ${p.no}</p>
     <h1 class="pdp-name">${p.name}</h1>
     <p class="pdp-line">${p.line}</p>
-    <p class="pdp-price"><span class="price-big">${money(p.price)}</span>${p.was ? html` <s>${money(p.was)}</s>` : ''} <span class="pdp-when">when it ships</span></p>
+    <p class="pdp-price"><span class="price-big">${money(p.price)}</span>${p.was ? html` <s>${money(p.was)}</s>` : ''} ${p.buy ? '' : html`<span class="pdp-when">when it ships</span>`}</p>
     <form class="pdp-buy" data-buy>
       ${cws.length > 1 ? html`<fieldset class="pick">
         <legend>Colour <span data-cw-name>${cws[0].name}</span></legend>
@@ -216,11 +216,12 @@ function product(p, assets) {
         <legend>Size</legend>
         <div class="pick-row">${p.sizes.map((s, i) => html`<label class="size-pick"><input type="radio" name="size" value="${s}" ${i === 1 ? raw('checked') : ''}><span>${s}</span></label>`)}</div>
       </fieldset>` : ''}
-      <button class="btn btn-sun btn-wide js-only" type="submit">Add to bag</button>
+      ${p.buy ? html`<a class="btn btn-sun btn-wide" href="${p.buy}" rel="noopener">Buy it</a>` : html`<button class="btn btn-sun btn-wide js-only" type="submit">Add to bag</button>`}
     </form>
-    <p class="pdp-note">Pay nothing now. We print in batches in New York and send one email when yours is ready.</p>
+    ${hasAR(p.slug) ? html`<a class="ar-link" rel="ar" href="/ar/${p.slug}.usdz" data-ar hidden><img src="${imageUrl(p.slug, heroKey(p), 400)}" alt="" width="1" height="1"><span>View it in your room</span></a>` : ''}
+    <p class="pdp-note">${p.buy ? 'Printed to order in New York. Checkout happens on our shop.' : 'Pay nothing now. We print in batches in New York and send one email when yours is ready.'}</p>
     <p class="pdp-reserved js-only" data-reserved-note hidden>You’re already on the list for this one. Adding it again is fine, we only email once.</p>
-    <div class="nojs-only">${joinForm(p.slug)}</div>
+    ${p.buy ? '' : html`<div class="nojs-only">${joinForm(p.slug)}</div>`}
   </div>
 </section>
 

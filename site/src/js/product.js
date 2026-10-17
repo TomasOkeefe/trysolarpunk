@@ -36,6 +36,10 @@ export function initProduct() {
     }
   }
 
+  // AR Quick Look only works in Safari on iPhone and iPad: show the link only where it does
+  const ar = root.querySelector('[data-ar]');
+  if (ar && document.createElement('a').relList.supports?.('ar')) ar.hidden = false;
+
   const wanted = new URLSearchParams(location.search).get('c');
   if (wanted) show(wanted, false);
 

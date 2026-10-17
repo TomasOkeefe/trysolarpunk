@@ -23,6 +23,7 @@ export function shots(slug) {
   return out;
 }
 export const hasModel = (slug) => existsSync(join(ROOT, 'static', 'models', `${slug}.glb`));
+export const hasAR = (slug) => existsSync(join(ROOT, 'static', 'ar', `${slug}.usdz`));
 export const heroKey = (p, cw = p.colorways[0].id) => `hero-${cw}`;
 export const ready = (p) => Boolean(img(p.slug, heroKey(p)));
 export const live = () => PRODUCTS.filter(ready);
@@ -77,7 +78,9 @@ export function card(p, { eager = false, sizes } = {}) {
     </div>
   </a>
   ${cws.length > 1 ? html`<ul class="card-swatches" aria-label="${cws.length} colours">${cws.map((c) => html`<li><span class="sw" style="${swatch(c)}" title="${c.name}"></span></li>`)}</ul>` : ''}
-  <div class="card-quick js-only"><button type="button" data-quick-add="${p.slug}" aria-label="Add ${p.name} to your bag">Add</button></div>
+  <div class="card-quick js-only">${p.buy
+    ? html`<a class="quick-buy" href="${p.buy}" rel="noopener" aria-label="Buy ${p.name}">Buy</a>`
+    : html`<button type="button" data-quick-add="${p.slug}" aria-label="Add ${p.name} to your bag">Add</button>`}</div>
 </article>`;
 }
 

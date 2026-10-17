@@ -71,7 +71,7 @@ Spec: `docs/superpowers/specs/2026-10-16-catalog-store-design.md`.
   bio link is the way in: set it to `/?v=<tag>` and `?v=` rides along every internal link; with no
   `v` the referring site (e.g. `tiktok-com`) is saved.
 - `site/list.sh` shows the numbers, `--csv` dumps emails (never commit it). Check with `npm test`,
-  `test/weight.sh` and `test/smoke.sh <url>`, then delete its rows: `npx wrangler d1 execute
+  `npm run check` (links + page weight) and `test/smoke.sh <url>`, then delete its rows: `npx wrangler d1 execute
   trysolarpunk-waitlist --remote --command "DELETE FROM signups WHERE email LIKE 'smoke+%@example.com'"`.
 
 ## Store notes

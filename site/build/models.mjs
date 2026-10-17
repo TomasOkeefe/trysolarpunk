@@ -20,6 +20,11 @@ for (const f of existsSync(SRC) ? readdirSync(SRC).filter((f) => f.endsWith('.gl
   if (existsSync(dst) && statSync(dst).mtimeMs > statSync(src).mtimeMs) continue;
   execFileSync('npx', ['-y', '@gltf-transform/cli@4.5.1', 'optimize', src, dst, '--compress', 'meshopt', '--texture-compress', 'false', '--simplify', 'false'], { stdio: 'ignore' });
   copyFileSync(join(SRC, `${model}.json`), join(OUT, `${slug}.json`));
+  // AR Quick Look files live in /ar so _headers can give them their own content type
+  if (existsSync(join(SRC, `${model}.usdz`))) {
+    mkdirSync(join(ROOT, 'static', 'ar'), { recursive: true });
+    copyFileSync(join(SRC, `${model}.usdz`), join(ROOT, 'static', 'ar', `${slug}.usdz`));
+  }
   console.log(`models: ${slug} ${Math.round(statSync(dst).size / 1024)} kB`);
   n++;
 }

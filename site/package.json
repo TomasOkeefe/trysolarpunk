@@ -6,6 +6,7 @@
     "test": "node --test",
     "images": "node build/images.mjs",
     "models": "node build/models.mjs",
+    "check": "node build/check-links.mjs && test/weight.sh",
     "build": "node build/build.mjs",
     "dev": "node build/build.mjs --dev && wrangler pages dev",
     "preview": "node build/build.mjs && wrangler pages deploy --branch preview",
