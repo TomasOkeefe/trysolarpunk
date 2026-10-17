@@ -12,3 +12,8 @@ site/.wrangler/
 .superpowers/
 pipeline/daily_state.json
 studio/node_modules/
+# product CAD (Blender/SDF scripts) and full-size renders stay local too
+products/blender/
+products/renders/
+products/glb/
+dist/

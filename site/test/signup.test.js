@@ -1,11 +1,25 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { PRODUCTS as CATALOG } from '../lib/catalog.js';
 import { PRODUCTS, cleanSource, pickSource, parseSignup } from '../lib/signup.js';
 
 const HOST = 'trysolarpunk.pages.dev';
 
-test('products are fixed', () => {
-  assert.deepEqual(PRODUCTS, ['hibernator', 'eyelid', 'merch']);
+test('every catalog product can be reserved, and the old ids still work', () => {
+  for (const id of ['hibernator', 'eyelid', 'merch', 'everything']) assert.ok(PRODUCTS.includes(id), id);
+  for (const p of CATALOG) assert.ok(PRODUCTS.includes(p.slug), p.slug);
+  assert.equal(new Set(PRODUCTS).size, PRODUCTS.length, 'slugs are unique');
+  for (const id of PRODUCTS) assert.match(id, /^[a-z0-9-]{1,40}$/);
+});
+
+test('catalog entries are complete', () => {
+  const nos = new Set();
+  for (const p of CATALOG) {
+    assert.ok(p.name && p.line && p.price > 0 && p.colorways.length && p.body.length && p.specs.length, p.slug);
+    assert.ok(!nos.has(p.no), `duplicate number ${p.no}`);
+    nos.add(p.no);
+    for (const text of [p.name, p.line, ...p.body, ...(p.how || [])]) assert.ok(!text.includes('\u2014'), `em dash in ${p.slug}`);
+  }
 });
 
 test('good signup is normalized', () => {

@@ -1,5 +1,8 @@
 // Validation for POST /api/join, kept free of Cloudflare APIs so node --test can run it.
-export const PRODUCTS = ['hibernator', 'eyelid', 'merch'];
+import { SLUGS } from './catalog.js';
+
+// Every product in the catalog, plus the old 'merch' list and 'everything' (every drop).
+export const PRODUCTS = SLUGS;
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
