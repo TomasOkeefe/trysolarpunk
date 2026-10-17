@@ -204,7 +204,7 @@ html:not(.js) .js-only { display: none !important; }
   position: fixed;
   inset: 0;
   z-index: 55;
-  padding: calc(var(--head-h) + 2rem) var(--gutter) 3rem;
+  padding: calc(var(--head-h) + 4.75rem) var(--gutter) 3rem;
   background: var(--sun);
   overflow-y: auto;
   clip-path: circle(0 at calc(100% - 3rem) 2rem);
@@ -621,6 +621,11 @@ html:not(.js) .js-only { display: none !important; }
 .thumb:hover { transform: translateY(-2px); }
 .thumb.is-on { box-shadow: 0 0 0 3px var(--sun), 0 0 0 5px var(--ink); }
 .pdp-stage.is-3d .pdp-thumbs { display: none; }
+@media (min-width: 1000px) {
+  /* the sticky stage is a viewport tall, so at the top of the page the announcement bar pushes its
+     bottom edge below the fold: keep the thumbnails clear of it */
+  .pdp-thumbs { bottom: calc(1rem + 2.4rem); }
+}
 .pdp-canvas { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; touch-action: pan-y; cursor: grab; animation: fade-in .6s ease both; }
 .pdp-canvas:active { cursor: grabbing; }
 .pdp-stage.is-3d .pdp-shot { opacity: 0; }

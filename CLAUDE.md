@@ -65,8 +65,9 @@ Spec: `docs/superpowers/specs/2026-10-16-catalog-store-design.md`.
   (committed) and the manifest; a product with no render is left off the site. Shots other than
   `hero-<colourway>` (e.g. `fridge-moss`, `table-clay`) become extra photos on the product page.
 - 3D "Spin it" viewer: `products/blender/export.py <model>` (or `export_all.sh`) writes a decimated
-  GLB plus a colour table to `products/glb/`; `npm run models` compresses them into `static/models/`.
-  These low-res shapes are public by nature (the STLs stay private).
+  GLB, an AR Quick Look USDZ and a colour table to `products/glb/`; `npm run models` compresses the
+  GLBs into `static/models/` and copies the USDZs to `static/ar/` (gitignored, 3-7 MB each, so AR only
+  ships from a machine that has them). These low-res shapes are public by nature (STLs stay private).
 - Old URLs still work: `/hibernator`, `/eyelid`, `/merch`. TikTok captions can't hold links, so the
   bio link is the way in: set it to `/?v=<tag>` and `?v=` rides along every internal link; with no
   `v` the referring site (e.g. `tiktok-com`) is saved.

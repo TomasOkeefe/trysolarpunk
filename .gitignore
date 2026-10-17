@@ -17,3 +17,5 @@ products/blender/
 products/renders/
 products/glb/
 dist/
+# AR Quick Look models (3-7 MB each): rebuilt from products/glb by npm run models, deployed from this Mac
+site/static/ar/

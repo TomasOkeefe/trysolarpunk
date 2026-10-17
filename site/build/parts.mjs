@@ -13,6 +13,7 @@ const manifest = existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8'
 
 export const img = (slug, key) => manifest[slug]?.[key];
 // Extra shots of a product (not the colourway heroes, not the wide crops): { shot: [colourway ids] }
+const SHOT_ORDER = ['fridge', 'table', 'detail'];
 export function shots(slug) {
   const out = {};
   for (const key of Object.keys(manifest[slug] || {})) {
@@ -20,7 +21,8 @@ export function shots(slug) {
     if (shot === 'hero' || shot.endsWith('wide')) continue;
     (out[shot] ??= []).push(rest.join('-'));
   }
-  return out;
+  const rank = (s) => (SHOT_ORDER.includes(s) ? SHOT_ORDER.indexOf(s) : 99);
+  return Object.fromEntries(Object.entries(out).sort(([a], [b]) => rank(a) - rank(b)));
 }
 export const hasModel = (slug) => existsSync(join(ROOT, 'static', 'models', `${slug}.glb`));
 export const hasAR = (slug) => existsSync(join(ROOT, 'static', 'ar', `${slug}.usdz`));
