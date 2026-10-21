@@ -964,6 +964,37 @@ export const PRODUCTS = [
     specs: [['Size', '112 x 92 x 58 mm'], ['Holds', '2 keys'], ['Material', 'Speckled stone PLA'], ['Made', 'Printed to order in New York']],
   },
 
+  {
+    slug: 'swipe-left',
+    no: '052',
+    isNew: true,
+    name: 'Swipe Left',
+    category: 'analog',
+    price: 26,
+    line: 'A dustpan and brush. The only swiping that leaves things better.',
+    colorways: [cw('sun', 'Sun', 'sun', 'moss'), cw('moss', 'Moss', 'moss', 'sun'), cw('clay', 'Clay', 'clay', 'bone')],
+    body: [
+      'A wide pan with a lip that sits flat to the floor and a brush with plant-fibre bristles. Ten seconds of swiping, one clean floor, zero regrets.',
+      'The brush clips onto the handle and the pair hangs on a hook by the door, where you’ll see it instead of the crumbs.',
+    ],
+    specs: [['Size', 'Pan 230 x 300 mm, brush 190 mm'], ['Bristles', 'Plant fibre'], ['Material', 'Matte PLA'], ['Made', 'Printed to order in New York']],
+  },
+  {
+    slug: 'bookmarks-bar',
+    no: '053',
+    isNew: true,
+    name: 'Bookmarks Bar',
+    category: 'analog',
+    price: 48,
+    line: 'A floating shelf for the books you mean to read. Better than 47 open tabs.',
+    colorways: [cw('moss', 'Moss', 'moss', 'sun'), cw('bone', 'Bone', 'bone', 'sun'), cw('clay', 'Clay', 'clay', 'sun')],
+    body: [
+      'A 420 mm shelf on a hidden steel bracket, with a sunrise bookend that slides along it. Put the to-read pile somewhere you can see it, at eye level, instead of in a tab.',
+      'Holds about a foot and a half of books. Two screws into a stud, or the plugs in the box.',
+    ],
+    specs: [['Size', '420 x 150 x 24 mm, bookend 92 mm tall'], ['Holds', 'Up to 8 kg'], ['Includes', 'Hidden steel bracket, screws and plugs'], ['Material', 'Matte PLA'], ['Made', 'Printed to order in New York']],
+  },
+
   // merch: printed on demand through Fourthwall
   {
     slug: 'stroll-tee',
@@ -1095,6 +1126,19 @@ export const PRODUCTS = [
     colorways: [cw('ink', 'Ink', 'ink', 'sun')],
     body: ['A soft padded sleep mask with the Eyelid’s closed eyes printed on it, and a battery that says what everyone is thinking. For flights, naps and phones-in-the-kitchen nights.'],
     specs: [['Fabric', 'Brushed polyester, padded'], ['Strap', 'Elastic, one size'], ['Made', 'Printed on demand']],
+  },
+
+  {
+    slug: 'share-sheet',
+    no: '112',
+    isNew: true,
+    name: 'Share Sheet Picnic Blanket',
+    category: 'merch',
+    price: 58,
+    line: 'A picnic blanket. Share with nearby humans.',
+    colorways: [cw('moss', 'Moss gingham', 'moss', 'cream')],
+    body: ['A big soft picnic blanket in moss gingham with our sun on a patch in the corner, water-resistant underneath, with a leather strap to carry it. Seats four, or two and a lot of snacks.'],
+    specs: [['Size', '150 x 200 cm'], ['Fabric', 'Soft fleece top, water-resistant back'], ['Made', 'Printed on demand']],
   },
 
   // kits
