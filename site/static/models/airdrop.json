@@ -1,0 +1,19 @@
+{
+ "colorways": {
+  "sky": {
+   "ad-can": "#A7C6CE"
+  },
+  "sun": {
+   "ad-can": "#F2C14E"
+  },
+  "moss": {
+   "ad-can": "#2F5D3A"
+  },
+  "clay": {
+   "ad-can": "#D9764A"
+  }
+ },
+ "parts": [
+  "ad-can"
+ ]
+}

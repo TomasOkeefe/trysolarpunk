@@ -1,0 +1,20 @@
+{
+ "colorways": {
+  "sun": {
+   "dnd-body": "#F2C14E",
+   "dnd-ink": "#2A2420"
+  },
+  "moss": {
+   "dnd-body": "#2F5D3A",
+   "dnd-ink": "#F6F1E4"
+  },
+  "bloom": {
+   "dnd-body": "#E9A6A0",
+   "dnd-ink": "#2A2420"
+  }
+ },
+ "parts": [
+  "dnd-body",
+  "dnd-ink"
+ ]
+}

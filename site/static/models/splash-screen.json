@@ -1,0 +1,32 @@
+{
+ "colorways": {
+  "bone": {
+   "ss-dish": "#EDE6D3",
+   "ss-island": "#2A2420",
+   "ss-finch-body": "#F2C14E",
+   "ss-finch-beak": "#D9764A",
+   "ss-finch-eyes": "#2A2420"
+  },
+  "sun": {
+   "ss-dish": "#F2C14E",
+   "ss-island": "#2A2420",
+   "ss-finch-body": "#F2C14E",
+   "ss-finch-beak": "#D9764A",
+   "ss-finch-eyes": "#2A2420"
+  },
+  "clay": {
+   "ss-dish": "#D9764A",
+   "ss-island": "#2A2420",
+   "ss-finch-body": "#F2C14E",
+   "ss-finch-beak": "#D9764A",
+   "ss-finch-eyes": "#2A2420"
+  }
+ },
+ "parts": [
+  "ss-dish",
+  "ss-island",
+  "ss-finch-body",
+  "ss-finch-beak",
+  "ss-finch-eyes"
+ ]
+}

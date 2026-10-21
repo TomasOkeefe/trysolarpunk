@@ -1,0 +1,29 @@
+{
+ "colorways": {
+  "sun": {
+   "hf-ball": "#F2C14E",
+   "hf-ball2": "#E9A6A0",
+   "hf-ball3": "#A7C6CE"
+  },
+  "bloom": {
+   "hf-ball": "#E9A6A0",
+   "hf-ball2": "#F2C14E",
+   "hf-ball3": "#9BC53D"
+  },
+  "sky": {
+   "hf-ball": "#A7C6CE",
+   "hf-ball2": "#E9A6A0",
+   "hf-ball3": "#F2C14E"
+  },
+  "sprout": {
+   "hf-ball": "#9BC53D",
+   "hf-ball2": "#A7C6CE",
+   "hf-ball3": "#E9A6A0"
+  }
+ },
+ "parts": [
+  "hf-ball",
+  "hf-ball2",
+  "hf-ball3"
+ ]
+}

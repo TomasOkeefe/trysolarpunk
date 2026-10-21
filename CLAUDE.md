@@ -78,6 +78,8 @@ Spec: `docs/superpowers/specs/2026-10-16-catalog-store-design.md`.
 ## Store notes
 Fourthwall is still "Coming soon" with all 6 products hidden; it needs a ship-from address and
 payout info before publishing. The tote has a thin margin at $24 (the site lists $28); stickers are $6.
-The site's catalog (45 products: 32 objects, 9 merch, 4 kits) is bigger than Fourthwall's; prices there are Claude's proposal.
+The site's catalog (66 products: 51 objects, 11 merch, 4 kits) is bigger than Fourthwall's; prices there are Claude's proposal.
+The doormat and the sleep mask are merch ideas: check Fourthwall (or another print-on-demand shop) makes them before listing.
+Products with `isNew: true` in `lib/catalog.js` get a New tag and the home page's Just added row; clear it after a month or so.
 The Hibernator and Eyelid on the site are the v2 redesigns; the pipeline's product frames (`pipeline/assets/hib_fridge.jpg`, `eyelid_studio.jpg`) are v2 renders since 2026-10-17, older videos show v1.
 CAD, STLs, `products/blender/`, `products/renders/` and `videos/` are gitignored.

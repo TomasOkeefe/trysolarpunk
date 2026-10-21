@@ -1,0 +1,22 @@
+{
+ "colorways": {
+  "granite": {
+   "bk-rock": null,
+   "bk-drawer": "#6E6A63",
+   "bk-pebble0": null,
+   "bk-pebble1": null
+  },
+  "sandstone": {
+   "bk-rock": null,
+   "bk-drawer": "#6E6A63",
+   "bk-pebble0": null,
+   "bk-pebble1": null
+  }
+ },
+ "parts": [
+  "bk-rock",
+  "bk-drawer",
+  "bk-pebble0",
+  "bk-pebble1"
+ ]
+}

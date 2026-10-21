@@ -1,0 +1,40 @@
+{
+ "colorways": {
+  "sky": {
+   "bp-base": "#A7C6CE",
+   "bp-lid": "#A7C6CE",
+   "bp-battery": "#2A2420",
+   "bp-bars": "#9BC53D",
+   "bp-band": "#D9764A",
+   "apple": "#C9442E",
+   "apple-stem": "#5B7A3A"
+  },
+  "moss": {
+   "bp-base": "#2F5D3A",
+   "bp-lid": "#2F5D3A",
+   "bp-battery": "#F6F1E4",
+   "bp-bars": "#9BC53D",
+   "bp-band": "#F2C14E",
+   "apple": "#C9442E",
+   "apple-stem": "#5B7A3A"
+  },
+  "bone": {
+   "bp-base": "#EDE6D3",
+   "bp-lid": "#EDE6D3",
+   "bp-battery": "#2A2420",
+   "bp-bars": "#9BC53D",
+   "bp-band": "#2F5D3A",
+   "apple": "#C9442E",
+   "apple-stem": "#5B7A3A"
+  }
+ },
+ "parts": [
+  "bp-base",
+  "bp-lid",
+  "bp-battery",
+  "bp-bars",
+  "bp-band",
+  "apple",
+  "apple-stem"
+ ]
+}

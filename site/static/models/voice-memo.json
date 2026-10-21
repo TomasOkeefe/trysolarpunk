@@ -1,0 +1,28 @@
+{
+ "colorways": {
+  "mixed": {
+   "vm0-body": "#F2C14E",
+   "vm0-cap": "#F2C14E",
+   "vm1-body": "#E9A6A0",
+   "vm1-cap": "#E9A6A0",
+   "vm2-body": "#A7C6CE",
+   "vm2-cap": "#A7C6CE"
+  },
+  "moss": {
+   "vm0-body": "#2F5D3A",
+   "vm0-cap": "#2F5D3A",
+   "vm1-body": "#9BC53D",
+   "vm1-cap": "#9BC53D",
+   "vm2-body": "#F2C14E",
+   "vm2-cap": "#F2C14E"
+  }
+ },
+ "parts": [
+  "vm0-body",
+  "vm0-cap",
+  "vm1-body",
+  "vm1-cap",
+  "vm2-body",
+  "vm2-cap"
+ ]
+}

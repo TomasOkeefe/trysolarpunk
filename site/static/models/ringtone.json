@@ -1,0 +1,44 @@
+{
+ "colorways": {
+  "sun": {
+   "rt-sun": "#F2C14E",
+   "rt-tube0": "#C9CCCF",
+   "rt-tube1": "#C9CCCF",
+   "rt-tube2": "#C9CCCF",
+   "rt-tube3": "#C9CCCF",
+   "rt-tube4": "#C9CCCF",
+   "rt-clapper": "#2F5D3A",
+   "rt-leaf": "#9BC53D"
+  },
+  "clay": {
+   "rt-sun": "#D9764A",
+   "rt-tube0": "#C9CCCF",
+   "rt-tube1": "#C9CCCF",
+   "rt-tube2": "#C9CCCF",
+   "rt-tube3": "#C9CCCF",
+   "rt-tube4": "#C9CCCF",
+   "rt-clapper": "#F2C14E",
+   "rt-leaf": "#9BC53D"
+  },
+  "moss": {
+   "rt-sun": "#2F5D3A",
+   "rt-tube0": "#C9CCCF",
+   "rt-tube1": "#C9CCCF",
+   "rt-tube2": "#C9CCCF",
+   "rt-tube3": "#C9CCCF",
+   "rt-tube4": "#C9CCCF",
+   "rt-clapper": "#F2C14E",
+   "rt-leaf": "#F2C14E"
+  }
+ },
+ "parts": [
+  "rt-sun",
+  "rt-tube0",
+  "rt-tube1",
+  "rt-tube2",
+  "rt-tube3",
+  "rt-tube4",
+  "rt-clapper",
+  "rt-leaf"
+ ]
+}

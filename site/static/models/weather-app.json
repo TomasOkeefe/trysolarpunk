@@ -1,0 +1,40 @@
+{
+ "colorways": {
+  "sun": {
+   "wa-case": "#F2C14E",
+   "wa-face": "#F6F1E4",
+   "wa-marks": "#2A2420",
+   "wa-sun": "#F2C14E",
+   "wa-cloud": "#A7C6CE",
+   "wa-needle": "#D9764A",
+   "wa-glass": "#FFFFFF"
+  },
+  "moss": {
+   "wa-case": "#2F5D3A",
+   "wa-face": "#F6F1E4",
+   "wa-marks": "#2A2420",
+   "wa-sun": "#F2C14E",
+   "wa-cloud": "#A7C6CE",
+   "wa-needle": "#D9764A",
+   "wa-glass": "#FFFFFF"
+  },
+  "clay": {
+   "wa-case": "#D9764A",
+   "wa-face": "#F6F1E4",
+   "wa-marks": "#2A2420",
+   "wa-sun": "#F2C14E",
+   "wa-cloud": "#A7C6CE",
+   "wa-needle": "#D9764A",
+   "wa-glass": "#FFFFFF"
+  }
+ },
+ "parts": [
+  "wa-case",
+  "wa-face",
+  "wa-marks",
+  "wa-sun",
+  "wa-cloud",
+  "wa-needle",
+  "wa-glass"
+ ]
+}

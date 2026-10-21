@@ -1,0 +1,24 @@
+{
+ "colorways": {
+  "ink": {
+   "ls-box": "#2A2420",
+   "ls-dial": "#F2C14E",
+   "ls-marks": "#F6F1E4"
+  },
+  "moss": {
+   "ls-box": "#2F5D3A",
+   "ls-dial": "#F2C14E",
+   "ls-marks": "#F6F1E4"
+  },
+  "bone": {
+   "ls-box": "#EDE6D3",
+   "ls-dial": "#D9764A",
+   "ls-marks": "#2A2420"
+  }
+ },
+ "parts": [
+  "ls-box",
+  "ls-dial",
+  "ls-marks"
+ ]
+}

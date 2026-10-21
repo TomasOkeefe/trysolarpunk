@@ -41,7 +41,15 @@ Dark Mode (chamberstick with a crescent moon handle), Push Notifications (six fr
 Cloud Storage (pen pot), Captcha (sliding tile puzzle), Inbox Zero (letter tray with a 0 badge),
 Hashtags (plant markers), Reactions (cookie cutters), Time Out (corner shelf and dunce cap for
 the phone), Incubator (seed starter), Airplane Mode (boomerang), Screen Time (20 minute sand
-timer). New category "Fire escape" for the outdoor ones. Kits: Fire Escape, Game Night.
+timer), Status (coasters), Find My (key rack), Desk Moss (figure), Saved (bookmarks), Ringtone (wind
+chimes), Night Shift (moon lamp), Desktop (old-computer planter with a pixel wallpaper), Recycle Bin
+(compost caddy), Lock Screen (phone box with a dial), Haptic Feedback (massage ball), Pinch to Zoom
+(magnifier), Streak (habit tracker), Do Not Disturb (door hanger), Calculator (abacus), Voice Memo
+(kazoos), Weather App (thermometer), Maps (compass), AirDrop (watering can), Splash Screen (bird
+bath with an island), Battery Pack (lunch box), Archive (recipe box), Backup (fake rock for a key).
+Merch: a Shoes Off, Phones Off doormat and a Low Power Mode sleep mask. New category "Fire escape"
+for the outdoor ones; a New collection and an Under $20 collection (chips and pages, not in the
+menu). Kits: Fire Escape, Game Night.
 
 Prices are Claude's proposal (lib/catalog.js), to be confirmed by the owner before launch.
 

@@ -213,7 +213,7 @@ function categoryPage(c, assets) {
 
 // ------------------------------------------------------------------ product
 
-const SHOT_ALT = { fridge: 'on a fridge door, next to the shopping list', wall: 'on a painted brick wall outside', table: 'on a wooden table at home', detail: 'up close' };
+const SHOT_ALT = { fridge: 'on a fridge door, next to the shopping list', wall: 'on a painted brick wall outside', table: 'on a wooden table at home', detail: 'up close', closeup: 'up close' };
 
 function product(p, assets) {
   const cws = p.colorways.filter((c) => img(p.slug, heroKey(p, c.id)));

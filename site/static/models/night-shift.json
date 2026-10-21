@@ -1,0 +1,20 @@
+{
+ "colorways": {
+  "moss": {
+   "ns-moon": null,
+   "ns-base": "#2F5D3A"
+  },
+  "clay": {
+   "ns-moon": null,
+   "ns-base": "#D9764A"
+  },
+  "ink": {
+   "ns-moon": null,
+   "ns-base": "#2A2420"
+  }
+ },
+ "parts": [
+  "ns-moon",
+  "ns-base"
+ ]
+}

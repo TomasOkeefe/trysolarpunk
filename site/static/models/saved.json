@@ -1,0 +1,32 @@
+{
+ "colorways": {
+  "mixed": {
+   "saved-sun-body": "#F2C14E",
+   "saved-sun-ink": "#2A2420",
+   "saved-moss-body": "#2F5D3A",
+   "saved-moss-ink": "#F6F1E4",
+   "saved-clay-body": "#D9764A",
+   "saved-clay-ink": "#F6F1E4",
+   "book0": "#2F5D3A",
+   "pages0": "#F4EEDC",
+   "book1": "#F6F1E4",
+   "pages1": "#F4EEDC",
+   "book0.001": "#E9A6A0",
+   "pages0.001": "#F4EEDC"
+  }
+ },
+ "parts": [
+  "saved-sun-body",
+  "saved-sun-ink",
+  "saved-moss-body",
+  "saved-moss-ink",
+  "saved-clay-body",
+  "saved-clay-ink",
+  "book0",
+  "pages0",
+  "book1",
+  "pages1",
+  "book0.001",
+  "pages0.001"
+ ]
+}

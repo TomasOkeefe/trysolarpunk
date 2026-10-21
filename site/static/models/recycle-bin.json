@@ -1,0 +1,28 @@
+{
+ "colorways": {
+  "moss": {
+   "rb-can": "#2F5D3A",
+   "rb-lid": "#2F5D3A",
+   "rb-leaf": "#9BC53D",
+   "rb-icon": "#F2C14E"
+  },
+  "bone": {
+   "rb-can": "#EDE6D3",
+   "rb-lid": "#EDE6D3",
+   "rb-leaf": "#2F5D3A",
+   "rb-icon": "#2F5D3A"
+  },
+  "clay": {
+   "rb-can": "#D9764A",
+   "rb-lid": "#D9764A",
+   "rb-leaf": "#9BC53D",
+   "rb-icon": "#F6F1E4"
+  }
+ },
+ "parts": [
+  "rb-can",
+  "rb-lid",
+  "rb-leaf",
+  "rb-icon"
+ ]
+}

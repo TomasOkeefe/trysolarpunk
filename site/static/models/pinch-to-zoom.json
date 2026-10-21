@@ -1,0 +1,56 @@
+{
+ "colorways": {
+  "sun": {
+   "pz-frame": "#F2C14E",
+   "pz-lens": "#FFFFFF",
+   "pz-packet": "#F3E6C4",
+   "pz-line0": "#2F5D3A",
+   "pz-line1": "#2F5D3A",
+   "pz-line2": "#2F5D3A",
+   "pz-line3": "#2F5D3A",
+   "pz-line4": "#2F5D3A",
+   "pz-line5": "#2F5D3A",
+   "pz-line6": "#2F5D3A",
+   "pz-line7": "#C2412D"
+  },
+  "clay": {
+   "pz-frame": "#D9764A",
+   "pz-lens": "#FFFFFF",
+   "pz-packet": "#F3E6C4",
+   "pz-line0": "#2F5D3A",
+   "pz-line1": "#2F5D3A",
+   "pz-line2": "#2F5D3A",
+   "pz-line3": "#2F5D3A",
+   "pz-line4": "#2F5D3A",
+   "pz-line5": "#2F5D3A",
+   "pz-line6": "#2F5D3A",
+   "pz-line7": "#C2412D"
+  },
+  "moss": {
+   "pz-frame": "#2F5D3A",
+   "pz-lens": "#FFFFFF",
+   "pz-packet": "#F3E6C4",
+   "pz-line0": "#2F5D3A",
+   "pz-line1": "#2F5D3A",
+   "pz-line2": "#2F5D3A",
+   "pz-line3": "#2F5D3A",
+   "pz-line4": "#2F5D3A",
+   "pz-line5": "#2F5D3A",
+   "pz-line6": "#2F5D3A",
+   "pz-line7": "#C2412D"
+  }
+ },
+ "parts": [
+  "pz-frame",
+  "pz-lens",
+  "pz-packet",
+  "pz-line0",
+  "pz-line1",
+  "pz-line2",
+  "pz-line3",
+  "pz-line4",
+  "pz-line5",
+  "pz-line6",
+  "pz-line7"
+ ]
+}

@@ -1,0 +1,44 @@
+{
+ "colorways": {
+  "moss": {
+   "mp-case": "#2F5D3A",
+   "mp-marks": "#F6F1E4",
+   "mp-card": "#F7F2E6",
+   "mp-ticks": "#2A2420",
+   "mp-north": "#C2412D",
+   "mp-south": "#F7F2E6",
+   "mp-pivot": "#C7A35A",
+   "mp-glass": "#FFFFFF"
+  },
+  "sun": {
+   "mp-case": "#F2C14E",
+   "mp-marks": "#2A2420",
+   "mp-card": "#F7F2E6",
+   "mp-ticks": "#2A2420",
+   "mp-north": "#C2412D",
+   "mp-south": "#F7F2E6",
+   "mp-pivot": "#C7A35A",
+   "mp-glass": "#FFFFFF"
+  },
+  "clay": {
+   "mp-case": "#D9764A",
+   "mp-marks": "#F6F1E4",
+   "mp-card": "#F7F2E6",
+   "mp-ticks": "#2A2420",
+   "mp-north": "#C2412D",
+   "mp-south": "#F7F2E6",
+   "mp-pivot": "#C7A35A",
+   "mp-glass": "#FFFFFF"
+  }
+ },
+ "parts": [
+  "mp-case",
+  "mp-marks",
+  "mp-card",
+  "mp-ticks",
+  "mp-north",
+  "mp-south",
+  "mp-pivot",
+  "mp-glass"
+ ]
+}

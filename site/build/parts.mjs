@@ -13,7 +13,7 @@ const manifest = existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8'
 
 export const img = (slug, key) => manifest[slug]?.[key];
 // Extra shots of a product (not the colourway heroes, not the wide crops): { shot: [colourway ids] }
-const SHOT_ORDER = ['fridge', 'wall', 'table', 'detail'];
+const SHOT_ORDER = ['fridge', 'wall', 'table', 'detail', 'closeup'];
 export function shots(slug) {
   const out = {};
   for (const key of Object.keys(manifest[slug] || {})) {

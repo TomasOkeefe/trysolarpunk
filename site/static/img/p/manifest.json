@@ -861,6 +861,15 @@
    ],
    "ratio": 1.25,
    "bg": "#e4b796"
+  },
+  "closeup-bone": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#c3e7eb"
   }
  },
  "group-chat": {
@@ -1710,6 +1719,84 @@
    ],
    "ratio": 1.25,
    "bg": "#acccd2"
+  }
+ },
+ "backup": {
+  "hero-granite": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#e8f2cb"
+  },
+  "hero-sandstone": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#c4e9ef"
+  }
+ },
+ "battery-pack": {
+  "hero-bone": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#c4eaef"
+  },
+  "hero-moss": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f8d6cb"
+  },
+  "hero-sky": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f9e1a9"
+  }
+ },
+ "splash-screen": {
+  "hero-bone": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#c2e8ed"
+  },
+  "hero-clay": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#e9f5f3"
+  },
+  "hero-sun": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#e8f1c9"
   }
  }
 }

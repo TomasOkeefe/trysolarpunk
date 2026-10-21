@@ -1,0 +1,24 @@
+{
+ "colorways": {
+  "clay": {
+   "ar-box": "#D9764A",
+   "ar-lid": "#D9764A",
+   "ar-label": "#F6F1E4"
+  },
+  "moss": {
+   "ar-box": "#2F5D3A",
+   "ar-lid": "#2F5D3A",
+   "ar-label": "#F6F1E4"
+  },
+  "bone": {
+   "ar-box": "#EDE6D3",
+   "ar-lid": "#EDE6D3",
+   "ar-label": "#2A2420"
+  }
+ },
+ "parts": [
+  "ar-box",
+  "ar-lid",
+  "ar-label"
+ ]
+}
