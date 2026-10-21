@@ -24,6 +24,7 @@
   --oat: #E8DECA;
   --sky: #A7C6CE;
   --lilac: #D9CFE6;
+  --leaf: #D4E4C2;
 
   --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
   --sans: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -348,11 +349,11 @@ html:not(.js) .js-only { display: none !important; }
 .habit-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr)); }
 @media (min-width: 1180px) {
   .habit-grid { grid-template-columns: repeat(4, 1fr); }
-  .habit-grid > .habit:first-child { grid-column: span 2; }
-  .habit-grid > .habit:first-child .habit-thumb { width: 26%; }
-  .habit-grid > .habit:first-child .habit-thumb.t0 { left: 12%; }
-  .habit-grid > .habit:first-child .habit-thumb.t1 { left: 37%; }
-  .habit-grid > .habit:first-child .habit-thumb.t2 { right: 12%; }
+  .habit-grid > .habit.wide { grid-column: span 2; }
+  .habit-grid > .habit.wide .habit-thumb { width: 26%; }
+  .habit-grid > .habit.wide .habit-thumb.t0 { left: 12%; }
+  .habit-grid > .habit.wide .habit-thumb.t1 { left: 37%; }
+  .habit-grid > .habit.wide .habit-thumb.t2 { right: 12%; }
 }
 .habit {
   position: relative;
@@ -423,6 +424,7 @@ html:not(.js) .js-only { display: none !important; }
   font: 700 .74rem/1.15 var(--mono);
 }
 .tag-limited { background: var(--ink); color: var(--sun); }
+.tag-new { background: var(--sprout); color: var(--ink); }
 @media (max-width: 520px) {
   .card-info { grid-template-columns: 1fr; }
   .card-line { display: none; }
@@ -513,6 +515,8 @@ html:not(.js) .js-only { display: none !important; }
 .interlude small { font: 700 .8rem/1.3 var(--mono); color: var(--sun); }
 .interlude.sun { background: var(--sun); color: var(--ink); }
 .interlude.sun small { color: var(--ink); }
+.interlude.leaf { background: var(--leaf); color: var(--ink); }
+.interlude.leaf small { color: var(--moss); }
 
 /* ---------------------------------------------------------------- listing pages */
 

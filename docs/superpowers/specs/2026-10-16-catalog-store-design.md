@@ -33,6 +33,16 @@ the Crypt (limited Halloween coffin), Do Something Else Dice, the Thumb Stone, M
 of the mascot). Merch: two tees, a crewneck, the Moss beanie, a cap, tote, stickers, socks, poster.
 Kits: Starter, Lights Out.
 
+Second line (October 2026), each named after the phone habit it replaces: Followers (birdhouse
+with a living roof and its first follower, a printed finch), Group Chat (bee hotel shaped like a
+speech bubble, in blue bubble and green bubble), The Feed (bird feeder shaped like a phone, the
+seed is the content), Pull to Refresh (yo-yo), Loading (spinning top with a loading spinner),
+Dark Mode (chamberstick with a crescent moon handle), Push Notifications (six fridge magnets),
+Cloud Storage (pen pot), Captcha (sliding tile puzzle), Inbox Zero (letter tray with a 0 badge),
+Hashtags (plant markers), Reactions (cookie cutters), Time Out (corner shelf and dunce cap for
+the phone), Incubator (seed starter), Airplane Mode (boomerang), Screen Time (20 minute sand
+timer). New category "Fire escape" for the outdoor ones. Kits: Fire Escape, Game Night.
+
 Prices are Claude's proposal (lib/catalog.js), to be confirmed by the owner before launch.
 
 ## How it is built

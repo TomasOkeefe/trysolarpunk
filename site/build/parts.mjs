@@ -13,7 +13,7 @@ const manifest = existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, 'utf8'
 
 export const img = (slug, key) => manifest[slug]?.[key];
 // Extra shots of a product (not the colourway heroes, not the wide crops): { shot: [colourway ids] }
-const SHOT_ORDER = ['fridge', 'table', 'detail'];
+const SHOT_ORDER = ['fridge', 'wall', 'table', 'detail'];
 export function shots(slug) {
   const out = {};
   for (const key of Object.keys(manifest[slug] || {})) {
@@ -70,7 +70,7 @@ export function card(p, { eager = false, sizes } = {}) {
       ${pic(p.slug, heroKey(p), { alt: `${p.name} in ${p.colorways[0].name}`, eager, sizes, cls: 'card-img is-on', attrs: `data-cw="${p.colorways[0].id}"` })}
       ${alt ? pic(p.slug, heroKey(p, alt.id), { alt: '', sizes, cls: 'card-img', attrs: `data-cw="${alt.id}" aria-hidden="true"` }) : ''}
       ${p.limited ? html`<span class="tag tag-limited">${p.limited}</span>` : ''}
-      ${p.was ? html`<span class="tag">Save ${money(p.was - p.price)}</span>` : ''}
+      ${p.was ? html`<span class="tag">Save ${money(p.was - p.price)}</span>` : p.isNew && !p.limited ? html`<span class="tag tag-new">New</span>` : ''}
     </div>
     <div class="card-info">
       <p class="card-no">No. ${p.no}</p>
@@ -90,6 +90,7 @@ export function card(p, { eager = false, sizes } = {}) {
 const INTERLUDES = {
   5: html`<aside class="interlude"><p>Nothing here gets made until someone wants it.</p><small>Reserve what you like. The most wanted gets printed first.</small></aside>`,
   13: html`<a class="interlude sun" href="/shop/thumb"><p>Your thumb deserves a hobby.</p><small>See: thumb rehab</small></a>`,
+  19: html`<a class="interlude leaf" href="/shop/outside"><p>The best followers have feathers.</p><small>See: fire escape</small></a>`,
 };
 
 export const grid = (products, opts = {}) =>

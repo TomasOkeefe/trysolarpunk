@@ -5,8 +5,17 @@ import {
   TIKTOK, bg, card, category, emblem, grid, hasAR, hasModel, heroKey, img, imageUrl, inCategory, joinForm, live, page, pic, shots, swatch,
 } from './parts.mjs';
 
-const WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty'];
-const words = (n) => WORDS[n] || String(n);
+const WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+const TENS = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+const words = (n) => (n < 20 ? WORDS[n] : n < 100 ? TENS[Math.floor(n / 10)] + (n % 10 ? `-${WORDS[n % 10]}` : '') : String(n));
+
+// Tiles that span two columns in the four-column habit grid: the first, then from the end,
+// until the last row is full.
+function wideTiles(n, cols = 4) {
+  const wide = new Set([0]);
+  for (let i = n - 1; (n + wide.size) % cols && i > 0; i--) wide.add(i);
+  return wide;
+}
 const cap = (s) => s[0].toUpperCase() + s.slice(1);
 const catHref = (id) => (id === 'merch' ? '/merch' : `/shop/${id}`);
 
@@ -47,6 +56,7 @@ function home(assets) {
   const all = live();
   const objs = objects();
   const habits = CATEGORIES.filter((c) => inCategory(c.id).length);
+  const wide = wideTiles(habits.length);
   const body = html`
 <section class="hero" data-hero>
   <div class="hero-scene" aria-hidden="true">
@@ -90,7 +100,7 @@ ${lead && ready(lead) ? html`
   <div class="habit-grid">
     ${habits.map((c, i) => {
       const ps = inCategory(c.id).slice(0, 3);
-      return html`<a class="habit habit-${i % 6}" href="${catHref(c.id)}" style="--tint: var(--${c.tint})">
+      return html`<a class="habit habit-${i % 6}${wide.has(i) ? ' wide' : ''}" href="${catHref(c.id)}" style="--tint: var(--${c.tint})">
       <div class="habit-media">${ps.map((p, k) => html`<span class="habit-thumb t${k}" style="--bg: ${bg(p)}">${pic(p.slug, heroKey(p), { sizes: '(min-width: 900px) 12vw, 30vw' })}</span>`)}</div>
       <div class="habit-text"><h3>${c.name}</h3><p>${c.blurb}</p><span class="habit-count">${inCategory(c.id).length} ${inCategory(c.id).length === 1 ? 'thing' : 'things'}</span></div>
     </a>`;
@@ -180,7 +190,7 @@ function categoryPage(c, assets) {
 
 // ------------------------------------------------------------------ product
 
-const SHOT_ALT = { fridge: 'on a fridge door, next to the shopping list', table: 'on a wooden table at home', detail: 'up close' };
+const SHOT_ALT = { fridge: 'on a fridge door, next to the shopping list', wall: 'on a painted brick wall outside', table: 'on a wooden table at home', detail: 'up close' };
 
 function product(p, assets) {
   const cws = p.colorways.filter((c) => img(p.slug, heroKey(p, c.id)));
