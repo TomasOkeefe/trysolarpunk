@@ -24,6 +24,7 @@ const objects = () => live().filter((p) => Number(p.no) < 100);
 
 // Collections cut across the categories: they get a chip and a page, but no place in the menu.
 const COLLECTIONS = [
+  { id: 'new', name: 'New', blurb: 'Everything that joined the catalog this month. Printed to order, like the rest.', tint: 'leaf', pick: (p) => p.isNew },
   { id: 'under-20', name: 'Under $20', blurb: 'Small things for small prices. Good for gifts, stockings and impulse decisions.', tint: 'butter', pick: (p) => p.price <= 20 },
 ];
 const inCollection = (c) => live().filter(c.pick);
@@ -50,6 +51,17 @@ const AT_HOME = [
   ['followers', 'wall-bone', 'On a sunny wall, waiting for followers.'],
   ['cloud-storage', 'table-sky', 'On the desk, storing pencils.'],
 ];
+
+// A row of the newest objects, ending in a tile for the rest of them.
+function fresh() {
+  const all = live().filter((p) => p.isNew);
+  const ps = all.filter((p) => Number(p.no) < 100).sort((a, b) => Number(b.no) - Number(a.no)).slice(0, 10);
+  if (ps.length < 4) return '';
+  return html`<section class="fresh" aria-labelledby="fresh-title">
+  <div class="section-head"><h2 id="fresh-title">Just added</h2><p>${cap(words(all.length))} new things this month, from a birdhouse with its own lawn to a bird feeder shaped like a phone.</p></div>
+  <div class="fresh-row">${ps.map((p) => card(p, { sizes: '(min-width: 900px) 22vw, 68vw' }))}<a class="interlude leaf fresh-all" href="/shop/new"><p>See all ${words(all.length)} new things</p><small>The whole new batch</small></a></div>
+</section>`;
+}
 
 function atHome() {
   const shots = AT_HOME.filter(([s, k]) => img(s, k));
@@ -116,6 +128,8 @@ ${lead && ready(lead) ? html`
     })}
   </div>
 </section>
+
+${fresh()}
 
 <section class="catalog" id="catalog" aria-labelledby="catalog-title">
   <div class="section-head"><h2 id="catalog-title">The whole catalog</h2><p>${cap(words(all.length))} things. Reserve what you like and pay nothing until it’s printed.</p></div>

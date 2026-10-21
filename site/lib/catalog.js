@@ -887,6 +887,83 @@ export const PRODUCTS = [
     specs: [['Size', '64 mm across, 12 mm thick'], ['Inside', 'Liquid-filled compass capsule'], ['Material', 'Matte PLA'], ['Made', 'Printed to order in New York']],
   },
 
+  {
+    slug: 'airdrop',
+    no: '047',
+    isNew: true,
+    name: 'AirDrop',
+    category: 'outside',
+    price: 34,
+    line: 'A watering can. Share with nearby plants.',
+    colorways: [cw('sky', 'Sky', 'sky'), cw('sun', 'Sun', 'sun'), cw('moss', 'Moss', 'moss'), cw('clay', 'Clay', 'clay')],
+    body: [
+      'A one litre watering can with a long spout for the back of the windowsill and a rose with its holes in rings, like the icon. Accepting is automatic. Plants always accept.',
+      'Arched handle, flat bottom, printed in one piece in PETG so it’s happy outside on the fire escape.',
+    ],
+    specs: [['Size', '248 x 112 x 178 mm'], ['Holds', '1 litre'], ['Material', 'PETG'], ['Made', 'Printed to order in New York']],
+  },
+  {
+    slug: 'splash-screen',
+    no: '048',
+    isNew: true,
+    name: 'Splash Screen',
+    category: 'outside',
+    price: 38,
+    line: 'A bird bath shaped like a phone screen. The island is an actual island.',
+    colorways: [cw('bone', 'Bone', 'bone', 'ink'), cw('sun', 'Sun', 'sun', 'ink'), cw('clay', 'Clay', 'clay', 'ink')],
+    body: [
+      'A shallow bath for the birds on your street, 22 mm deep at the middle so the small ones can stand in it. The island at one end is dry, for birds who just want to watch.',
+      'Sits on a ledge, a step or the fire escape. Change the water every couple of days and you’ll have regulars by the weekend.',
+    ],
+    specs: [['Size', '240 x 150 x 34 mm'], ['Holds', 'About 400 ml'], ['Material', 'PETG, made for outdoors'], ['Made', 'Printed to order in New York']],
+  },
+  {
+    slug: 'battery-pack',
+    no: '049',
+    isNew: true,
+    name: 'Battery Pack',
+    category: 'company',
+    price: 28,
+    line: 'A lunch box. Recharges you at noon.',
+    colorways: [cw('sky', 'Sky', 'sky', 'clay'), cw('moss', 'Moss', 'moss', 'sun'), cw('bone', 'Bone', 'bone', 'moss')],
+    body: [
+      'A 1.2 litre lunch box with a divider and a snap lid with a full battery on it. Eat it outside, away from the desk, ideally next to someone you like.',
+      'An elastic band holds the lid on in your bag. Food-safe PP, top rack of the dishwasher.',
+    ],
+    specs: [['Size', '210 x 140 x 72 mm'], ['Holds', '1.2 litres, with a divider'], ['Material', 'Food-safe PP, elastic band'], ['Made', 'Printed to order in New York']],
+  },
+
+  {
+    slug: 'archive',
+    no: '050',
+    isNew: true,
+    name: 'Archive',
+    category: 'analog',
+    price: 36,
+    line: 'A recipe card box. Your grandmother’s cloud.',
+    colorways: [cw('clay', 'Clay', 'clay', 'cream'), cw('moss', 'Moss', 'moss', 'cream'), cw('bone', 'Bone', 'bone', 'ink')],
+    body: [
+      'Holds 200 index cards and six tabbed dividers, so the soup your aunt makes stops living in a screenshot. The lid flips back and holds the card you’re cooking from.',
+      'Comes with 50 blank cards. Sync happens when you lend it to someone, and they give it back with a new recipe in it.',
+    ],
+    specs: [['Size', '150 x 104 x 92 mm'], ['Fits', '3 x 5 in index cards'], ['Includes', '50 cards, 6 dividers'], ['Material', 'Matte PLA'], ['Made', 'Printed to order in New York']],
+  },
+  {
+    slug: 'backup',
+    no: '051',
+    isNew: true,
+    name: 'Backup',
+    category: 'outside',
+    price: 22,
+    line: 'A fake rock for the spare key. Off-site backup, in the flower bed.',
+    colorways: [cw('granite', 'Granite', '#8D8880', '#4B4741'), cw('sandstone', 'Sandstone', '#C2A47E', '#7C6347')],
+    body: [
+      'A 110 mm stone with a hidden drawer underneath for two keys. Put it in the flower bed by the door and you’ll never have to call anyone at midnight from the stoop.',
+      'Printed in a speckled stone PLA, so it looks like the rocks next to it and not like a rock from a website.',
+    ],
+    specs: [['Size', '112 x 92 x 58 mm'], ['Holds', '2 keys'], ['Material', 'Speckled stone PLA'], ['Made', 'Printed to order in New York']],
+  },
+
   // merch: printed on demand through Fourthwall
   {
     slug: 'stroll-tee',

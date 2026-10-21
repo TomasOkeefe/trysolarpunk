@@ -529,6 +529,22 @@ html:not(.js) .js-only { display: none !important; }
 
 /* ---------------------------------------------------------------- at home */
 
+.fresh { padding: clamp(1rem, 3vw, 2rem) 0 0; }
+.fresh .section-head { max-width: var(--max); margin-inline: auto; padding: 0 var(--gutter); }
+.fresh-row {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(230px, 21%);
+  gap: clamp(.8rem, 1.6vw, 1.4rem);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: .5rem var(--gutter) 1.5rem;
+  scroll-padding-inline: var(--gutter);
+  scrollbar-width: none;
+}
+.fresh-row::-webkit-scrollbar { display: none; }
+.fresh-row > * { scroll-snap-align: start; }
+@media (max-width: 700px) { .fresh-row { grid-auto-columns: 68%; } }
 .athome { padding: 0 0 clamp(4rem, 9vw, 8rem); }
 .athome .section-head { max-width: var(--max); margin-inline: auto; padding: 0 var(--gutter); }
 .athome-row {
