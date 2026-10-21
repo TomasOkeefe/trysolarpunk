@@ -1,0 +1,29 @@
+{
+ "colorways": {
+  "bone": {
+   "dm-body": "#EDE6D3",
+   "dm-text": "#2A2420",
+   "brass": "#C9A24A"
+  },
+  "moss": {
+   "dm-body": "#2F5D3A",
+   "dm-text": "#F6F1E4",
+   "brass": "#C9A24A"
+  },
+  "clay": {
+   "dm-body": "#D9764A",
+   "dm-text": "#F6F1E4",
+   "brass": "#C9A24A"
+  },
+  "sun": {
+   "dm-body": "#F2C14E",
+   "dm-text": "#2A2420",
+   "brass": "#C9A24A"
+  }
+ },
+ "parts": [
+  "dm-body",
+  "dm-text",
+  "brass"
+ ]
+}

@@ -22,11 +22,18 @@ const catHref = (id) => (id === 'merch' ? '/merch' : `/shop/${id}`);
 // the printed objects are numbered 001 to 099; merch starts at 101, kits at 201
 const objects = () => live().filter((p) => Number(p.no) < 100);
 
+// Collections cut across the categories: they get a chip and a page, but no place in the menu.
+const COLLECTIONS = [
+  { id: 'under-20', name: 'Under $20', blurb: 'Small things for small prices. Good for gifts, stockings and impulse decisions.', tint: 'butter', pick: (p) => p.price <= 20 },
+];
+const inCollection = (c) => live().filter(c.pick);
+
 function chips(active) {
   const cats = CATEGORIES.filter((c) => inCategory(c.id).length);
   return html`<nav class="chips" aria-label="Categories">
   <a class="chip" href="/shop" ${active ? '' : raw('aria-current="page"')}>Everything <span>${live().length}</span></a>
   ${cats.map((c) => html`<a class="chip" href="${catHref(c.id)}" ${active === c.id ? raw('aria-current="page"') : ''}>${c.name} <span>${inCategory(c.id).length}</span></a>`)}
+  ${COLLECTIONS.filter((c) => inCollection(c).length).map((c) => html`<a class="chip" href="/shop/${c.id}" ${active === c.id ? raw('aria-current="page"') : ''}>${c.name} <span>${inCollection(c).length}</span></a>`)}
 </nav>`;
 }
 
@@ -40,6 +47,8 @@ const AT_HOME = [
   ['moss-head', 'table-classic', 'On the shelf, growing a haircut.'],
   ['infinite-scroll', 'table-ink', 'Next to the coffee, for the 11 pm itch.'],
   ['dice', 'table-sun', 'Roll before you open an app.'],
+  ['followers', 'wall-bone', 'On a sunny wall, waiting for followers.'],
+  ['cloud-storage', 'table-sky', 'On the desk, storing pencils.'],
 ];
 
 function atHome() {
@@ -168,8 +177,8 @@ function shop(assets) {
 }
 
 function categoryPage(c, assets) {
-  const ps = inCategory(c.id);
-  const path = catHref(c.id);
+  const ps = c.pick ? inCollection(c) : inCategory(c.id);
+  const path = c.pick ? `/shop/${c.id}` : catHref(c.id);
   const body = html`
 <section class="listing" style="--tint: var(--${c.tint})">
   <div class="listing-head">
@@ -265,7 +274,7 @@ const FAQ = [
   ['Do I pay anything now?', 'No. Reserving is free. You give us an email, we send one message when your things are printed, and you decide then.'],
   ['When will things ship?', 'We print in batches in New York, starting with whatever gets reserved most. The first batch goes out when the shop opens, and you will hear about it by email first.'],
   ['Are the pictures real?', 'They are renders of the final designs, made from the same 3D files we print from. Real photos the moment the first batch comes off the printer.'],
-  ['What are they made of?', 'PLA, a plastic made from plants, in matte colours. Some pieces have magnets, an NFC tag or a ball bearing inside. The clothes are printed on demand.'],
+  ['What are they made of?', 'PLA, a plastic made from plants, in matte colours, and PETG for the things that live outside. Some pieces have magnets, an NFC tag or a ball bearing inside. The clothes and the doormat are printed on demand.'],
   ['How do the NFC tags work?', 'Tap your phone on the tag and it can run an automation, like switching on a Focus mode. On iPhone that is a Shortcuts automation (iPhone XS or newer). On Android, an NFC automation app does the same.'],
   ['Why is your channel AI-made?', 'Our videos are made with AI and labelled that way on TikTok. The objects are designed on a computer and printed by a person. We think tools are fine. Feeds that never end are the problem.'],
   ['Will you email me a lot?', 'No. One email when your things are ready. If you sign up for every drop, one email per drop.'],
@@ -330,6 +339,7 @@ export function pages(assets) {
     home(assets),
     shop(assets),
     ...CATEGORIES.filter((c) => inCategory(c.id).length || c.id === 'merch').map((c) => categoryPage(c, assets)),
+    ...COLLECTIONS.filter((c) => inCollection(c).length).map((c) => categoryPage(c, assets)),
     ...live().map((p) => product(p, assets)),
     about(assets),
     notFound(assets),

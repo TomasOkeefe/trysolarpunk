@@ -1,0 +1,30 @@
+{
+ "colorways": {
+  "classic": {
+   "dm-coat": "#F2C14E",
+   "dm-hands": "#EDB59B",
+   "dm-legs": "#2F5D3A",
+   "dm-boots": "#D9764A",
+   "dm-buttons": "#2A2420",
+   "dm-head": "#EDB59B",
+   "dm-beanie": "#2F5D3A",
+   "dm-pompom": "#F2C14E",
+   "dm-tash": "#6E452F",
+   "dm-glasses": "#2A2420",
+   "dm-cheeks": "#E9897C"
+  }
+ },
+ "parts": [
+  "dm-coat",
+  "dm-hands",
+  "dm-legs",
+  "dm-boots",
+  "dm-buttons",
+  "dm-head",
+  "dm-beanie",
+  "dm-pompom",
+  "dm-tash",
+  "dm-glasses",
+  "dm-cheeks"
+ ]
+}

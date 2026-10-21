@@ -1,0 +1,34 @@
+{
+ "colorways": {
+  "moss": {
+   "st-frame": "#2F5D3A",
+   "st-glass": "#FFFFFF",
+   "st-sand": "#EADFC6",
+   "st-text": "#F6F1E4"
+  },
+  "clay": {
+   "st-frame": "#D9764A",
+   "st-glass": "#FFFFFF",
+   "st-sand": "#EADFC6",
+   "st-text": "#F6F1E4"
+  },
+  "ink": {
+   "st-frame": "#2A2420",
+   "st-glass": "#FFFFFF",
+   "st-sand": "#F2D27A",
+   "st-text": "#F2C14E"
+  },
+  "bone": {
+   "st-frame": "#EDE6D3",
+   "st-glass": "#FFFFFF",
+   "st-sand": "#E7A79F",
+   "st-text": "#2A2420"
+  }
+ },
+ "parts": [
+  "st-frame",
+  "st-glass",
+  "st-sand",
+  "st-text"
+ ]
+}

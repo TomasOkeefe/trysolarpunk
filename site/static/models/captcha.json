@@ -1,0 +1,36 @@
+{
+ "colorways": {
+  "clay": {
+   "cap-frame": "#D9764A",
+   "cap-label": "#F6F1E4",
+   "cap-tiles": "#EDE6D3",
+   "cap-sun": "#F2C14E",
+   "cap-far": "#9BC53D",
+   "cap-near": "#4E8C55"
+  },
+  "moss": {
+   "cap-frame": "#2F5D3A",
+   "cap-label": "#F6F1E4",
+   "cap-tiles": "#EDE6D3",
+   "cap-sun": "#F2C14E",
+   "cap-far": "#9BC53D",
+   "cap-near": "#4E8C55"
+  },
+  "ink": {
+   "cap-frame": "#2A2420",
+   "cap-label": "#F2C14E",
+   "cap-tiles": "#EDE6D3",
+   "cap-sun": "#F2C14E",
+   "cap-far": "#9BC53D",
+   "cap-near": "#4E8C55"
+  }
+ },
+ "parts": [
+  "cap-frame",
+  "cap-label",
+  "cap-tiles",
+  "cap-sun",
+  "cap-far",
+  "cap-near"
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "colorways": {
+  "blue": {
+   "gc-body": "#4F8FDB",
+   "gc-text": "#F6F1E4"
+  },
+  "green": {
+   "gc-body": "#5DB46A",
+   "gc-text": "#F6F1E4"
+  },
+  "sun": {
+   "gc-body": "#F2C14E",
+   "gc-text": "#2A2420"
+  }
+ },
+ "parts": [
+  "gc-body",
+  "gc-text"
+ ]
+}

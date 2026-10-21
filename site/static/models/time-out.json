@@ -1,0 +1,48 @@
+{
+ "colorways": {
+  "moss": {
+   "to-shelf": "#2F5D3A",
+   "to-text": "#F6F1E4",
+   "to-cap": "#EDE6D3",
+   "to-letter": "#2A2420",
+   "phone-frame": "#55524E",
+   "phone-back": "#2B2A2C",
+   "phone-screen": "#060607",
+   "phone-rings": "#3A3836",
+   "phone-lenses": "#05060A"
+  },
+  "clay": {
+   "to-shelf": "#D9764A",
+   "to-text": "#F6F1E4",
+   "to-cap": "#EDE6D3",
+   "to-letter": "#2A2420",
+   "phone-frame": "#55524E",
+   "phone-back": "#2B2A2C",
+   "phone-screen": "#060607",
+   "phone-rings": "#3A3836",
+   "phone-lenses": "#05060A"
+  },
+  "sun": {
+   "to-shelf": "#F2C14E",
+   "to-text": "#2A2420",
+   "to-cap": "#EDE6D3",
+   "to-letter": "#2A2420",
+   "phone-frame": "#55524E",
+   "phone-back": "#2B2A2C",
+   "phone-screen": "#060607",
+   "phone-rings": "#3A3836",
+   "phone-lenses": "#05060A"
+  }
+ },
+ "parts": [
+  "to-shelf",
+  "to-text",
+  "to-cap",
+  "to-letter",
+  "phone-frame",
+  "phone-back",
+  "phone-screen",
+  "phone-rings",
+  "phone-lenses"
+ ]
+}

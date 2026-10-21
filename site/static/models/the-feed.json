@@ -1,0 +1,44 @@
+{
+ "colorways": {
+  "moss": {
+   "feed-body": "#2F5D3A",
+   "feed-text": "#F6F1E4",
+   "feed-screen": "#FFFFFF",
+   "feed-island": "#08080A",
+   "feed-perch": null,
+   "feed-finch-body": "#F2C14E",
+   "feed-finch-beak": "#D9764A",
+   "feed-finch-eyes": "#2A2420"
+  },
+  "clay": {
+   "feed-body": "#D9764A",
+   "feed-text": "#F6F1E4",
+   "feed-screen": "#FFFFFF",
+   "feed-island": "#08080A",
+   "feed-perch": null,
+   "feed-finch-body": "#F2C14E",
+   "feed-finch-beak": "#D9764A",
+   "feed-finch-eyes": "#2A2420"
+  },
+  "bone": {
+   "feed-body": "#EDE6D3",
+   "feed-text": "#2A2420",
+   "feed-screen": "#FFFFFF",
+   "feed-island": "#08080A",
+   "feed-perch": null,
+   "feed-finch-body": "#F2C14E",
+   "feed-finch-beak": "#D9764A",
+   "feed-finch-eyes": "#2A2420"
+  }
+ },
+ "parts": [
+  "feed-body",
+  "feed-text",
+  "feed-screen",
+  "feed-island",
+  "feed-perch",
+  "feed-finch-body",
+  "feed-finch-beak",
+  "feed-finch-eyes"
+ ]
+}

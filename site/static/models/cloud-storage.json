@@ -1,0 +1,19 @@
+{
+ "colorways": {
+  "sky": {
+   "cloud-body": "#A7C6CE"
+  },
+  "bone": {
+   "cloud-body": "#EDE6D3"
+  },
+  "bloom": {
+   "cloud-body": "#E9A6A0"
+  },
+  "ink": {
+   "cloud-body": "#2A2420"
+  }
+ },
+ "parts": [
+  "cloud-body"
+ ]
+}

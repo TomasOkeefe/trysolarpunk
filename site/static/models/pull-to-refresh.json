@@ -1,0 +1,54 @@
+{
+ "colorways": {
+  "moss": {
+   "yoyo-body": "#2F5D3A",
+   "yoyo-string": "#F1EBDD",
+   "yoyo-icon0": "#F2C14E",
+   "yoyo-icon2": "#F2C14E",
+   "yoyo2-body": "#F2C14E",
+   "yoyo2-string": "#F1EBDD",
+   "yoyo2-icon0": "#2F5D3A",
+   "yoyo2-icon2": "#2F5D3A"
+  },
+  "clay": {
+   "yoyo-body": "#D9764A",
+   "yoyo-string": "#F1EBDD",
+   "yoyo-icon0": "#F6F1E4",
+   "yoyo-icon2": "#F6F1E4",
+   "yoyo2-body": "#EDE6D3",
+   "yoyo2-string": "#F1EBDD",
+   "yoyo2-icon0": "#D9764A",
+   "yoyo2-icon2": "#D9764A"
+  },
+  "sky": {
+   "yoyo-body": "#A7C6CE",
+   "yoyo-string": "#F1EBDD",
+   "yoyo-icon0": "#2A2420",
+   "yoyo-icon2": "#2A2420",
+   "yoyo2-body": "#D9764A",
+   "yoyo2-string": "#F1EBDD",
+   "yoyo2-icon0": "#F6F1E4",
+   "yoyo2-icon2": "#F6F1E4"
+  },
+  "sun": {
+   "yoyo-body": "#F2C14E",
+   "yoyo-string": "#F1EBDD",
+   "yoyo-icon0": "#2F5D3A",
+   "yoyo-icon2": "#2F5D3A",
+   "yoyo2-body": "#2F5D3A",
+   "yoyo2-string": "#F1EBDD",
+   "yoyo2-icon0": "#F2C14E",
+   "yoyo2-icon2": "#F2C14E"
+  }
+ },
+ "parts": [
+  "yoyo-body",
+  "yoyo-string",
+  "yoyo-icon0",
+  "yoyo-icon2",
+  "yoyo2-body",
+  "yoyo2-string",
+  "yoyo2-icon0",
+  "yoyo2-icon2"
+ ]
+}

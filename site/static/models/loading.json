@@ -1,0 +1,44 @@
+{
+ "colorways": {
+  "bone": {
+   "top-body": "#EDE6D3",
+   "top-bars": "#2A2420",
+   "top2-body": "#F2C14E",
+   "top2-bars": "#2A2420",
+   "top3-body": "#2F5D3A",
+   "top3-bars": "#F6F1E4"
+  },
+  "sun": {
+   "top-body": "#F2C14E",
+   "top-bars": "#2A2420",
+   "top2-body": "#EDE6D3",
+   "top2-bars": "#2A2420",
+   "top3-body": "#D9764A",
+   "top3-bars": "#F6F1E4"
+  },
+  "moss": {
+   "top-body": "#2F5D3A",
+   "top-bars": "#F6F1E4",
+   "top2-body": "#F2C14E",
+   "top2-bars": "#2A2420",
+   "top3-body": "#EDE6D3",
+   "top3-bars": "#2A2420"
+  },
+  "clay": {
+   "top-body": "#D9764A",
+   "top-bars": "#F6F1E4",
+   "top2-body": "#EDE6D3",
+   "top2-bars": "#2A2420",
+   "top3-body": "#2F5D3A",
+   "top3-bars": "#F6F1E4"
+  }
+ },
+ "parts": [
+  "top-body",
+  "top-bars",
+  "top2-body",
+  "top2-bars",
+  "top3-body",
+  "top3-bars"
+ ]
+}

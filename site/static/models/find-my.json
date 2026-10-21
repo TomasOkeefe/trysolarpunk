@@ -1,0 +1,24 @@
+{
+ "colorways": {
+  "sun": {
+   "fm-plate": "#F2C14E",
+   "fm-pins": "#D9764A",
+   "fm-words": "#2A2420"
+  },
+  "moss": {
+   "fm-plate": "#2F5D3A",
+   "fm-pins": "#F2C14E",
+   "fm-words": "#F6F1E4"
+  },
+  "bone": {
+   "fm-plate": "#EDE6D3",
+   "fm-pins": "#D9764A",
+   "fm-words": "#2A2420"
+  }
+ },
+ "parts": [
+  "fm-plate",
+  "fm-pins",
+  "fm-words"
+ ]
+}

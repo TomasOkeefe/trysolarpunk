@@ -91,6 +91,8 @@ const INTERLUDES = {
   5: html`<aside class="interlude"><p>Nothing here gets made until someone wants it.</p><small>Reserve what you like. The most wanted gets printed first.</small></aside>`,
   13: html`<a class="interlude sun" href="/shop/thumb"><p>Your thumb deserves a hobby.</p><small>See: thumb rehab</small></a>`,
   19: html`<a class="interlude leaf" href="/shop/outside"><p>The best followers have feathers.</p><small>See: fire escape</small></a>`,
+  27: html`<aside class="interlude"><p>Each one takes a job off your phone.</p><small>Then it leaves you alone. That’s the whole idea.</small></aside>`,
+  37: html`<a class="interlude sun" href="/shop/bedtime"><p>Your phone needs a bedtime too.</p><small>See: bedtime for phones</small></a>`,
 };
 
 export const grid = (products, opts = {}) =>

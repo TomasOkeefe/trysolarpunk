@@ -776,6 +776,15 @@
    ],
    "ratio": 1.25,
    "bg": "#f9e0a7"
+  },
+  "table-sky": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#e2d3b4"
   }
  },
  "dark-mode": {
@@ -843,6 +852,15 @@
    ],
    "ratio": 1.25,
    "bg": "#f8e1a7"
+  },
+  "wall-bone": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#e4b796"
   }
  },
  "group-chat": {
@@ -872,6 +890,15 @@
    ],
    "ratio": 1.25,
    "bg": "#b8dae2"
+  },
+  "detail-blue": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#91b1d5"
   }
  },
  "loading": {
@@ -891,7 +918,7 @@
     1200
    ],
    "ratio": 1.25,
-   "bg": "#e7f1c8"
+   "bg": "#e7f0c9"
   },
   "hero-moss": {
    "w": [
@@ -900,7 +927,7 @@
     1200
    ],
    "ratio": 1.25,
-   "bg": "#f9e0a6"
+   "bg": "#f8e0a8"
   },
   "hero-sun": {
    "w": [
@@ -909,7 +936,7 @@
     1200
    ],
    "ratio": 1.25,
-   "bg": "#c2e8ec"
+   "bg": "#c5e8eb"
   }
  },
  "pull-to-refresh": {
@@ -997,6 +1024,291 @@
    ],
    "ratio": 1.25,
    "bg": "#f2c9ac"
+  }
+ },
+ "airplane-mode": {
+  "hero-clay": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#e9f6f4"
+  },
+  "hero-moss": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f8caab"
+  },
+  "hero-sky": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f9e1a8"
+  },
+  "hero-sun": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#e8f2cb"
+  }
+ },
+ "captcha": {
+  "hero-clay": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#e6efc6"
+  },
+  "hero-ink": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f8dfa4"
+  },
+  "hero-moss": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f8c8a7"
+  }
+ },
+ "desk-moss": {
+  "hero-classic": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#eedff6"
+  }
+ },
+ "find-my": {
+  "hero-bone": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#eff2f2"
+  },
+  "hero-moss": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f3f2df"
+  },
+  "hero-sun": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f4ead6"
+  }
+ },
+ "fire-escape-kit": {
+  "hero-mixed": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#e7f3cb"
+  }
+ },
+ "game-night-kit": {
+  "hero-mixed": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f8c8a8"
+  }
+ },
+ "hashtags": {
+  "hero-mixed": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f9e1a8"
+  },
+  "hero-moss": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f8caab"
+  }
+ },
+ "inbox-zero": {
+  "hero-bone": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#e8f1ca"
+  },
+  "hero-moss": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f8e0a7"
+  },
+  "hero-sky": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f8caab"
+  }
+ },
+ "incubator": {
+  "hero-bone": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#e9f2cc"
+  },
+  "hero-clay": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#c4eaef"
+  },
+  "hero-moss": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f9e1a9"
+  }
+ },
+ "reactions": {
+  "hero-mixed": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f8d5ca"
+  }
+ },
+ "screen-time": {
+  "hero-bone": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#eedef6"
+  },
+  "hero-clay": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#c2e8ed"
+  },
+  "hero-ink": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#e7f1c9"
+  },
+  "hero-moss": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f8c9a9"
+  }
+ },
+ "time-out": {
+  "hero-clay": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f6f5de"
+  },
+  "hero-moss": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f8ebd4"
+  },
+  "hero-sun": {
+   "w": [
+    400,
+    800,
+    1200
+   ],
+   "ratio": 1.25,
+   "bg": "#f2f6f5"
   }
  }
 }

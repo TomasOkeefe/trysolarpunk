@@ -1,0 +1,26 @@
+{
+ "colorways": {
+  "mixed": {
+   "cutter-love": "#E9A6A0",
+   "cutter-like": "#A7C6CE",
+   "cutter-comment": "#F2C14E",
+   "cutter-fave": "#2F5D3A",
+   "cookie-love": null,
+   "icing-love": "#F2B8B4",
+   "cookie-comment": null,
+   "icing-comment": "#FBF6EA",
+   "dots-comment": "#3A2A22"
+  }
+ },
+ "parts": [
+  "cutter-love",
+  "cutter-like",
+  "cutter-comment",
+  "cutter-fave",
+  "cookie-love",
+  "icing-love",
+  "cookie-comment",
+  "icing-comment",
+  "dots-comment"
+ ]
+}

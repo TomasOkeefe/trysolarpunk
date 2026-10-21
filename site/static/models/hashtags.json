@@ -1,0 +1,46 @@
+{
+ "colorways": {
+  "mixed": {
+   "tag-BASIL": "#F2C14E",
+   "tag-BASIL-ink": "#2A2420",
+   "tag-MINT": "#9BC53D",
+   "tag-MINT-ink": "#2A2420",
+   "tag-THYME": "#D9764A",
+   "tag-THYME-ink": "#F6F1E4",
+   "tag-CHIVES": "#E9A6A0",
+   "tag-CHIVES-ink": "#2A2420",
+   "tag-PARSLEY": "#2F5D3A",
+   "tag-PARSLEY-ink": "#F6F1E4",
+   "tag-DILL": "#A7C6CE",
+   "tag-DILL-ink": "#2A2420"
+  },
+  "moss": {
+   "tag-BASIL": "#2F5D3A",
+   "tag-BASIL-ink": "#F6F1E4",
+   "tag-MINT": "#2F5D3A",
+   "tag-MINT-ink": "#F6F1E4",
+   "tag-THYME": "#2F5D3A",
+   "tag-THYME-ink": "#F6F1E4",
+   "tag-CHIVES": "#2F5D3A",
+   "tag-CHIVES-ink": "#F6F1E4",
+   "tag-PARSLEY": "#2F5D3A",
+   "tag-PARSLEY-ink": "#F6F1E4",
+   "tag-DILL": "#2F5D3A",
+   "tag-DILL-ink": "#F6F1E4"
+  }
+ },
+ "parts": [
+  "tag-BASIL",
+  "tag-BASIL-ink",
+  "tag-MINT",
+  "tag-MINT-ink",
+  "tag-THYME",
+  "tag-THYME-ink",
+  "tag-CHIVES",
+  "tag-CHIVES-ink",
+  "tag-PARSLEY",
+  "tag-PARSLEY-ink",
+  "tag-DILL",
+  "tag-DILL-ink"
+ ]
+}

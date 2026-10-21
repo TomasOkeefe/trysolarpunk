@@ -1,0 +1,28 @@
+{
+ "colorways": {
+  "moss": {
+   "inbox-body": "#2F5D3A",
+   "inbox-label": "#F6F1E4",
+   "inbox-badge": "#D9764A",
+   "inbox-zero": "#F6F1E4"
+  },
+  "bone": {
+   "inbox-body": "#EDE6D3",
+   "inbox-label": "#2A2420",
+   "inbox-badge": "#D9764A",
+   "inbox-zero": "#F6F1E4"
+  },
+  "sky": {
+   "inbox-body": "#A7C6CE",
+   "inbox-label": "#2A2420",
+   "inbox-badge": "#D9764A",
+   "inbox-zero": "#F6F1E4"
+  }
+ },
+ "parts": [
+  "inbox-body",
+  "inbox-label",
+  "inbox-badge",
+  "inbox-zero"
+ ]
+}

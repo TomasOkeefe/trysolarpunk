@@ -1,0 +1,34 @@
+{
+ "colorways": {
+  "sun": {
+   "boom-body": "#F2C14E",
+   "boom-plane": "#2A2420",
+   "boom2-body": "#A7C6CE",
+   "boom2-plane": "#2A2420"
+  },
+  "sky": {
+   "boom-body": "#A7C6CE",
+   "boom-plane": "#2A2420",
+   "boom2-body": "#D9764A",
+   "boom2-plane": "#F6F1E4"
+  },
+  "clay": {
+   "boom-body": "#D9764A",
+   "boom-plane": "#F6F1E4",
+   "boom2-body": "#F2C14E",
+   "boom2-plane": "#2A2420"
+  },
+  "moss": {
+   "boom-body": "#2F5D3A",
+   "boom-plane": "#F2C14E",
+   "boom2-body": "#E9A6A0",
+   "boom2-plane": "#2A2420"
+  }
+ },
+ "parts": [
+  "boom-body",
+  "boom-plane",
+  "boom2-body",
+  "boom2-plane"
+ ]
+}

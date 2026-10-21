@@ -1,0 +1,52 @@
+{
+ "colorways": {
+  "bone": {
+   "st-offline-body": "#EDE6D3",
+   "st-offline-dot": "#9A938A",
+   "st-offline-word0": "#2A2420",
+   "st-away-body": "#EDE6D3",
+   "st-away-dot": "#F2C14E",
+   "st-away-word0": "#2A2420",
+   "st-dnd-body": "#EDE6D3",
+   "st-dnd-dot": "#D9764A",
+   "st-dnd-word0": "#2A2420",
+   "st-dnd-word1": "#2A2420",
+   "st-grass-body": "#EDE6D3",
+   "st-grass-dot": "#5DB46A",
+   "st-grass-word0": "#2A2420",
+   "st-grass-word1": "#2A2420"
+  },
+  "ink": {
+   "st-offline-body": "#2A2420",
+   "st-offline-dot": "#9A938A",
+   "st-offline-word0": "#F6F1E4",
+   "st-away-body": "#2A2420",
+   "st-away-dot": "#F2C14E",
+   "st-away-word0": "#F6F1E4",
+   "st-dnd-body": "#2A2420",
+   "st-dnd-dot": "#D9764A",
+   "st-dnd-word0": "#F6F1E4",
+   "st-dnd-word1": "#F6F1E4",
+   "st-grass-body": "#2A2420",
+   "st-grass-dot": "#5DB46A",
+   "st-grass-word0": "#F6F1E4",
+   "st-grass-word1": "#F6F1E4"
+  }
+ },
+ "parts": [
+  "st-offline-body",
+  "st-offline-dot",
+  "st-offline-word0",
+  "st-away-body",
+  "st-away-dot",
+  "st-away-word0",
+  "st-dnd-body",
+  "st-dnd-dot",
+  "st-dnd-word0",
+  "st-dnd-word1",
+  "st-grass-body",
+  "st-grass-dot",
+  "st-grass-word0",
+  "st-grass-word1"
+ ]
+}
