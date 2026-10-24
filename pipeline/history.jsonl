@@ -19,3 +19,13 @@
 {"date": "2026-11-01", "slug": "bedroom-to-stadium", "product": "eyelid", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 28, "provider": "modal", "month": "2026-10", "cost": 0.654}
 {"date": "2026-11-02", "slug": "he-was-there", "product": "merch", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 24, "provider": "modal", "month": "2026-10", "cost": 0.653}
 {"date": "2026-11-03", "slug": "cut-the-strings", "product": "hibernator", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 28, "provider": "modal", "month": "2026-10", "cost": 0.743}
+{"date": "2026-10-29", "slug": "cat-intervention", "product": "hibernator", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 32, "provider": "modal", "month": "2026-10", "cost": 0.686}
+{"date": "2026-10-30", "slug": "staring-contest", "product": "eyelid", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 32, "provider": "modal", "month": "2026-10", "cost": 0.686}
+{"date": "2026-11-01", "slug": "my-bread-rose", "product": "hibernator", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 32, "provider": "modal", "month": "2026-10", "cost": 0.686}
+{"date": "2026-11-02", "slug": "one-rock-soup", "product": "hibernator", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 32, "provider": "modal", "month": "2026-10", "cost": 0.686}
+{"date": "2026-11-03", "slug": "the-big-one", "product": "eyelid", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 32, "provider": "modal", "month": "2026-10", "cost": 0.686}
+{"date": "2026-11-04", "slug": "phone-died", "product": "merch", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 30, "provider": "modal", "month": "2026-10", "cost": 0.631}
+{"date": "2026-11-05", "slug": "skate-at-41", "product": "hibernator", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 30, "provider": "modal", "month": "2026-10", "cost": 0.631}
+{"date": "2026-11-06", "slug": "park-chess", "product": "eyelid", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 30, "provider": "modal", "month": "2026-10", "cost": 0.631}
+{"date": "2026-11-07", "slug": "kite-took-me", "product": "hibernator", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 30, "provider": "modal", "month": "2026-10", "cost": 0.631}
+{"date": "2026-11-08", "slug": "canoe-commute", "product": "hibernator", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 30, "provider": "modal", "month": "2026-10", "cost": 0.631}
