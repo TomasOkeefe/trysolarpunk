@@ -1,0 +1,144 @@
+{
+  "slug": "skate-at-41",
+  "date": "2026-11-05",
+  "product": "hibernator",
+  "style": "claymation",
+  "hook_text": "Learned to skate at 41",
+  "song": {
+    "title": "Fall Down, Get Up",
+    "style": "English, upbeat pop punk with fast palm-muted electric guitars, driving drums, bouncy bass and gang shouts, warm friendly male lead vocal, cheeky and bright, 128 BPM",
+    "lyrics": "[Verse]\nTen thousand tricks on a tiny screen\nI watched them all, I'd never been\nMy board was dusty in the hall\nForty-one and scared to fall\n\n[Chorus]\nFall down, get up, again\nForty-one and finally ten\nFall down, get up, go\nNever felt so young, you know\n\n[Verse]\nI put my phone up on the fridge\nRolled to the park across the bridge\nI bonked a bin, I kissed the ground\nA kid in pink showed me around\n\n[Chorus]\nFall down, get up, again\nForty-one and finally ten\nDrop in, drop in, go\nNever felt so young, you know"
+  },
+  "shots": [
+    {
+      "prompt": "{moss} wobbles toward the camera on an old skateboard, then crashes and somersaults headfirst into a big green hedge, his boots sticking out. Low angle, the camera crash zooms in. Bright sunny park."
+    },
+    {
+      "line": 0,
+      "prompt": "{moss} lies on a sofa holding a glowing phone above his face, a tiny skateboard flipping in the reflection on his glasses. The camera pushes in to his glasses. Warm lamp light."
+    },
+    {
+      "line": 1,
+      "prompt": "{moss} mimics a skateboard trick with two fingers on a sofa cushion, eyes on his phone. Top-down, the camera spins slowly. Warm lamp light."
+    },
+    {
+      "prompt": "Green rubber boots wiggle on a sofa armrest, pretending to skate. Close-up, the camera tracks along them. Warm lamp light."
+    },
+    {
+      "line": 2,
+      "prompt": "A dusty old skateboard leans in a hallway corner under cobwebs. The camera pushes in fast. Dim warm hallway light."
+    },
+    {
+      "prompt": "{moss} blows the dust off an old skateboard and coughs in the cloud. The camera crash zooms in. Warm hallway light."
+    },
+    {
+      "line": 3,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, nervously hugging an old skateboard to his chest. The camera orbits around him. Warm hallway light.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} puts one boot on a skateboard and it shoots out from under him; he lands on his bottom. Low angle, the camera whips with the board. Warm hallway light."
+    },
+    {
+      "line": 4,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, sitting on the hallway floor, laughing at himself. The camera pushes in. Warm hallway light.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} gets up rubbing his bottom, wincing and grinning. The camera cranes up with him. Warm hallway light."
+    },
+    {
+      "line": 5,
+      "prompt": "{moss} balances on a skateboard in his hallway with his arms out like a tightrope walker. The camera orbits fast around him. Warm hallway light."
+    },
+    {
+      "prompt": "{moss} windmills his arms wildly as the skateboard starts to roll. Low angle, the camera whips with him. Warm hallway light."
+    },
+    {
+      "line": 6,
+      "prompt": "{moss} crashes into a coat rack and a pile of coats falls on top of him. The camera crash zooms in. Warm hallway light."
+    },
+    {
+      "prompt": "{moss} pops out from under a pile of coats, grinning. The camera pushes in fast. Warm hallway light."
+    },
+    {
+      "line": 7,
+      "prompt": "{moss} looks at the glowing phone in his hand, then at the fridge in the kitchen. The camera whip pans to the fridge. Warm morning light."
+    },
+    {
+      "prompt": "{moss} marches to the fridge with the skateboard under his arm. The camera tracks with him. Warm morning light."
+    },
+    {
+      "prompt": "A black smartphone stands upright, face to the door, in a quilted moss-green brick stuck to a cream fridge door, a round sun-yellow badge with a closed eye on its front, a small shopping list held by a yellow magnet beside it. Soft leaf shadows sway slowly across the fridge door. Warm morning light. The camera pushes in slowly.",
+      "product_image": true,
+      "line": 8
+    },
+    {
+      "prompt": "{moss} tucks his skateboard under his arm and strides out of his round green front door. The camera tracks backward in front of him. Bright morning sun."
+    },
+    {
+      "line": 9,
+      "prompt": "{moss} rolls slowly across a little arched wooden bridge on his skateboard, arms out, wobbling. FPV, the camera flies behind him. Bright morning sun."
+    },
+    {
+      "prompt": "Skateboard wheels rattle over wooden bridge planks. Low angle close-up, the camera tracks with the wheels. Bright morning sun."
+    },
+    {
+      "line": 10,
+      "prompt": "{moss} bonks into a round green trash bin and flips right over it. The camera crash zooms in. Bright sun in a leafy skatepark."
+    },
+    {
+      "prompt": "{moss} lies face-down on the grass while his skateboard rolls away. Top-down, the camera rises. Bright sun."
+    },
+    {
+      "line": 11,
+      "prompt": "A ten-year-old girl in a pink helmet, a purple hoodie and torn jeans with two black braids stops her skateboard next to the face of {moss} and offers him a hand. Low angle, the camera pushes in. Bright sun."
+    },
+    {
+      "prompt": "A ten-year-old girl in a pink helmet, a purple hoodie and torn jeans with two black braids shows {moss} how to bend his knees on a skateboard and he copies her. The camera whip pans between them. Bright sun."
+    },
+    {
+      "line": 12,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, with grass stuck to his cheek, grinning. The camera pushes in. Bright sun.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} rolls steadily across a sunny skatepark, knees bent, arms out, as a ten-year-old girl in a pink helmet, a purple hoodie and torn jeans with two black braids cheers behind him. The camera tracks fast alongside him. Bright sun."
+    },
+    {
+      "line": 13,
+      "prompt": "{moss} and a ten-year-old girl in a pink helmet, a purple hoodie and torn jeans with two black braids skate side by side through a skatepark overgrown with plants and flowers. FPV, the camera flies with them. Golden afternoon light."
+    },
+    {
+      "prompt": "{moss} and a ten-year-old girl in a pink helmet, a purple hoodie and torn jeans with two black braids fist bump while rolling side by side. Close-up, the camera tracks with their hands. Golden light."
+    },
+    {
+      "line": 14,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, standing at the lip of a concrete bowl, his skateboard tail on the edge, his knees shaking. The camera dolly zooms. Golden afternoon light.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} drops into a concrete bowl on his skateboard and swoops up the other side. The camera follows him fast through the bowl. Golden afternoon light."
+    },
+    {
+      "line": 15,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, triumphant, with a ten-year-old girl in a pink helmet, a purple hoodie and torn jeans with two black braids cheering beside him. The camera slowly pulls back. Warm golden sunset light.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} lies on his back on warm concrete at sunset, his skateboard on his chest, smiling at the sky, a ten-year-old girl in a pink helmet, a purple hoodie and torn jeans with two black braids sitting beside him. The camera cranes slowly up. Warm golden sunset."
+    }
+  ],
+  "endcard": {
+    "line1": "Fall down. Get up.",
+    "line2": "link in bio"
+  },
+  "caption": "moss watched skate videos for years. phone in the Hibernator, a kid in a pink helmet, many bruises. he can drop in now",
+  "hashtags": [
+    "#skateboarding",
+    "#claymation",
+    "#poppunk",
+    "#solarpunk",
+    "#phonefree"
+  ]
+}

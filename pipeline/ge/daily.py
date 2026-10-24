@@ -1,6 +1,7 @@
 """Daily housekeeping for the TikTok account, run by launchd (com.trysolarpunk.daily, 10:00).
 
-- Refreshes post status and deletes sent videos from R2 (ge.buffer status).
+- Refreshes post status and deletes sent videos from R2 (ge.buffer status), then queues videos
+  that were waiting for room in Buffer's free queue (ge.buffer topup).
 - Watches Buffer's API changelog for comment or DM endpoints and notifies once when one appears,
   so comment replies can be automated the day Buffer ships them.
 - Mondays: one notification with last week's posts, views and comment counts. Weekly on purpose:
@@ -43,7 +44,8 @@ def main():
     log = lambda m: print(f"[{dt.datetime.now():%Y-%m-%d %H:%M}] {m}", flush=True)
     try:
         buffer.status()
-    except Exception:
+        buffer.topup()
+    except (Exception, SystemExit):  # queue() exits on its R2 guards
         log(traceback.format_exc())
         notify("Daily check: Buffer status failed, see /tmp/trysolarpunk-daily.log")
     try:

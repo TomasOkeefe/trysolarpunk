@@ -1,0 +1,144 @@
+{
+  "slug": "kite-took-me",
+  "date": "2026-11-07",
+  "product": "hibernator",
+  "style": "claymation",
+  "hook_text": "Built a kite. It took me flying.",
+  "song": {
+    "title": "Fly, Fly",
+    "style": "English, fast foot-stomping bluegrass with banjo rolls, fiddle, mandolin and upright bass, warm friendly male lead vocal with a high harmony, 124 BPM",
+    "lyrics": "[Verse]\nThe wind came knocking at my door\nIt rattled every pane and more\nI sat inside and scrolled all day\nWhile kites outside went on their way\n\n[Chorus]\nFly, fly, up and away\nBamboo and a sheet today\nFly, fly, catch the breeze\nWay up over all the trees\n\n[Verse]\nI tucked my phone in on the fridge\nAnd climbed the roof up to the ridge\nA gust came by and grabbed my kite\nAnd lifted me into the light\n\n[Chorus]\nFly, fly, up and away\nOver gardens, over bay\nFly, fly, wave hello\nTo all my neighbours down below"
+  },
+  "shots": [
+    {
+      "prompt": "A big yellow homemade kite yanks {moss} off his feet on a rooftop and lifts him into a bright blue sky, his boots kicking. Low angle, the camera whips up with him. Bright windy day."
+    },
+    {
+      "line": 0,
+      "prompt": "A gust of wind bursts a round green front door open and leaves swirl around {moss} on his sofa. The camera crash zooms in. Warm daylight."
+    },
+    {
+      "line": 1,
+      "prompt": "Window shutters bang in the wind behind {moss}, who keeps staring at a glowing phone. The camera whip pans to the window. Warm lamp light."
+    },
+    {
+      "prompt": "The yellow pom-pom on the green beanie of {moss} blows sideways in the wind; he doesn't look up. Close-up, the camera pushes in. Warm lamp light."
+    },
+    {
+      "line": 2,
+      "prompt": "{moss} sits slumped on the sofa staring at a glowing phone as the light through the window shifts from morning to evening. The camera dolly zooms. Warm lamp light."
+    },
+    {
+      "prompt": "Extreme close-up of a clay thumb flicking on a softly glowing phone. The camera pushes in. Warm lamp light."
+    },
+    {
+      "line": 3,
+      "prompt": "Through the window behind {moss}, a bright red kite dances across the sky over rooftop gardens. The camera pushes past him toward the window. Bright windy day."
+    },
+    {
+      "prompt": "{moss} finally looks up and spots the kite, his eyes going wide behind his glasses. The camera crash zooms in. Warm daylight."
+    },
+    {
+      "line": 4,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, pointing at the window, the wind ruffling his mustache. The camera pushes in. Bright daylight.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} drags long bamboo poles across his living room and knocks over a lamp. The camera tracks with him. Warm daylight."
+    },
+    {
+      "line": 5,
+      "prompt": "{moss} ties two bamboo poles into a cross with string on the floor, his tongue sticking out in concentration. Top-down, the camera orbits. Warm daylight."
+    },
+    {
+      "prompt": "{moss} whips a big yellow bedsheet off his bed with a flourish. The camera whip pans. Warm daylight."
+    },
+    {
+      "line": 6,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, holding up a finished yellow kite bigger than himself. The camera orbits fast around him. Warm daylight.",
+      "sing": true
+    },
+    {
+      "prompt": "The big yellow kite catches a draft indoors and drags {moss} across the floor on his bottom. Low angle, the camera whips with him. Warm daylight."
+    },
+    {
+      "line": 7,
+      "prompt": "{moss} lifts the giant yellow kite over his head by the open window, trees outside thrashing in the wind. The camera cranes up. Bright windy day."
+    },
+    {
+      "prompt": "{moss} glances at a glowing phone on the kitchen counter, then at the fridge. The camera whip pans to the fridge. Warm morning light."
+    },
+    {
+      "prompt": "A black smartphone stands upright, face to the door, in a quilted moss-green brick stuck to a cream fridge door, a round sun-yellow badge with a closed eye on its front, a small shopping list held by a yellow magnet beside it. Soft leaf shadows sway slowly across the fridge door. Warm morning light. The camera pushes in slowly.",
+      "product_image": true,
+      "line": 8
+    },
+    {
+      "prompt": "{moss} gives the fridge a quick salute and grabs his yellow kite. The camera crash zooms in. Warm morning light."
+    },
+    {
+      "line": 9,
+      "prompt": "{moss} climbs a ladder up to a rooftop garden carrying the big yellow kite. Low angle, the camera cranes up with him. Bright windy day."
+    },
+    {
+      "prompt": "{moss} stands on the rooftop ridge, the kite string wrapped around his fist, wind flapping his raincoat. The camera orbits fast around him. Bright windy day."
+    },
+    {
+      "line": 10,
+      "prompt": "A huge gust fills the big yellow kite and its string snaps taut. The camera crash zooms in. Bright windy day."
+    },
+    {
+      "prompt": "Green rubber boots lift up off the roof tiles. Close-up, the camera tilts up. Bright windy day."
+    },
+    {
+      "line": 11,
+      "prompt": "{moss} soars up into a golden sky hanging from the yellow kite string, laughing. FPV, the camera flies after him. Golden light."
+    },
+    {
+      "prompt": "Extreme close-up: the face of {moss} in the rushing wind, his mustache flapping, eyes squeezed with joy. The camera flies with him. Golden light."
+    },
+    {
+      "line": 12,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, as he flies through the sky holding the kite string, clouds behind him. The camera flies alongside him. Bright golden light.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} drifts over a rooftop garden full of sunflowers. Top-down, FPV, the camera flies above him. Golden light."
+    },
+    {
+      "line": 13,
+      "prompt": "{moss} glides on his yellow kite over a sparkling bay with a single little sailboat. The camera cranes down past him to the water. Golden light."
+    },
+    {
+      "prompt": "A single white seagull flies alongside {moss}, looking at him. The camera tracks with them. Golden light."
+    },
+    {
+      "line": 14,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, waving down at the rooftops below. The camera pushes in. Golden light.",
+      "sing": true
+    },
+    {
+      "prompt": "A grandma in a purple cardigan and pearl glasses waves up from her rooftop garden with a watering can in her hand. Low angle, the camera tilts up. Golden light."
+    },
+    {
+      "line": 15,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, drifting gently down at sunset under his yellow kite. The camera slowly pulls back. Warm sunset light.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} lands softly in a rooftop garden at sunset, the big yellow kite settling over him like a blanket, and lies back with a deep breath. The camera cranes slowly up. Warm golden sunset."
+    }
+  ],
+  "endcard": {
+    "line1": "Catch the wind.",
+    "line2": "link in bio"
+  },
+  "caption": "moss watched kites out the window for years. phone in the Hibernator, a bedsheet, some bamboo, one big gust. he's fine. mostly",
+  "hashtags": [
+    "#kite",
+    "#bluegrass",
+    "#claymation",
+    "#solarpunk",
+    "#touchgrass"
+  ]
+}

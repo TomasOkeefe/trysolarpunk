@@ -1,0 +1,143 @@
+{
+  "slug": "canoe-commute",
+  "date": "2026-11-08",
+  "product": "hibernator",
+  "style": "claymation",
+  "hook_text": "Took a canoe to work today",
+  "song": {
+    "title": "Paddle, Paddle",
+    "style": "English, sunny highlife with bright interlocking guitars, horns, congas and shakers, warm friendly male lead vocal, easygoing and joyful, 120 BPM",
+    "lyrics": "[Verse]\nSame grey street at half past eight\nHead down, scrolling, running late\nBumped a bin and bumped a man\nEvery morning, same old plan\n\n[Chorus]\nPaddle, paddle, slow and wide\nLet the water be my guide\nPaddle, paddle, I'm okay\nI took a canoe to work today\n\n[Verse]\nMy phone stayed sleeping on the fridge\nI found a canoe beneath the bridge\nA heron nodded, ducks said hi\nFloating gardens drifting by\n\n[Chorus]\nPaddle, paddle, slow and wide\nMy whole team came for the ride\nPaddle, paddle, sun goes down\nRowing home across the town"
+  },
+  "shots": [
+    {
+      "line": 0,
+      "prompt": "{moss} trudges down a grey drizzly street staring at a glowing phone and steps right into a deep puddle up to his knees with a big splash. The camera crash zooms in. Grey morning, warm streetlamp."
+    },
+    {
+      "prompt": "{moss} looks down at his soaked boots as water pours out of them. Close-up, the camera tilts down. Grey morning, warm streetlamp."
+    },
+    {
+      "line": 1,
+      "prompt": "{moss} hurries along a grey sidewalk, head down, phone glowing in his hand. The camera tracks backward fast in front of him. Grey morning, warm streetlamp."
+    },
+    {
+      "prompt": "The hands of a big round clock on a grey wall spin fast. The camera pushes in. Grey morning light."
+    },
+    {
+      "line": 2,
+      "prompt": "{moss} bumps into a round metal bin and then into a tall man in a brown suit with a big red beard carrying a coffee cup. The camera whip pans between them. Grey morning, warm streetlamp."
+    },
+    {
+      "prompt": "Coffee splashes onto the tie of a tall man in a brown suit with a big red beard, who glares down at {moss}. The camera crash zooms in. Grey morning light."
+    },
+    {
+      "line": 3,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, sheepish and soaked, under a warm streetlamp in the drizzle. The camera pushes in. Warm streetlamp glow.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} slumps at a grey office desk under a flickering lamp. The camera dolly zooms. Dim warm desk lamp."
+    },
+    {
+      "line": 4,
+      "prompt": "{moss} throws open his kitchen window and sunlight floods his face, a sparkling green canal below. The camera cranes out over the canal. Bright morning sun."
+    },
+    {
+      "prompt": "A little red wooden canoe bobs at the edge of a sunny green canal. The camera pushes in. Bright morning sun."
+    },
+    {
+      "line": 5,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, grinning and holding a wooden paddle. The camera orbits fast around him. Bright morning sun.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} twirls a wooden paddle like a baton and bonks a lamp. The camera whip pans. Warm morning light."
+    },
+    {
+      "line": 6,
+      "prompt": "{moss} sits in his bathtub practising paddle strokes, water splashing everywhere. The camera crash zooms in. Warm bathroom light."
+    },
+    {
+      "prompt": "A yellow rubber duck bobs in a splashing bathtub. Close-up, the camera pushes in. Warm bathroom light."
+    },
+    {
+      "line": 7,
+      "prompt": "{moss} stands in his front doorway with a paddle over his shoulder like a hero, sunlight behind him. Low angle, the camera cranes up. Bright morning sun."
+    },
+    {
+      "prompt": "{moss} turns back as the phone in his hand buzzes, and looks toward the fridge. The camera pushes in. Warm morning light."
+    },
+    {
+      "prompt": "A black smartphone stands upright, face to the door, in a quilted moss-green brick stuck to a cream fridge door, a round sun-yellow badge with a closed eye on its front, a small shopping list held by a yellow magnet beside it. Soft leaf shadows sway slowly across the fridge door. Warm morning light. The camera pushes in slowly.",
+      "product_image": true,
+      "line": 8
+    },
+    {
+      "prompt": "{moss} waves goodbye to the fridge and skips out of the kitchen with his paddle. The camera tracks with him. Warm morning light."
+    },
+    {
+      "line": 9,
+      "prompt": "{moss} climbs into a little red canoe under an ivy-covered stone bridge and it rocks wildly. Low angle, the camera whips around him. Bright morning sun."
+    },
+    {
+      "prompt": "{moss} steadies himself in the canoe with his arms out, then grins. Close-up, the camera pushes in. Bright morning sun."
+    },
+    {
+      "line": 10,
+      "prompt": "A tall grey heron on a wooden post nods at {moss} as he paddles past in his red canoe. The camera whip pans from the heron to him. Bright morning sun."
+    },
+    {
+      "prompt": "{moss} tips his beanie to the heron. Close-up, the camera tracks with him. Bright morning sun."
+    },
+    {
+      "line": 11,
+      "prompt": "{moss} paddles past a floating garden raft full of sunflowers and tomato plants on a sparkling canal. FPV, the camera skims low over the water. Bright sun."
+    },
+    {
+      "prompt": "A gardener in denim overalls and a huge straw hat with a grey ponytail on the raft tosses {moss} a red apple and he catches it. The camera whip pans with the apple. Bright sun."
+    },
+    {
+      "line": 12,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, paddling his red canoe down a sunlit canal. The camera tracks alongside him. Bright sun.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} glides his red canoe up to a vine-covered office building on the canal and coworkers wave from the windows. The camera cranes up the building. Bright sun."
+    },
+    {
+      "line": 13,
+      "prompt": "A tall man in a brown suit with a big red beard jumps into the red canoe, rocking it, laughing. The camera crash zooms in. Golden afternoon light."
+    },
+    {
+      "prompt": "A woman in a teal jumpsuit with a silver bob climbs into the canoe too and it sinks low in the water. Low angle, the camera pushes in. Golden afternoon light."
+    },
+    {
+      "line": 14,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, in the bow of the red canoe, a tall man in a brown suit with a big red beard and a woman in a teal jumpsuit with a silver bob paddling behind him. The camera slowly pulls back. Golden hour light.",
+      "sing": true
+    },
+    {
+      "prompt": "Wooden paddles dip into golden water. Close-up, the camera tracks with them. Golden hour light."
+    },
+    {
+      "line": 15,
+      "prompt": "A little red canoe with three friends glides under a bridge strung with warm lanterns at dusk. FPV, the camera flies after it. Warm lantern glow."
+    },
+    {
+      "prompt": "{moss} lies back in the red canoe drifting under warm string lights and the first stars, paddle across his lap, taking a deep breath. The camera cranes slowly up. Warm glow against a deep blue dusk."
+    }
+  ],
+  "endcard": {
+    "line1": "Find the water.",
+    "line2": "link in bio"
+  },
+  "caption": "moss walked to work face first into puddles. one morning the phone stayed in the Hibernator and he found a canoe. commute fixed",
+  "hashtags": [
+    "#canoe",
+    "#commute",
+    "#claymation",
+    "#solarpunk",
+    "#phonefree"
+  ]
+}

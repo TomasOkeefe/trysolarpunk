@@ -1,0 +1,144 @@
+{
+  "slug": "park-chess",
+  "date": "2026-11-06",
+  "product": "eyelid",
+  "style": "claymation",
+  "hook_text": "A grandpa in the park destroyed me",
+  "song": {
+    "title": "Check, Check, Sit Down",
+    "style": "English, sunny calypso with steel drums, bouncy bass, shakers and hand percussion, warm friendly male lead vocal, playful and bright, 118 BPM",
+    "lyrics": "[Verse]\nEvery morning in the park\nGrandpa waves from dawn till dark\nWant a game? he always said\nI'd scroll on by and shake my head\n\n[Chorus]\nCheck, check, checkmate\nThree moves and I'm on his plate\nCheck, check, sit down\nGrandpa's the king of this town\n\n[Verse]\nI slid my phone into its sleeve\nAnd took a chair, I didn't leave\nHe beat me ten days in a row\nThen on day eleven, oh\n\n[Chorus]\nCheck, check, it's a draw\nBest game that he ever saw\nCheck, check, sit down\nTwo old kings in this town"
+  },
+  "shots": [
+    {
+      "line": 0,
+      "prompt": "{moss} walks through a sunny park staring at a glowing phone and bonks straight into a lamppost. The camera crash zooms in. Bright morning sun."
+    },
+    {
+      "prompt": "An old man with a big white afro, round gold glasses, a sky-blue short-sleeved shirt and a straw fedora chuckles at a chess table under a leafy tree. The camera pushes in. Bright morning sun."
+    },
+    {
+      "line": 1,
+      "prompt": "An old man with a big white afro, round gold glasses, a sky-blue short-sleeved shirt and a straw fedora waves {moss} over with a big smile, a chessboard in front of him. The camera whip pans to him. Bright morning sun."
+    },
+    {
+      "prompt": "{moss} gives a distracted thumbs up, eyes still on his phone, and keeps walking. The camera tracks with him. Bright morning sun."
+    },
+    {
+      "line": 2,
+      "prompt": "An old man with a big white afro, round gold glasses, a sky-blue short-sleeved shirt and a straw fedora holds up a single black chess knight toward the camera, eyebrows raised. The camera crash zooms in on the knight. Bright morning sun."
+    },
+    {
+      "prompt": "Autumn leaves fall on an empty chair at a park chess table. The camera cranes down. Golden morning light."
+    },
+    {
+      "line": 3,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, walking through the park and shaking his head, phone in hand. The camera tracks backward in front of him. Bright morning sun.",
+      "sing": true
+    },
+    {
+      "prompt": "An old man with a big white afro, round gold glasses, a sky-blue short-sleeved shirt and a straw fedora sighs and taps the empty chair across from him. Close-up, the camera pushes in. Bright morning sun."
+    },
+    {
+      "line": 4,
+      "prompt": "{moss} finally plops into the chair across from an old man with a big white afro, round gold glasses, a sky-blue short-sleeved shirt and a straw fedora, still holding his phone. The camera whip pans between them. Bright morning sun."
+    },
+    {
+      "prompt": "An old man with a big white afro, round gold glasses, a sky-blue short-sleeved shirt and a straw fedora slams a chess piece down with a grin and the jaw of {moss} drops. The camera crash zooms in. Bright morning sun."
+    },
+    {
+      "line": 5,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, baffled, scratching his beanie, an old man with a big white afro, round gold glasses, a sky-blue short-sleeved shirt and a straw fedora laughing behind him. The camera pushes in. Bright morning sun.",
+      "sing": true
+    },
+    {
+      "prompt": "A phone buzzes on the chess table and {moss} glances at it. Close-up, the camera tilts down. Bright morning sun."
+    },
+    {
+      "line": 6,
+      "prompt": "An old man with a big white afro, round gold glasses, a sky-blue short-sleeved shirt and a straw fedora slides the phone away across the table with one finger and points to the chessboard. Close-up, the camera pushes in. Bright morning sun."
+    },
+    {
+      "prompt": "An old man with a big white afro, round gold glasses, a sky-blue short-sleeved shirt and a straw fedora taps his temple and winks. The camera crash zooms in. Bright morning sun."
+    },
+    {
+      "line": 7,
+      "prompt": "An old man with a big white afro, round gold glasses, a sky-blue short-sleeved shirt and a straw fedora stands on the park bench with his arms raised like a champion. Low angle, the camera orbits around him. Bright morning sun."
+    },
+    {
+      "prompt": "{moss} pulls a terracotta-orange sleeve out of his raincoat pocket and looks at it. The camera pushes in. Bright morning sun."
+    },
+    {
+      "prompt": "A slim terracotta-orange sleeve stands upright on a soft pale green backdrop, a phone tucked inside so only its top edge peeks out, the sleeve's top edge cut like a closed eyelid with black lashes. Soft leaf shadows drift across the backdrop. Warm daylight. The camera slowly pushes in as the light turns warmer.",
+      "product_image": true,
+      "line": 8
+    },
+    {
+      "prompt": "{moss} sets a terracotta-orange sleeve down on the bench and cracks his knuckles. Close-up, the camera pushes in. Bright morning sun."
+    },
+    {
+      "line": 9,
+      "prompt": "{moss} leans over the chessboard, chin in hand, deeply focused, an old man with a big white afro, round gold glasses, a sky-blue short-sleeved shirt and a straw fedora across from him. The camera orbits fast around the table. Dappled sunlight."
+    },
+    {
+      "prompt": "An old man with a big white afro, round gold glasses, a sky-blue short-sleeved shirt and a straw fedora pours {moss} a cup of hot tea from a thermos. Close-up, the camera pushes in. Dappled sunlight."
+    },
+    {
+      "line": 10,
+      "prompt": "{moss} topples backward off his chair in defeat as an old man with a big white afro, round gold glasses, a sky-blue short-sleeved shirt and a straw fedora laughs, leaves blowing past. The camera crash zooms in. Golden light."
+    },
+    {
+      "prompt": "{moss} dusts himself off and sits back down at the chess table, determined, as the sky behind him changes from sun to rain to sun. The camera pushes in. Changing light."
+    },
+    {
+      "line": 11,
+      "prompt": "{moss} slides one chess piece forward and the eyes of an old man with a big white afro, round gold glasses, a sky-blue short-sleeved shirt and a straw fedora go huge behind his gold glasses. The camera dolly zooms. Golden afternoon light."
+    },
+    {
+      "prompt": "Extreme close-up: an old man with a big white afro, round gold glasses, a sky-blue short-sleeved shirt and a straw fedora strokes his chin, a bead of sweat on his forehead. The camera pushes in. Golden afternoon light."
+    },
+    {
+      "line": 12,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, laughing and shaking hands with an old man with a big white afro, round gold glasses, a sky-blue short-sleeved shirt and a straw fedora across the chessboard. The camera pushes in. Golden afternoon light.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} and an old man with a big white afro, round gold glasses, a sky-blue short-sleeved shirt and a straw fedora hug over the chess table. The camera orbits around them. Golden afternoon light."
+    },
+    {
+      "line": 13,
+      "prompt": "An old man with a big white afro, round gold glasses, a sky-blue short-sleeved shirt and a straw fedora laughs so hard his straw fedora falls off. The camera crash zooms in. Golden afternoon light."
+    },
+    {
+      "prompt": "{moss} catches the straw fedora and puts it back on the head of an old man with a big white afro, round gold glasses, a sky-blue short-sleeved shirt and a straw fedora. Close-up, the camera pushes in. Golden afternoon light."
+    },
+    {
+      "line": 14,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, under a big tree full of golden autumn leaves. The camera slowly pulls back. Golden afternoon light.",
+      "sing": true
+    },
+    {
+      "prompt": "A little girl in a yellow dress with a big afro puff pulls up a chair beside {moss} at the chess table, curious. The camera pushes in. Golden afternoon light."
+    },
+    {
+      "line": 15,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, at the park chess table with an old man with a big white afro, round gold glasses, a sky-blue short-sleeved shirt and a straw fedora and a little girl in a yellow dress with a big afro puff. The camera orbits slowly around them. Warm golden sunset.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} and an old man with a big white afro, round gold glasses, a sky-blue short-sleeved shirt and a straw fedora sit side by side on a park bench at golden sunset, sipping tea, a chessboard between them. The camera cranes slowly up. Warm golden sunset."
+    }
+  ],
+  "endcard": {
+    "line1": "Take the game.",
+    "line2": "link in bio"
+  },
+  "caption": "every day the grandpa in the park asked moss for a game. Eyelid on, phone asleep, he lost ten days in a row. day eleven, a draw",
+  "hashtags": [
+    "#chess",
+    "#claymation",
+    "#calypso",
+    "#solarpunk",
+    "#phonefree"
+  ]
+}

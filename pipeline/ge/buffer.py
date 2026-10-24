@@ -4,6 +4,7 @@
   python3 -m ge.buffer queue --per-day 2 ../videos/*.mp4   # ignore plan dates: 2 a day from today
   python3 -m ge.buffer status     # scheduled / sent / failed; frees R2 space once a video is sent
   python3 -m ge.buffer report     # views and comment counts, last 7 days
+  python3 -m ge.buffer topup      # queue videos that were waiting for room (daily.py runs this)
 
 Buffer's TikTok app passed TikTok's audit, so its posts go public with the AI-generated label on.
 (Our own TikTok app never could: TikTok rejects tools that only post to your own account.)
@@ -12,7 +13,8 @@ deleted from it once Buffer has sent the post.
 
 Free-tier guards, because R2 has no spending cap: at most MAX_OBJECTS files and MAX_BYTES in the
 bucket, MAX_FILE a video, Standard storage only, plus a 30-day expiry rule on the bucket itself.
-Buffer's free plan holds 10 scheduled posts a channel; queue stops there.
+Buffer's free plan holds 10 scheduled posts a channel; past that, videos wait in pending.json and
+topup queues them (earliest plan date first) as posts send.
 posts.json maps each video to its Buffer post and R2 key, so a video is never posted twice.
 
 Buffer login: `buffer init` (the owner's API key, in ~/.config/buffer). R2: wrangler's login.
@@ -33,6 +35,7 @@ import yaml
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = ROOT.parent / "site"  # wrangler is installed here
 POSTS = ROOT / "posts.json"
+PENDING = ROOT / "pending.json"  # videos waiting for room in Buffer's queue
 CFG = yaml.safe_load((ROOT / "config.yaml").read_text())["posting"]
 
 MAX_FILE = 50e6        # a 52 s video is 10-26 MB
@@ -92,6 +95,13 @@ def save(posts):
     POSTS.write_text(json.dumps(posts, indent=2) + "\n")
 
 
+def pending(add=None, remove=None):
+    names = set(json.loads(PENDING.read_text())) if PENDING.exists() else set()
+    names = (names | ({add} if add else set())) - {remove}
+    PENDING.write_text(json.dumps(sorted(names), indent=1) + "\n")
+    return sorted(names)
+
+
 def at(date, hhmm):
     return dt.datetime.combine(date, dt.time(*map(int, hhmm.split(":"))), zoneinfo.ZoneInfo(CFG["timezone"]))
 
@@ -142,7 +152,9 @@ def queue(video, when="plan"):
     if size > MAX_FILE:
         sys.exit(f"{name}: {size / 1e6:.0f} MB is over the {MAX_FILE / 1e6:.0f} MB guard")
     if scheduled_count() >= BUFFER_FREE_QUEUE:
-        sys.exit(f"Buffer's free queue is full ({BUFFER_FREE_QUEUE} scheduled); wait for some to send")
+        pending(add=str(video))
+        print(f"waiting {name}: Buffer's free queue is full ({BUFFER_FREE_QUEUE} scheduled); topup queues it later")
+        return
     check_r2_room(size)
 
     if when == "plan":
@@ -165,7 +177,19 @@ def queue(video, when="plan"):
         raise
     posts[name] = {"post_id": r["post"]["id"], "key": key, "due_at": r["post"].get("dueAt"), "status": "scheduled"}
     save(posts)
+    pending(remove=str(video))
     print(f"queued  {name}  {r['post'].get('dueAt') or 'next free slot'}  post {r['post']['id']}")
+
+
+def topup():
+    """Queue waiting videos, earliest plan date first, while Buffer has room."""
+    for video in sorted(pending(), key=lambda v: pathlib.Path(v).name):
+        if not pathlib.Path(video).exists():
+            pending(remove=video)
+        elif scheduled_count() >= BUFFER_FREE_QUEUE:
+            return
+        else:
+            queue(video)
 
 
 def status():
@@ -217,6 +241,7 @@ def main():
     q.add_argument("--per-day", type=int, help="ignore plan dates: post in file order, this many a day")
     q.add_argument("--start", type=dt.date.fromisoformat, default=dt.date.today(), help="first day for --per-day")
     sub.add_parser("status", help="show post status; delete sent videos from R2")
+    sub.add_parser("topup", help="queue videos waiting for room in Buffer's queue")
     rp = sub.add_parser("report", help="views and comment counts of recent posts")
     rp.add_argument("--days", type=int, default=7)
     a = ap.parse_args()
@@ -231,6 +256,8 @@ def main():
             print(f"{x['views']:>7} views {x['comments']:>4} comments {x['likes']:>5} likes  {x['name']}")
         print(f"{sum(x['views'] for x in rows)} views, {sum(x['comments'] for x in rows)} comments, {len(rows)} posts "
               f"in {a.days} days (metrics refresh daily)")
+    elif a.cmd == "topup":
+        topup()
     else:
         status()
 

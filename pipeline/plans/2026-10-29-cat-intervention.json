@@ -1,0 +1,143 @@
+{
+  "slug": "cat-intervention",
+  "date": "2026-10-29",
+  "product": "hibernator",
+  "style": "claymation",
+  "hook_text": "My cat staged an intervention",
+  "song": {
+    "title": "Meow Meow, Put It Down",
+    "style": "English, slinky upbeat jazz swing with walking upright bass, brushed drums, muted trumpet and bright piano, warm friendly male lead vocal, playful and smooth, 122 BPM",
+    "lyrics": "[Verse]\nMy cat sat on the windowsill\nWatching me scroll and sit so still\nShe knocked my mug onto the floor\nThen my plant and then some more\n\n[Chorus]\nMeow meow, put it down\nBest little lady in this town\nMeow meow, look at me\nThere's a whole wide world to see\n\n[Verse]\nI tucked my phone in on the fridge\nShe led me out across the bridge\nWe chased the leaves, we chased the sun\nShe let me think I'd finally won\n\n[Chorus]\nMeow meow, now I'm free\nSardines on the roof for tea\nMeow meow, purr all day\nMy cat showed me the way"
+  },
+  "shots": [
+    {
+      "line": 0,
+      "prompt": "A round orange clay cat with a white chest and a long striped tail sits on a sunny windowsill and slowly turns her head to glare straight into the camera, narrowing her big green eyes. The camera crash zooms in on her face. Warm afternoon light."
+    },
+    {
+      "prompt": "Extreme close-up of a long striped orange clay cat tail flicking impatiently back and forth on a windowsill. The camera tracks along the tail. Warm afternoon light."
+    },
+    {
+      "line": 1,
+      "prompt": "{moss} slumps deep in a saggy mustard sofa staring down at a glowing phone, completely still, a dust bunny rolling past his boots. The camera dolly zooms in on him. Dim room, warm lamp light."
+    },
+    {
+      "prompt": "A round orange clay cat with a white chest and a long striped tail stalks along the back of the sofa right behind the head of {moss}, who doesn't notice. The camera tracks with the cat. Warm lamp light."
+    },
+    {
+      "line": 2,
+      "prompt": "A round orange clay cat with a white chest and a long striped tail swats a big blue ceramic mug off a wooden side table, the mug tumbling toward the floor. Low angle, the camera crash zooms in. Warm lamp light."
+    },
+    {
+      "prompt": "The blue mug bounces and rolls across the wooden floor past a pair of green rubber boots that don't move. Low angle, the camera follows the mug. Warm lamp light."
+    },
+    {
+      "line": 3,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, a potted fern toppling off the shelf behind him. The camera pushes in fast. Warm lamp light.",
+      "sing": true
+    },
+    {
+      "prompt": "A round orange clay cat with a white chest and a long striped tail pushes a stack of three books off a shelf with one paw while staring into the camera. The camera whip pans to her. Warm lamp light."
+    },
+    {
+      "line": 4,
+      "prompt": "A round orange clay cat with a white chest and a long striped tail leaps onto the chest of {moss} and sits right between his face and his phone, nose to nose with him. The camera crash zooms in. Warm lamp light."
+    },
+    {
+      "prompt": "Extreme close-up: {moss} blinks in surprise behind his round black glasses, an orange cat paw pressed against his bushy mustache. The camera pushes in. Warm lamp light."
+    },
+    {
+      "line": 5,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, laughing, a round orange clay cat with a white chest and a long striped tail perched on his shoulder. The camera orbits fast around them. Warm golden light.",
+      "sing": true
+    },
+    {
+      "prompt": "A round orange clay cat with a white chest and a long striped tail rubs her head against the rosy cheek of {moss}, eyes closed, purring. Close-up, the camera pushes in. Warm golden light."
+    },
+    {
+      "line": 6,
+      "prompt": "A round orange clay cat with a white chest and a long striped tail trots to a round green front door, swings it open with her paw and looks back over her shoulder. Low angle, the camera tracks behind her. Bright daylight spilling in."
+    },
+    {
+      "prompt": "{moss} peeks out of his round green front door onto a bright street full of rooftop gardens and bicycles. The camera rushes out through the doorway past him. Bright warm daylight."
+    },
+    {
+      "line": 7,
+      "prompt": "{moss} and a round orange clay cat with a white chest and a long striped tail sit side by side on a sunny windowsill looking out at a city of rooftop gardens and sunflowers. The camera cranes up and out to reveal the view. Bright morning light."
+    },
+    {
+      "prompt": "A round orange clay cat with a white chest and a long striped tail sits on the doorstep tapping one paw impatiently. Low angle, the camera pushes in fast. Bright daylight."
+    },
+    {
+      "prompt": "A black smartphone stands upright, face to the door, in a quilted moss-green brick stuck to a cream fridge door, a round sun-yellow badge with a closed eye on its front, a small shopping list held by a yellow magnet beside it. Soft leaf shadows sway slowly across the fridge door. Warm morning light. The camera pushes in slowly.",
+      "product_image": true,
+      "line": 8
+    },
+    {
+      "prompt": "{moss} steps back from his fridge and a round orange clay cat with a white chest and a long striped tail sits at his feet and nods. The camera orbits around them. Warm morning light."
+    },
+    {
+      "line": 9,
+      "prompt": "{moss} trots behind a round orange clay cat with a white chest and a long striped tail across a little arched wooden footbridge over a green canal. The camera tracks fast alongside them. Bright morning sun."
+    },
+    {
+      "prompt": "A round orange clay cat with a white chest and a long striped tail balances along the wooden railing of a footbridge, tail held high. Low angle, the camera sweeps past her. Bright sun, sparkling water below."
+    },
+    {
+      "line": 10,
+      "prompt": "{moss} chases a swirl of golden autumn leaves across a sunny park, a round orange clay cat with a white chest and a long striped tail leaping after them. The camera whip pans with them. Golden afternoon light."
+    },
+    {
+      "prompt": "A round orange clay cat with a white chest and a long striped tail pounces into a big pile of golden leaves and the leaves burst up around her. The camera cranes down onto her. Golden afternoon light."
+    },
+    {
+      "line": 11,
+      "prompt": "A round orange clay cat with a white chest and a long striped tail races {moss} up a grassy hill and sits at the top looking smug as he flops down laughing beside her. FPV, the camera flies up the hill behind them. Golden light."
+    },
+    {
+      "prompt": "{moss} lies on his back in the grass laughing, a round orange clay cat with a white chest and a long striped tail sitting on his belly. Top-down, the camera spins slowly. Warm golden light."
+    },
+    {
+      "line": 12,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, standing in a sunny rooftop garden with a round orange clay cat with a white chest and a long striped tail perched on his shoulder. The camera pushes in. Warm golden light.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} and a round orange clay cat with a white chest and a long striped tail stretch out side by side in a patch of sun on a rooftop. The camera cranes slowly over them. Warm golden light."
+    },
+    {
+      "line": 13,
+      "prompt": "{moss} hands a round orange clay cat with a white chest and a long striped tail a single little clay fish on a blue plate on a picnic blanket on a rooftop. The camera cranes down. Warm sunset light."
+    },
+    {
+      "prompt": "Extreme close-up: a round orange clay cat with a white chest and a long striped tail licks her whiskers, eyes half closed with delight. The camera pushes in. Warm sunset light."
+    },
+    {
+      "line": 14,
+      "prompt": "{moss} sways in a hammock on a rooftop under warm string lights, a round orange clay cat with a white chest and a long striped tail curled up asleep on his chest. The camera orbits slowly. Warm string-light glow at dusk."
+    },
+    {
+      "prompt": "Extreme close-up: a round orange clay cat with a white chest and a long striped tail purring on a mustard-yellow raincoat, her eyes slowly closing. The camera pushes in. Warm lantern glow."
+    },
+    {
+      "line": 15,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, softly, a round orange clay cat with a white chest and a long striped tail asleep in his lap, warm lanterns behind him. The camera slowly pulls back. Warm lantern glow at dusk.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} and a round orange clay cat with a white chest and a long striped tail sit together on a rooftop edge under warm lanterns, watching the first stars come out over the city. The camera slowly drifts up and away. Warm lantern glow against a deep blue dusk."
+    }
+  ],
+  "endcard": {
+    "line1": "Listen to the cat.",
+    "line2": "link in bio"
+  },
+  "caption": "moss's cat knocked everything off the table until his phone went in the Hibernator. now they go on walks. she's in charge",
+  "hashtags": [
+    "#catsoftiktok",
+    "#claymation",
+    "#touchgrass",
+    "#solarpunk",
+    "#phonefree"
+  ]
+}

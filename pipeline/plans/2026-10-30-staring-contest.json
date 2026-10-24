@@ -1,0 +1,144 @@
+{
+  "slug": "staring-contest",
+  "date": "2026-10-30",
+  "product": "eyelid",
+  "style": "claymation",
+  "hook_text": "Lost 400 staring contests to my phone",
+  "song": {
+    "title": "Close Your Eye",
+    "style": "English, shimmering 80s synthpop with bright analog synths, gated drums, pulsing bass and sparkly arpeggios, warm friendly male lead vocal, dramatic and fun, 120 BPM",
+    "lyrics": "[Verse]\nEvery night we lock our eyes\nMe and the screen, no compromise\nI never blink, it never sleeps\nIt wins the round, it always keeps\n\n[Chorus]\nClose your eye, close your eye\nLet me win just one time\nClose your eye, close your eye\nI'll go look up at the sky\n\n[Verse]\nI tucked it in an orange sleeve\nIt shut its eye, I took my leave\nI stared at clouds and stared at trees\nI stared at you, you stared at me\n\n[Chorus]\nClose your eye, close your eye\nI finally won, I could cry\nOpen mine, open wide\nThere's a whole world outside"
+  },
+  "shots": [
+    {
+      "line": 0,
+      "prompt": "Extreme close-up: {moss} glares unblinking into a phone held right in front of his face, its screen showing one huge cartoon eye staring back at him. The camera dolly zooms. Warm lamp light on his face."
+    },
+    {
+      "prompt": "Extreme close-up of a phone screen filled with one huge unblinking cartoon eye with a blue iris. The camera pushes in slowly. Dark room, warm lamp glow."
+    },
+    {
+      "line": 1,
+      "prompt": "{moss} and a phone propped against a teapot face off across a kitchen table, nose to screen. The camera whip pans back and forth between them. Warm lamp light."
+    },
+    {
+      "prompt": "Extreme close-up: the eyes of {moss} water and twitch behind his round black glasses as he refuses to blink. The camera crash zooms in. Warm lamp light."
+    },
+    {
+      "line": 2,
+      "prompt": "{moss} keeps staring at a phone at the kitchen table as the window behind him turns from day to night to day. The camera slowly pulls back. Warm lamp light."
+    },
+    {
+      "prompt": "Extreme close-up: {moss} finally blinks and slumps in defeat. The camera crash zooms in. Warm lamp light."
+    },
+    {
+      "line": 3,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, defeated, slumped over the kitchen table. The camera pushes in. Warm lamp light.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} face-plants onto the kitchen table in defeat beside a phone propped against a teapot. Top-down, the camera spins. Warm lamp light."
+    },
+    {
+      "line": 4,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, pleading with his hands clasped together. The camera orbits fast around him. Warm lamp light.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} drops a striped tea towel over a phone on the table and the towel slowly slides off again. Close-up, the camera pushes in. Warm lamp light."
+    },
+    {
+      "line": 5,
+      "prompt": "{moss} falls to his knees on the kitchen floor and throws both arms up to the ceiling dramatically. The camera cranes up above him. Warm lamp light."
+    },
+    {
+      "prompt": "Extreme close-up: the bushy brown mustache of {moss} droops sadly. The camera tilts down. Warm lamp light."
+    },
+    {
+      "line": 6,
+      "prompt": "{moss} throws open wooden window shutters and bright sunlight floods over his face. The camera rushes past him toward the window. Bright morning light."
+    },
+    {
+      "prompt": "A big fluffy white cloud drifts over a city of rooftop gardens. The camera cranes up into the sky. Bright blue morning."
+    },
+    {
+      "line": 7,
+      "prompt": "{moss} stands on a sunny rooftop garden staring up at the bright blue sky with his arms spread wide. The camera orbits fast around him. Bright morning sun."
+    },
+    {
+      "prompt": "A single white pigeon lands on a rooftop railing and stares at the camera. The camera whip pans to it. Bright morning sun."
+    },
+    {
+      "prompt": "A slim terracotta-orange sleeve stands upright on a soft pale green backdrop, a phone tucked inside so only its top edge peeks out, the sleeve's top edge cut like a closed eyelid with black lashes. Soft leaf shadows drift across the backdrop. Warm daylight. The camera slowly pushes in as the light turns warmer.",
+      "product_image": true,
+      "line": 8
+    },
+    {
+      "prompt": "{moss} leans close to a terracotta-orange sleeve on his desk, squints at it suspiciously, then grins and pumps his fist. The camera crash zooms in. Warm daylight."
+    },
+    {
+      "line": 9,
+      "prompt": "{moss} strides out of his round green front door into a sunny street lined with trees and bicycles. The camera tracks backward in front of him. Bright morning sun."
+    },
+    {
+      "prompt": "{moss} leaps and clicks his heels together on the sidewalk. Low angle, the camera whips up with him. Bright morning sun."
+    },
+    {
+      "line": 10,
+      "prompt": "{moss} lies on his back in a sunny meadow staring up at big puffy clouds drifting by. Top-down, the camera cranes down onto him. Warm golden light."
+    },
+    {
+      "prompt": "{moss} presses his nose against the trunk of a huge oak tree, staring at its bark up close. The camera orbits around the tree. Dappled sunlight."
+    },
+    {
+      "line": 11,
+      "prompt": "{moss} and a woman with a big curly red afro in a yellow sweater sit across a little cafe table in a staring contest, nose to nose. The camera whip pans between their faces. Warm afternoon sun."
+    },
+    {
+      "prompt": "A woman with a big curly red afro in a yellow sweater bursts out laughing first and {moss} throws his arms up in victory. The camera crash zooms in. Warm afternoon sun."
+    },
+    {
+      "line": 12,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, on a sunny cafe terrace full of flower pots. The camera pushes in. Warm afternoon sun.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} and a woman with a big curly red afro in a yellow sweater high-five over the cafe table. Close-up, the camera spins around their hands. Warm afternoon sun."
+    },
+    {
+      "line": 13,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, with happy tears behind his glasses, holding up a tiny wooden trophy. The camera pulls back fast. Golden light.",
+      "sing": true
+    },
+    {
+      "prompt": "A woman with a big curly red afro in a yellow sweater places a tiny wooden trophy into the hands of {moss}, who raises it to the sky. The camera cranes up. Golden light."
+    },
+    {
+      "line": 14,
+      "prompt": "{moss} stands in a rooftop garden at sunset and opens his eyes wide at a huge orange sun. FPV, the camera flies around him. Warm sunset light."
+    },
+    {
+      "prompt": "Extreme close-up of round black glasses reflecting a glowing orange sunset, eyes wide open behind them. The camera pushes in. Warm sunset light."
+    },
+    {
+      "line": 15,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, friends laughing on a rooftop under warm string lights behind him. The camera slowly pulls back. Warm string-light glow at dusk.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} lies back on a rooftop blanket under warm string lights and closes his eyes peacefully, the city glowing below. The camera slowly rises above him. Warm glow against a deep blue dusk."
+    }
+  ],
+  "endcard": {
+    "line1": "Let it blink first.",
+    "line2": "link in bio"
+  },
+  "caption": "moss lost every staring contest to his phone. then the Eyelid closed its eye and he finally won. undefeated since",
+  "hashtags": [
+    "#claymation",
+    "#staringcontest",
+    "#touchgrass",
+    "#solarpunk",
+    "#phonefree"
+  ]
+}

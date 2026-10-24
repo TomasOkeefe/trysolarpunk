@@ -1,0 +1,144 @@
+{
+  "slug": "phone-died",
+  "date": "2026-11-04",
+  "product": "merch",
+  "style": "claymation",
+  "hook_text": "Phone died. Best day ever.",
+  "song": {
+    "title": "Every Stranger's a Map",
+    "style": "English, joyful mariachi-style folk with bright trumpets, strummed guitars, violins and a bouncy guitarron, warm friendly male lead vocal with playful shouts, 120 BPM",
+    "lyrics": "[Verse]\nMy phone went dark at half past three\nNo map, no dot to follow me\nI didn't know the way back home\nSo I just asked, I wasn't alone\n\n[Chorus]\nAy, ay, which way to go\nAsk the baker, she'll know\nAy, ay, left at the tree\nEvery stranger's a map to me\n\n[Verse]\nI walked on with no end in sight\nA gardener said go left, then right\nA ferryman took me for free\nTo a party by the sea\n\n[Chorus]\nAy, ay, lost and found\nDancing on the harbour ground\nAy, ay, phone can stay\nDead and quiet one more day"
+  },
+  "shots": [
+    {
+      "line": 0,
+      "prompt": "{moss} stares in shock as the glowing phone in his hand goes black with a tiny puff of smoke, on a sunny street he doesn't know. The camera crash zooms in. Bright afternoon sun."
+    },
+    {
+      "prompt": "{moss} shakes a dead black phone and holds it up to the sky. Low angle, the camera whips up. Bright afternoon sun."
+    },
+    {
+      "line": 1,
+      "prompt": "{moss} spins in a circle at a crossroads of cobbled lanes full of vines and bicycles, completely lost. The camera orbits fast around him. Bright afternoon sun."
+    },
+    {
+      "prompt": "A wooden signpost with blank arrows pointing in every direction. The camera pushes in fast. Bright afternoon sun."
+    },
+    {
+      "line": 2,
+      "prompt": "{moss} scratches his beanie on a hilltop, looking out over a maze of little streets and rooftop gardens. The camera cranes up behind him. Bright afternoon sun."
+    },
+    {
+      "prompt": "{moss} sits on a curb with his chin in his hands. The camera dolly zooms. Warm afternoon light."
+    },
+    {
+      "line": 3,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, shrugging and grinning on a sunny cobbled street. The camera pushes in. Warm afternoon light.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} stands up from the curb and dusts off his raincoat with determination. Low angle, the camera rises with him. Warm afternoon light."
+    },
+    {
+      "line": 4,
+      "prompt": "{moss} pokes his head into a bakery doorway and a baker woman in a white apron and a red headscarf with big gold hoop earrings turns to look at him. The camera pushes in through the doorway. Warm golden bakery light."
+    },
+    {
+      "prompt": "A baker woman in a white apron and a red headscarf with big gold hoop earrings points down the street with a long baguette. The camera crash zooms in. Warm golden light."
+    },
+    {
+      "line": 5,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, with a long baguette under his arm in a cosy bakery. The camera orbits around him. Warm golden light.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} bites the end of a baguette, crumbs sticking in his bushy mustache. Close-up, the camera pushes in. Warm golden light."
+    },
+    {
+      "line": 6,
+      "prompt": "{moss} strides down a cobbled lane past a big leafy tree, a baguette swinging in his hand. The camera tracks fast alongside him. Bright sun."
+    },
+    {
+      "prompt": "A guitarist in a red embroidered jacket with a tall black quiff strums an acoustic guitar at {moss} from a sunny doorway. The camera whip pans to him. Bright sun."
+    },
+    {
+      "line": 7,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, dancing down a sunny street next to a guitarist in a red embroidered jacket with a tall black quiff. The camera pushes in. Bright sun.",
+      "sing": true
+    },
+    {
+      "prompt": "A cream t-shirt with a simple illustration of rolling green hills and a winding path shaped like an infinity loop hangs on a wooden hanger in the sunny window of a little shop, swaying in a breeze. Soft daylight, warm shadows. The camera slowly pushes in.",
+      "product_image": true
+    },
+    {
+      "line": 8,
+      "prompt": "{moss} walks along a winding dirt path over rolling green hills toward a sparkling sea. FPV, the camera flies fast behind him. Golden afternoon light."
+    },
+    {
+      "prompt": "Green rubber boots stride along a winding dirt path. Low angle, the camera tracks with them. Golden afternoon light."
+    },
+    {
+      "line": 9,
+      "prompt": "A gardener in denim overalls and a huge straw hat with a grey ponytail points left with a trowel from a vegetable garden as {moss} stops to ask. The camera whip pans between them. Golden afternoon light."
+    },
+    {
+      "prompt": "A gardener in denim overalls and a huge straw hat with a grey ponytail hands {moss} a big red tomato and he tips his beanie. Close-up, the camera pushes in. Golden afternoon light."
+    },
+    {
+      "line": 10,
+      "prompt": "A ferryman in a striped navy sweater and a captain's cap with a white beard waves {moss} aboard a little wooden ferry boat at a dock. The camera crash zooms in. Golden light on the water."
+    },
+    {
+      "prompt": "A little wooden ferry chugs across sparkling blue water with {moss} standing at the bow. FPV, the camera skims low over the waves. Golden light."
+    },
+    {
+      "line": 11,
+      "prompt": "A little wooden ferry pulls into a harbour strung with warm paper lanterns, a party on the dock. The camera cranes up. Warm sunset light."
+    },
+    {
+      "prompt": "{moss} steps off the ferry onto the dock, his eyes wide with joy behind his glasses. The camera pushes in. Warm lantern light."
+    },
+    {
+      "line": 12,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, on a dock lit with warm paper lanterns, people dancing behind him. The camera orbits around him. Warm lantern light.",
+      "sing": true
+    },
+    {
+      "prompt": "A baker woman in a white apron and a red headscarf with big gold hoop earrings twirls on the dock under paper lanterns. Low angle, the camera spins with her. Warm lantern light."
+    },
+    {
+      "line": 13,
+      "prompt": "{moss} dances arm in arm with a gardener in denim overalls and a huge straw hat with a grey ponytail on the wooden dock under paper lanterns. The camera orbits fast. Warm lantern light."
+    },
+    {
+      "prompt": "Green rubber boots stomp in rhythm on wooden dock boards. Close-up, the camera tracks with them. Warm lantern light."
+    },
+    {
+      "line": 14,
+      "prompt": "{moss} pulls a dead black phone from his pocket, shrugs, and tucks it back away with a smile. The camera pushes in. Warm lantern light."
+    },
+    {
+      "prompt": "A guitarist in a red embroidered jacket with a tall black quiff strums by the water at sunset. The camera whip pans to him. Warm sunset light."
+    },
+    {
+      "line": 15,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, at dusk under warm paper lanterns. The camera slowly pulls back. Warm lantern glow.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} sits on the edge of the dock at dusk under warm paper lanterns, legs dangling over glittering water, and takes a deep happy breath. The camera cranes slowly up. Warm lantern glow against a deep blue dusk."
+    }
+  ],
+  "endcard": {
+    "line1": "Ask a stranger.",
+    "line2": "link in bio"
+  },
+  "caption": "moss's phone died in a town he didn't know, so he asked a baker, a gardener and a ferryman. Infinite Stroll tee, no map needed",
+  "hashtags": [
+    "#getlost",
+    "#claymation",
+    "#mariachi",
+    "#solarpunk",
+    "#infinitestroll"
+  ]
+}

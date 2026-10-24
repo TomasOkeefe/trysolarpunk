@@ -1,0 +1,144 @@
+{
+  "slug": "the-big-one",
+  "date": "2026-11-03",
+  "product": "eyelid",
+  "style": "claymation",
+  "hook_text": "Phone asleep. Then the big one bit.",
+  "song": {
+    "title": "Heave Ho, Let It Sleep",
+    "style": "English, rousing sea shanty with accordion, fiddle, stomping boots, hand claps and a gang chorus, warm friendly male lead vocal, hearty, 116 BPM",
+    "lyrics": "[Verse]\nOut on the pier with my rod\nPhone in my hand, head down, nod\nA fish took the bait and was gone\nI missed it, I scrolled right on\n\n[Chorus]\nHeave ho, let it sleep\nEyes on the water deep\nHeave ho, hold the line\nThe big one will be mine\n\n[Verse]\nI slid my phone in its sleeve\nAnd watched the waves and believed\nThe line went tight, the rod bent low\nA fish as big as a boat below\n\n[Chorus]\nHeave ho, let it go\nBack to the deep below\nHeave ho, hold the line\nI've got the sea and time"
+  },
+  "shots": [
+    {
+      "line": 0,
+      "prompt": "A giant silver fish leaps out of the sea in a burst of spray right behind {moss}, who sits on a wooden pier staring at a glowing phone and never notices. Low angle, the camera whips up with the fish. Bright morning sun."
+    },
+    {
+      "prompt": "Extreme close-up of a red and white fishing float bobbing on green water. The camera pushes in. Bright morning sun."
+    },
+    {
+      "line": 1,
+      "prompt": "{moss} sits on the edge of a wooden pier, a fishing rod propped in one hand and a buzzing phone in the other, head down. The camera orbits fast around him. Bright morning sun."
+    },
+    {
+      "prompt": "A phone buzzes and jumps in the hand of {moss} and he fumbles it. Close-up, the camera crash zooms in. Bright morning sun."
+    },
+    {
+      "line": 2,
+      "prompt": "A red and white float plunges underwater and a fishing rod tip jerks hard. Low angle, the camera pushes in fast. Bright morning sun."
+    },
+    {
+      "prompt": "A bare fishing hook pops up out of the water, the bait gone. Close-up, the camera tilts up with it. Bright morning sun."
+    },
+    {
+      "line": 3,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, disappointed, holding up an empty fishing hook. The camera pushes in. Bright morning sun.",
+      "sing": true
+    },
+    {
+      "prompt": "An old fisherwoman in a yellow sou'wester hat and a thick blue knit sweater with a long white braid shakes her head at the camera from her little wooden rowboat. The camera whip pans to her. Bright morning sun."
+    },
+    {
+      "line": 4,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, sea wind blowing in his face, waves spraying behind him. The camera cranes up. Bright sun, sparkling sea.",
+      "sing": true
+    },
+    {
+      "prompt": "An old fisherwoman in a yellow sou'wester hat and a thick blue knit sweater with a long white braid hauls a huge silver fish into her rowboat, laughing. The camera whip pans to her. Bright sun."
+    },
+    {
+      "line": 5,
+      "prompt": "{moss} leans over the edge of the pier peering down into clear green water. Top-down, the camera pushes in. Bright sun."
+    },
+    {
+      "prompt": "A huge dark fish shadow glides slowly under the water beneath a wooden pier. The camera cranes down toward it. Bright sun on green water."
+    },
+    {
+      "line": 6,
+      "prompt": "{moss} stands up on the pier, sea wind flapping his raincoat, looking determined. The camera dolly zooms. Bright sun."
+    },
+    {
+      "prompt": "A white seagull lands right on top of the green beanie of {moss}. Close-up, the camera crash zooms in. Bright sun."
+    },
+    {
+      "line": 7,
+      "prompt": "{moss} points out to sea like a ship's captain. Low angle, the camera cranes up. Bright sun, sparkling sea."
+    },
+    {
+      "prompt": "{moss} pulls a buzzing phone out of his raincoat pocket and looks from it to the sea. The camera pushes in. Bright sun."
+    },
+    {
+      "prompt": "A slim terracotta-orange sleeve stands upright on a soft pale green backdrop, a phone tucked inside so only its top edge peeks out, the sleeve's top edge cut like a closed eyelid with black lashes. Soft leaf shadows drift across the backdrop. Warm daylight. The camera slowly pushes in as the light turns warmer.",
+      "product_image": true,
+      "line": 8
+    },
+    {
+      "prompt": "{moss} tucks a terracotta-orange sleeve into his raincoat pocket and pats it. Close-up, the camera pushes in. Bright sun."
+    },
+    {
+      "line": 9,
+      "prompt": "{moss} sits cross-legged on the pier, calm, both hands on his fishing rod, watching the waves. The camera orbits fast around him. Golden morning light."
+    },
+    {
+      "prompt": "Sunlight sparkles on rolling green waves. FPV, the camera skims low over the water. Golden morning light."
+    },
+    {
+      "line": 10,
+      "prompt": "The fishing rod bends almost in half and {moss} is yanked to his feet, his boots skidding on the planks. The camera crash zooms in. Bright sun."
+    },
+    {
+      "prompt": "A fishing reel spins wildly, the line whizzing out. Extreme close-up, the camera pushes in. Bright sun."
+    },
+    {
+      "line": 11,
+      "prompt": "A giant silver fish as big as a rowboat leaps out of the sea right in front of {moss}, spray flying everywhere. Low angle, the camera rises with the fish. Bright sun."
+    },
+    {
+      "prompt": "Extreme close-up: the glasses of {moss} are dripping with sea spray, his mouth wide open under his mustache. The camera crash zooms in. Bright sun."
+    },
+    {
+      "line": 12,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, soaking wet and laughing, gripping his fishing rod. The camera pushes in. Bright sun.",
+      "sing": true
+    },
+    {
+      "prompt": "A giant friendly fish eye at the water's surface winks at the camera. Extreme close-up, the camera pushes in. Bright sun on green water."
+    },
+    {
+      "line": 13,
+      "prompt": "{moss} gently unhooks the giant silver fish and it slides back into the sea with a big splash. The camera cranes up. Golden light."
+    },
+    {
+      "prompt": "A giant silver fish tail flicks out of the water and splashes {moss}. Low angle, the camera whips with the splash. Golden light."
+    },
+    {
+      "line": 14,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, rowing a little wooden rowboat beside an old fisherwoman in a yellow sou'wester hat and a thick blue knit sweater with a long white braid. The camera orbits around the boat. Golden afternoon light.",
+      "sing": true
+    },
+    {
+      "prompt": "An old fisherwoman in a yellow sou'wester hat and a thick blue knit sweater with a long white braid hands {moss} a steaming cup of tea from a thermos in the rowboat. Close-up, the camera pushes in. Golden afternoon light."
+    },
+    {
+      "line": 15,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, on the pier at sunset, a warm lantern glowing beside him. The camera slowly pulls back. Warm sunset light.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} and an old fisherwoman in a yellow sou'wester hat and a thick blue knit sweater with a long white braid sit on the end of the pier at sunset, legs dangling, a lantern glowing between them over a calm sea. The camera slowly drifts up. Warm golden glow."
+    }
+  ],
+  "endcard": {
+    "line1": "Watch the water.",
+    "line2": "link in bio"
+  },
+  "caption": "moss kept missing every bite while checking his phone. Eyelid on, eyes on the water, and the big one finally showed up",
+  "hashtags": [
+    "#fishing",
+    "#seashanty",
+    "#claymation",
+    "#solarpunk",
+    "#phonefree"
+  ]
+}

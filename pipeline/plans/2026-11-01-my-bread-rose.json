@@ -1,0 +1,143 @@
+{
+  "slug": "my-bread-rose",
+  "date": "2026-11-01",
+  "product": "hibernator",
+  "style": "claymation",
+  "hook_text": "My bread finally rose",
+  "song": {
+    "title": "Rise Up",
+    "style": "English, glittering upbeat disco with four-on-the-floor kick, funky rhythm guitar, string stabs, bouncy bass and handclaps, warm friendly male lead vocal, joyful, 124 BPM",
+    "lyrics": "[Verse]\nFlour on my face and on the floor\nDough as flat as the day before\nI looked away to check my phone\nAnd burnt it black as any stone\n\n[Chorus]\nRise up, rise up, dough\nWarm and golden, nice and slow\nRise up, rise up, high\nBread as big as the sky\n\n[Verse]\nMy phone went sleeping on the door\nI kneaded dough and nothing more\nIt puffed up round and warm and tall\nEnough to feed us one and all\n\n[Chorus]\nRise up, rise up, neighbours\nBreak the bread and taste the flavours\nRise up, rise up, high\nBread as big as the sky"
+  },
+  "shots": [
+    {
+      "line": 0,
+      "prompt": "{moss} sneezes into a big bowl of flour and a huge white cloud bursts all over him, covering his glasses and mustache. The camera crash zooms in. Warm kitchen light."
+    },
+    {
+      "prompt": "Extreme close-up: {moss} blinks through flour-covered glasses, only his rosy cheeks showing. The camera pushes in. Warm kitchen light."
+    },
+    {
+      "line": 1,
+      "prompt": "{moss} pokes a flat sad loaf of bread on the counter and it deflates with a puff. Top-down, the camera crash zooms in. Warm kitchen light."
+    },
+    {
+      "prompt": "A flat loaf slides off a baking tray like a frisbee and {moss} catches it. The camera whip pans with it. Warm kitchen light."
+    },
+    {
+      "line": 2,
+      "prompt": "{moss} kneads dough with one hand while staring at a glowing phone in the other, the dough sagging off the counter. The camera orbits fast around him. Warm kitchen light."
+    },
+    {
+      "prompt": "Grey smoke curls out of an old green oven door. The camera pushes in fast. Warm kitchen light."
+    },
+    {
+      "line": 3,
+      "prompt": "{moss} pulls a charred black loaf out of the oven in a puff of smoke, coughing. The camera crash zooms in. Warm kitchen light through smoke."
+    },
+    {
+      "prompt": "A charred black loaf drops onto a plate with a heavy clunk like a stone. Extreme close-up, low angle, the camera shakes. Warm kitchen light."
+    },
+    {
+      "line": 4,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, flour on his face, a mirror disco ball spinning above the kitchen. The camera pushes in. Warm sparkly light.",
+      "sing": true
+    },
+    {
+      "prompt": "A mirror disco ball spins above a cosy kitchen, scattering warm spots of light. The camera spins under it. Warm sparkly light."
+    },
+    {
+      "line": 5,
+      "prompt": "{moss} dances around the kitchen with a big bowl of dough in his arms like a dance partner. The camera orbits fast. Warm sparkly light."
+    },
+    {
+      "prompt": "A soft ball of dough wobbles in a bowl as if it is dancing. Close-up, the camera pushes in. Warm kitchen light."
+    },
+    {
+      "line": 6,
+      "prompt": "{moss} strikes a disco pose with one arm pointing to the ceiling. Low angle, the camera cranes up. Warm sparkly light."
+    },
+    {
+      "prompt": "{moss} looks from the glowing phone in his hand to the fridge across the kitchen. The camera whip pans to the fridge. Warm kitchen light."
+    },
+    {
+      "line": 7,
+      "prompt": "{moss} gazes out of his kitchen window at a huge fluffy cloud shaped exactly like a round loaf of bread. The camera pushes past him toward the cloud. Bright blue sky."
+    },
+    {
+      "prompt": "{moss} marches across his kitchen toward the fridge with determination. The camera tracks with him. Warm morning light."
+    },
+    {
+      "prompt": "A black smartphone stands upright, face to the door, in a quilted moss-green brick stuck to a cream fridge door, a round sun-yellow badge with a closed eye on its front, a small shopping list held by a yellow magnet beside it. Soft leaf shadows sway slowly across the fridge door. Warm morning light. The camera pushes in slowly.",
+      "product_image": true,
+      "line": 8
+    },
+    {
+      "prompt": "{moss} rolls up his raincoat sleeves and cracks his knuckles at the counter. The camera crash zooms in. Warm morning light."
+    },
+    {
+      "line": 9,
+      "prompt": "{moss} kneads a big ball of dough with both hands, pushing and folding, flour puffing up. Top-down, the camera orbits. Warm morning light."
+    },
+    {
+      "prompt": "{moss} covers a bowl of dough with a striped tea towel and pats it gently. Close-up, the camera pushes in. Warm morning light."
+    },
+    {
+      "line": 10,
+      "prompt": "A striped tea towel slowly lifts up as the dough beneath swells into a huge round dome. The camera pushes in fast. Warm morning light."
+    },
+    {
+      "prompt": "Extreme close-up: the jaw of {moss} drops under his mustache, his eyes wide behind his glasses. The camera crash zooms in. Warm morning light."
+    },
+    {
+      "line": 11,
+      "prompt": "{moss} pulls a giant golden round loaf bigger than his whole body out of the oven. Low angle, the camera cranes up. Warm golden light."
+    },
+    {
+      "prompt": "Steam rises from a golden crust as chunky clay hands tear the loaf open. Extreme close-up, the camera pushes in. Warm golden light."
+    },
+    {
+      "line": 12,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, hugging a giant golden loaf in the doorway of his building. The camera pulls back. Warm golden light.",
+      "sing": true
+    },
+    {
+      "prompt": "A grandma in a purple cardigan and pearl glasses sniffs the air from her open window and smiles. The camera pushes in. Warm golden light."
+    },
+    {
+      "line": 13,
+      "prompt": "{moss} hands thick slices of bread to a grandma in a purple cardigan and pearl glasses and a little boy in green dungarees with curly black hair at a long table on the front stoop. The camera whip pans along the table. Warm afternoon sun."
+    },
+    {
+      "prompt": "A little boy in green dungarees with curly black hair takes a huge bite of bread, crumbs flying, grinning. Close-up, the camera crash zooms in. Warm afternoon sun."
+    },
+    {
+      "line": 14,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, dancing with a grandma in a purple cardigan and pearl glasses on a rooftop under a spinning disco ball. The camera orbits fast. Warm sparkly sunset light.",
+      "sing": true
+    },
+    {
+      "prompt": "A grandma in a purple cardigan and pearl glasses spins {moss} under her arm on a rooftop. Low angle, the camera spins with them. Warm sunset light."
+    },
+    {
+      "line": 15,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, holding up a slice of bread to the sunset sky. The camera cranes up. Warm golden sunset.",
+      "sing": true
+    },
+    {
+      "prompt": "Neighbours laugh around a long rooftop table under warm string lights, half a giant loaf in the middle, as {moss} leans back with a contented sigh. The camera slowly drifts up and away. Warm glow against a deep blue dusk."
+    }
+  ],
+  "endcard": {
+    "line1": "Watch the dough instead.",
+    "line2": "link in bio"
+  },
+  "caption": "moss burned every loaf while scrolling. phone in the Hibernator, eyes on the dough, and now the whole block eats",
+  "hashtags": [
+    "#baking",
+    "#claymation",
+    "#disco",
+    "#solarpunk",
+    "#phonefree"
+  ]
+}

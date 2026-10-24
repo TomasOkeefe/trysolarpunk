@@ -1,0 +1,143 @@
+{
+  "slug": "one-rock-soup",
+  "date": "2026-11-02",
+  "product": "hibernator",
+  "style": "claymation",
+  "hook_text": "Made soup with one rock",
+  "song": {
+    "title": "One Rock, One Pot",
+    "style": "English, warm 60s soul with tambourine, punchy horns, groovy bass, organ and backing harmonies, warm friendly male lead vocal, feel-good, 118 BPM",
+    "lyrics": "[Verse]\nTwelve floors of strangers on my street\nWe never talked, we'd never meet\nCold cereal for every meal\nAnd just a screen to share my meal\n\n[Chorus]\nOne rock, one pot, one spoon\nBring what you've got, we'll eat soon\nOne rock, one pot, come down\nBest soup in the whole town\n\n[Verse]\nI tucked my phone in on the door\nAnd set a pot on the courtyard floor\nA carrot came, an onion too\nA pumpkin rolled into the stew\n\n[Chorus]\nOne rock, one pot, one spoon\nTwelve floors singing the same tune\nOne rock, one pot, come down\nBest soup in the whole town"
+  },
+  "shots": [
+    {
+      "line": 0,
+      "prompt": "The camera swoops fast down the face of a tall red brick apartment building draped in green vines to {moss} sitting alone at a ground floor window. Bright morning light."
+    },
+    {
+      "prompt": "{moss} eats a spoonful of cereal while staring at a glowing phone propped against the milk carton. Close-up, the camera pushes in. Warm kitchen light."
+    },
+    {
+      "line": 1,
+      "prompt": "{moss} and a tall man in an orange tracksuit with a big grey beard pass each other in a stairwell, both staring at phones, and bump shoulders. The camera whip pans between them. Warm stairwell light."
+    },
+    {
+      "prompt": "{moss} and a tall man in an orange tracksuit with a big grey beard mumble and look away awkwardly. Close-up, the camera crash zooms in on their faces. Warm stairwell light."
+    },
+    {
+      "line": 2,
+      "prompt": "{moss} opens his fridge and finds it completely empty except for one lemon. The camera dolly zooms on his face. Warm fridge light."
+    },
+    {
+      "prompt": "A single lemon rolls slowly across an empty fridge shelf. Close-up, the camera tracks with it. Warm fridge light."
+    },
+    {
+      "line": 3,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, holding a bowl of cereal, a little sad. The camera pushes in. Warm lamp light.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} notices a big round grey rock holding his front door open. The camera whip pans to the rock. Warm daylight."
+    },
+    {
+      "line": 4,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, grinning and holding up a big round grey rock like a treasure. The camera orbits fast. Warm daylight.",
+      "sing": true
+    },
+    {
+      "prompt": "{moss} hauls a giant dented copper pot out of a cupboard and the lid clangs to the floor. The camera crash zooms in. Warm kitchen light."
+    },
+    {
+      "line": 5,
+      "prompt": "{moss} hugs the giant copper pot to his chest, beaming. Low angle, the camera cranes up. Warm kitchen light."
+    },
+    {
+      "prompt": "A big copper pot lid spins on the kitchen floor like a coin. Close-up, the camera spins with it. Warm kitchen light."
+    },
+    {
+      "line": 6,
+      "prompt": "{moss} carries the giant copper pot over his head toward the front door. The camera tracks backward in front of him. Warm daylight."
+    },
+    {
+      "prompt": "{moss} bonks the copper pot on the door frame and staggers. The camera whip pans. Warm daylight."
+    },
+    {
+      "line": 7,
+      "prompt": "{moss} looks at the glowing phone in his hand, then at the fridge, and nods to himself. The camera pushes in fast. Warm morning light."
+    },
+    {
+      "prompt": "{moss} strides across his kitchen toward the fridge. The camera tracks with him. Warm morning light."
+    },
+    {
+      "prompt": "A black smartphone stands upright, face to the door, in a quilted moss-green brick stuck to a cream fridge door, a round sun-yellow badge with a closed eye on its front, a small shopping list held by a yellow magnet beside it. Soft leaf shadows sway slowly across the fridge door. Warm morning light. The camera pushes in slowly.",
+      "product_image": true,
+      "line": 8
+    },
+    {
+      "prompt": "{moss} gives the fridge door a gentle pat. Close-up, the camera pushes in. Warm morning light."
+    },
+    {
+      "line": 9,
+      "prompt": "{moss} sets the giant copper pot over a small fire in a sunny courtyard full of plants and fills it with a hose. The camera cranes down. Bright warm daylight."
+    },
+    {
+      "prompt": "{moss} drops a big round grey rock into the pot with a huge splash that soaks his mustache. The camera crash zooms in. Bright warm daylight."
+    },
+    {
+      "line": 10,
+      "prompt": "A grandma in a purple cardigan and pearl glasses walks across the courtyard holding out one big orange carrot, one eyebrow raised. The camera tracks with her. Bright warm daylight."
+    },
+    {
+      "prompt": "A big orange carrot plops into a bubbling copper pot. Close-up, the camera pushes in. Bright warm daylight."
+    },
+    {
+      "line": 11,
+      "prompt": "A tall man in an orange tracksuit with a big grey beard rolls a big orange pumpkin across the courtyard into the arms of {moss}. The camera whip pans with the pumpkin. Bright warm daylight."
+    },
+    {
+      "prompt": "{moss} staggers under the weight of a big orange pumpkin, laughing. Low angle, the camera circles him. Bright warm daylight."
+    },
+    {
+      "line": 12,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, stirring a steaming copper pot with a wooden spoon, neighbours gathering behind him. The camera pushes in. Warm afternoon light.",
+      "sing": true
+    },
+    {
+      "prompt": "Steam swirls up from a bubbling pot of orange soup. Top-down, the camera spins slowly. Warm afternoon light."
+    },
+    {
+      "line": 13,
+      "prompt": "{moss}, a grandma in a purple cardigan and pearl glasses, a tall man in an orange tracksuit with a big grey beard and a little girl in blue overalls with a big afro puff sing together around the pot, using wooden spoons as microphones. The camera orbits fast around them. Warm afternoon light."
+    },
+    {
+      "prompt": "{moss} and a tall man in an orange tracksuit with a big grey beard clink their soup bowls together and laugh. Close-up, the camera crash zooms in. Warm afternoon light."
+    },
+    {
+      "line": 14,
+      "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, at a long table in the courtyard under warm string lights. The camera slowly pulls back. Warm string-light glow at dusk.",
+      "sing": true
+    },
+    {
+      "prompt": "A grandma in a purple cardigan and pearl glasses ladles soup into a bowl held up by a little girl in blue overalls with a big afro puff. Close-up, the camera pushes in. Warm string-light glow."
+    },
+    {
+      "line": 15,
+      "prompt": "A long table in a plant-filled courtyard at dusk under warm string lights, neighbours laughing over soup bowls, {moss} raising his bowl at the head of the table. The camera cranes up. Warm glow against a deep blue dusk."
+    },
+    {
+      "prompt": "{moss} sets the big round grey rock back by his front door for next time and smiles. The camera pushes in slowly. Warm lantern glow."
+    }
+  ],
+  "endcard": {
+    "line1": "Bring a carrot.",
+    "line2": "link in bio"
+  },
+  "caption": "moss didn't know a single neighbour. phone in the Hibernator, one pot, one rock. now twelve floors eat together",
+  "hashtags": [
+    "#stonesoup",
+    "#claymation",
+    "#neighbours",
+    "#solarpunk",
+    "#phonefree"
+  ]
+}
