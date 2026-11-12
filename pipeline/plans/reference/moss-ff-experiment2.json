@@ -1,0 +1,35 @@
+[
+ {
+  "name": "y-close-1",
+  "refs": [
+   "moss/face.jpg"
+  ],
+  "prompt": "A close-up portrait of this clay character, framed from the chest up, his head filling most of the picture, singing to the camera with his mouth open wide under his mustache, in a cosy kitchen with warm light. Keep him exactly as in the reference picture: the same round head with warm peach skin, round black glasses, bushy brown mustache, rosy cheeks and moss-green rib-knit beanie with a yellow pom-pom, and the collar of his mustard-yellow raincoat. A frame from a handmade claymation stop-motion film shot on a real miniature set: matte plasticine with soft thumbprints, soft diffused warm light, gentle natural colours, no glossy highlights.",
+  "seed": 1
+ },
+ {
+  "name": "y-close-2",
+  "refs": [
+   "moss/face.jpg",
+   "moss/front.jpg"
+  ],
+  "prompt": "A close-up portrait of this clay character, framed from the chest up, his head filling most of the picture, singing to the camera with his mouth open wide under his mustache, in a cosy kitchen with warm light. Keep him exactly as in the reference picture: the same round head with warm peach skin, round black glasses, bushy brown mustache, rosy cheeks and moss-green rib-knit beanie with a yellow pom-pom, and the collar of his mustard-yellow raincoat. A frame from a handmade claymation stop-motion film shot on a real miniature set: matte plasticine with soft thumbprints, soft diffused warm light, gentle natural colours, no glossy highlights.",
+  "seed": 1
+ },
+ {
+  "name": "y-close-3",
+  "refs": [
+   "moss/face.jpg"
+  ],
+  "prompt": "An extreme close-up of this clay character's face filling the whole picture, cropped at his shoulders, singing to the camera with his mouth open wide under his mustache, in a cosy kitchen with warm light. Keep him exactly as in the reference picture: the same round head with warm peach skin, round black glasses, bushy brown mustache, rosy cheeks and moss-green rib-knit beanie with a yellow pom-pom, and the collar of his mustard-yellow raincoat. A frame from a handmade claymation stop-motion film shot on a real miniature set: matte plasticine with soft thumbprints, soft diffused warm light, gentle natural colours, no glossy highlights.",
+  "seed": 1
+ },
+ {
+  "name": "y-close-4",
+  "refs": [
+   "moss/face.jpg"
+  ],
+  "prompt": "A close-up portrait of this clay character, framed from the chest up, his head filling most of the picture, laughing in falling snow with snowflakes on his mustache, a snowy garden behind him. Keep him exactly as in the reference picture: the same round head with warm peach skin, round black glasses, bushy brown mustache, rosy cheeks and moss-green rib-knit beanie with a yellow pom-pom, and the collar of his mustard-yellow raincoat. A frame from a handmade claymation stop-motion film shot on a real miniature set: matte plasticine with soft thumbprints, soft diffused warm light, gentle natural colours, no glossy highlights.",
+  "seed": 2
+ }
+]

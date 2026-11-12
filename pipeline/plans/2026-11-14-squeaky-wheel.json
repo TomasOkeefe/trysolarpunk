@@ -1,0 +1,147 @@
+{
+ "slug": "squeaky-wheel",
+ "date": "2026-11-14",
+ "product": "hibernator",
+ "style": "claymation",
+ "hook_text": "The bike sat broken for a year",
+ "song": {
+  "title": "Squeaky Wheel",
+  "style": "English, twangy surf rock with reverb guitar, driving drums, handclaps and a bouncy bass, warm friendly male lead vocal, sunny and fast, 128 BPM",
+  "lyrics": "[Verse]\nOld red bike behind the door\nFlat and rusty, one year more\nI'd fix it up, I always said\nThen I'd scroll my day instead\n\n[Chorus]\nSqueaky wheel, come on, let's ride\nOil the chain and pump the tyre\nSqueaky wheel, the hill is steep\nMy phone is on the fridge asleep\n\n[Verse]\nSpanner, grease and a cup of tea\nBell goes ding, the brakes are free\nWobbled once and hit a hedge\nThen I flew past the river's edge\n\n[Chorus]\nSqueaky wheel, come on, let's ride\nWind and sun and countryside\nSqueaky wheel, the hill was steep\nTop of the world and my phone's asleep"
+ },
+ "shots": [
+  {
+   "prompt": "A rusty old red bicycle with flat tyres and cobwebs leans behind a door in a dim hallway. The camera crash zooms in on it. Dim warm hallway light.",
+   "line": 0
+  },
+  {
+   "prompt": "A little spider dangles from the handlebar of a dusty red bicycle and waves a leg. Extreme close-up, the camera pushes in. Dim warm light."
+  },
+  {
+   "prompt": "{moss} walks down a hallway past a rusty red bicycle, staring at a softly glowing phone and not looking at the bike. The camera tracks with him. Dim warm hallway light.",
+   "line": 1,
+   "view": "side"
+  },
+  {
+   "prompt": "A flat bicycle tyre sags sadly on a wooden floor. Close-up, the camera tilts down. Dim warm light."
+  },
+  {
+   "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, sheepish, pointing a thumb over his shoulder at a rusty red bicycle behind him in a hallway. The camera pushes in. Warm hallway light.",
+   "line": 2,
+   "sing": true
+  },
+  {
+   "prompt": "The pages of a blank wall calendar flip by in a blur while the seasons change in the window beside it. The camera pushes in. Soft daylight."
+  },
+  {
+   "prompt": "{moss} lies on a green sofa with his boots up, lit by a softly glowing phone, while a rusty red bicycle sits in the shadows behind him. The camera dolly zooms. Dim grey light, warm lamp.",
+   "line": 3
+  },
+  {
+   "prompt": "{moss} glances from his phone to a rusty red bicycle and back, then frowns thoughtfully. Close-up, the camera whip-pans between them. Warm lamp light."
+  },
+  {
+   "prompt": "{moss} wheels a rusty red bicycle out of his front door into bright sunshine. The camera pulls back fast through the doorway. Bright morning sun.",
+   "line": 4
+  },
+  {
+   "prompt": "A rusty bicycle wheel turns slowly with a wobble. Extreme close-up, the camera orbits the hub. Bright morning sun."
+  },
+  {
+   "prompt": "{moss} drips oil from a little green oil can onto the chain of a red bicycle, tongue out in concentration. The camera pushes in on his hands. Bright morning sun.",
+   "line": 5
+  },
+  {
+   "prompt": "{moss} pumps a bicycle pump up and down as fast as he can, his beanie's pom-pom bouncing, the tyre of a red bicycle swelling. The camera crash zooms in. Bright morning sun."
+  },
+  {
+   "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, determined, gripping the handlebars of a red bicycle, a steep green hill behind him. The camera pushes in fast. Bright morning sun.",
+   "line": 6,
+   "sing": true
+  },
+  {
+   "prompt": "A steep green hill with a winding road rises above a little town, a single tree at the very top. The camera cranes up the hill. Bright morning sun."
+  },
+  {
+   "prompt": "A black smartphone stands upright, face to the door, in a quilted moss-green brick stuck to a cream fridge door, a round sun-yellow badge with a closed eye on its front, a small shopping list held by a yellow magnet beside it. Soft leaf shadows sway slowly across the fridge door. Warm morning light. The camera pushes in slowly.",
+   "line": 7,
+   "product_image": true
+  },
+  {
+   "prompt": "{moss} tiptoes out of a sunny kitchen with a finger to his lips, glancing back over his shoulder. The camera tracks with him. Warm morning light."
+  },
+  {
+   "prompt": "{moss} sits on a doorstep beside an upside-down red bicycle, a spanner in one hand and a steaming mug of tea in the other, grease on his cheek. The camera orbits around him. Bright morning sun.",
+   "line": 8
+  },
+  {
+   "prompt": "A spanner tightens a shiny bolt on a bicycle wheel. Extreme close-up, the camera spins with the spanner. Bright morning sun."
+  },
+  {
+   "prompt": "A clay thumb flicks a shiny silver bicycle bell and it rings and sparkles. Extreme close-up, the camera crash zooms in. Bright morning sun.",
+   "line": 9
+  },
+  {
+   "prompt": "{moss} squeezes both brake levers of a gleaming red bicycle and nods, impressed. Close-up, the camera pushes in. Bright morning sun."
+  },
+  {
+   "prompt": "{moss} wobbles down a country lane on a red bicycle, zigzagging wildly, and plunges head first into a big green hedge. The camera tracks with him, then crash zooms. Bright morning sun.",
+   "line": 10,
+   "frame": "He rides a red bicycle along a country lane beside a big green hedge, wobbling, eyes wide, seen from the front. Full body. Bright morning sun."
+  },
+  {
+   "prompt": "{moss} pops his head up out of a green hedge with leaves stuck in his mustache and gives a thumbs up. The camera crash zooms in. Bright morning sun.",
+   "frame": "A close-up of him with his head and shoulders poking up out of the top of a big green hedge, leaves stuck in his mustache. Bright morning sun.",
+   "view": "face"
+  },
+  {
+   "prompt": "{moss} speeds along a path beside a sparkling river on a red bicycle, leaning into the wind. The camera tracks fast beside him. Bright midday sun.",
+   "line": 11,
+   "view": "side"
+  },
+  {
+   "prompt": "Three ducks on a sparkling river turn their heads together as something red whooshes past. The camera whip-pans. Bright midday sun."
+  },
+  {
+   "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, thrilled, riding a red bicycle with the wind blowing his beanie's pom-pom back, green fields rushing by. The camera tracks backward in front of him. Bright midday sun.",
+   "line": 12,
+   "sing": true
+  },
+  {
+   "prompt": "{moss} rides a red bicycle with both feet off the pedals and his legs stuck straight out, whooping. The camera orbits fast around him. Bright midday sun."
+  },
+  {
+   "prompt": "FPV drone shot swooping low over rolling green fields, hedgerows and a winding country road with one small red bicycle on it. Bright midday sun.",
+   "line": 13
+  },
+  {
+   "prompt": "A scarecrow in a straw hat and a patched blue jacket stands in a wheat field, its sleeve flapping like a wave as the wind rushes past. The camera whip-pans past it. Bright midday sun."
+  },
+  {
+   "prompt": "{moss} stands on the pedals of a red bicycle, grinding up a steep green hill, puffing, cheeks red. The camera tracks backward up the hill in front of him. Golden afternoon light.",
+   "line": 14
+  },
+  {
+   "prompt": "{moss_back} pedals a red bicycle up the last stretch of a hill toward a single tree at the top, against a huge golden sky. The camera cranes up behind him. Golden afternoon light."
+  },
+  {
+   "prompt": "{moss} stands at the top of a hill holding a red bicycle above his head in triumph, a tiny town and a river far below. The camera orbits around him. Golden afternoon light.",
+   "line": 15
+  },
+  {
+   "prompt": "{moss} lies in the grass under a tree at the top of a hill, a red bicycle on its side beside him, watching the clouds and taking a deep breath. The camera cranes slowly up. Golden evening light."
+  }
+ ],
+ "endcard": {
+  "line1": "Fix the bike.",
+  "line2": "link in bio"
+ },
+ "caption": "the red bike waited a year behind the door. then moss put his phone in the Hibernator and found a spanner. only one hedge was harmed",
+ "hashtags": [
+  "#bikelife",
+  "#fixit",
+  "#claymation",
+  "#solarpunk",
+  "#phonefree"
+ ]
+}

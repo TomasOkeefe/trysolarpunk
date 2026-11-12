@@ -1,0 +1,55 @@
+from dsl import S, save
+L = "Warm lamp light."
+M = "Bright morning sun."
+SM = "Soft morning light."
+SING = "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, "
+POST = "a postman in a blue uniform with a big ginger mustache"
+SAILOR = "a tall thin sailor in a red striped jumper and a blue cap"
+save({
+ "slug": "wrote-you-a-letter", "date": "2026-11-16", "product": "eyelid", "style": "claymation",
+ "hook_text": "I wrote a letter with a pen",
+ "song": {"title": "Dear Old Friend",
+  "style": "English, gentle bossa nova with nylon guitar, soft shaker, upright bass and a breathy flute, warm friendly male lead vocal, relaxed and sweet, 112 BPM",
+  "lyrics": "[Verse]\nTyped hello and typed goodbye\nLittle hearts that float on by\nPut my phone to bed today\nFound a pen and a thing to say\n\n[Chorus]\nDear old friend across the sea\nHere's a letter, slow, from me\nInk got smudged, I spelled it wrong\nPaper carries it along\n\n[Verse]\nLicked the stamp and walked a mile\nRed postbox, it made me smile\nThree weeks on, a knock, a ring\nThe postman brought a papery thing\n\n[Chorus]\nDear old friend across the sea\nYou wrote back, you thought of me\nInk got smudged, you spelled it wrong\nI'll read it all the winter long"},
+ "shots": [
+  S(0, "A chunky plasticine thumb taps on a softly glowing phone, tap, tap, tap. Extreme close-up, the camera spins around the thumb. Dim warm lamp light."),
+  S(None, "{moss} sits hunched at a wooden desk over a softly glowing phone, tapping with a bored face. The camera dolly zooms on him. Dim warm lamp light."),
+  S(1, "Little red paper hearts drift up from a softly glowing phone and pop like bubbles. Close-up, the camera tilts up with them. Dim warm lamp light."),
+  S(None, "{moss} watches a little red paper heart float past his nose and pop, unimpressed. Close-up, the camera pushes in. Dim warm lamp light."),
+  S(2, f"{{moss}} slides a phone into a slim terracotta-orange sleeve whose top edge looks like a closed eyelid with black lashes, and lays it gently on a bookshelf. The camera pushes in on his hands. {L}",
+    frame=f"He stands beside a bookshelf holding a phone in one hand and a slim terracotta-orange sleeve in the other, about to slide the phone in. Medium shot. {L}"),
+  S(None, "A slim terracotta-orange sleeve stands upright on a soft pale green backdrop, a phone tucked inside so only its top edge peeks out, the sleeve's top edge cut like a closed eyelid with black lashes. Soft leaf shadows drift across the backdrop. Warm daylight. The camera slowly pushes in as the light turns warmer.", product=True),
+  S(3, f"{{moss}} pulls open a desk drawer and holds up a blue fountain pen like a treasure. The camera crash zooms in. {L}",
+    frame=f"He sits at a wooden desk holding up a blue fountain pen in one hand and looking at it with wide eyes, an open drawer beside him. Medium shot. {L}"),
+  S(None, f"Two clay hands smooth a sheet of cream paper flat on a wooden desk. Top-down, the camera pushes in. {L}"),
+  S(4, SING + f"tender, holding a blue fountain pen, at a wooden desk by a window. The camera pushes in. {L}", sing=True),
+  S(None, "A red and white lighthouse stands on a tiny green island far across a sparkling sea. FPV, the camera flies fast over the waves toward it. Bright morning sun."),
+  S(5, f"{{moss}} writes slowly on cream paper with a blue fountain pen, tongue out, at a wooden desk by a window. The camera orbits around him. {L}"),
+  S(None, f"The nib of a blue fountain pen draws a looping line of ink across cream paper. Extreme close-up, the camera tracks with the nib. {L}"),
+  S(6, f"{{moss}} lifts his hand from the paper and finds a big blue ink smudge on his palm and another on his cheek. Close-up, the camera crash zooms in. {L}", view="face",
+    frame=f"A close-up of him at a desk holding up one hand with a big blue ink smudge on the palm, another blue ink smudge on his cheek, looking guilty. {L}"),
+  S(None, f"A scrunched ball of cream paper bounces into a wicker bin overflowing with scrunched paper balls. The camera whip-pans to the bin. {L}"),
+  S(7, f"{{moss}} folds a letter, slips it into a cream envelope and gives it a kiss. The camera pushes in. {L}"),
+  S(None, "A cream envelope with a bright red wax seal lies on a wooden desk in a sunbeam. Close-up, the camera orbits it. Golden morning light."),
+  S(8, f"{{moss}} licks a postage stamp, pulls a face at the taste and presses it onto a cream envelope. Close-up, the camera pushes in. {M}"),
+  S(None, f"{{moss}} strides along a country road holding a cream envelope high in the air, green hills behind him. The camera tracks beside him. {M}", view="side"),
+  S(9, f"A bright red pillar postbox stands on a street corner of crooked clay houses, gleaming in the sun. The camera crash zooms in on its slot. {M}"),
+  S(None, f"{{moss}} stands on tiptoe to push a cream envelope into the slot of a bright red postbox, then pats the postbox. The camera orbits around him. {M}", view="threeq"),
+  S(10, "Leaves fall from a tree beside a green front door, then snow gathers on the step, as the days rush by. The camera pushes in on the door. Light shifting from gold to soft white."),
+  S(None, f"A clay hand in a blue sleeve raps a brass door knocker on a green front door. Close-up, the camera crash zooms in. {SM}"),
+  S(11, f"{POST[0].upper() + POST[1:]} hands a fat blue envelope to {{moss}} at his front door. The camera whip-pans from the envelope up to {{moss}}'s face. {SM}", view="threeq",
+    frame=f"He stands in his open front doorway facing {POST} who holds out a fat blue envelope to him. Full body. {SM}"),
+  S(None, f"{{moss}} hugs a fat blue envelope to his chest and spins around in his doorway. The camera orbits around him. {SM}"),
+  S(12, SING + f"moved, pressing a fat blue envelope to his chest, beside a sunny window. The camera pushes in. {SM}", sing=True),
+  S(None, f"{SAILOR[0].upper() + SAILOR[1:]} sits writing at a little desk in a lighthouse window, gulls wheeling outside. The camera pushes in through the window. Bright sea light."),
+  S(13, f"{{moss}} sits in a green armchair unfolding a long letter, his face lighting up. The camera dolly zooms on him. {L}"),
+  S(None, f"Two clay hands hold a sheet of cream paper with a small ink drawing of a lighthouse under a smiling sun. Close-up, the camera pushes in. {L}"),
+  S(14, f"{{moss}} points at a big blue ink smudge on a letter and laughs so hard his beanie's pom-pom shakes. Close-up, the camera pushes in. {L}"),
+  S(None, f"{SAILOR[0].upper() + SAILOR[1:]} looks at a blue ink smudge on his own hand and shrugs with a grin, in a lighthouse window. The camera crash zooms in. Bright sea light."),
+  S(15, "{moss} sits in a green armchair beside a snowy window reading a long letter, a steaming mug beside him. The camera pulls back slowly. Warm lamp light, soft white snow light in the window."),
+  S(None, "A fat blue envelope leans against a mug on a windowsill while snow falls outside and a candle flickers. The camera pushes in slowly. Warm candle glow."),
+ ],
+ "endcard": {"line1": "Write to someone.", "line2": "link in bio"},
+ "caption": "moss put his phone to bed in the Eyelid and wrote a real letter. three weeks later one came back. the smudges are the best part",
+ "hashtags": ["#letters", "#penpal", "#claymation", "#solarpunk", "#slowliving"],
+})

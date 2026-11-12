@@ -37,17 +37,32 @@ def collect(base, slugs, dest, log):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("plan")
-    ap.add_argument("--frames", type=int, default=49, help="frames per clip (8k+1); 49 is ~2 s")
+    ap.add_argument("--frames", type=int, default=49, help="frames per clip (8k+1); 49 is ~2 s; a shot's own \"frames\" wins")
+    ap.add_argument("--provider", choices=["runpod", "modal"], default="runpod",
+                    help="modal runs this folder's code as it is (no push needed)")
+    ap.add_argument("--lora", nargs=2, metavar=("URL", "STRENGTH"),
+                    help="use this LoRA instead of the one in config.yaml (to try a new checkpoint; on Modal a "
+                         "file:///work/... URL reads it straight from the work volume)")
+    ap.add_argument("--no-lora", action="store_true", help="render without any character LoRA")
     a = ap.parse_args()
     cfg = yaml.safe_load((ROOT / "config.yaml").read_text())
     plan = concept.expand(json.loads(pathlib.Path(a.plan).read_text()), cfg.get("characters", {}), cfg.get("loras"))
+    if a.lora:
+        plan["loras"] = [{"url": a.lora[0], "strength": float(a.lora[1])}]
+    if a.no_lora:
+        plan.pop("loras", None)
     style = plan.get("style", cfg["video"].get("style", ""))
     plan["style"] = cfg.get("styles", {}).get(style, style)
-    run.assert_code_pushed()
     dest = ROOT.parent / "videos" / "raw"
     dest.mkdir(parents=True, exist_ok=True)
     log = lambda m: print(f"[{time.strftime('%H:%M:%S')}] {m}", flush=True)
-    got, info = runpod.run_job(cfg, [plan], run.REPO_URL, dest, log, collect=collect,
-                               extra={"env": {"CLIPS_ONLY": "1", "GEN_FRAMES": str(a.frames), "KEEP_MIN": "15"}})
+    env = {"CLIPS_ONLY": "1", "GEN_FRAMES": str(a.frames)}
+    if a.provider == "modal":
+        from ge import modal_runner
+        got, info = modal_runner.run_job(cfg, [plan], dest, log, extra_env=env, raw_only=True)
+    else:
+        run.assert_code_pushed()
+        got, info = runpod.run_job(cfg, [plan], run.REPO_URL, dest, log, collect=collect,
+                                   extra={"env": {**env, "KEEP_MIN": "15"}})
     hours = info.get("hours", 0)
     print(f"{len(plan['shots'])} clips in {dest / plan['slug']}, {hours * 60:.0f} min, about ${hours * (info.get('dph_total') or 0):.2f}")

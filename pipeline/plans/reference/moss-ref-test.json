@@ -1,0 +1,87 @@
+{
+ "slug": "moss-ref-test",
+ "style": "claymation",
+ "shots": [
+  {
+   "prompt": "An empty miniature set, nobody in it, no characters: a vegetable garden with raised beds of cabbages and carrots, a gravel path running into the distance, a wooden fence and a small shed. Wide open flat ground in the foreground. Static camera at knee height, level with the ground. Soft light.",
+   "frames": 17,
+   "product_image": false,
+   "tag": "plate-garden"
+  },
+  {
+   "prompt": "An empty miniature set, nobody in it, no characters: a cosy kitchen with a wooden floor, a green stove, shelves of jars and a window with morning sun. Wide open flat ground in the foreground. Static camera at knee height, level with the ground. Soft light.",
+   "frames": 17,
+   "product_image": false,
+   "tag": "plate-kitchen"
+  },
+  {
+   "prompt": "An empty miniature set, nobody in it, no characters: a quiet street of small crooked clay houses with flower boxes, cobblestones and a lamppost. Wide open flat ground in the foreground. Static camera at knee height, level with the ground. Soft light.",
+   "frames": 17,
+   "product_image": false,
+   "tag": "plate-street"
+  },
+  {
+   "prompt": "An empty miniature set, nobody in it, no characters: a rooftop garden with planter boxes, string lights and a view over a town of little rooftops. Wide open flat ground in the foreground. Static camera at knee height, level with the ground. Soft light.",
+   "frames": 17,
+   "product_image": false,
+   "tag": "plate-rooftop"
+  },
+  {
+   "prompt": "An empty miniature set, nobody in it, no characters: a park with a wooden bench, round trees and a path of autumn leaves. Wide open flat ground in the foreground. Static camera at knee height, level with the ground. Soft light.",
+   "frames": 17,
+   "product_image": false,
+   "tag": "plate-park"
+  },
+  {
+   "prompt": "An empty miniature set, nobody in it, no characters: a living room with a soft green sofa, a floor lamp, a rug and bookshelves, warm lamp light. Wide open flat ground in the foreground. Static camera at knee height, level with the ground. Soft light.",
+   "frames": 17,
+   "product_image": false,
+   "tag": "plate-livingroom"
+  },
+  {
+   "prompt": "An empty miniature set, nobody in it, no characters: a wooden dock on a calm green lake with reeds and distant hills, golden hour. Wide open flat ground in the foreground. Static camera at knee height, level with the ground. Soft light.",
+   "frames": 17,
+   "product_image": false,
+   "tag": "plate-dock"
+  },
+  {
+   "prompt": "An empty miniature set, nobody in it, no characters: a market street with fruit stalls under striped awnings and paper lanterns. Wide open flat ground in the foreground. Static camera at knee height, level with the ground. Soft light.",
+   "frames": 17,
+   "product_image": false,
+   "tag": "plate-market"
+  },
+  {
+   "prompt": "An empty miniature set, nobody in it, no characters: a grassy meadow hill with wildflowers under a big blue sky with puffy clouds. Wide open flat ground in the foreground. Static camera at knee height, level with the ground. Soft light.",
+   "frames": 17,
+   "product_image": false,
+   "tag": "plate-meadow"
+  },
+  {
+   "prompt": "An empty miniature set, nobody in it, no characters: a small bedroom at night with a quilted bed, a bedside lamp glowing warm and a round window. Wide open flat ground in the foreground. Static camera at knee height, level with the ground. Soft light.",
+   "frames": 17,
+   "product_image": false,
+   "tag": "plate-bedroom"
+  },
+  {
+   "prompt": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain soft cream studio backdrop, smiles and waves hello with one hand, then lowers it. Full body, static camera at his eye level. Soft even studio light.",
+   "image": "assets/moss/front.jpg",
+   "frames": 49,
+   "product_image": false,
+   "tag": "test-wave"
+  },
+  {
+   "prompt": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands with his back to the camera on a plain soft cream studio backdrop, then turns around in place to face the camera. Full body, static camera at his eye level. Soft even studio light.",
+   "image": "assets/moss/back.jpg",
+   "frames": 49,
+   "product_image": false,
+   "tag": "test-turn"
+  },
+  {
+   "prompt": "Close-up: A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots nods and breaks into a warm smile on a plain soft cream studio backdrop. Head and shoulders, static camera. Soft even studio light.",
+   "image": "assets/moss/face.jpg",
+   "frames": 49,
+   "product_image": false,
+   "tag": "test-face"
+  }
+ ]
+}

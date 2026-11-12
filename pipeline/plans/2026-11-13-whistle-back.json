@@ -1,0 +1,149 @@
+{
+ "slug": "whistle-back",
+ "date": "2026-11-13",
+ "product": "eyelid",
+ "style": "claymation",
+ "hook_text": "My phone napped. I learned to whistle",
+ "song": {
+  "title": "Whistle Back",
+  "style": "English, breezy skiffle folk with washboard, upright bass, strummed acoustic guitar and a whistled hook, warm friendly male lead vocal, sunny and light, 118 BPM",
+  "lyrics": "[Verse]\nEvery ping would turn my head\nBuzzing by my morning bread\nTucked my phone in for a nap\nEyelid shut, and that was that\n\n[Chorus]\nWhistle, whistle, try again\nSounds like wind in a watering can\nWhistle, whistle, there it goes\nA blackbird answered from the rose\n\n[Verse]\nPractised in the garden shed\nRobin landed on my head\nSparrows on the washing line\nEvery beak in perfect time\n\n[Chorus]\nWhistle, whistle, loud and clear\nWhole street stopped to lend an ear\nWhistle, whistle, off we go\nMe and the birds put on a show"
+ },
+ "shots": [
+  {
+   "prompt": "{moss} sits at a breakfast table, toast halfway to his mouth, and his head snaps toward a phone on the table that buzzes and glows softly. The camera whip-pans from his face to the phone. Bright morning kitchen light.",
+   "line": 0,
+   "frame": "He sits at a breakfast table holding a slice of toast halfway to his mouth, looking sideways at a phone lying on the table. Medium shot. Bright morning kitchen light."
+  },
+  {
+   "prompt": "A phone buzzes its way across a wooden table, rattling a teaspoon in a cup. Extreme close-up, the camera tracks with it. Bright morning light."
+  },
+  {
+   "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, grumpy, a slice of toast in his hand, in a sunny kitchen. The camera pushes in. Bright morning light.",
+   "line": 1,
+   "sing": true
+  },
+  {
+   "prompt": "A slice of toast with jam slips from a clay hand and lands jam side down on a plate. Close-up, the camera tilts down fast. Bright morning light."
+  },
+  {
+   "prompt": "{moss} slides a phone into a slim terracotta-orange sleeve whose top edge looks like a closed eyelid with black lashes, then pats it gently. The camera pushes in on his hands. Warm morning light.",
+   "line": 2,
+   "frame": "He stands at a kitchen table holding a phone in one hand and a slim terracotta-orange sleeve in the other, about to slide the phone in. Medium shot. Warm morning light."
+  },
+  {
+   "prompt": "A slim terracotta-orange sleeve stands upright on a soft pale green backdrop, a phone tucked inside so only its top edge peeks out, the sleeve's top edge cut like a closed eyelid with black lashes. Soft leaf shadows drift across the backdrop. Warm daylight. The camera slowly pushes in as the light turns warmer.",
+   "line": 3,
+   "product_image": true
+  },
+  {
+   "prompt": "{moss} leans back in his chair in the sudden quiet, looks around the kitchen and puckers his lips. The camera dolly zooms on him. Warm morning light."
+  },
+  {
+   "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, cheeks puffed, in a garden full of flowers. The camera pushes in fast. Bright morning sun.",
+   "line": 4,
+   "sing": true
+  },
+  {
+   "prompt": "{moss} blows hard with puffed red cheeks and only a tiny puff of air comes out, his mustache flapping. Close-up, the camera crash zooms in. Bright morning sun."
+  },
+  {
+   "prompt": "A dented green watering can wobbles on a garden path as wind whistles across its spout. Close-up, the camera orbits it. Bright morning sun.",
+   "line": 5
+  },
+  {
+   "prompt": "{moss} stands among the flowers trying to whistle, face scrunched, one finger raised like a conductor. The camera orbits fast around him. Bright morning sun."
+  },
+  {
+   "prompt": "{moss} whistles and his eyes go wide with surprise as a clear note comes out, his beanie's pom-pom bouncing. The camera crash zooms in. Bright morning sun.",
+   "line": 6
+  },
+  {
+   "prompt": "The leaves of a rose bush tremble as a sweet note rings through the garden. The camera whip-pans across the garden to the bush. Bright morning sun."
+  },
+  {
+   "prompt": "A glossy blackbird with a bright orange beak sits on a blooming rose bush, tilts its head and opens its beak to sing back. Close-up, the camera pushes in. Bright morning sun.",
+   "line": 7
+  },
+  {
+   "prompt": "{moss} gasps and points at a blackbird on a rose bush, bouncing on his toes. The camera whip-pans from him to the bird. Bright morning sun.",
+   "view": "threeq"
+  },
+  {
+   "prompt": "{moss} stands in a cosy wooden garden shed full of flowerpots, practising his whistle with his eyes closed. The camera pushes in through the shed door. Dusty golden sunbeams.",
+   "line": 8
+  },
+  {
+   "prompt": "Flowerpots on a shelf in a garden shed rattle and hop in time to a tune. Close-up, the camera tracks along the shelf. Dusty golden sunbeams."
+  },
+  {
+   "prompt": "A small round robin with a red breast flutters down and lands right on top of {moss}'s green beanie, and he freezes, eyes rolling up to look. The camera crash zooms in. Dusty golden sunbeams.",
+   "line": 9,
+   "frame": "He stands in the doorway of a garden shed looking up with wide eyes, a small round robin with a red breast perched on top of his green beanie. Medium shot. Dusty golden sunbeams."
+  },
+  {
+   "prompt": "{moss} slowly breaks into a grin with a robin perched on his beanie. Close-up, the camera pushes in. Dusty golden sunbeams.",
+   "frame": "A close-up of him smiling a little, a small round robin with a red breast perched on top of his green beanie, in a garden shed. Dusty golden sunbeams.",
+   "view": "face"
+  },
+  {
+   "prompt": "Five plump brown sparrows land one by one on a washing line hung with striped socks. The camera tracks along the line. Bright midday sun.",
+   "line": 10
+  },
+  {
+   "prompt": "{moss} stands in a garden waving a wooden spoon like a conductor's baton at five plump sparrows on a washing line. The camera orbits around him. Bright midday sun."
+  },
+  {
+   "prompt": "Five plump brown sparrows on a washing line open their beaks all together, bobbing in rhythm. Close-up, the camera whip-pans along them. Bright midday sun.",
+   "line": 11
+  },
+  {
+   "prompt": "{moss} whistles with his eyes closed, swaying, a robin on his beanie swaying with him. The camera orbits slowly. Bright midday sun."
+  },
+  {
+   "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, joyful, a robin perched on his beanie, in a sunny garden. The camera pushes in fast. Bright midday sun.",
+   "line": 12,
+   "sing": true
+  },
+  {
+   "prompt": "{moss} marches down a garden path whistling, a blackbird, a robin and sparrows flying in a line behind him. The camera tracks backward in front of him. Bright midday sun."
+  },
+  {
+   "prompt": "{moss} walks down a street of crooked clay houses whistling, and a postman in a blue uniform with a big ginger mustache and a grandma in a purple cardigan and pearl glasses stop and turn their heads to listen as he passes. The camera cranes down to them. Bright afternoon sun.",
+   "line": 13
+  },
+  {
+   "prompt": "A grandma in a purple cardigan and pearl glasses cups a hand to her ear and smiles. Close-up, the camera pushes in. Bright afternoon sun."
+  },
+  {
+   "prompt": "{moss} strides along a street whistling, small birds perched along both of his outstretched arms. The camera tracks beside him. Golden afternoon light.",
+   "line": 14,
+   "view": "side"
+  },
+  {
+   "prompt": "A postman in a blue uniform with a big ginger mustache whistles along and tosses his cap in the air. The camera crash zooms in. Golden afternoon light."
+  },
+  {
+   "prompt": "{moss} stands on an upturned crate in a little town square whistling, a blackbird on one hand and sparrows on his shoulders, while a grandma in a purple cardigan and pearl glasses claps. The camera cranes up and around. Golden evening light.",
+   "line": 15
+  },
+  {
+   "prompt": "A row of little birds on a rooftop gutter sing into a golden sunset. The camera cranes up past them into the sky. Golden evening light."
+  },
+  {
+   "prompt": "{moss} sits on a garden bench at sunset with a robin asleep on his beanie and breathes out slowly with a small smile. The camera pulls back slowly. Golden evening light."
+  }
+ ],
+ "endcard": {
+  "line1": "Whistle back.",
+  "line2": "link in bio"
+ },
+ "caption": "moss tucked his phone into the Eyelid and learned to whistle. the birds had notes. now they tour together",
+ "hashtags": [
+  "#whistle",
+  "#birdsong",
+  "#claymation",
+  "#solarpunk",
+  "#phonefree"
+ ]
+}

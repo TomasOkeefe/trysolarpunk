@@ -1,0 +1,56 @@
+[
+ {
+  "name": "watering",
+  "refs": [
+   "moss/threeq.jpg",
+   "moss/front.jpg"
+  ],
+  "seed": 11,
+  "prompt": "Put this clay character in a rooftop garden at golden hour: he stands among tomato plants, holding a small red watering can in one hand and watering them. Full body, three-quarter view. Keep him exactly as in the reference pictures: the same round head, round black glasses, bushy brown mustache, rosy cheeks, moss-green rib-knit beanie with a yellow pom-pom, mustard-yellow raincoat with buttons and pockets, and green rubber boots. A frame from a claymation stop-motion film: handmade plasticine characters, a miniature handmade set, shallow depth of field."
+ },
+ {
+  "name": "laughing",
+  "refs": [
+   "moss/face.jpg",
+   "moss/front.jpg"
+  ],
+  "seed": 12,
+  "prompt": "A close-up of this clay character laughing out loud in a cosy kitchen with warm light, his mouth open under his mustache, arms raised a little. Head and shoulders. Keep him exactly as in the reference pictures: the same round head, round black glasses, bushy brown mustache, rosy cheeks, moss-green rib-knit beanie with a yellow pom-pom, mustard-yellow raincoat with buttons and pockets, and green rubber boots. A frame from a claymation stop-motion film: handmade plasticine characters, a miniature handmade set, shallow depth of field."
+ },
+ {
+  "name": "bicycle",
+  "refs": [
+   "moss/side_m.jpg",
+   "moss/front.jpg"
+  ],
+  "seed": 13,
+  "prompt": "This clay character rides a small red bicycle along a street of crooked clay houses in bright morning sun, seen from the side, both hands on the handlebars. Behind him a clay grandma in a purple cardigan and pearl glasses waves. Keep him exactly as in the reference pictures: the same round head, round black glasses, bushy brown mustache, rosy cheeks, moss-green rib-knit beanie with a yellow pom-pom, mustard-yellow raincoat with buttons and pockets, and green rubber boots. A frame from a claymation stop-motion film: handmade plasticine characters, a miniature handmade set, shallow depth of field."
+ },
+ {
+  "name": "pier",
+  "refs": [
+   "moss/back.jpg",
+   "moss/back3q.jpg"
+  ],
+  "seed": 14,
+  "prompt": "This clay character seen from behind, his back to the camera, walking away down a wooden pier toward a little red canoe on a green canal in golden morning light. We see the back of his green knitted beanie with its yellow pom-pom and the back of his mustard-yellow raincoat, and his green rubber boots. His face is not visible. Full body. A frame from a claymation stop-motion film: handmade plasticine characters, a miniature handmade set, shallow depth of field."
+ },
+ {
+  "name": "soup",
+  "refs": [
+   "moss/front.jpg",
+   "moss/face.jpg"
+  ],
+  "seed": 15,
+  "prompt": "This clay character sits at a wooden table in a cosy kitchen in warm afternoon light, eating soup from a bowl with a big spoon, steam rising, smiling. Medium shot from the front. Keep him exactly as in the reference pictures: the same round head, round black glasses, bushy brown mustache, rosy cheeks, moss-green rib-knit beanie with a yellow pom-pom, mustard-yellow raincoat with buttons and pockets, and green rubber boots. A frame from a claymation stop-motion film: handmade plasticine characters, a miniature handmade set, shallow depth of field."
+ },
+ {
+  "name": "party",
+  "refs": [
+   "moss/front.jpg",
+   "moss/threeq.jpg"
+  ],
+  "seed": 16,
+  "prompt": "This clay character dances at a rooftop party at night under string lights and warm lanterns, arms out. Beside him dance a clay woman in a red dress with a tall black bun and a clay man in a blue jumper with a ginger beard. Full body. Keep him exactly as in the reference pictures: the same round head, round black glasses, bushy brown mustache, rosy cheeks, moss-green rib-knit beanie with a yellow pom-pom, mustard-yellow raincoat with buttons and pockets, and green rubber boots. A frame from a claymation stop-motion film: handmade plasticine characters, a miniature handmade set, shallow depth of field."
+ }
+]

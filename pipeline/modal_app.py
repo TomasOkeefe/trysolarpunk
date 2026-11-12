@@ -47,16 +47,14 @@ image = (
 )
 
 
-@app.function(image=image, gpu=GPUS, timeout=4 * 3600, volumes={"/models": models, "/work": work},
-              secrets=[modal.Secret.from_name("huggingface")], retries=modal.Retries(max_retries=2))
-def render(run_id: str, plans_b64: str, extra_env: dict | None = None) -> list[str]:
+def _job(run_id: str, plans_b64: str, extra_env: dict | None = None) -> list[str]:
     """Run worker/job.sh for one batch. Returns the slugs that finished."""
     run = pathlib.Path("/work/runs") / run_id
     run.mkdir(parents=True, exist_ok=True)
     # the mounted code is read-only; job.sh writes fonts into it, so work on a copy
     subprocess.run(["cp", "-r", "/root/pipeline", "/tmp/pipeline"], check=True)
     env = {**os.environ, **CACHES, "WORK_DIR": str(run), "GE_DIR": "/tmp/pipeline", "OUT_TOKEN": "out",
-           "PLANS_B64": plans_b64, "KEEP_MIN": "0", **(extra_env or {})}
+           "PLANS_B64": plans_b64, "KEEP_MIN": "0", "UV_CACHE_DIR": "/tmp/uv-cache", **(extra_env or {})}
     # job.sh waits on its status server at the end; on Modal nothing needs to fetch from it, so stop it
     proc = subprocess.Popen(["bash", "/tmp/pipeline/worker/job.sh"], env=env)
     out = run / "out" / "out"
@@ -73,6 +71,27 @@ def render(run_id: str, plans_b64: str, extra_env: dict | None = None) -> list[s
     work.commit()
     done = out / "done.txt"
     return done.read_text().split() if done.exists() else []
+
+
+@app.function(image=image, gpu=GPUS, timeout=4 * 3600, volumes={"/models": models, "/work": work},
+              secrets=[modal.Secret.from_name("huggingface")], retries=modal.Retries(max_retries=2))
+def render(run_id: str, plans_b64: str, extra_env: dict | None = None) -> list[str]:
+    return _job(run_id, plans_b64, extra_env)
+
+
+# LoRA training (train_lora.py --provider modal): 80 GB cards train in bf16; no retries, a restart would
+# begin the training again and bill it twice
+@app.function(image=image, gpu=["H100", "A100-80GB"], timeout=3 * 3600, volumes={"/models": models, "/work": work},
+              secrets=[modal.Secret.from_name("huggingface")])
+def train(run_id: str, plans_b64: str, extra_env: dict | None = None) -> list[str]:
+    return _job(run_id, plans_b64, extra_env)
+
+
+# the same on the cheap card (int8, slow): for a few-step smoke test of the training path
+@app.function(image=image, gpu="L40S", timeout=3600, volumes={"/models": models, "/work": work},
+              secrets=[modal.Secret.from_name("huggingface")])
+def train_small(run_id: str, plans_b64: str, extra_env: dict | None = None) -> list[str]:
+    return _job(run_id, plans_b64, extra_env)
 
 
 @app.function(image=modal.Image.debian_slim(python_version="3.12"), gpu="T4", timeout=600,
@@ -123,3 +142,87 @@ def fetch_models() -> str:
         models.commit()
     du = subprocess.run(["du", "-sh", "/models"], capture_output=True, text=True).stdout
     return "\n".join(report) + "\n" + du
+
+
+# ---- first frames: an image-editing model draws a character from its master pictures into a shot's
+# scene and pose, and LTX animates from that frame (worker/gen_clips.py: a shot's "image"). A LoRA alone
+# never held Moss exactly; a clip that starts from a picture of him does (2026-11-11 tests).
+EDIT_MODEL = "Qwen/Qwen-Image-Edit-2511"  # Apache 2.0; 1 to 3 reference images
+EDIT_FAST = ("lightx2v/Qwen-Image-Edit-2511-Lightning", "Qwen-Image-Edit-2511-Lightning-8steps-V1.0-bf16.safetensors")
+edit_image = (
+    modal.Image.debian_slim(python_version="3.12")
+    .apt_install("git")
+    .pip_install("torch", "torchvision", "transformers", "accelerate", "peft", "safetensors", "pillow", "sentencepiece",
+                 "huggingface_hub[hf_transfer]", "git+https://github.com/huggingface/diffusers")
+    .env({"HF_HOME": "/models/hf", "HF_HUB_ENABLE_HF_TRANSFER": "1"})
+    .add_local_dir(PIPELINE / "assets", "/root/assets")
+)
+
+
+@app.function(image=edit_image, cpu=4, memory=8192, timeout=2 * 3600, volumes={"/models": models})
+def fetch_edit_model() -> str:
+    """Download the editing model to the ge-models volume on a CPU container, and report the pipeline's
+    call signature (a free check that this diffusers build has the arguments first_frames uses)."""
+    import inspect
+
+    from diffusers import QwenImageEditPlusPipeline
+    from huggingface_hub import hf_hub_download, snapshot_download
+    t = time.time()
+    snapshot_download(EDIT_MODEL)
+    hf_hub_download(*EDIT_FAST)
+    models.commit()
+    du = subprocess.run(["du", "-sh", "/models/hf/hub"], capture_output=True, text=True).stdout.strip()
+    return f"downloaded in {time.time() - t:.0f}s, {du}\n{list(inspect.signature(QwenImageEditPlusPipeline.__call__).parameters)}"
+
+
+@app.function(image=edit_image, gpu=["A100-80GB", "H100"], timeout=3600, volumes={"/models": models, "/work": work})
+def first_frames(run_id: str, jobs: list[dict], modes: list[str]) -> list[str]:
+    """jobs: [{"name", "refs": [paths under assets/], "prompt", "seed"}]. Writes
+    /work/frames/<run_id>/<name>_<mode>.png for mode "fast" (8-step Lightning LoRA) and/or "full" (40 steps).
+    Returns the volume paths written."""
+    import math
+
+    import torch
+    from diffusers import FlowMatchEulerDiscreteScheduler, QwenImageEditPlusPipeline
+    from PIL import Image
+    out = pathlib.Path("/work/frames") / run_id
+    out.mkdir(parents=True, exist_ok=True)
+    t = time.time()
+    pipe = QwenImageEditPlusPipeline.from_pretrained(EDIT_MODEL, torch_dtype=torch.bfloat16).to("cuda")
+    base_scheduler = pipe.scheduler
+    print(f"model on the GPU in {time.time() - t:.0f}s, {torch.cuda.memory_allocated() / 2**30:.1f} GB", flush=True)
+    done = []
+
+    def run(mode, **kw):
+        for k, j in enumerate(jobs):
+            t0 = time.time()
+            p = out / f"{j['name']}_{mode}.png"
+            try:
+                if not p.exists():  # a retried run keeps what it already drew
+                    refs = [Image.open(f"/root/assets/{r}").convert("RGB") for r in j["refs"]]
+                    with torch.inference_mode():
+                        img = pipe(image=refs, prompt=j["prompt"], negative_prompt=" ", width=j.get("width", 768),
+                                   height=j.get("height", 1344), generator=torch.manual_seed(j.get("seed", 0)),
+                                   num_images_per_prompt=1, **kw).images[0]
+                    img.save(p)
+                done.append(str(p).removeprefix("/work/"))
+            except Exception as e:  # noqa: BLE001  (one bad frame must not sink the batch: that shot renders from text)
+                print(f"{j['name']} {mode} FAILED: {type(e).__name__}: {e}", flush=True)
+            if k % 10 == 9 or k == len(jobs) - 1:
+                work.commit()
+            print(f"{j['name']} {mode} in {time.time() - t0:.0f}s ({k + 1}/{len(jobs)})", flush=True)
+
+    if "fast" in modes:
+        # the Lightning LoRA's own schedule (from its model card): a fixed shift of 3
+        pipe.scheduler = FlowMatchEulerDiscreteScheduler.from_config({
+            "base_image_seq_len": 256, "base_shift": math.log(3), "invert_sigmas": False, "max_image_seq_len": 8192,
+            "max_shift": math.log(3), "num_train_timesteps": 1000, "shift": 1.0, "shift_terminal": None,
+            "stochastic_sampling": False, "time_shift_type": "exponential", "use_beta_sigmas": False,
+            "use_dynamic_shifting": True, "use_exponential_sigmas": False, "use_karras_sigmas": False})
+        pipe.load_lora_weights(EDIT_FAST[0], weight_name=EDIT_FAST[1])
+        run("fast", num_inference_steps=8, true_cfg_scale=1.0)
+        pipe.unload_lora_weights()
+        pipe.scheduler = base_scheduler
+    if "full" in modes:
+        run("full", num_inference_steps=40, true_cfg_scale=4.0)
+    return done

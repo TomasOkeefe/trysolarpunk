@@ -57,18 +57,30 @@ def timeline(d):
 
 def prompt_of(plan, shot):
     """The plan's style leads every prompt except the product shot, which starts from a real photo."""
-    style = "" if shot.get("product_image") else (plan.get("style") or "").strip()
+    if shot.get("props") and plan.get("style_props"):  # nobody in the shot: a style that names no characters
+        return f"{plan['style_props'].strip()} {shot['prompt']} {plan.get('props_tail', '')}".strip()
+    style = "" if shot.get("product_image") and plan.get("image") else (plan.get("style") or "").strip()
     return f"{style} {shot['prompt']}".strip()
 
 
 def shot_args(d, plan, i, shot):
-    seed = zlib.crc32(plan["slug"].encode()) % 100000 + i
+    # "seed_slug" lets two plans share seeds (an A/B of the same shots under different LoRAs)
+    seed = zlib.crc32(plan.get("seed_slug", plan["slug"]).encode()) % 100000 + i
     a = ["--prompt", prompt_of(plan, shot), "--seed", str(seed), "--output-path", str(d / CLIPS / f"shot_{i:02d}.mp4")]
     tl = timeline(d)
     if tl and i < len(tl["shots"]):  # the cut decides the length
         a += ["--num-frames", str(tl["shots"][i]["frames"])]
-    if shot.get("product_image") and plan.get("image"):  # run.py sets the product's render as first frame
-        a += ["--image", str(GE / plan["image"]), "0", "0.85"]
+    if shot.get("frames"):  # a shot can set its own length (reference shoots)
+        a += ["--num-frames", str(shot["frames"])]
+    # first frame: the product's render for the product shot (run.py sets plan["image"]), or a shot's own
+    # "image" (a path inside pipeline/), e.g. a master frame of a character for a reference shoot
+    img = shot.get("image") or (plan.get("image") if shot.get("product_image") else None)
+    if img:
+        a += ["--image", str(GE / img), "0", str(shot.get("image_strength", 0.85))]
+    # more keyframes: "images": [[path, frame, strength], ...], e.g. a known view to end a turn on, so the
+    # model never has to invent the side of a character it hasn't been shown
+    for path, frame, strength in shot.get("images", []):
+        a += ["--image", str(GE / path), str(frame), str(strength)]
     return a
 
 

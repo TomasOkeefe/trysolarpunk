@@ -1,0 +1,149 @@
+{
+ "slug": "wrote-you-a-letter",
+ "date": "2026-11-16",
+ "product": "eyelid",
+ "style": "claymation",
+ "hook_text": "I wrote a letter with a pen",
+ "song": {
+  "title": "Dear Old Friend",
+  "style": "English, gentle bossa nova with nylon guitar, soft shaker, upright bass and a breathy flute, warm friendly male lead vocal, relaxed and sweet, 112 BPM",
+  "lyrics": "[Verse]\nTyped hello and typed goodbye\nLittle hearts that float on by\nPut my phone to bed today\nFound a pen and a thing to say\n\n[Chorus]\nDear old friend across the sea\nHere's a letter, slow, from me\nInk got smudged, I spelled it wrong\nPaper carries it along\n\n[Verse]\nLicked the stamp and walked a mile\nRed postbox, it made me smile\nThree weeks on, a knock, a ring\nThe postman brought a papery thing\n\n[Chorus]\nDear old friend across the sea\nYou wrote back, you thought of me\nInk got smudged, you spelled it wrong\nI'll read it all the winter long"
+ },
+ "shots": [
+  {
+   "prompt": "A chunky plasticine thumb taps on a softly glowing phone, tap, tap, tap. Extreme close-up, the camera spins around the thumb. Dim warm lamp light.",
+   "line": 0
+  },
+  {
+   "prompt": "{moss} sits hunched at a wooden desk over a softly glowing phone, tapping with a bored face. The camera dolly zooms on him. Dim warm lamp light."
+  },
+  {
+   "prompt": "Little red paper hearts drift up from a softly glowing phone and pop like bubbles. Close-up, the camera tilts up with them. Dim warm lamp light.",
+   "line": 1
+  },
+  {
+   "prompt": "{moss} watches a little red paper heart float past his nose and pop, unimpressed. Close-up, the camera pushes in. Dim warm lamp light."
+  },
+  {
+   "prompt": "{moss} slides a phone into a slim terracotta-orange sleeve whose top edge looks like a closed eyelid with black lashes, and lays it gently on a bookshelf. The camera pushes in on his hands. Warm lamp light.",
+   "line": 2,
+   "frame": "He stands beside a bookshelf holding a phone in one hand and a slim terracotta-orange sleeve in the other, about to slide the phone in. Medium shot. Warm lamp light."
+  },
+  {
+   "prompt": "A slim terracotta-orange sleeve stands upright on a soft pale green backdrop, a phone tucked inside so only its top edge peeks out, the sleeve's top edge cut like a closed eyelid with black lashes. Soft leaf shadows drift across the backdrop. Warm daylight. The camera slowly pushes in as the light turns warmer.",
+   "product_image": true
+  },
+  {
+   "prompt": "{moss} pulls open a desk drawer and holds up a blue fountain pen like a treasure. The camera crash zooms in. Warm lamp light.",
+   "line": 3,
+   "frame": "He sits at a wooden desk holding up a blue fountain pen in one hand and looking at it with wide eyes, an open drawer beside him. Medium shot. Warm lamp light."
+  },
+  {
+   "prompt": "Two clay hands smooth a sheet of cream paper flat on a wooden desk. Top-down, the camera pushes in. Warm lamp light."
+  },
+  {
+   "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, tender, holding a blue fountain pen, at a wooden desk by a window. The camera pushes in. Warm lamp light.",
+   "line": 4,
+   "sing": true
+  },
+  {
+   "prompt": "A red and white lighthouse stands on a tiny green island far across a sparkling sea. FPV, the camera flies fast over the waves toward it. Bright morning sun."
+  },
+  {
+   "prompt": "{moss} writes slowly on cream paper with a blue fountain pen, tongue out, at a wooden desk by a window. The camera orbits around him. Warm lamp light.",
+   "line": 5
+  },
+  {
+   "prompt": "The nib of a blue fountain pen draws a looping line of ink across cream paper. Extreme close-up, the camera tracks with the nib. Warm lamp light."
+  },
+  {
+   "prompt": "{moss} lifts his hand from the paper and finds a big blue ink smudge on his palm and another on his cheek. Close-up, the camera crash zooms in. Warm lamp light.",
+   "line": 6,
+   "frame": "A close-up of him at a desk holding up one hand with a big blue ink smudge on the palm, another blue ink smudge on his cheek, looking guilty. Warm lamp light.",
+   "view": "face"
+  },
+  {
+   "prompt": "A scrunched ball of cream paper bounces into a wicker bin overflowing with scrunched paper balls. The camera whip-pans to the bin. Warm lamp light."
+  },
+  {
+   "prompt": "{moss} folds a letter, slips it into a cream envelope and gives it a kiss. The camera pushes in. Warm lamp light.",
+   "line": 7
+  },
+  {
+   "prompt": "A cream envelope with a bright red wax seal lies on a wooden desk in a sunbeam. Close-up, the camera orbits it. Golden morning light."
+  },
+  {
+   "prompt": "{moss} licks a postage stamp, pulls a face at the taste and presses it onto a cream envelope. Close-up, the camera pushes in. Bright morning sun.",
+   "line": 8
+  },
+  {
+   "prompt": "{moss} strides along a country road holding a cream envelope high in the air, green hills behind him. The camera tracks beside him. Bright morning sun.",
+   "view": "side"
+  },
+  {
+   "prompt": "A bright red pillar postbox stands on a street corner of crooked clay houses, gleaming in the sun. The camera crash zooms in on its slot. Bright morning sun.",
+   "line": 9
+  },
+  {
+   "prompt": "{moss} stands on tiptoe to push a cream envelope into the slot of a bright red postbox, then pats the postbox. The camera orbits around him. Bright morning sun.",
+   "view": "threeq"
+  },
+  {
+   "prompt": "Leaves fall from a tree beside a green front door, then snow gathers on the step, as the days rush by. The camera pushes in on the door. Light shifting from gold to soft white.",
+   "line": 10
+  },
+  {
+   "prompt": "A clay hand in a blue sleeve raps a brass door knocker on a green front door. Close-up, the camera crash zooms in. Soft morning light."
+  },
+  {
+   "prompt": "A postman in a blue uniform with a big ginger mustache hands a fat blue envelope to {moss} at his front door. The camera whip-pans from the envelope up to {moss}'s face. Soft morning light.",
+   "line": 11,
+   "frame": "He stands in his open front doorway facing a postman in a blue uniform with a big ginger mustache who holds out a fat blue envelope to him. Full body. Soft morning light.",
+   "view": "threeq"
+  },
+  {
+   "prompt": "{moss} hugs a fat blue envelope to his chest and spins around in his doorway. The camera orbits around him. Soft morning light."
+  },
+  {
+   "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, moved, pressing a fat blue envelope to his chest, beside a sunny window. The camera pushes in. Soft morning light.",
+   "line": 12,
+   "sing": true
+  },
+  {
+   "prompt": "A tall thin sailor in a red striped jumper and a blue cap sits writing at a little desk in a lighthouse window, gulls wheeling outside. The camera pushes in through the window. Bright sea light."
+  },
+  {
+   "prompt": "{moss} sits in a green armchair unfolding a long letter, his face lighting up. The camera dolly zooms on him. Warm lamp light.",
+   "line": 13
+  },
+  {
+   "prompt": "Two clay hands hold a sheet of cream paper with a small ink drawing of a lighthouse under a smiling sun. Close-up, the camera pushes in. Warm lamp light."
+  },
+  {
+   "prompt": "{moss} points at a big blue ink smudge on a letter and laughs so hard his beanie's pom-pom shakes. Close-up, the camera pushes in. Warm lamp light.",
+   "line": 14
+  },
+  {
+   "prompt": "A tall thin sailor in a red striped jumper and a blue cap looks at a blue ink smudge on his own hand and shrugs with a grin, in a lighthouse window. The camera crash zooms in. Bright sea light."
+  },
+  {
+   "prompt": "{moss} sits in a green armchair beside a snowy window reading a long letter, a steaming mug beside him. The camera pulls back slowly. Warm lamp light, soft white snow light in the window.",
+   "line": 15
+  },
+  {
+   "prompt": "A fat blue envelope leans against a mug on a windowsill while snow falls outside and a candle flickers. The camera pushes in slowly. Warm candle glow."
+  }
+ ],
+ "endcard": {
+  "line1": "Write to someone.",
+  "line2": "link in bio"
+ },
+ "caption": "moss put his phone to bed in the Eyelid and wrote a real letter. three weeks later one came back. the smudges are the best part",
+ "hashtags": [
+  "#letters",
+  "#penpal",
+  "#claymation",
+  "#solarpunk",
+  "#slowliving"
+ ]
+}

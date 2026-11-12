@@ -51,6 +51,22 @@ Writing rules:
 - Character: Moss (`config.yaml` `characters`) is the channel's main character. Write `{moss}` in a
   prompt (usually at the start) and it expands to his fixed description; never re-describe him in your
   own words or change his outfit, or he drifts. Use one style for the whole batch when he stars.
+  Seen from behind, write `{moss_back}` instead: `{moss}` lists his face, so the model shows it anyway
+  and twists his head right round (owner, 2026-11-11).
+- First frames keep Moss the same in every shot (`ge/frames.py`): an image model draws the opening still
+  of each shot that names him, from his master pictures, and LTX animates from it. By default the still
+  is the shot's prompt without its camera sentences. Add to a shot:
+  - `"frame"`: the opening still in a sentence or two, starting "He ..." ("He stands at the kerb looking
+    at his phone, a deep puddle ahead. Full body."), whenever the shot has a payoff (a splash, a bonk, a
+    bird landing): the frame is the moment before it, or the clip has nowhere to go. Name every prop and
+    side character that must be there from the start, with their clothes.
+    When he shares the shot with other people, always write a frame that starts with him and then places
+    the others ("He sits in the middle of a doorstep... On one side sits a grandma in..., on the other a
+    baker in..."): left to the default, the model merges them (Moss in grandma's cardigan). Name the
+    place too ("on a rainy cobbled street"), or the still comes out on a blank backdrop.
+  - `"view"`: which side of him the still shows: `front` (default), `threeq`, `side`, `side_m` (his other
+    side), `back` (default with `{moss_back}`), `face` (default when the prompt starts "Close-up").
+  Never take off or swap his beanie, glasses or raincoat: what is under them was never drawn.
 - Story: each video is a small narrative (setup, turn, payoff) and the song tells it: verse 1 = setup,
   chorus = the turn, verse 2 = it working, last chorus = payoff. Songs are sung by the same warm male
   lead (Moss's voice) in different genres.
@@ -121,8 +137,9 @@ Then render, one of two ways:
 `run.py` itself aborts and deletes the pod after 20 min without a stage change (each finished clip is
 a change), and the pod fails fast if LTX can't see the GPU.
 
-`run.py` refuses to start if pipeline code is unpushed (the GPU box clones it from GitHub);
-commit and push code changes first. Plans don't need pushing. It rents one GPU, renders the
+A batch with Moss in it renders on Modal (`run.py` switches by itself: the first frames are drawn there),
+which uses this folder's code as it is. For RunPod, `run.py` refuses to start if pipeline code is unpushed
+(the GPU box clones it from GitHub); commit and push code changes first. Plans don't need pushing. It rents one GPU, renders the
 whole batch, downloads `videos/<date>-<slug>.mp4` plus a `.txt` caption, deletes the GPU and
 prints the cost. Expect about 10 min of setup plus about 1 min per clip (dfr renders each shot in two
 passes; see `video.render` in config.yaml).

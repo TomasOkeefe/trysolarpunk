@@ -1,0 +1,52 @@
+from dsl import S, save
+M = "Bright morning sun."
+N = "Bright midday sun."
+A = "Golden afternoon light."
+BIKE = "red bicycle"
+SING = "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, "
+save({
+ "slug": "squeaky-wheel", "date": "2026-11-14", "product": "hibernator", "style": "claymation",
+ "hook_text": "The bike sat broken for a year",
+ "song": {"title": "Squeaky Wheel",
+  "style": "English, twangy surf rock with reverb guitar, driving drums, handclaps and a bouncy bass, warm friendly male lead vocal, sunny and fast, 128 BPM",
+  "lyrics": "[Verse]\nOld red bike behind the door\nFlat and rusty, one year more\nI'd fix it up, I always said\nThen I'd scroll my day instead\n\n[Chorus]\nSqueaky wheel, come on, let's ride\nOil the chain and pump the tyre\nSqueaky wheel, the hill is steep\nMy phone is on the fridge asleep\n\n[Verse]\nSpanner, grease and a cup of tea\nBell goes ding, the brakes are free\nWobbled once and hit a hedge\nThen I flew past the river's edge\n\n[Chorus]\nSqueaky wheel, come on, let's ride\nWind and sun and countryside\nSqueaky wheel, the hill was steep\nTop of the world and my phone's asleep"},
+ "shots": [
+  S(0, f"A rusty old {BIKE} with flat tyres and cobwebs leans behind a door in a dim hallway. The camera crash zooms in on it. Dim warm hallway light."),
+  S(None, f"A little spider dangles from the handlebar of a dusty {BIKE} and waves a leg. Extreme close-up, the camera pushes in. Dim warm light."),
+  S(1, f"{{moss}} walks down a hallway past a rusty {BIKE}, staring at a softly glowing phone and not looking at the bike. The camera tracks with him. Dim warm hallway light.", view="side"),
+  S(None, "A flat bicycle tyre sags sadly on a wooden floor. Close-up, the camera tilts down. Dim warm light."),
+  S(2, SING + f"sheepish, pointing a thumb over his shoulder at a rusty {BIKE} behind him in a hallway. The camera pushes in. Warm hallway light.", sing=True),
+  S(None, "The pages of a blank wall calendar flip by in a blur while the seasons change in the window beside it. The camera pushes in. Soft daylight."),
+  S(3, f"{{moss}} lies on a green sofa with his boots up, lit by a softly glowing phone, while a rusty {BIKE} sits in the shadows behind him. The camera dolly zooms. Dim grey light, warm lamp."),
+  S(None, f"{{moss}} glances from his phone to a rusty {BIKE} and back, then frowns thoughtfully. Close-up, the camera whip-pans between them. Warm lamp light."),
+  S(4, f"{{moss}} wheels a rusty {BIKE} out of his front door into bright sunshine. The camera pulls back fast through the doorway. {M}"),
+  S(None, f"A rusty bicycle wheel turns slowly with a wobble. Extreme close-up, the camera orbits the hub. {M}"),
+  S(5, f"{{moss}} drips oil from a little green oil can onto the chain of a {BIKE}, tongue out in concentration. The camera pushes in on his hands. {M}"),
+  S(None, f"{{moss}} pumps a bicycle pump up and down as fast as he can, his beanie's pom-pom bouncing, the tyre of a {BIKE} swelling. The camera crash zooms in. {M}"),
+  S(6, SING + f"determined, gripping the handlebars of a {BIKE}, a steep green hill behind him. The camera pushes in fast. {M}", sing=True),
+  S(None, f"A steep green hill with a winding road rises above a little town, a single tree at the very top. The camera cranes up the hill. {M}"),
+  S(7, "A black smartphone stands upright, face to the door, in a quilted moss-green brick stuck to a cream fridge door, a round sun-yellow badge with a closed eye on its front, a small shopping list held by a yellow magnet beside it. Soft leaf shadows sway slowly across the fridge door. Warm morning light. The camera pushes in slowly.", product=True),
+  S(None, "{moss} tiptoes out of a sunny kitchen with a finger to his lips, glancing back over his shoulder. The camera tracks with him. Warm morning light."),
+  S(8, f"{{moss}} sits on a doorstep beside an upside-down {BIKE}, a spanner in one hand and a steaming mug of tea in the other, grease on his cheek. The camera orbits around him. {M}"),
+  S(None, f"A spanner tightens a shiny bolt on a bicycle wheel. Extreme close-up, the camera spins with the spanner. {M}"),
+  S(9, f"A clay thumb flicks a shiny silver bicycle bell and it rings and sparkles. Extreme close-up, the camera crash zooms in. {M}"),
+  S(None, f"{{moss}} squeezes both brake levers of a gleaming {BIKE} and nods, impressed. Close-up, the camera pushes in. {M}"),
+  S(10, f"{{moss}} wobbles down a country lane on a {BIKE}, zigzagging wildly, and plunges head first into a big green hedge. The camera tracks with him, then crash zooms. {M}",
+    frame=f"He rides a {BIKE} along a country lane beside a big green hedge, wobbling, eyes wide, seen from the front. Full body. {M}"),
+  S(None, f"{{moss}} pops his head up out of a green hedge with leaves stuck in his mustache and gives a thumbs up. The camera crash zooms in. {M}",
+    frame=f"A close-up of him with his head and shoulders poking up out of the top of a big green hedge, leaves stuck in his mustache. {M}", view="face"),
+  S(11, f"{{moss}} speeds along a path beside a sparkling river on a {BIKE}, leaning into the wind. The camera tracks fast beside him. {N}", view="side"),
+  S(None, f"Three ducks on a sparkling river turn their heads together as something red whooshes past. The camera whip-pans. {N}"),
+  S(12, SING + f"thrilled, riding a {BIKE} with the wind blowing his beanie's pom-pom back, green fields rushing by. The camera tracks backward in front of him. {N}", sing=True),
+  S(None, f"{{moss}} rides a {BIKE} with both feet off the pedals and his legs stuck straight out, whooping. The camera orbits fast around him. {N}"),
+  S(13, f"FPV drone shot swooping low over rolling green fields, hedgerows and a winding country road with one small {BIKE} on it. {N}"),
+  S(None, f"A scarecrow in a straw hat and a patched blue jacket stands in a wheat field, its sleeve flapping like a wave as the wind rushes past. The camera whip-pans past it. {N}"),
+  S(14, f"{{moss}} stands on the pedals of a {BIKE}, grinding up a steep green hill, puffing, cheeks red. The camera tracks backward up the hill in front of him. {A}"),
+  S(None, f"{{moss_back}} pedals a {BIKE} up the last stretch of a hill toward a single tree at the top, against a huge golden sky. The camera cranes up behind him. {A}"),
+  S(15, f"{{moss}} stands at the top of a hill holding a {BIKE} above his head in triumph, a tiny town and a river far below. The camera orbits around him. {A}"),
+  S(None, f"{{moss}} lies in the grass under a tree at the top of a hill, a {BIKE} on its side beside him, watching the clouds and taking a deep breath. The camera cranes slowly up. Golden evening light."),
+ ],
+ "endcard": {"line1": "Fix the bike.", "line2": "link in bio"},
+ "caption": "the red bike waited a year behind the door. then moss put his phone in the Hibernator and found a spanner. only one hedge was harmed",
+ "hashtags": ["#bikelife", "#fixit", "#claymation", "#solarpunk", "#phonefree"],
+})

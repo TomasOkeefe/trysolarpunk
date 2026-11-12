@@ -1,0 +1,31 @@
+{
+ "slug": "moss-ab-new05",
+ "seed_slug": "moss-ab",
+ "style": "claymation",
+ "shots": [
+  {
+   "prompt": "{moss} waters tomato plants with a small red watering can on a rooftop garden, the camera orbits fast around him. Golden evening light.",
+   "product_image": false
+  },
+  {
+   "prompt": "Close-up: {moss} laughs out loud in a cosy kitchen, the camera pushes in fast. Warm kitchen light.",
+   "product_image": false
+  },
+  {
+   "prompt": "{moss} rides a red bicycle down a street of crooked clay houses past a grandma in a purple cardigan and pearl glasses who waves, the camera tracks beside him. Bright morning sun.",
+   "product_image": false
+  },
+  {
+   "prompt": "{moss} seen from behind walks down a wooden pier toward a little red canoe on a green canal, the camera cranes up. Golden morning light.",
+   "product_image": false
+  },
+  {
+   "prompt": "{moss} sits at a wooden table eating soup with a big spoon in a cosy kitchen, steam rising, crash zoom on his happy face. Warm afternoon light.",
+   "product_image": false
+  },
+  {
+   "prompt": "{moss} dances at a rooftop party at night under string lights beside a woman in a red dress with a tall black bun and a man in a blue jumper with a ginger beard. The camera whip-pans. Warm lantern light.",
+   "product_image": false
+  }
+ ]
+}

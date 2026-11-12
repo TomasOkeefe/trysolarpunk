@@ -52,17 +52,20 @@ characters:
     a small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round
     black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and
     green rubber boots
+  # Moss with his back to the camera. Use {moss_back} whenever he is seen from behind: {moss} lists his
+  # face, so the model shows it anyway and twists his head right round (owner, 2026-11-11).
+  moss_back: >-
+    a small round plasticine man seen from behind, his back to the camera, his face turned away and
+    hidden: the back of a moss-green knitted beanie with a yellow pom-pom, the back of a
+    mustard-yellow raincoat with its hood, and green rubber boots
 
-# Trained character LoRAs (train_lora.py). Shots that use the character load it and get the trigger word.
-loras:
-  moss:  # rank 32, 1500 steps on 28 reference clips (train_lora.py, 2026-10-15); step 1000 also in the release
-    url: https://github.com/TomasOkeefe/trysolarpunk/releases/download/moss-lora/moss-v1-1500.safetensors
-    trigger: m0ss
-    # 1.0 washed out everything else (beige blank extras, clay-blob houses, haze): the LoRA saw only Moss on
-    # plain backdrops and is fused into every shot of the batch. 0.6 kept Moss on-model with sets and side
-    # characters as crisp as no LoRA (A/B 2026-10-16, videos/tests/lora-ab.mp4). 0.2 to 0.8 all stayed crisp
-    # (videos/tests/lora-ab-6.mp4); below 0.4 Moss drifts a little. The owner picked 0.3.
-    strength: 0.3
+# Character LoRAs (train_lora.py): none in use. Moss is held by first frames instead (ge/frames.py): an
+# image-editing model draws the opening still of each of his shots from his master pictures and LTX
+# animates from it. LoRAs never held him exactly (2026-11-11): the first one (moss-v1-1500, 28 clips, on the
+# `moss-lora` GitHub release) let him drift at 0.3; a second trained on 71 clips of one Moss
+# (videos/lora/moss2/) was right at 0.7+ but washed the sets out, and at 0.5 the model's own Moss leaked back.
+# To use one again: loras: {moss: {url: ..., trigger: m0ss, strength: 0.5}}.
+loras: {}
 
 styles:
   claymation: >-
@@ -75,6 +78,21 @@ styles:
     Stop-motion animation of 3D-printed plastic toys, matte PLA figures and sets in bright solid
     colours with visible fine layer lines, chunky rounded shapes, slightly jerky toy movement,
     miniature diorama, soft daylight.
+
+# The same looks for shots with nobody in them (objects, scenery, the merch product shot). The styles above
+# say "characters", so LTX adds blank beige clay figures to a shot of a raindrop or a pair of boots
+# (2026-11-11). ge/frames.py marks such shots "props"; they get this style and the tail after the prompt.
+props_styles:
+  claymation: >-
+    Claymation stop-motion film, handmade plasticine props and scenery with visible thumbprints,
+    miniature handmade set, soft studio light.
+  felt: >-
+    Cut-paper and felt stop-motion film, layered construction-paper shapes and fuzzy felt props and
+    scenery, slightly jittery movement, warm craft-table light.
+  printed: >-
+    Stop-motion film of 3D-printed plastic props and scenery, matte PLA in bright solid colours with
+    visible fine layer lines, chunky rounded shapes, miniature diorama, soft daylight.
+props_tail: "Nobody is in the shot: no people, no characters, no figures."
 
 gpu:
   # which GPUs, cheapest first: TIERS in ge/runpod.py

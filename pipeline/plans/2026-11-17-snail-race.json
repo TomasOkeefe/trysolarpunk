@@ -1,0 +1,149 @@
+{
+ "slug": "snail-race",
+ "date": "2026-11-17",
+ "product": "merch",
+ "style": "claymation",
+ "hook_text": "I lost a race to a snail",
+ "song": {
+  "title": "Slow Down",
+  "style": "English, laid-back reggae with offbeat organ skank, deep round bass, rimshot drums and a melodica hook, warm friendly male lead vocal, slow and smiling, 110 BPM",
+  "lyrics": "[Verse]\nAlways rushing, never slow\nFastest boots you'll ever know\nMet a snail beside the gate\nHe said race you, I can't wait\n\n[Chorus]\nSlow down, slow down, take your time\nSnail's ahead and I feel fine\nSlow down, slow down, smell the rose\nThat's the way the good stuff goes\n\n[Verse]\nI stopped to watch a bumblebee\nI stopped to climb the apple tree\nShared my lunch with a hungry duck\nSnail went past me, just my luck\n\n[Chorus]\nSlow down, slow down, take your time\nSnail has crossed the finish line\nSlow down, slow down, I came last\nWho knew losing was a blast"
+ },
+ "shots": [
+  {
+   "prompt": "{moss} power-walks down a garden path at top speed, arms pumping, glancing at a pocket watch in his hand. The camera tracks backward fast in front of him. Bright morning sun.",
+   "line": 0
+  },
+  {
+   "prompt": "Green rubber boots blur along a gravel path, kicking up little stones. Low angle close-up, the camera tracks with them. Bright morning sun."
+  },
+  {
+   "prompt": "{moss} zooms past a grandma in a purple cardigan and pearl glasses who is watering her flowers, so fast that her watering can spins in her hand. The camera whip-pans as he passes. Bright morning sun.",
+   "line": 1,
+   "view": "side"
+  },
+  {
+   "prompt": "Petals blow off a row of red tulips as something rushes past. Close-up, the camera whip-pans. Bright morning sun."
+  },
+  {
+   "prompt": "{moss} skids to a stop at a wooden garden gate and looks down at a small brown snail with a yellow racing stripe on its shell sitting on the gatepost. The camera crash zooms from him to the snail. Bright morning sun.",
+   "line": 2,
+   "frame": "He stands at a wooden garden gate bending forward to look closely at a small brown snail with a yellow racing stripe on its shell on top of the gatepost. Medium shot. Bright morning sun.",
+   "view": "threeq"
+  },
+  {
+   "prompt": "A small brown snail with a yellow racing stripe on its shell stretches up its eye stalks and stares, determined. Extreme close-up, the camera pushes in. Bright morning sun."
+  },
+  {
+   "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, amused, pointing down at a small brown snail with a yellow racing stripe on its shell on a gatepost beside him. The camera pushes in. Bright morning sun.",
+   "line": 3,
+   "sing": true
+  },
+  {
+   "prompt": "A stick scratches a line across a dirt path, a small brown snail with a yellow racing stripe on its shell waiting behind it beside two green rubber boots. Low angle, the camera pushes in. Bright morning sun."
+  },
+  {
+   "prompt": "{moss} crouches at a starting line on a dirt path in a sprinter's pose beside a small brown snail with a yellow racing stripe on its shell. The camera orbits low around them. Bright morning sun.",
+   "line": 4
+  },
+  {
+   "prompt": "A small brown snail with a yellow racing stripe on its shell glides forward over a line scratched in the dirt, leaving a silver trail. Extreme close-up, the camera tracks with it. Bright morning sun."
+  },
+  {
+   "prompt": "{moss} strolls along a garden path with his hands in his raincoat pockets, smiling, far behind a tiny snail up ahead. The camera cranes up over him. Bright morning sun.",
+   "line": 5
+  },
+  {
+   "prompt": "A small brown snail with a yellow racing stripe on its shell looks back over its shell with one eye stalk. Close-up, the camera whip-pans to it. Bright morning sun."
+  },
+  {
+   "prompt": "{moss} buries his nose in a big pink rose on a rose bush and breathes in with his eyes closed. Close-up, the camera pushes in slowly. Bright midday sun.",
+   "line": 6,
+   "frame": "He stands beside a rose bush leaning in with his nose touching a big pink rose, eyes closed, seen from the side. Medium shot. Bright midday sun.",
+   "view": "side"
+  },
+  {
+   "prompt": "A big pink rose opens its petals in the sun, a red ladybird on one petal. Extreme close-up, the camera orbits it. Bright midday sun."
+  },
+  {
+   "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, blissful, holding a big pink rose, a garden in bloom behind him. The camera orbits around him. Bright midday sun.",
+   "line": 7,
+   "sing": true
+  },
+  {
+   "prompt": "A silver snail trail winds along a garden path into the distance. Low angle, the camera tracks along it. Bright midday sun."
+  },
+  {
+   "prompt": "{moss} crouches by a patch of lavender, nose to nose with a fat fuzzy bumblebee on a flower. The camera pushes in. Bright midday sun.",
+   "line": 8,
+   "view": "side"
+  },
+  {
+   "prompt": "A fat fuzzy bumblebee lifts off a lavender flower and bumbles around in a lazy loop. Close-up, the camera follows it. Bright midday sun."
+  },
+  {
+   "prompt": "{moss} sits on a branch of an apple tree swinging his boots and biting into a red apple. The camera cranes up to him. Bright midday sun.",
+   "line": 9
+  },
+  {
+   "prompt": "A red apple with one bite taken out of it drops into the grass beside a small brown snail with a yellow racing stripe on its shell, who glides on past it. Low angle, the camera tilts down. Bright midday sun."
+  },
+  {
+   "prompt": "{moss} sits on the bank of a pond sharing a sandwich with a white duck with an orange beak, who takes a big bite. The camera pushes in. Golden afternoon light.",
+   "line": 10
+  },
+  {
+   "prompt": "A white duck with an orange beak gulps down a piece of bread and flaps happily. Close-up, the camera crash zooms in. Golden afternoon light."
+  },
+  {
+   "prompt": "A small brown snail with a yellow racing stripe on its shell glides past two green rubber boots dangling over the edge of a pond. Low angle close-up, the camera tracks with the snail. Golden afternoon light.",
+   "line": 11
+  },
+  {
+   "prompt": "{moss} looks down, spots a snail overtaking him, and slaps his forehead with a laugh. The camera crash zooms in. Golden afternoon light.",
+   "frame": "He sits on the grassy bank of a pond looking down beside him in surprise at a small brown snail with a yellow racing stripe on its shell gliding past. Medium shot. Golden afternoon light."
+  },
+  {
+   "prompt": "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, relaxed and happy, strolling along a garden path with his hands in his raincoat pockets. The camera tracks backward in front of him. Golden afternoon light.",
+   "line": 12,
+   "sing": true
+  },
+  {
+   "prompt": "A grandma in a purple cardigan and pearl glasses holds one end of a red ribbon stretched across a garden path as a finish line and waves a little green flag. The camera pushes in. Golden afternoon light."
+  },
+  {
+   "prompt": "A cream t-shirt with a hills-and-infinity-path illustration and the words Infinite Stroll hangs on a wooden fence beside a garden path, fluttering gently in the breeze, a red ribbon finish line stretched across the path below it. The camera drifts slowly toward it. Golden afternoon light.",
+   "line": 13,
+   "product_image": true
+  },
+  {
+   "prompt": "A small brown snail with a yellow racing stripe on its shell glides through a red ribbon finish line in slow motion. Extreme close-up, the camera tracks with it. Golden afternoon light."
+  },
+  {
+   "prompt": "{moss} strolls up to a red ribbon finish line long afterwards and bows to a grandma in a purple cardigan and pearl glasses, who claps. The camera orbits around them. Golden evening light.",
+   "line": 14
+  },
+  {
+   "prompt": "A small brown snail with a yellow racing stripe on its shell sits on a tiny upturned flowerpot like a winner's podium, a daisy chain around its shell. Close-up, the camera pushes in. Golden evening light."
+  },
+  {
+   "prompt": "{moss} lifts a small brown snail with a yellow racing stripe on its shell up on his open palm like a champion and laughs. The camera crash zooms in. Golden evening light.",
+   "line": 15
+  },
+  {
+   "prompt": "{moss} lies in the grass at sunset with a small snail resting on the toe of his green boot, watching the sky turn pink and breathing out slowly. The camera cranes slowly up. Golden evening light."
+  }
+ ],
+ "endcard": {
+  "line1": "Take the slow way.",
+  "line2": "link in bio"
+ },
+ "caption": "moss raced a snail and lost by hours. he stopped for a bee, an apple and a duck. the Infinite Stroll tee marked the finish",
+ "hashtags": [
+  "#slowliving",
+  "#snail",
+  "#claymation",
+  "#solarpunk",
+  "#touchgrass"
+ ]
+}

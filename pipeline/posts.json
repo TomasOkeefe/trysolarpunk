@@ -83,10 +83,10 @@
     "post_id": "6ad2782993503c7a0a5bde67",
     "key": null,
     "due_at": "2026-10-31T16:00:00.000Z",
-    "status": "scheduled",
+    "status": "error",
     "sent_at": null,
     "link": null,
-    "error": "buffer posts get --id failed (3): {\"error\":\"API_ERROR\",\"code\":3,\"message\":\"Request timed out after `30000ms`\"}"
+    "error": "Please update the media URL to be publicly accessible before retrying the post."
   },
   "2026-10-24-goodnight-phone": {
     "post_id": "6ad6d940b81183413dac52cd",
@@ -122,74 +122,157 @@
   },
   "2026-10-28-missed-my-stop": {
     "post_id": "6ad6d9fd2d48e20f64c513c3",
-    "key": "2026-10-28-missed-my-stop-9d12617e3c4d.mp4",
+    "key": null,
     "due_at": "2026-10-25T16:00:00.000Z",
-    "status": "scheduled",
-    "sent_at": null,
-    "link": null
+    "status": "sent",
+    "sent_at": "2026-10-25T16:06:14.106Z",
+    "link": "https://tiktok.com/@trysolarpunk/video/7700636784228584710"
   },
   "2026-10-29-walking-club": {
     "post_id": "6ad6da11b81183413daca975",
-    "key": "2026-10-29-walking-club-7c924634761a.mp4",
+    "key": null,
     "due_at": "2026-10-26T16:00:00.000Z",
-    "status": "scheduled",
-    "sent_at": null,
-    "link": null
+    "status": "sent",
+    "sent_at": "2026-10-26T16:08:28.670Z",
+    "link": "https://tiktok.com/@trysolarpunk/video/7701008764031274292"
   },
   "2026-10-30-crooked-treehouse": {
     "post_id": "6ad6da28cba41b01405a62d3",
-    "key": "2026-10-30-crooked-treehouse-0aa889ad6ee3.mp4",
+    "key": null,
     "due_at": "2026-10-27T16:00:00.000Z",
-    "status": "scheduled",
-    "sent_at": null,
-    "link": null
+    "status": "sent",
+    "sent_at": "2026-10-27T16:07:29.997Z",
+    "link": "https://tiktok.com/@trysolarpunk/video/7701379618468547861"
   },
   "2026-11-03-cut-the-strings": {
     "post_id": "6ad793e772b40f09eb4f1264",
-    "key": "2026-11-03-cut-the-strings-bb2c5187941e.mp4",
+    "key": null,
     "due_at": "2026-10-28T16:00:00.000Z",
-    "status": "scheduled",
+    "status": "error",
     "sent_at": null,
-    "link": null
+    "link": null,
+    "error": "Please update the media URL to be publicly accessible before retrying the post."
   },
   "2026-10-29-cat-intervention": {
     "post_id": "6add1ce3e4be8a4d86795f62",
-    "key": "2026-10-29-cat-intervention-aea8f9fe58f4.mp4",
+    "key": null,
     "due_at": "2026-10-30T01:14:00.000Z",
-    "status": "scheduled",
-    "sent_at": null,
-    "link": null
+    "status": "sent",
+    "sent_at": "2026-10-30T01:15:46.343Z",
+    "link": "https://tiktok.com/@trysolarpunk/video/7702262969907858696"
   },
   "2026-10-30-staring-contest": {
     "post_id": "6add1cf93d5b27036ba1c710",
-    "key": "2026-10-30-staring-contest-7e56a31d41ee.mp4",
+    "key": null,
     "due_at": "2026-10-31T00:33:00.000Z",
-    "status": "scheduled",
-    "sent_at": null,
-    "link": null
+    "status": "sent",
+    "sent_at": "2026-10-31T00:34:46.356Z",
+    "link": "https://tiktok.com/@trysolarpunk/video/7702623481917082932"
   },
   "2026-11-01-my-bread-rose": {
     "post_id": "6add1d0fbd33ce99c3407fb2",
-    "key": "2026-11-01-my-bread-rose-0043ca8338fd.mp4",
+    "key": null,
     "due_at": "2026-11-01T14:08:00.000Z",
-    "status": "scheduled",
-    "sent_at": null,
-    "link": null
+    "status": "sent",
+    "sent_at": "2026-11-01T14:09:48.497Z",
+    "link": "https://tiktok.com/@trysolarpunk/video/7703204623208762644"
   },
   "2026-11-02-one-rock-soup": {
     "post_id": "6add1d283d5b27036ba1cf52",
-    "key": "2026-11-02-one-rock-soup-9a4190a24b3e.mp4",
+    "key": null,
     "due_at": "2026-11-02T13:50:00.000Z",
-    "status": "scheduled",
-    "sent_at": null,
-    "link": null
+    "status": "sent",
+    "sent_at": "2026-11-02T13:51:46.819Z",
+    "link": "https://tiktok.com/@trysolarpunk/video/7703571101007367445"
   },
   "2026-11-03-the-big-one": {
     "post_id": "6add1d3f0b5343d070a0cd4e",
-    "key": "2026-11-03-the-big-one-bbb798fa592a.mp4",
+    "key": null,
     "due_at": "2026-11-03T11:40:00.000Z",
-    "status": "scheduled",
-    "sent_at": null,
-    "link": null
+    "status": "sent",
+    "sent_at": "2026-11-03T11:41:45.621Z",
+    "link": "https://tiktok.com/@trysolarpunk/video/7703908654407372040"
+  },
+  "2026-11-04-phone-died": {
+    "post_id": "6adf5d1113bbb91ebaf154d4",
+    "key": null,
+    "due_at": "2026-11-04T11:05:00.000Z",
+    "status": "sent",
+    "sent_at": "2026-11-04T11:08:47.174Z",
+    "link": "https://tiktok.com/@trysolarpunk/video/7704270727893093640"
+  },
+  "2026-11-05-skate-at-41": {
+    "post_id": "6ae200164a3ecdea2a68d6ad",
+    "key": null,
+    "due_at": "2026-11-06T02:14:00.000Z",
+    "status": "sent",
+    "sent_at": "2026-11-06T02:15:44.250Z",
+    "link": "https://www.tiktok.com/@trysolarpunk/video/7704875971853258004?utm_campaign=tt4d_open_api&utm_source=7103819247981182978"
+  },
+  "2026-11-06-park-chess": {
+    "post_id": "6ae2002fb7a8343b742768dd",
+    "key": null,
+    "due_at": "2026-11-07T01:33:00.000Z",
+    "status": "sent",
+    "sent_at": "2026-11-07T01:34:44.105Z",
+    "link": "https://www.tiktok.com/@trysolarpunk/video/7705236507354746119?utm_campaign=tt4d_open_api&utm_source=7103819247981182978"
+  },
+  "2026-11-07-kite-took-me": {
+    "post_id": "6ae35190647516d35f460e6c",
+    "key": null,
+    "due_at": "2026-11-07T13:13:00.000Z",
+    "status": "sent",
+    "sent_at": "2026-11-07T13:22:48.183Z",
+    "link": "https://www.tiktok.com/@trysolarpunk/video/7705416972736941319?utm_campaign=tt4d_open_api&utm_source=7103819247981182978"
+  },
+  "2026-11-08-canoe-commute": {
+    "post_id": "6ae5f72eab019b908708861f",
+    "key": null,
+    "due_at": "2026-11-08T14:08:00.000Z",
+    "status": "sent",
+    "sent_at": "2026-11-08T14:09:49.014Z",
+    "link": "https://www.tiktok.com/@trysolarpunk/video/7705802241873087764?utm_campaign=tt4d_open_api&utm_source=7103819247981182978"
+  },
+  "2026-11-12-puddle-league": {
+    "post_id": "6af52b232f7f0a6952e7d42e",
+    "key": "2026-11-12-puddle-league-e87346ddf4c1.mp4",
+    "due_at": "2026-11-13T02:14:00.000Z",
+    "status": "scheduled"
+  },
+  "2026-11-13-whistle-back": {
+    "post_id": "6af52b4e3d8c751bfd0df200",
+    "key": "2026-11-13-whistle-back-4678fa8bf4cb.mp4",
+    "due_at": "2026-11-14T01:33:00.000Z",
+    "status": "scheduled"
+  },
+  "2026-11-14-squeaky-wheel": {
+    "post_id": "6af52b623d8c751bfd0df702",
+    "key": "2026-11-14-squeaky-wheel-65f66262ebd8.mp4",
+    "due_at": "2026-11-14T13:13:00.000Z",
+    "status": "scheduled"
+  },
+  "2026-11-15-first-snow": {
+    "post_id": "6af52b762f7f0a6952e7eb70",
+    "key": "2026-11-15-first-snow-7ccdbe1d5d76.mp4",
+    "due_at": "2026-11-15T14:08:00.000Z",
+    "status": "scheduled"
+  },
+  "2026-11-16-wrote-you-a-letter": {
+    "post_id": "6af52b8abc9f3773a1b7c588",
+    "key": "2026-11-16-wrote-you-a-letter-0a0734a18a39.mp4",
+    "due_at": "2026-11-16T13:50:00.000Z",
+    "status": "scheduled"
+  },
+  "2026-11-17-snail-race": {
+    "post_id": "6af52ba08a1a2f52b51bb1d7",
+    "key": "2026-11-17-snail-race-2d73228df345.mp4",
+    "due_at": "2026-11-17T11:40:00.000Z",
+    "status": "scheduled"
+  },
+  "2026-11-18-grey-wall": {
+    "post_id": "6af52ce82f7f0a6952e8bfc4",
+    "key": "2026-11-18-grey-wall-89c26e28b311.mp4",
+    "due_at": "2026-11-18T11:05:00.000Z",
+    "status": "scheduled"
   }
 }

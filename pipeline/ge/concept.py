@@ -51,7 +51,8 @@ def expand(plan, characters, loras=None):
         triggered = any(p.startswith(l["trigger"]) for l in loras.values())
         s["prompt"] = p if triggered else p[:1].upper() + p[1:]
     if used:
-        plan["loras"] = [{"url": l["url"], "strength": l.get("strength", 1.0)} for l in used.values()]
+        # two characters can share one LoRA ({moss} and {moss_back}): list it once
+        plan["loras"] = [{"url": u, "strength": st} for u, st in {l["url"]: l.get("strength", 1.0) for l in used.values()}.items()]
     return plan
 
 

@@ -173,8 +173,21 @@ def queue(video, when="plan"):
         if "post" not in r:
             raise RuntimeError(f"Buffer refused the post: {r}")
     except Exception:
-        wrangler("r2", "object", "delete", f"{CFG['bucket']}/{key}", "--remote")
-        raise
+        # a timeout can come back after Buffer has made the post: deleting the video then leaves a post that
+        # fails on its day with "media URL not publicly accessible" (2026-11-11). Look for it first.
+        r = None
+        try:
+            got = buffer("posts", "list", "--fields", "items.id,items.status,items.dueAt,items.text",
+                         payload={"organizationId": CFG["organization_id"],
+                                  "filter": {"channelIds": [CFG["channel_id"]], "status": ["scheduled"]}})
+            made = [p for p in got["items"] if p["text"].strip() == caption and p["id"] not in {v["post_id"] for v in posts.values()}]
+            if made:
+                r = {"post": made[0]}
+        except Exception:  # noqa: BLE001
+            pass
+        if r is None:
+            wrangler("r2", "object", "delete", f"{CFG['bucket']}/{key}", "--remote")
+            raise
     posts[name] = {"post_id": r["post"]["id"], "key": key, "due_at": r["post"].get("dueAt"), "status": "scheduled"}
     save(posts)
     pending(remove=str(video))

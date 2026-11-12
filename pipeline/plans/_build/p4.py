@@ -1,0 +1,57 @@
+from dsl import S, save
+W = "Soft white snow light."
+B = "Bright snow light."
+SING = "Close-up: {moss} sings to the camera, his mouth opening wide under his bushy mustache, "
+GRAN = "a grandma in a purple cardigan and pearl glasses"
+BAKER = "a baker in a white apron and a tall white hat"
+SNOWMAN = "a round snowman in a striped scarf"
+save({
+ "slug": "first-snow", "date": "2026-11-15", "product": "hibernator", "style": "claymation",
+ "hook_text": "It snowed. I almost just filmed it",
+ "song": {"title": "First Snow",
+  "style": "English, cosy soul shuffle with sleigh bells, warm electric piano, brushed drums, upright bass and doo-wop backing vocals, warm friendly male lead vocal, gentle and happy, 116 BPM",
+  "lyrics": "[Verse]\nWoke up to a quiet town\nSomething soft was coming down\nNearly filmed it for the feed\nThen I thought, that's not what I need\n\n[Chorus]\nFirst snow, first snow, catch a flake\nRoll a ball for a snowman's sake\nFirst snow, first snow, cheeks all red\nMy phone is hibernating instead\n\n[Verse]\nCarrot nose and button eyes\nGrandma's scarf, a perfect size\nSnowball hit me with a splat\nThe baker laughed and I threw one back\n\n[Chorus]\nFirst snow, first snow, catch a flake\nWhole street out for a snowman's sake\nFirst snow, first snow, home for tea\nWinter came and it found me"},
+ "shots": [
+  S(0, "Snowflakes drift down over the rooftops of a sleeping town of crooked clay houses at dawn. The camera cranes down slowly from the sky to one window. Soft blue dawn, warm lit windows."),
+  S(None, f"{{moss}} throws open the curtains of a window and gasps, snow light on his face. The camera crash zooms in from outside the window. {W}",
+    frame=f"He stands at a window between open curtains, seen from outside through the glass, his mouth open in amazement, snowflakes falling in front of the glass. Medium shot. {W}"),
+  S(1, f"Big soft snowflakes fall onto a garden with a white fence, everything covered in fresh snow. The camera pushes through a window out into the garden. {W}"),
+  S(None, "A single snowflake lands on the tip of a round clay nose and melts. Extreme close-up, the camera pushes in. Soft white light."),
+  S(2, f"{{moss}} holds a phone up to a window to film the falling snow, tongue out, framing the shot. The camera orbits around him. {W}", view="threeq",
+    frame=f"He stands at a window holding a phone up in both hands toward the snowy garden outside, tongue out in concentration. Medium shot. {W}"),
+  S(None, f"{{moss}} lowers the phone, looks at it, looks out at the snow, and shakes his head with a smile. Close-up, the camera pushes in. {W}"),
+  S(3, SING + f"cheerful, tugging his green beanie down over his ears, snow falling in the window behind him. The camera pushes in. {W}", sing=True),
+  S(None, f"{{moss}} bursts out of his front door into deep snow and sinks up to his knees. The camera crash zooms in low. {B}",
+    frame=f"He stands in his open front doorway looking out at a garden deep in fresh snow, arms wide, delighted. Full body. {B}"),
+  S(4, f"{{moss}} stands in falling snow with his tongue out, catching a snowflake on it, eyes crossed. The camera pushes in fast. {B}"),
+  S(None, f"{{moss_back}} makes the first footprints across a perfect white garden, each step sinking deep. The camera cranes up behind him. {B}"),
+  S(5, f"{{moss}} pushes a growing snowball across a white garden, leaving a green stripe of grass behind it. The camera tracks beside him. {B}", view="side"),
+  S(None, f"A huge snowball rolls past, picking up leaves and one green mitten. Low angle, the camera whip-pans with it. {B}"),
+  S(6, SING + f"cheeks bright red, snowflakes on his mustache and beanie, snow falling all around him. The camera pushes in fast. {B}", sing=True),
+  S(None, f"{{moss}} lifts a second snowball on top of the first, stretching up on tiptoe and wobbling. The camera orbits around him. {B}"),
+  S(7, "A black smartphone stands upright, face to the door, in a quilted moss-green brick stuck to a cream fridge door, a round sun-yellow badge with a closed eye on its front, a small shopping list held by a yellow magnet beside it. Soft leaf shadows sway slowly across the fridge door. Warm morning light. The camera pushes in slowly.", product=True),
+  S(None, f"Snow piles up on the sill of a frosty kitchen window with a warm cosy kitchen behind it. The camera pulls back from the window into the snowy garden. {B}"),
+  S(8, f"{{moss}} pushes a big orange carrot into the face of a round snowman that already has two black button eyes. The camera pushes in on the snowman's face. {B}"),
+  S(None, f"A round snowman with a carrot nose and button eyes seems to smile as snow settles on his head. Close-up, the camera orbits him. {B}"),
+  S(9, f"{GRAN[0].upper() + GRAN[1:]} wraps a long striped scarf around the neck of a round snowman while {{moss}} holds the other end. The camera whip-pans along the scarf. {B}",
+    frame=f"He stands in a snowy garden in his mustard-yellow raincoat holding one end of a long striped scarf. Beside him {GRAN} wraps the other end of the scarf around the neck of a round snowman. Full body. {B}"),
+  S(None, f"{{moss}} steps back and admires {SNOWMAN}, hands on his hips, nodding. The camera dolly zooms. {B}"),
+  S(10, f"A snowball flies in and bursts on {{moss}}'s chest in a puff of snow, and he staggers back in surprise. The camera crash zooms in. {B}",
+    frame=f"He stands in a snowy garden beside {SNOWMAN}, looking off to one side in surprise. Full body. {B}"),
+  S(None, f"{BAKER[0].upper() + BAKER[1:]} peeks over a snowy garden fence, laughing, another snowball in his hand. The camera whip-pans to him. {B}"),
+  S(11, f"{{moss}} winds up and hurls a snowball with all his might, then falls forward into the snow. The camera tracks with the snowball. {B}", view="side",
+    frame=f"He stands in a snowy garden leaning back with one arm wound up behind him, a snowball in his hand and a mischievous grin, seen from the side. Full body. {B}"),
+  S(None, f"A snowball knocks the tall white hat off {BAKER}, who roars with laughter. The camera crash zooms in. {B}"),
+  S(12, SING + f"laughing and dusted with snow, {SNOWMAN} behind him. The camera orbits around him. {B}", sing=True),
+  S(None, f"{{moss}} and {GRAN} lie on their backs in the snow making snow angels. Top-down, the camera spins slowly above them. {B}"),
+  S(13, f"{{moss}} rolls a snowball down a street of crooked clay houses deep in snow, past {BAKER} and {GRAN} who are each building a snowman. The camera tracks backward fast in front of him. {B} Warm windows."),
+  S(None, "A row of five snowmen of different sizes in scarves and hats lines a snowy street. The camera tracks along them. Golden afternoon snow light."),
+  S(14, "{moss} stamps the snow off his green boots on a doormat and steps into a warm kitchen where a kettle steams. The camera tracks in behind him through the door. Warm kitchen light.", view="side"),
+  S(None, "Two clay hands wrap around a steaming mug of tea on a wooden table beside a pair of wet green mittens. Close-up, the camera pushes in. Warm kitchen light."),
+  S(15, "{moss} sits by a window with a mug of tea, watching his snowman in the blue dusk outside as the snow keeps falling. The camera pulls back slowly through the window. Warm lamp glow, blue dusk."),
+  S(None, f"{SNOWMAN[0].upper() + SNOWMAN[1:]} stands in a garden at dusk under gently falling snow, warm windows glowing behind him. The camera cranes slowly up into the snowy sky. Warm window glow, soft blue dusk."),
+ ],
+ "endcard": {"line1": "Go catch a flake.", "line2": "link in bio"},
+ "caption": "first snow. moss nearly filmed it for the feed, then left his phone in the Hibernator and built a snowman instead",
+ "hashtags": ["#firstsnow", "#snowman", "#claymation", "#solarpunk", "#phonefree"],
+})

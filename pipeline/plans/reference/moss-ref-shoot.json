@@ -1,0 +1,382 @@
+{
+ "slug": "moss-ref-shoot",
+ "style": "",
+ "shots": [
+  {
+   "tag": "wave",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain soft cream studio backdrop, smiles and waves hello with one hand, then lowers it. Full body, static camera at his eye level. Soft even studio light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain soft cream studio backdrop, smiles and waves hello with one hand, then lowers it. Full body, static camera at his eye level. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/front.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "turn-right",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain soft cream studio backdrop and slowly turns all the way around in place, showing his front, side and back. Full body, static camera at his eye level. Soft even studio light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain soft cream studio backdrop and slowly turns all the way around in place, showing his front, side and back. Full body, static camera at his eye level. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/front.jpg",
+   "frames": 121,
+   "product_image": false,
+   "images": [
+    [
+     "assets/moss/threeq.jpg",
+     32,
+     0.85
+    ],
+    [
+     "assets/moss/side.jpg",
+     64,
+     0.85
+    ],
+    [
+     "assets/moss/back3q.jpg",
+     96,
+     0.85
+    ],
+    [
+     "assets/moss/back.jpg",
+     120,
+     0.85
+    ]
+   ]
+  },
+  {
+   "tag": "turn-left",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands with his back to the camera on a plain soft cream studio backdrop, then slowly turns around in place to face the camera. Full body, static camera at his eye level. Soft even studio light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands with his back to the camera on a plain soft cream studio backdrop, then slowly turns around in place to face the camera. Full body, static camera at his eye level. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/back.jpg",
+   "frames": 121,
+   "product_image": false,
+   "images": [
+    [
+     "assets/moss/back3q_m.jpg",
+     32,
+     0.85
+    ],
+    [
+     "assets/moss/side_m.jpg",
+     64,
+     0.85
+    ],
+    [
+     "assets/moss/threeq_m.jpg",
+     88,
+     0.85
+    ],
+    [
+     "assets/moss/front.jpg",
+     120,
+     0.85
+    ]
+   ]
+  },
+  {
+   "tag": "walk-side",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots walks on the spot on a plain soft cream studio backdrop, seen from the side, arms swinging. Full body, static camera at his eye level. Soft even studio light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots walks on the spot on a plain soft cream studio backdrop, seen from the side, arms swinging. Full body, static camera at his eye level. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/side.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "walk-side-m",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots walks on the spot on a plain soft cream studio backdrop, seen from the side, arms swinging. Full body, static camera at his eye level. Soft even studio light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots walks on the spot on a plain soft cream studio backdrop, seen from the side, arms swinging. Full body, static camera at his eye level. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/side_m.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "walk-front",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots walks on the spot towards the camera on a plain soft cream studio backdrop, arms swinging. Full body, static camera at his eye level. Soft even studio light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots walks on the spot towards the camera on a plain soft cream studio backdrop, arms swinging. Full body, static camera at his eye level. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/front.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "walk-back",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots walks on the spot away from the camera on a plain soft cream studio backdrop, seen from behind, arms swinging. Full body, static camera at his eye level. Soft even studio light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots walks on the spot away from the camera on a plain soft cream studio backdrop, seen from behind, arms swinging. Full body, static camera at his eye level. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/back.jpg",
+   "frames": 121,
+   "product_image": false,
+   "pieces": [
+    0
+   ]
+  },
+  {
+   "tag": "bend",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain soft cream studio backdrop, bends down to touch his green boots, then stands back up. Full body, static camera at his eye level. Soft even studio light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain soft cream studio backdrop, bends down to touch his green boots, then stands back up. Full body, static camera at his eye level. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/front.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "cheer",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain soft cream studio backdrop, raises both arms above his head and cheers, bouncing on his toes. Full body, static camera at his eye level. Soft even studio light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain soft cream studio backdrop, raises both arms above his head and cheers, bouncing on his toes. Full body, static camera at his eye level. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/front.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "point",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain soft cream studio backdrop, points at something off to the side, then gives a thumbs up. Full body, static camera at his eye level. Soft even studio light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain soft cream studio backdrop, points at something off to the side, then gives a thumbs up. Full body, static camera at his eye level. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/threeq.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "hips",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain soft cream studio backdrop, puts his hands on his hips and nods proudly. Full body, static camera at his eye level. Soft even studio light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain soft cream studio backdrop, puts his hands on his hips and nods proudly. Full body, static camera at his eye level. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/threeq_m.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "lookup",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain soft cream studio backdrop, seen from behind and to the side, shifts his weight and looks up. Full body, static camera at his eye level. Soft even studio light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain soft cream studio backdrop, seen from behind and to the side, shifts his weight and looks up. Full body, static camera at his eye level. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/back3q.jpg",
+   "frames": 121,
+   "product_image": false,
+   "pieces": [
+    0
+   ]
+  },
+  {
+   "tag": "dance",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots dances on a plain soft cream studio backdrop, swaying from side to side with his arms bobbing. Full body, static camera at his eye level. Soft even studio light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots dances on a plain soft cream studio backdrop, swaying from side to side with his arms bobbing. Full body, static camera at his eye level. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/front.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "think",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain soft cream studio backdrop, scratches his head through his beanie, thinking, then nods. Full body, static camera at his eye level. Soft even studio light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain soft cream studio backdrop, scratches his head through his beanie, thinking, then nods. Full body, static camera at his eye level. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/front.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "pockets",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain soft cream studio backdrop, slides his hands into his raincoat pockets and rocks on his heels. Full body, static camera at his eye level. Soft even studio light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain soft cream studio backdrop, slides his hands into his raincoat pockets and rocks on his heels. Full body, static camera at his eye level. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/threeq.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "sit",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots sits down on the floor on a plain soft cream studio backdrop with his legs out in front, then pats his knees. Full body, static camera at his eye level. Soft even studio light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots sits down on the floor on a plain soft cream studio backdrop with his legs out in front, then pats his knees. Full body, static camera at his eye level. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/front.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "face-look",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. Close-up: A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots looks to one side, then back at the camera, on a plain soft cream studio backdrop. Head and shoulders, static camera. Soft even studio light.",
+   "caption": "Close-up: A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots looks to one side, then back at the camera, on a plain soft cream studio backdrop. Head and shoulders, static camera. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/face.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "face-tilt",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. Close-up: A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots tilts his head and blinks slowly, on a plain soft cream studio backdrop. Head and shoulders, static camera. Soft even studio light.",
+   "caption": "Close-up: A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots tilts his head and blinks slowly, on a plain soft cream studio backdrop. Head and shoulders, static camera. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/face.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "face-threeq",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. Close-up: A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots seen from a three-quarter angle, blinks and gives a small nod, on a plain soft cream studio backdrop. Head and shoulders, static camera. Soft even studio light.",
+   "caption": "Close-up: A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots seen from a three-quarter angle, blinks and gives a small nod, on a plain soft cream studio backdrop. Head and shoulders, static camera. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/face_threeq.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "face-side",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. Close-up: A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots seen from the side, looks ahead and nods slowly, on a plain soft cream studio backdrop. Head and shoulders, static camera. Soft even studio light.",
+   "caption": "Close-up: A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots seen from the side, looks ahead and nods slowly, on a plain soft cream studio backdrop. Head and shoulders, static camera. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/face_side.jpg",
+   "frames": 121,
+   "product_image": false,
+   "pieces": [
+    0
+   ]
+  },
+  {
+   "tag": "face-threeq-m",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. Close-up: A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots seen from a three-quarter angle, looks up and then back down, on a plain soft cream studio backdrop. Head and shoulders, static camera. Soft even studio light.",
+   "caption": "Close-up: A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots seen from a three-quarter angle, looks up and then back down, on a plain soft cream studio backdrop. Head and shoulders, static camera. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/face_threeq_m.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "sage-clap",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain pale sage green studio backdrop and claps his hands. Full body, static camera at his eye level. Soft even studio light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain pale sage green studio backdrop and claps his hands. Full body, static camera at his eye level. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/scene_sage.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "terracotta-wave",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain warm terracotta studio backdrop and waves with one hand. Full body, static camera at his eye level. Soft even studio light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a plain warm terracotta studio backdrop and waves with one hand. Full body, static camera at his eye level. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/scene_terracotta.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "sky-walk",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots walks on the spot on a plain light sky blue studio backdrop, seen from the side, arms swinging. Full body, static camera at his eye level. Soft even studio light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots walks on the spot on a plain light sky blue studio backdrop, seen from the side, arms swinging. Full body, static camera at his eye level. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/scene_sky.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "grey-stretch",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands with his back to the camera on a plain light grey studio backdrop and stretches his arms out wide. Full body, static camera at his eye level. Soft even studio light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands with his back to the camera on a plain light grey studio backdrop and stretches his arms out wide. Full body, static camera at his eye level. Soft even studio light. Claymation stop-motion animation.",
+   "image": "assets/moss/scene_grey.jpg",
+   "frames": 121,
+   "product_image": false,
+   "skip": true
+  },
+  {
+   "tag": "garden",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on the dirt path of a vegetable garden between rows of sunflowers and cabbages, bends to look closely at a cabbage, then stands up. Full body, static camera. Bright daylight.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on the dirt path of a vegetable garden between rows of sunflowers and cabbages, bends to look closely at a cabbage, then stands up. Full body, static camera. Bright daylight. Claymation stop-motion animation.",
+   "image": "assets/moss/scene_garden.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "kitchen",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on the wooden floor of a cosy kitchen with green cupboards, sniffs the air and rubs his belly. Full body, static camera. Warm morning light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on the wooden floor of a cosy kitchen with green cupboards, sniffs the air and rubs his belly. Full body, static camera. Warm morning light. Claymation stop-motion animation.",
+   "image": "assets/moss/scene_kitchen.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "rooftop",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a rooftop terrace looking out over a little town, hands behind his back, rocking on his heels. Full body, static camera. Soft evening light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a rooftop terrace looking out over a little town, hands behind his back, rocking on his heels. Full body, static camera. Soft evening light. Claymation stop-motion animation.",
+   "image": "assets/moss/scene_rooftop.jpg",
+   "frames": 121,
+   "product_image": false,
+   "skip": true
+  },
+  {
+   "tag": "park-walk",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots walks towards the camera along a park path covered in autumn leaves, arms swinging. Full body, static camera. Golden morning light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots walks towards the camera along a park path covered in autumn leaves, arms swinging. Full body, static camera. Golden morning light. Claymation stop-motion animation.",
+   "image": "assets/moss/scene_park.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "park-turn",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a park path covered in autumn leaves and slowly turns around in place, showing his front, side and back. Full body, static camera. Golden morning light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a park path covered in autumn leaves and slowly turns around in place, showing his front, side and back. Full body, static camera. Golden morning light. Claymation stop-motion animation.",
+   "image": "assets/moss/scene_park.jpg",
+   "frames": 121,
+   "product_image": false,
+   "images": [
+    [
+     "assets/moss/scene_park_side.jpg",
+     64,
+     0.85
+    ],
+    [
+     "assets/moss/scene_park_back.jpg",
+     120,
+     0.85
+    ]
+   ]
+  },
+  {
+   "tag": "livingroom",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands in a living room with a green sofa and a floor lamp, stretches his arms wide and yawns. Full body, static camera. Warm lamp light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands in a living room with a green sofa and a floor lamp, stretches his arms wide and yawns. Full body, static camera. Warm lamp light. Claymation stop-motion animation.",
+   "image": "assets/moss/scene_livingroom.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "dock",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a wooden dock with his back to the camera, looking out over a calm lake, then raises a hand to shade his eyes. Full body, static camera. Golden hour light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands on a wooden dock with his back to the camera, looking out over a calm lake, then raises a hand to shade his eyes. Full body, static camera. Golden hour light. Claymation stop-motion animation.",
+   "image": "assets/moss/scene_dock.jpg",
+   "frames": 121,
+   "product_image": false,
+   "skip": true
+  },
+  {
+   "tag": "market",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands in a market street of fruit stalls and paper lanterns, looks left and right and waves. Full body, static camera. Bright daylight.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands in a market street of fruit stalls and paper lanterns, looks left and right and waves. Full body, static camera. Bright daylight. Claymation stop-motion animation.",
+   "image": "assets/moss/scene_market.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "market-turn",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands with his back to the camera in a market street of fruit stalls and paper lanterns, then turns around in place to face the camera. Full body, static camera. Bright daylight.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands with his back to the camera in a market street of fruit stalls and paper lanterns, then turns around in place to face the camera. Full body, static camera. Bright daylight. Claymation stop-motion animation.",
+   "image": "assets/moss/scene_market_back.jpg",
+   "frames": 121,
+   "product_image": false,
+   "images": [
+    [
+     "assets/moss/scene_market_side_m.jpg",
+     64,
+     0.85
+    ],
+    [
+     "assets/moss/scene_market.jpg",
+     120,
+     0.85
+    ]
+   ]
+  },
+  {
+   "tag": "bedroom",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands in a small bedroom at night beside a quilted bed, yawns and rubs his eyes. Full body, static camera. Warm bedside lamp light.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands in a small bedroom at night beside a quilted bed, yawns and rubs his eyes. Full body, static camera. Warm bedside lamp light. Claymation stop-motion animation.",
+   "image": "assets/moss/scene_bedroom.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "forest",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots walks along a forest path between ferns and tall trees, seen from the side, arms swinging. Full body, the camera tracks beside him. Sunbeams through the trees.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots walks along a forest path between ferns and tall trees, seen from the side, arms swinging. Full body, the camera tracks beside him. Sunbeams through the trees. Claymation stop-motion animation.",
+   "image": "assets/moss/scene_forest.jpg",
+   "frames": 121,
+   "product_image": false
+  },
+  {
+   "tag": "greenhouse",
+   "prompt": "Claymation stop-motion animation, handmade plasticine characters with visible thumbprints and slightly wonky proportions, miniature handmade set, soft studio light. A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands in a greenhouse full of potted seedlings, looks around and nods happily. Full body, static camera. Bright daylight.",
+   "caption": "A small round plasticine man with a big round head, rosy cheeks, a bushy brown mustache, round black glasses, a moss-green knitted beanie with a yellow pom-pom, a mustard-yellow raincoat and green rubber boots stands in a greenhouse full of potted seedlings, looks around and nods happily. Full body, static camera. Bright daylight. Claymation stop-motion animation.",
+   "image": "assets/moss/scene_greenhouse.jpg",
+   "frames": 121,
+   "product_image": false
+  }
+ ]
+}

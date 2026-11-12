@@ -1,0 +1,73 @@
+[
+ {
+  "name": "x-close-a",
+  "refs": [
+   "moss/face.jpg"
+  ],
+  "prompt": "A close-up of this clay character, his head and shoulders filling the frame, singing to the camera with his mouth open wide under his mustache, in a cosy kitchen with warm light. Keep him exactly as in the reference pictures: the same round head with warm peach skin, round black glasses, bushy brown mustache, rosy cheeks, moss-green rib-knit beanie with a yellow pom-pom, mustard-yellow raincoat with buttons and pockets, and green rubber boots. A frame from a handmade claymation stop-motion film shot on a real miniature set: matte plasticine with soft thumbprints, soft diffused warm light, gentle natural colours, no glossy highlights.",
+  "seed": 1
+ },
+ {
+  "name": "x-close-b",
+  "refs": [
+   "moss/face.jpg",
+   "moss/front.jpg"
+  ],
+  "prompt": "An extreme close-up portrait of this clay character, his face filling the frame, singing to the camera with his mouth open wide under his mustache, in a cosy kitchen with warm light. Keep him exactly as in the reference pictures: the same round head with warm peach skin, round black glasses, bushy brown mustache, rosy cheeks, moss-green rib-knit beanie with a yellow pom-pom, mustard-yellow raincoat with buttons and pockets, and green rubber boots. A frame from a handmade claymation stop-motion film shot on a real miniature set: matte plasticine with soft thumbprints, soft diffused warm light, gentle natural colours, no glossy highlights.",
+  "seed": 1
+ },
+ {
+  "name": "x-garden-matte",
+  "refs": [
+   "moss/front.jpg",
+   "moss/threeq.jpg"
+  ],
+  "prompt": "This clay character stands in a vegetable garden holding up a big carrot, smiling. Full body. Keep him exactly as in the reference pictures: the same round head with warm peach skin, round black glasses, bushy brown mustache, rosy cheeks, moss-green rib-knit beanie with a yellow pom-pom, mustard-yellow raincoat with buttons and pockets, and green rubber boots. A frame from a handmade claymation stop-motion film shot on a real miniature set: matte plasticine with soft thumbprints, soft diffused warm light, gentle natural colours, no glossy highlights.",
+  "seed": 1
+ },
+ {
+  "name": "x-garden-gloss",
+  "refs": [
+   "moss/front.jpg",
+   "moss/threeq.jpg"
+  ],
+  "prompt": "This clay character stands in a vegetable garden holding up a big carrot, smiling. Full body. Keep him exactly as in the reference pictures: the same round head with warm peach skin, round black glasses, bushy brown mustache, rosy cheeks, moss-green rib-knit beanie with a yellow pom-pom, mustard-yellow raincoat with buttons and pockets, and green rubber boots. A frame from a claymation stop-motion film: handmade plasticine characters, a miniature handmade set, shallow depth of field.",
+  "seed": 1
+ },
+ {
+  "name": "x-forest-side",
+  "refs": [
+   "moss/side.jpg",
+   "moss/threeq.jpg"
+  ],
+  "prompt": "This clay character walks along a forest path between ferns, seen from the side, mid-stride. Full body. Keep him exactly as in the reference pictures: the same round head with warm peach skin, round black glasses, bushy brown mustache, rosy cheeks, moss-green rib-knit beanie with a yellow pom-pom, mustard-yellow raincoat with buttons and pockets, and green rubber boots. A frame from a handmade claymation stop-motion film shot on a real miniature set: matte plasticine with soft thumbprints, soft diffused warm light, gentle natural colours, no glossy highlights.",
+  "seed": 1
+ },
+ {
+  "name": "x-sofa",
+  "refs": [
+   "moss/front.jpg",
+   "moss/threeq.jpg"
+  ],
+  "prompt": "This clay character sits on a green sofa in a living room reading a big book, a floor lamp glowing beside him. Medium shot. Keep him exactly as in the reference pictures: the same round head with warm peach skin, round black glasses, bushy brown mustache, rosy cheeks, moss-green rib-knit beanie with a yellow pom-pom, mustard-yellow raincoat with buttons and pockets, and green rubber boots. A frame from a handmade claymation stop-motion film shot on a real miniature set: matte plasticine with soft thumbprints, soft diffused warm light, gentle natural colours, no glossy highlights.",
+  "seed": 1
+ },
+ {
+  "name": "x-window-back",
+  "refs": [
+   "moss/back.jpg",
+   "moss/back3q.jpg"
+  ],
+  "prompt": "This clay character seen from behind, his back to the camera, standing at a big window watching the rain fall on a garden. We see the back of his moss-green rib-knit beanie with its yellow pom-pom, the back of his mustard-yellow raincoat and his green rubber boots, exactly as in the reference pictures. His face is not visible. A frame from a handmade claymation stop-motion film shot on a real miniature set: matte plasticine with soft thumbprints, soft diffused warm light, gentle natural colours, no glossy highlights.",
+  "seed": 1
+ },
+ {
+  "name": "x-wide",
+  "refs": [
+   "moss/front.jpg",
+   "moss/threeq.jpg"
+  ],
+  "prompt": "A wide shot of a rooftop garden at sunset with planter boxes and string lights. This clay character is small in the frame, standing beside a brass telescope and looking up at the sky. Keep him exactly as in the reference pictures: the same round head with warm peach skin, round black glasses, bushy brown mustache, rosy cheeks, moss-green rib-knit beanie with a yellow pom-pom, mustard-yellow raincoat with buttons and pockets, and green rubber boots. A frame from a handmade claymation stop-motion film shot on a real miniature set: matte plasticine with soft thumbprints, soft diffused warm light, gentle natural colours, no glossy highlights.",
+  "seed": 1
+ }
+]

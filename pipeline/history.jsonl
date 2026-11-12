@@ -29,3 +29,11 @@
 {"date": "2026-11-06", "slug": "park-chess", "product": "eyelid", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 30, "provider": "modal", "month": "2026-10", "cost": 0.631}
 {"date": "2026-11-07", "slug": "kite-took-me", "product": "hibernator", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 30, "provider": "modal", "month": "2026-10", "cost": 0.631}
 {"date": "2026-11-08", "slug": "canoe-commute", "product": "hibernator", "gpu": "NVIDIA L40S", "dph": 1.95, "sec_per_clip": 30, "provider": "modal", "month": "2026-10", "cost": 0.631}
+{"date": "2026-11-12", "slug": "puddle-league", "product": "merch", "gpu": "NVIDIA A100-SXM4-80GB", "dph": 1.95, "sec_per_clip": 30, "provider": "modal", "month": "2026-11", "cost": 0.707}
+{"date": "2026-11-12", "slug": "puddle-league", "product": "merch", "gpu": "NVIDIA A100-SXM4-80GB", "dph": 1.95, "sec_per_clip": 30, "provider": "modal", "month": "2026-11", "cost": 0.64}
+{"date": "2026-11-13", "slug": "whistle-back", "product": "eyelid", "gpu": "NVIDIA A100-SXM4-80GB", "dph": 1.95, "sec_per_clip": 30, "provider": "modal", "month": "2026-11", "cost": 0.64}
+{"date": "2026-11-14", "slug": "squeaky-wheel", "product": "hibernator", "gpu": "NVIDIA A100-SXM4-80GB", "dph": 1.95, "sec_per_clip": 30, "provider": "modal", "month": "2026-11", "cost": 0.64}
+{"date": "2026-11-15", "slug": "first-snow", "product": "hibernator", "gpu": "NVIDIA A100-SXM4-80GB", "dph": 1.95, "sec_per_clip": 30, "provider": "modal", "month": "2026-11", "cost": 0.64}
+{"date": "2026-11-16", "slug": "wrote-you-a-letter", "product": "eyelid", "gpu": "NVIDIA A100-SXM4-80GB", "dph": 1.95, "sec_per_clip": 30, "provider": "modal", "month": "2026-11", "cost": 0.64}
+{"date": "2026-11-17", "slug": "snail-race", "product": "merch", "gpu": "NVIDIA A100-SXM4-80GB", "dph": 1.95, "sec_per_clip": 30, "provider": "modal", "month": "2026-11", "cost": 0.64}
+{"date": "2026-11-18", "slug": "grey-wall", "product": "hibernator", "gpu": "NVIDIA A100-SXM4-80GB", "dph": 1.95, "sec_per_clip": 30, "provider": "modal", "month": "2026-11", "cost": 0.64}

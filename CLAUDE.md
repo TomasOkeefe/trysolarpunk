@@ -24,11 +24,18 @@ To make videos, use the `make-videos` skill. In short: Claude writes plans in
   The pod reads the Hugging Face token from the RunPod secret `hf_token`.
   A launchd job (`~/Library/LaunchAgents/com.trysolarpunk.gpu-stock.plist`) logs RunPod stock every
   30 min to `pipeline/availability.jsonl`; `python3 -m ge.availability --summary` shows the best hours.
-  Modal is the planned next provider once the RunPod credit is used (account exists, not set up).
+  Modal (`--provider modal`, $30 of free credit a month, `python3 -m modal token new`) runs this folder's
+  code as it is, no push needed; `run.py` picks it by itself for any batch with Moss in it (first frames,
+  below). After a job, check `python3 -m modal container list --json` is `[]` (`modal app stop -y <app>`).
 - The pod clones github.com/TomasOkeefe/trysolarpunk, so push pipeline code before rendering.
-- Moss, the recurring character: `{moss}` in a prompt expands to his description plus the trigger
-  `m0ss`, and the batch loads his LoRA (`config.yaml` loras, weights on the `moss-lora` GitHub release).
-  Retrain with `train_lora.py` (dataset in `videos/lora/moss-data`, ~$1.30 on a community PRO 6000).
+- Moss, the recurring character: `{moss}` in a prompt expands to his description (`{moss_back}` when he
+  has his back to the camera: `{moss}` lists his face, so the model twists his head round to show it).
+  He is held by first frames, not a LoRA (`ge/frames.py`): before the render, Qwen Image Edit on Modal
+  (`modal_app.first_frames`, ~10 s a frame) draws the opening still of each of his shots from his master
+  pictures in `pipeline/assets/moss/` (`moss_masters.py`: stills of the one turnaround clip the owner
+  picked, skin warmed a little), and LTX animates from it. A shot's `"frame"` and `"view"` steer it
+  (make-videos skill). LoRAs never held him (2026-11-11: right at 0.7+ but the sets washed out, drifting
+  below); `train_lora.py --provider modal` and `shoot.py` (reference shoots) still work if one is wanted.
 - `worker/gen_clips.py` relies on private hooks of LTX-2 commit `be6d6d0` (pinned in `job.sh`).
 - TikTok posting is automatic and the owner never opens TikTok (it's the habit they're quitting).
   `run.py` hands each video to `ge/buffer.py`: upload to the public R2 bucket `trysolarpunk-media`,

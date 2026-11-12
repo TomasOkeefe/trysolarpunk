@@ -23,7 +23,7 @@ import time
 
 import yaml
 
-from ge import buffer, concept, runpod
+from ge import buffer, concept, frames, runpod
 
 ROOT = pathlib.Path(__file__).resolve().parent
 VIDEOS = ROOT.parent / "videos"
@@ -114,17 +114,29 @@ def main():
     cfg = yaml.safe_load((ROOT / "config.yaml").read_text())
     images = {p["id"]: p.get("image") for p in cfg["products"]}
     plans = []
+    n_frames = 0
     for f in files:
-        plan = concept.validate(concept.expand(json.loads(pathlib.Path(f).read_text()), cfg.get("characters", {}), cfg.get("loras")),
-                                cfg["video"]["shots"])
+        plan = json.loads(pathlib.Path(f).read_text())
+        n_frames += len(frames.prepare(plan))  # first frames for the Moss shots (ge/frames.py)
+        plan = concept.validate(concept.expand(plan, cfg.get("characters", {}), cfg.get("loras")), cfg["video"]["shots"])
         plan["image"] = images.get(plan["product"])  # first frame of the product shot (None: text only)
         style = plan.get("style", cfg["video"].get("style", ""))
         plan["style"] = cfg.get("styles", {}).get(style, style)  # a style name, or literal style text
+        plan["style_props"] = cfg.get("props_styles", {}).get(style)  # for shots with nobody in them (ge/frames.py)
+        plan["props_tail"] = cfg.get("props_tail", "")
+        if not plan["image"]:  # no product photo (merch): the product shot is drawn in the batch's look
+            for sh in plan["shots"]:
+                if sh.get("product_image"):
+                    sh["props"] = True
         plan["anim_fps"] = cfg["video"].get("anim_fps")
         plan["target_seconds"] = cfg["video"].get("target_seconds", 45)
         plan.setdefault("speed", cfg["video"].get("speed", 1.0))
         plans.append(plan)
-    assert_code_pushed()
+    if n_frames and a.provider != "modal":
+        print(f"{n_frames} shots need first frames, which are drawn on Modal: rendering there")
+        a.provider = "modal"
+    if a.provider != "modal":  # Modal runs this folder's code as it is; a RunPod box clones it from GitHub
+        assert_code_pushed()
 
     log = lambda m: print(f"[{time.strftime('%a %H:%M:%S')}] {m}", flush=True)
     VIDEOS.mkdir(exist_ok=True)

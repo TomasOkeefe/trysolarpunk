@@ -1,0 +1,37 @@
+{
+ "slug": "moss-ab-ff-full",
+ "seed_slug": "moss-ab",
+ "style": "claymation",
+ "shots": [
+  {
+   "prompt": "{moss} waters tomato plants with a small red watering can on a rooftop garden, the camera orbits fast around him. Golden evening light.",
+   "image": "assets/moss/ff/watering_full.png",
+   "product_image": false
+  },
+  {
+   "prompt": "Close-up: {moss} laughs out loud in a cosy kitchen, the camera pushes in fast. Warm kitchen light.",
+   "image": "assets/moss/ff/laughing_full.png",
+   "product_image": false
+  },
+  {
+   "prompt": "{moss} rides a red bicycle down a street of crooked clay houses past a grandma in a purple cardigan and pearl glasses who waves, the camera tracks beside him. Bright morning sun.",
+   "image": "assets/moss/ff/bicycle_full.png",
+   "product_image": false
+  },
+  {
+   "prompt": "{moss_back} walks away down a wooden pier toward a little red canoe on a green canal, the camera cranes up. Golden morning light.",
+   "image": "assets/moss/ff/pier_full.png",
+   "product_image": false
+  },
+  {
+   "prompt": "{moss} sits at a wooden table eating soup with a big spoon in a cosy kitchen, steam rising, crash zoom on his happy face. Warm afternoon light.",
+   "image": "assets/moss/ff/soup_full.png",
+   "product_image": false
+  },
+  {
+   "prompt": "{moss} dances at a rooftop party at night under string lights beside a woman in a red dress with a tall black bun and a man in a blue jumper with a ginger beard. The camera whip-pans. Warm lantern light.",
+   "image": "assets/moss/ff/party_full.png",
+   "product_image": false
+  }
+ ]
+}
